@@ -17,6 +17,6 @@
   },
   "scripts": {
     "compile": "hardhat compile",
-    "deploy:am": "hardhat run scripts/deploy_am.js --network home && hardhat run scripts/deploy_am.js --network foreign"
+    "deploy:am": "hardhat run scripts/deploy_amb.js --network home && hardhat run scripts/deploy_amb.js --network foreign"
   }
 }
