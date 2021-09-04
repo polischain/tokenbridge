@@ -2,8 +2,8 @@ require("@nomiclabs/hardhat-ethers");
 require('dotenv').config()
 
 let private_key = process.env.PRIVATE_KEY;
-let home = process.env.HOME;
-let foreign = process.env.FOREIGN;
+let home = process.env.HOME_RPC;
+let foreign = process.env.FOREIGN_RPC;
 
 module.exports = {
     networks: {
