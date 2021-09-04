@@ -1,0 +1,17 @@
+{
+  "name": "tokenbridge",
+  "version": "1.0.0",
+  "repository": "https://github.com/polischain/tokenbridge.git",
+  "author": "eabz <eabz@polispay.org>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/poanetwork",
+    "packages/omnibridge"
+  ],
+  "scripts": {
+    "compile": "yarn compile:poanetwork && yarn compile:omnibridge",
+    "compile:poanetwork": "yarn workspace @tokenbridge/poanetwork compile",
+    "compile:omnibridge": "yarn workspace @tokenbridge/omnibridge compile"
+  }
+}
