@@ -12,6 +12,7 @@
   "scripts": {
     "compile": "yarn compile:poanetwork && yarn compile:omnibridge",
     "compile:poanetwork": "yarn workspace @tokenbridge/poanetwork compile",
-    "compile:omnibridge": "yarn workspace @tokenbridge/omnibridge compile"
+    "compile:omnibridge": "yarn workspace @tokenbridge/omnibridge compile",
+    "deploy-am": "yarn workspace @tokenbridge/poanetwork deploy-am"
   }
 }

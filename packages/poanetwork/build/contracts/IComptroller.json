@@ -1,0 +1,462 @@
+{
+  "contractName": "IComptroller",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "holders",
+          "type": "address[]"
+        },
+        {
+          "name": "cTokens",
+          "type": "address[]"
+        },
+        {
+          "name": "borrowers",
+          "type": "bool"
+        },
+        {
+          "name": "suppliers",
+          "type": "bool"
+        }
+      ],
+      "name": "claimComp",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.4.24;\n\ninterface IComptroller {\n    function claimComp(address[] holders, address[] cTokens, bool borrowers, bool suppliers) external;\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/poanetwork/contracts/interfaces/IComptroller.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IComptroller.sol",
+    "exportedSymbols": {
+      "IComptroller": [
+        4763
+      ]
+    },
+    "id": 4764,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4749,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:37"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 4763,
+        "linearizedBaseContracts": [
+          4763
+        ],
+        "name": "IComptroller",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4762,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "claimComp",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4760,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4752,
+                  "name": "holders",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4762,
+                  "src": "73:17:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 4750,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "73:7:37",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 4751,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "73:9:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4755,
+                  "name": "cTokens",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4762,
+                  "src": "92:17:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 4753,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "92:7:37",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 4754,
+                    "length": null,
+                    "nodeType": "ArrayTypeName",
+                    "src": "92:9:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4757,
+                  "name": "borrowers",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4762,
+                  "src": "111:14:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 4756,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "111:4:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4759,
+                  "name": "suppliers",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4762,
+                  "src": "127:14:37",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 4758,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "127:4:37",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "72:70:37"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 4761,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "151:0:37"
+            },
+            "scope": 4763,
+            "src": "54:98:37",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 4764,
+        "src": "25:129:37"
+      }
+    ],
+    "src": "0:155:37"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/interfaces/IComptroller.sol",
+      "exportedSymbols": {
+        "IComptroller": [
+          4763
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.4",
+            ".24"
+          ]
+        },
+        "id": 4749,
+        "name": "PragmaDirective",
+        "src": "0:23:37"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "documentation": null,
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            4763
+          ],
+          "name": "IComptroller",
+          "scope": 4764
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "constant": false,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "claimComp",
+              "payable": false,
+              "scope": 4763,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "holders",
+                      "scope": 4762,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address[]",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "length": null,
+                          "type": "address[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "address",
+                              "type": "address"
+                            },
+                            "id": 4750,
+                            "name": "ElementaryTypeName",
+                            "src": "73:7:37"
+                          }
+                        ],
+                        "id": 4751,
+                        "name": "ArrayTypeName",
+                        "src": "73:9:37"
+                      }
+                    ],
+                    "id": 4752,
+                    "name": "VariableDeclaration",
+                    "src": "73:17:37"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "cTokens",
+                      "scope": 4762,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address[]",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "length": null,
+                          "type": "address[]"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "address",
+                              "type": "address"
+                            },
+                            "id": 4753,
+                            "name": "ElementaryTypeName",
+                            "src": "92:7:37"
+                          }
+                        ],
+                        "id": 4754,
+                        "name": "ArrayTypeName",
+                        "src": "92:9:37"
+                      }
+                    ],
+                    "id": 4755,
+                    "name": "VariableDeclaration",
+                    "src": "92:17:37"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "borrowers",
+                      "scope": 4762,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 4756,
+                        "name": "ElementaryTypeName",
+                        "src": "111:4:37"
+                      }
+                    ],
+                    "id": 4757,
+                    "name": "VariableDeclaration",
+                    "src": "111:14:37"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "suppliers",
+                      "scope": 4762,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 4758,
+                        "name": "ElementaryTypeName",
+                        "src": "127:4:37"
+                      }
+                    ],
+                    "id": 4759,
+                    "name": "VariableDeclaration",
+                    "src": "127:14:37"
+                  }
+                ],
+                "id": 4760,
+                "name": "ParameterList",
+                "src": "72:70:37"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4761,
+                "name": "ParameterList",
+                "src": "151:0:37"
+              }
+            ],
+            "id": 4762,
+            "name": "FunctionDefinition",
+            "src": "54:98:37"
+          }
+        ],
+        "id": 4763,
+        "name": "ContractDefinition",
+        "src": "25:129:37"
+      }
+    ],
+    "id": 4764,
+    "name": "SourceUnit",
+    "src": "0:155:37"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:19.199Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

@@ -1,0 +1,252 @@
+{
+  "contractName": "IUpgradeabilityOwnerStorage",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "upgradeabilityOwner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.4.24;\n\ninterface IUpgradeabilityOwnerStorage {\n    function upgradeabilityOwner() external view returns (address);\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/poanetwork/contracts/interfaces/IUpgradeabilityOwnerStorage.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IUpgradeabilityOwnerStorage.sol",
+    "exportedSymbols": {
+      "IUpgradeabilityOwnerStorage": [
+        4938
+      ]
+    },
+    "id": 4939,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4932,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:44"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 4938,
+        "linearizedBaseContracts": [
+          4938
+        ],
+        "name": "IUpgradeabilityOwnerStorage",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4937,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "upgradeabilityOwner",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4933,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "97:2:44"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 4936,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4935,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4937,
+                  "src": "123:7:44",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4934,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "123:7:44",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "122:9:44"
+            },
+            "scope": 4938,
+            "src": "69:63:44",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 4939,
+        "src": "25:109:44"
+      }
+    ],
+    "src": "0:135:44"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/interfaces/IUpgradeabilityOwnerStorage.sol",
+      "exportedSymbols": {
+        "IUpgradeabilityOwnerStorage": [
+          4938
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.4",
+            ".24"
+          ]
+        },
+        "id": 4932,
+        "name": "PragmaDirective",
+        "src": "0:23:44"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "documentation": null,
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            4938
+          ],
+          "name": "IUpgradeabilityOwnerStorage",
+          "scope": 4939
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "constant": true,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "upgradeabilityOwner",
+              "payable": false,
+              "scope": 4938,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4933,
+                "name": "ParameterList",
+                "src": "97:2:44"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 4937,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 4934,
+                        "name": "ElementaryTypeName",
+                        "src": "123:7:44"
+                      }
+                    ],
+                    "id": 4935,
+                    "name": "VariableDeclaration",
+                    "src": "123:7:44"
+                  }
+                ],
+                "id": 4936,
+                "name": "ParameterList",
+                "src": "122:9:44"
+              }
+            ],
+            "id": 4937,
+            "name": "FunctionDefinition",
+            "src": "69:63:44"
+          }
+        ],
+        "id": 4938,
+        "name": "ContractDefinition",
+        "src": "25:109:44"
+      }
+    ],
+    "id": 4939,
+    "name": "SourceUnit",
+    "src": "0:135:44"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:19.202Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

@@ -1,0 +1,667 @@
+{
+  "contractName": "VersionableBridge",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getBridgeInterfacesVersion",
+      "outputs": [
+        {
+          "name": "major",
+          "type": "uint64"
+        },
+        {
+          "name": "minor",
+          "type": "uint64"
+        },
+        {
+          "name": "patch",
+          "type": "uint64"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getBridgeMode",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "metadata": "",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.4.24;\n\ncontract VersionableBridge {\n    function getBridgeInterfacesVersion() external pure returns (uint64 major, uint64 minor, uint64 patch) {\n        return (6, 0, 0);\n    }\n\n    /* solcov ignore next */\n    function getBridgeMode() external pure returns (bytes4);\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/poanetwork/contracts/upgradeable_contracts/VersionableBridge.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/upgradeable_contracts/VersionableBridge.sol",
+    "exportedSymbols": {
+      "VersionableBridge": [
+        14007
+      ]
+    },
+    "id": 14008,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 13986,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:117"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 14007,
+        "linearizedBaseContracts": [
+          14007
+        ],
+        "name": "VersionableBridge",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 14000,
+              "nodeType": "Block",
+              "src": "161:33:117",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "36",
+                        "id": 13995,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "179:1:117",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_6_by_1",
+                          "typeString": "int_const 6"
+                        },
+                        "value": "6"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "30",
+                        "id": 13996,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "182:1:117",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_0_by_1",
+                          "typeString": "int_const 0"
+                        },
+                        "value": "0"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "30",
+                        "id": 13997,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "185:1:117",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_0_by_1",
+                          "typeString": "int_const 0"
+                        },
+                        "value": "0"
+                      }
+                    ],
+                    "id": 13998,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "178:9:117",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_rational_6_by_1_$_t_rational_0_by_1_$_t_rational_0_by_1_$",
+                      "typeString": "tuple(int_const 6,int_const 0,int_const 0)"
+                    }
+                  },
+                  "functionReturnParameters": 13994,
+                  "id": 13999,
+                  "nodeType": "Return",
+                  "src": "171:16:117"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 14001,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getBridgeInterfacesVersion",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 13987,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "93:2:117"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 13994,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 13989,
+                  "name": "major",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14001,
+                  "src": "119:12:117",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  },
+                  "typeName": {
+                    "id": 13988,
+                    "name": "uint64",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "119:6:117",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint64",
+                      "typeString": "uint64"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 13991,
+                  "name": "minor",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14001,
+                  "src": "133:12:117",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  },
+                  "typeName": {
+                    "id": 13990,
+                    "name": "uint64",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "133:6:117",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint64",
+                      "typeString": "uint64"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 13993,
+                  "name": "patch",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14001,
+                  "src": "147:12:117",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  },
+                  "typeName": {
+                    "id": 13992,
+                    "name": "uint64",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "147:6:117",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint64",
+                      "typeString": "uint64"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "118:42:117"
+            },
+            "scope": 14007,
+            "src": "58:136:117",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 14006,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getBridgeMode",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 14002,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "251:2:117"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 14005,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 14004,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 14006,
+                  "src": "277:6:117",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes4",
+                    "typeString": "bytes4"
+                  },
+                  "typeName": {
+                    "id": 14003,
+                    "name": "bytes4",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "277:6:117",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes4",
+                      "typeString": "bytes4"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "276:8:117"
+            },
+            "scope": 14007,
+            "src": "229:56:117",
+            "stateMutability": "pure",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 14008,
+        "src": "25:262:117"
+      }
+    ],
+    "src": "0:288:117"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/upgradeable_contracts/VersionableBridge.sol",
+      "exportedSymbols": {
+        "VersionableBridge": [
+          14007
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.4",
+            ".24"
+          ]
+        },
+        "id": 13986,
+        "name": "PragmaDirective",
+        "src": "0:23:117"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            14007
+          ],
+          "name": "VersionableBridge",
+          "scope": 14008
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": true,
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "getBridgeInterfacesVersion",
+              "payable": false,
+              "scope": 14007,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 13987,
+                "name": "ParameterList",
+                "src": "93:2:117"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "major",
+                      "scope": 14001,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint64",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint64",
+                          "type": "uint64"
+                        },
+                        "id": 13988,
+                        "name": "ElementaryTypeName",
+                        "src": "119:6:117"
+                      }
+                    ],
+                    "id": 13989,
+                    "name": "VariableDeclaration",
+                    "src": "119:12:117"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "minor",
+                      "scope": 14001,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint64",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint64",
+                          "type": "uint64"
+                        },
+                        "id": 13990,
+                        "name": "ElementaryTypeName",
+                        "src": "133:6:117"
+                      }
+                    ],
+                    "id": 13991,
+                    "name": "VariableDeclaration",
+                    "src": "133:12:117"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "patch",
+                      "scope": 14001,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint64",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint64",
+                          "type": "uint64"
+                        },
+                        "id": 13992,
+                        "name": "ElementaryTypeName",
+                        "src": "147:6:117"
+                      }
+                    ],
+                    "id": 13993,
+                    "name": "VariableDeclaration",
+                    "src": "147:12:117"
+                  }
+                ],
+                "id": 13994,
+                "name": "ParameterList",
+                "src": "118:42:117"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 13994
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isInlineArray": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "type": "tuple(int_const 6,int_const 0,int_const 0)"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "36",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 6",
+                              "value": "6"
+                            },
+                            "id": 13995,
+                            "name": "Literal",
+                            "src": "179:1:117"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "30",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 0",
+                              "value": "0"
+                            },
+                            "id": 13996,
+                            "name": "Literal",
+                            "src": "182:1:117"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "30",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 0",
+                              "value": "0"
+                            },
+                            "id": 13997,
+                            "name": "Literal",
+                            "src": "185:1:117"
+                          }
+                        ],
+                        "id": 13998,
+                        "name": "TupleExpression",
+                        "src": "178:9:117"
+                      }
+                    ],
+                    "id": 13999,
+                    "name": "Return",
+                    "src": "171:16:117"
+                  }
+                ],
+                "id": 14000,
+                "name": "Block",
+                "src": "161:33:117"
+              }
+            ],
+            "id": 14001,
+            "name": "FunctionDefinition",
+            "src": "58:136:117"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "constant": true,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "getBridgeMode",
+              "payable": false,
+              "scope": 14007,
+              "stateMutability": "pure",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 14002,
+                "name": "ParameterList",
+                "src": "251:2:117"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 14006,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes4",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes4",
+                          "type": "bytes4"
+                        },
+                        "id": 14003,
+                        "name": "ElementaryTypeName",
+                        "src": "277:6:117"
+                      }
+                    ],
+                    "id": 14004,
+                    "name": "VariableDeclaration",
+                    "src": "277:6:117"
+                  }
+                ],
+                "id": 14005,
+                "name": "ParameterList",
+                "src": "276:8:117"
+              }
+            ],
+            "id": 14006,
+            "name": "FunctionDefinition",
+            "src": "229:56:117"
+          }
+        ],
+        "id": 14007,
+        "name": "ContractDefinition",
+        "src": "25:262:117"
+      }
+    ],
+    "id": 14008,
+    "name": "SourceUnit",
+    "src": "0:288:117"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:19.325Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

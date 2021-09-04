@@ -1,0 +1,1459 @@
+{
+  "contractName": "BaseRelayRecipient",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "versionRecipient",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "forwarder",
+          "type": "address"
+        }
+      ],
+      "name": "isTrustedForwarder",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier:MIT\n// solhint-disable no-inline-assembly\npragma solidity 0.4.24;\n\nimport \"./interfaces/IRelayRecipient.sol\";\n\n/**\n * A base contract to be inherited by any contract that want to receive relayed transactions\n * A subclass must use \"_msgSender()\" instead of \"msg.sender\"\n */\ncontract BaseRelayRecipient is IRelayRecipient {\n    /**\n     * return the sender of this call.\n     * if the call came through our trusted forwarder, return the original sender.\n     * otherwise, return `msg.sender`.\n     * should be used in the contract anywhere instead of msg.sender\n     */\n    function _msgSender() internal view returns (address ret) {\n        if (msg.data.length >= 24 && isTrustedForwarder(msg.sender)) {\n            // At this point we know that the sender is a trusted forwarder,\n            // so we trust that the last bytes of msg.data are the verified sender address.\n            // extract sender address from the end of msg.data\n            assembly {\n                ret := shr(96, calldataload(sub(calldatasize, 20)))\n            }\n        } else {\n            return msg.sender;\n        }\n    }\n\n    /**\n     * return the msg.data of this call.\n     * if the call came through our trusted forwarder, then the real sender was appended as the last 20 bytes\n     * of the msg.data - so this method will strip those 20 bytes off.\n     * otherwise, return `msg.data`\n     * should be used in the contract instead of msg.data, where the difference matters (e.g. when explicitly\n     * signing or hashing the\n     */\n    function _msgData() internal view returns (bytes memory ret) {\n        if (msg.data.length >= 24 && isTrustedForwarder(msg.sender)) {\n            // At this point we know that the sender is a trusted forwarder,\n            // we copy the msg.data , except the last 20 bytes (and update the total length)\n            assembly {\n                let ptr := mload(0x40)\n                // copy only size-20 bytes\n                let size := sub(calldatasize, 20)\n                // structure RLP data as <offset> <length> <bytes>\n                mstore(ptr, 0x20)\n                mstore(add(ptr, 32), size)\n                calldatacopy(add(ptr, 64), 0, size)\n                return(ptr, add(size, 64))\n            }\n        } else {\n            return msg.data;\n        }\n    }\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/poanetwork/contracts/gsn/BaseRelayRecipient.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/gsn/BaseRelayRecipient.sol",
+    "exportedSymbols": {
+      "BaseRelayRecipient": [
+        2574
+      ]
+    },
+    "id": 2575,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2524,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "69:23:16"
+      },
+      {
+        "absolutePath": "project:/contracts/gsn/interfaces/IRelayRecipient.sol",
+        "file": "./interfaces/IRelayRecipient.sol",
+        "id": 2525,
+        "nodeType": "ImportDirective",
+        "scope": 2575,
+        "sourceUnit": 2989,
+        "src": "94:42:16",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 2526,
+              "name": "IRelayRecipient",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2988,
+              "src": "332:15:16",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_IRelayRecipient_$2988",
+                "typeString": "contract IRelayRecipient"
+              }
+            },
+            "id": 2527,
+            "nodeType": "InheritanceSpecifier",
+            "src": "332:15:16"
+          }
+        ],
+        "contractDependencies": [
+          2988
+        ],
+        "contractKind": "contract",
+        "documentation": "A base contract to be inherited by any contract that want to receive relayed transactions\nA subclass must use \"_msgSender()\" instead of \"msg.sender\"",
+        "fullyImplemented": false,
+        "id": 2574,
+        "linearizedBaseContracts": [
+          2574,
+          2988
+        ],
+        "name": "BaseRelayRecipient",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 2549,
+              "nodeType": "Block",
+              "src": "658:473:16",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "id": 2541,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 2536,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 2532,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 19337,
+                            "src": "672:3:16",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 2533,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "data",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "672:8:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes_calldata_ptr",
+                            "typeString": "bytes calldata"
+                          }
+                        },
+                        "id": 2534,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "length",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "672:15:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": ">=",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "hexValue": "3234",
+                        "id": 2535,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "691:2:16",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_24_by_1",
+                          "typeString": "int_const 24"
+                        },
+                        "value": "24"
+                      },
+                      "src": "672:21:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "&&",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 2538,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 19337,
+                            "src": "716:3:16",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 2539,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "716:10:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 2537,
+                        "name": "isTrustedForwarder",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2972,
+                        "src": "697:18:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$",
+                          "typeString": "function (address) view returns (bool)"
+                        }
+                      },
+                      "id": 2540,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "697:30:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "672:55:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "id": 2547,
+                    "nodeType": "Block",
+                    "src": "1083:42:16",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 2544,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 19337,
+                            "src": "1104:3:16",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 2545,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "1104:10:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "functionReturnParameters": 2531,
+                        "id": 2546,
+                        "nodeType": "Return",
+                        "src": "1097:17:16"
+                      }
+                    ]
+                  },
+                  "id": 2548,
+                  "nodeType": "IfStatement",
+                  "src": "668:457:16",
+                  "trueBody": {
+                    "id": 2543,
+                    "nodeType": "Block",
+                    "src": "729:348:16",
+                    "statements": [
+                      {
+                        "externalReferences": [
+                          {
+                            "ret": {
+                              "declaration": 2530,
+                              "isOffset": false,
+                              "isSlot": false,
+                              "src": "1002:3:16",
+                              "valueSize": 1
+                            }
+                          }
+                        ],
+                        "id": 2542,
+                        "nodeType": "InlineAssembly",
+                        "operations": "{\n    ret := shr(96, calldataload(sub(calldatasize(), 20)))\n}",
+                        "src": "975:102:16"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": "return the sender of this call.\nif the call came through our trusted forwarder, return the original sender.\notherwise, return `msg.sender`.\nshould be used in the contract anywhere instead of msg.sender",
+            "id": 2550,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "_msgSender",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2528,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "619:2:16"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2531,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2530,
+                  "name": "ret",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2550,
+                  "src": "645:11:16",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2529,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "645:7:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "644:13:16"
+            },
+            "scope": 2574,
+            "src": "600:531:16",
+            "stateMutability": "view",
+            "superFunction": 2977,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 2572,
+              "nodeType": "Block",
+              "src": "1612:712:16",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "commonType": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "id": 2564,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "argumentTypes": null,
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 2559,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "argumentTypes": null,
+                        "expression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 2555,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 19337,
+                            "src": "1626:3:16",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 2556,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "data",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "1626:8:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes_calldata_ptr",
+                            "typeString": "bytes calldata"
+                          }
+                        },
+                        "id": 2557,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "length",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "1626:15:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": ">=",
+                      "rightExpression": {
+                        "argumentTypes": null,
+                        "hexValue": "3234",
+                        "id": 2558,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "1645:2:16",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_24_by_1",
+                          "typeString": "int_const 24"
+                        },
+                        "value": "24"
+                      },
+                      "src": "1626:21:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "&&",
+                    "rightExpression": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 2561,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 19337,
+                            "src": "1670:3:16",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 2562,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "1670:10:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        ],
+                        "id": 2560,
+                        "name": "isTrustedForwarder",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2972,
+                        "src": "1651:18:16",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$",
+                          "typeString": "function (address) view returns (bool)"
+                        }
+                      },
+                      "id": 2563,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1651:30:16",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "1626:55:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "id": 2570,
+                    "nodeType": "Block",
+                    "src": "2278:40:16",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 2567,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 19337,
+                            "src": "2299:3:16",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 2568,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "data",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": null,
+                          "src": "2299:8:16",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes_calldata_ptr",
+                            "typeString": "bytes calldata"
+                          }
+                        },
+                        "functionReturnParameters": 2554,
+                        "id": 2569,
+                        "nodeType": "Return",
+                        "src": "2292:15:16"
+                      }
+                    ]
+                  },
+                  "id": 2571,
+                  "nodeType": "IfStatement",
+                  "src": "1622:696:16",
+                  "trueBody": {
+                    "id": 2566,
+                    "nodeType": "Block",
+                    "src": "1683:589:16",
+                    "statements": [
+                      {
+                        "externalReferences": [],
+                        "id": 2565,
+                        "nodeType": "InlineAssembly",
+                        "operations": "{\n    let ptr := mload(0x40)\n    let size := sub(calldatasize(), 20)\n    mstore(ptr, 0x20)\n    mstore(add(ptr, 32), size)\n    calldatacopy(add(ptr, 64), 0, size)\n    return(ptr, add(size, 64))\n}",
+                        "src": "1867:405:16"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": "return the msg.data of this call.\nif the call came through our trusted forwarder, then the real sender was appended as the last 20 bytes\nof the msg.data - so this method will strip those 20 bytes off.\notherwise, return `msg.data`\nshould be used in the contract instead of msg.data, where the difference matters (e.g. when explicitly\nsigning or hashing the",
+            "id": 2573,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "_msgData",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2551,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1568:2:16"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2554,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2553,
+                  "name": "ret",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2573,
+                  "src": "1594:16:16",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 2552,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1594:5:16",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1593:18:16"
+            },
+            "scope": 2574,
+            "src": "1551:773:16",
+            "stateMutability": "view",
+            "superFunction": 2982,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 2575,
+        "src": "301:2025:16"
+      }
+    ],
+    "src": "69:2258:16"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/gsn/BaseRelayRecipient.sol",
+      "exportedSymbols": {
+        "BaseRelayRecipient": [
+          2574
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.4",
+            ".24"
+          ]
+        },
+        "id": 2524,
+        "name": "PragmaDirective",
+        "src": "69:23:16"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 2989,
+          "absolutePath": "project:/contracts/gsn/interfaces/IRelayRecipient.sol",
+          "file": "./interfaces/IRelayRecipient.sol",
+          "scope": 2575,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 2525,
+        "name": "ImportDirective",
+        "src": "94:42:16"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            2988
+          ],
+          "contractKind": "contract",
+          "documentation": "A base contract to be inherited by any contract that want to receive relayed transactions\nA subclass must use \"_msgSender()\" instead of \"msg.sender\"",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            2574,
+            2988
+          ],
+          "name": "BaseRelayRecipient",
+          "scope": 2575
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "IRelayRecipient",
+                  "referencedDeclaration": 2988,
+                  "type": "contract IRelayRecipient"
+                },
+                "id": 2526,
+                "name": "UserDefinedTypeName",
+                "src": "332:15:16"
+              }
+            ],
+            "id": 2527,
+            "name": "InheritanceSpecifier",
+            "src": "332:15:16"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "documentation": "return the sender of this call.\nif the call came through our trusted forwarder, return the original sender.\notherwise, return `msg.sender`.\nshould be used in the contract anywhere instead of msg.sender",
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "_msgSender",
+              "payable": false,
+              "scope": 2574,
+              "stateMutability": "view",
+              "superFunction": 2977,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 2528,
+                "name": "ParameterList",
+                "src": "619:2:16"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "ret",
+                      "scope": 2550,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 2529,
+                        "name": "ElementaryTypeName",
+                        "src": "645:7:16"
+                      }
+                    ],
+                    "id": 2530,
+                    "name": "VariableDeclaration",
+                    "src": "645:11:16"
+                  }
+                ],
+                "id": 2531,
+                "name": "ParameterList",
+                "src": "644:13:16"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "&&",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": ">=",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "length",
+                                  "referencedDeclaration": null,
+                                  "type": "uint256"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "data",
+                                      "referencedDeclaration": null,
+                                      "type": "bytes calldata"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 19337,
+                                          "type": "msg",
+                                          "value": "msg"
+                                        },
+                                        "id": 2532,
+                                        "name": "Identifier",
+                                        "src": "672:3:16"
+                                      }
+                                    ],
+                                    "id": 2533,
+                                    "name": "MemberAccess",
+                                    "src": "672:8:16"
+                                  }
+                                ],
+                                "id": 2534,
+                                "name": "MemberAccess",
+                                "src": "672:15:16"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "hexvalue": "3234",
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "subdenomination": null,
+                                  "token": "number",
+                                  "type": "int_const 24",
+                                  "value": "24"
+                                },
+                                "id": 2535,
+                                "name": "Literal",
+                                "src": "691:2:16"
+                              }
+                            ],
+                            "id": 2536,
+                            "name": "BinaryOperation",
+                            "src": "672:21:16"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "bool",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2972,
+                                  "type": "function (address) view returns (bool)",
+                                  "value": "isTrustedForwarder"
+                                },
+                                "id": 2537,
+                                "name": "Identifier",
+                                "src": "697:18:16"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "referencedDeclaration": null,
+                                  "type": "address"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 19337,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 2538,
+                                    "name": "Identifier",
+                                    "src": "716:3:16"
+                                  }
+                                ],
+                                "id": 2539,
+                                "name": "MemberAccess",
+                                "src": "716:10:16"
+                              }
+                            ],
+                            "id": 2540,
+                            "name": "FunctionCall",
+                            "src": "697:30:16"
+                          }
+                        ],
+                        "id": 2541,
+                        "name": "BinaryOperation",
+                        "src": "672:55:16"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "externalReferences": [
+                                {
+                                  "ret": {
+                                    "declaration": 2530,
+                                    "isOffset": false,
+                                    "isSlot": false,
+                                    "src": "1002:3:16",
+                                    "valueSize": 1
+                                  }
+                                }
+                              ],
+                              "operations": "{\n    ret := shr(96, calldataload(sub(calldatasize(), 20)))\n}"
+                            },
+                            "children": [],
+                            "id": 2542,
+                            "name": "InlineAssembly",
+                            "src": "975:102:16"
+                          }
+                        ],
+                        "id": 2543,
+                        "name": "Block",
+                        "src": "729:348:16"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "functionReturnParameters": 2531
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "referencedDeclaration": null,
+                                  "type": "address"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 19337,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 2544,
+                                    "name": "Identifier",
+                                    "src": "1104:3:16"
+                                  }
+                                ],
+                                "id": 2545,
+                                "name": "MemberAccess",
+                                "src": "1104:10:16"
+                              }
+                            ],
+                            "id": 2546,
+                            "name": "Return",
+                            "src": "1097:17:16"
+                          }
+                        ],
+                        "id": 2547,
+                        "name": "Block",
+                        "src": "1083:42:16"
+                      }
+                    ],
+                    "id": 2548,
+                    "name": "IfStatement",
+                    "src": "668:457:16"
+                  }
+                ],
+                "id": 2549,
+                "name": "Block",
+                "src": "658:473:16"
+              }
+            ],
+            "id": 2550,
+            "name": "FunctionDefinition",
+            "src": "600:531:16"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "documentation": "return the msg.data of this call.\nif the call came through our trusted forwarder, then the real sender was appended as the last 20 bytes\nof the msg.data - so this method will strip those 20 bytes off.\notherwise, return `msg.data`\nshould be used in the contract instead of msg.data, where the difference matters (e.g. when explicitly\nsigning or hashing the",
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "_msgData",
+              "payable": false,
+              "scope": 2574,
+              "stateMutability": "view",
+              "superFunction": 2982,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 2551,
+                "name": "ParameterList",
+                "src": "1568:2:16"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "ret",
+                      "scope": 2573,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 2552,
+                        "name": "ElementaryTypeName",
+                        "src": "1594:5:16"
+                      }
+                    ],
+                    "id": 2553,
+                    "name": "VariableDeclaration",
+                    "src": "1594:16:16"
+                  }
+                ],
+                "id": 2554,
+                "name": "ParameterList",
+                "src": "1593:18:16"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "commonType": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "&&",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": ">=",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "length",
+                                  "referencedDeclaration": null,
+                                  "type": "uint256"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "data",
+                                      "referencedDeclaration": null,
+                                      "type": "bytes calldata"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 19337,
+                                          "type": "msg",
+                                          "value": "msg"
+                                        },
+                                        "id": 2555,
+                                        "name": "Identifier",
+                                        "src": "1626:3:16"
+                                      }
+                                    ],
+                                    "id": 2556,
+                                    "name": "MemberAccess",
+                                    "src": "1626:8:16"
+                                  }
+                                ],
+                                "id": 2557,
+                                "name": "MemberAccess",
+                                "src": "1626:15:16"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "hexvalue": "3234",
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "subdenomination": null,
+                                  "token": "number",
+                                  "type": "int_const 24",
+                                  "value": "24"
+                                },
+                                "id": 2558,
+                                "name": "Literal",
+                                "src": "1645:2:16"
+                              }
+                            ],
+                            "id": 2559,
+                            "name": "BinaryOperation",
+                            "src": "1626:21:16"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "bool",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2972,
+                                  "type": "function (address) view returns (bool)",
+                                  "value": "isTrustedForwarder"
+                                },
+                                "id": 2560,
+                                "name": "Identifier",
+                                "src": "1651:18:16"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "referencedDeclaration": null,
+                                  "type": "address"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 19337,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 2561,
+                                    "name": "Identifier",
+                                    "src": "1670:3:16"
+                                  }
+                                ],
+                                "id": 2562,
+                                "name": "MemberAccess",
+                                "src": "1670:10:16"
+                              }
+                            ],
+                            "id": 2563,
+                            "name": "FunctionCall",
+                            "src": "1651:30:16"
+                          }
+                        ],
+                        "id": 2564,
+                        "name": "BinaryOperation",
+                        "src": "1626:55:16"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "externalReferences": [
+                                null
+                              ],
+                              "operations": "{\n    let ptr := mload(0x40)\n    let size := sub(calldatasize(), 20)\n    mstore(ptr, 0x20)\n    mstore(add(ptr, 32), size)\n    calldatacopy(add(ptr, 64), 0, size)\n    return(ptr, add(size, 64))\n}"
+                            },
+                            "children": [],
+                            "id": 2565,
+                            "name": "InlineAssembly",
+                            "src": "1867:405:16"
+                          }
+                        ],
+                        "id": 2566,
+                        "name": "Block",
+                        "src": "1683:589:16"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "functionReturnParameters": 2554
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "data",
+                                  "referencedDeclaration": null,
+                                  "type": "bytes calldata"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 19337,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 2567,
+                                    "name": "Identifier",
+                                    "src": "2299:3:16"
+                                  }
+                                ],
+                                "id": 2568,
+                                "name": "MemberAccess",
+                                "src": "2299:8:16"
+                              }
+                            ],
+                            "id": 2569,
+                            "name": "Return",
+                            "src": "2292:15:16"
+                          }
+                        ],
+                        "id": 2570,
+                        "name": "Block",
+                        "src": "2278:40:16"
+                      }
+                    ],
+                    "id": 2571,
+                    "name": "IfStatement",
+                    "src": "1622:696:16"
+                  }
+                ],
+                "id": 2572,
+                "name": "Block",
+                "src": "1612:712:16"
+              }
+            ],
+            "id": 2573,
+            "name": "FunctionDefinition",
+            "src": "1551:773:16"
+          }
+        ],
+        "id": 2574,
+        "name": "ContractDefinition",
+        "src": "301:2025:16"
+      }
+    ],
+    "id": 2575,
+    "name": "SourceUnit",
+    "src": "69:2258:16"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:19.169Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {
+      "isTrustedForwarder(address)": {
+        "notice": "return if the forwarder is trusted to forward relayed transactions to us. the forwarder is required to verify the sender's signature, and verify the call is not a replay."
+      }
+    }
+  }
+}

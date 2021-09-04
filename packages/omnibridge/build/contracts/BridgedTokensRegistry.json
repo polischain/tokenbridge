@@ -1,0 +1,2513 @@
+{
+  "contractName": "BridgedTokensRegistry",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "nativeToken",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "bridgedToken",
+          "type": "address"
+        }
+      ],
+      "name": "NewTokenRegistered",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_nativeToken",
+          "type": "address"
+        }
+      ],
+      "name": "bridgedTokenAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_bridgedToken",
+          "type": "address"
+        }
+      ],
+      "name": "nativeTokenAddress",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.5+commit.eb77ed08\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"nativeToken\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"bridgedToken\",\"type\":\"address\"}],\"name\":\"NewTokenRegistered\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_nativeToken\",\"type\":\"address\"}],\"name\":\"bridgedTokenAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_bridgedToken\",\"type\":\"address\"}],\"name\":\"nativeTokenAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Functionality for keeping track of registered bridged token pairs.\",\"kind\":\"dev\",\"methods\":{\"bridgedTokenAddress(address)\":{\"details\":\"Retrieves address of the bridged token contract associated with a specific native token contract on the other side.\",\"params\":{\"_nativeToken\":\"address of the native token contract on the other side.\"},\"returns\":{\"_0\":\"address of the deployed bridged token contract.\"}},\"nativeTokenAddress(address)\":{\"details\":\"Retrieves address of the native token contract associated with a specific bridged token contract.\",\"params\":{\"_bridgedToken\":\"address of the created bridged token contract on this side.\"},\"returns\":{\"_0\":\"address of the native token contract on the other side of the bridge.\"}}},\"title\":\"BridgedTokensRegistry\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/upgradeable_contracts/components/bridged/BridgedTokensRegistry.sol\":\"BridgedTokensRegistry\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/upgradeability/EternalStorage.sol\":{\"keccak256\":\"0x69e24ec05ae65648eada7ff65aba3e7d90d72ad186f6d5bb9f01c54b0fa00b41\",\"urls\":[\"bzz-raw://a7c173e5610184402d8a7af1ef21e468c5805e4736bba5da0e8be3e4e4a29d48\",\"dweb:/ipfs/QmRakjK88qux7f6dg9Hpcw2PD3cMUPKTnj6YDC6yJ1caqE\"]},\"project:/contracts/upgradeable_contracts/components/bridged/BridgedTokensRegistry.sol\":{\"keccak256\":\"0xa7893c2acde75bb713cf386b59d7511de54ec03703c8362d38ab87e3002eee50\",\"urls\":[\"bzz-raw://8a9663999ad566325be0870957899e78126bb03475fbf75d27a700e294f82a91\",\"dweb:/ipfs/Qme9JYNCnvP4fUBayrHgX74rKf8sRGsWyzAVMC3du7V8LZ\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b506101b2806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80632d70061f1461003b57806361c04f841461007d575b600080fd5b6100616004803603602081101561005157600080fd5b50356001600160a01b03166100a3565b604080516001600160a01b039092168252519081900360200190f35b6100616004803603602081101561009357600080fd5b50356001600160a01b031661010e565b604080516f686f6d65546f6b656e4164647265737360801b60208083019190915260609390931b6bffffffffffffffffffffffff191660308201528151808203602401815260449091018252805190830120600090815260029092529020546001600160a01b031690565b6040805172666f726569676e546f6b656e4164647265737360681b60208083019190915260609390931b6bffffffffffffffffffffffff191660338201528151808203602701815260479091018252805190830120600090815260029092529020546001600160a01b03169056fea26469706673582212202583407a992a345e448f3ca068c60d0b1a6d3f3b89c2ab247bccbb62706b671864736f6c63430007050033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100365760003560e01c80632d70061f1461003b57806361c04f841461007d575b600080fd5b6100616004803603602081101561005157600080fd5b50356001600160a01b03166100a3565b604080516001600160a01b039092168252519081900360200190f35b6100616004803603602081101561009357600080fd5b50356001600160a01b031661010e565b604080516f686f6d65546f6b656e4164647265737360801b60208083019190915260609390931b6bffffffffffffffffffffffff191660308201528151808203602401815260449091018252805190830120600090815260029092529020546001600160a01b031690565b6040805172666f726569676e546f6b656e4164647265737360681b60208083019190915260609390931b6bffffffffffffffffffffffff191660338201528151808203602701815260479091018252805190830120600090815260029092529020546001600160a01b03169056fea26469706673582212202583407a992a345e448f3ca068c60d0b1a6d3f3b89c2ab247bccbb62706b671864736f6c63430007050033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "193:1752:50:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "193:1752:50:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;628:182;;;;;;;;;;;;;;;;-1:-1:-1;628:182:50;-1:-1:-1;;;;;628:182:50;;:::i;:::-;;;;-1:-1:-1;;;;;628:182:50;;;;;;;;;;;;;;1115:186;;;;;;;;;;;;;;;;-1:-1:-1;1115:186:50;-1:-1:-1;;;;;1115:186:50;;:::i;628:182::-;751:50;;;-1:-1:-1;;;751:50:50;;;;;;;;;;;;;-1:-1:-1;;751:50:50;;;;;;;;;;;;;;;;;;;;741:61;;;;;;-1:-1:-1;726:77:50;;;:14;:77;;;;;;-1:-1:-1;;;;;726:77:50;;628:182::o;1115:186::-;1238:54;;;-1:-1:-1;;;1238:54:50;;;;;;;;;;;;;-1:-1:-1;;1238:54:50;;;;;;;;;;;;;;;;;;;;1228:65;;;;;;-1:-1:-1;1213:81:50;;;:14;:81;;;;;;-1:-1:-1;;;;;1213:81:50;;1115:186::o",
+  "source": "pragma solidity 0.7.5;\n\nimport \"../../../upgradeability/EternalStorage.sol\";\n\n/**\n * @title BridgedTokensRegistry\n * @dev Functionality for keeping track of registered bridged token pairs.\n */\ncontract BridgedTokensRegistry is EternalStorage {\n    event NewTokenRegistered(address indexed nativeToken, address indexed bridgedToken);\n\n    /**\n     * @dev Retrieves address of the bridged token contract associated with a specific native token contract on the other side.\n     * @param _nativeToken address of the native token contract on the other side.\n     * @return address of the deployed bridged token contract.\n     */\n    function bridgedTokenAddress(address _nativeToken) public view returns (address) {\n        return addressStorage[keccak256(abi.encodePacked(\"homeTokenAddress\", _nativeToken))];\n    }\n\n    /**\n     * @dev Retrieves address of the native token contract associated with a specific bridged token contract.\n     * @param _bridgedToken address of the created bridged token contract on this side.\n     * @return address of the native token contract on the other side of the bridge.\n     */\n    function nativeTokenAddress(address _bridgedToken) public view returns (address) {\n        return addressStorage[keccak256(abi.encodePacked(\"foreignTokenAddress\", _bridgedToken))];\n    }\n\n    /**\n     * @dev Internal function for updating a pair of addresses for the bridged token.\n     * @param _nativeToken address of the native token contract on the other side.\n     * @param _bridgedToken address of the created bridged token contract on this side.\n     */\n    function _setTokenAddressPair(address _nativeToken, address _bridgedToken) internal {\n        addressStorage[keccak256(abi.encodePacked(\"homeTokenAddress\", _nativeToken))] = _bridgedToken;\n        addressStorage[keccak256(abi.encodePacked(\"foreignTokenAddress\", _bridgedToken))] = _nativeToken;\n\n        emit NewTokenRegistered(_nativeToken, _bridgedToken);\n    }\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/omnibridge/contracts/upgradeable_contracts/components/bridged/BridgedTokensRegistry.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/upgradeable_contracts/components/bridged/BridgedTokensRegistry.sol",
+    "exportedSymbols": {
+      "BridgedTokensRegistry": [
+        5815
+      ],
+      "EternalStorage": [
+        2911
+      ]
+    },
+    "id": 5816,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 5728,
+        "literals": [
+          "solidity",
+          "0.7",
+          ".5"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:50"
+      },
+      {
+        "absolutePath": "project:/contracts/upgradeability/EternalStorage.sol",
+        "file": "../../../upgradeability/EternalStorage.sol",
+        "id": 5729,
+        "nodeType": "ImportDirective",
+        "scope": 5816,
+        "sourceUnit": 2912,
+        "src": "24:52:50",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 5731,
+              "name": "EternalStorage",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2911,
+              "src": "227:14:50",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_EternalStorage_$2911",
+                "typeString": "contract EternalStorage"
+              }
+            },
+            "id": 5732,
+            "nodeType": "InheritanceSpecifier",
+            "src": "227:14:50"
+          }
+        ],
+        "contractDependencies": [
+          2911
+        ],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 5730,
+          "nodeType": "StructuredDocumentation",
+          "src": "78:114:50",
+          "text": " @title BridgedTokensRegistry\n @dev Functionality for keeping track of registered bridged token pairs."
+        },
+        "fullyImplemented": true,
+        "id": 5815,
+        "linearizedBaseContracts": [
+          5815,
+          2911
+        ],
+        "name": "BridgedTokensRegistry",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "id": 5738,
+            "name": "NewTokenRegistered",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 5737,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5734,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "nativeToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5738,
+                  "src": "273:27:50",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5733,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "273:7:50",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5736,
+                  "indexed": true,
+                  "mutability": "mutable",
+                  "name": "bridgedToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5738,
+                  "src": "302:28:50",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5735,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "302:7:50",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "272:59:50"
+            },
+            "src": "248:84:50"
+          },
+          {
+            "body": {
+              "id": 5756,
+              "nodeType": "Block",
+              "src": "709:101:50",
+              "statements": [
+                {
+                  "expression": {
+                    "baseExpression": {
+                      "id": 5746,
+                      "name": "addressStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2898,
+                      "src": "726:14:50",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                        "typeString": "mapping(bytes32 => address)"
+                      }
+                    },
+                    "id": 5754,
+                    "indexExpression": {
+                      "arguments": [
+                        {
+                          "arguments": [
+                            {
+                              "hexValue": "686f6d65546f6b656e41646472657373",
+                              "id": 5750,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "string",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "768:18:50",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_stringliteral_34265b5278fe277d68c706c3c2029bce47254a0cbb9430f530bd7dfcc794ea44",
+                                "typeString": "literal_string \"homeTokenAddress\""
+                              },
+                              "value": "homeTokenAddress"
+                            },
+                            {
+                              "id": 5751,
+                              "name": "_nativeToken",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 5741,
+                              "src": "788:12:50",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_stringliteral_34265b5278fe277d68c706c3c2029bce47254a0cbb9430f530bd7dfcc794ea44",
+                                "typeString": "literal_string \"homeTokenAddress\""
+                              },
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            ],
+                            "expression": {
+                              "id": 5748,
+                              "name": "abi",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": -1,
+                              "src": "751:3:50",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_abi",
+                                "typeString": "abi"
+                              }
+                            },
+                            "id": 5749,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "memberName": "encodePacked",
+                            "nodeType": "MemberAccess",
+                            "src": "751:16:50",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                              "typeString": "function () pure returns (bytes memory)"
+                            }
+                          },
+                          "id": 5752,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "751:50:50",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        ],
+                        "id": 5747,
+                        "name": "keccak256",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": -8,
+                        "src": "741:9:50",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                          "typeString": "function (bytes memory) pure returns (bytes32)"
+                        }
+                      },
+                      "id": 5753,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "741:61:50",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "726:77:50",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "functionReturnParameters": 5745,
+                  "id": 5755,
+                  "nodeType": "Return",
+                  "src": "719:84:50"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 5739,
+              "nodeType": "StructuredDocumentation",
+              "src": "338:285:50",
+              "text": " @dev Retrieves address of the bridged token contract associated with a specific native token contract on the other side.\n @param _nativeToken address of the native token contract on the other side.\n @return address of the deployed bridged token contract."
+            },
+            "functionSelector": "2d70061f",
+            "id": 5757,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "bridgedTokenAddress",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5742,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5741,
+                  "mutability": "mutable",
+                  "name": "_nativeToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5757,
+                  "src": "657:20:50",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5740,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "657:7:50",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "656:22:50"
+            },
+            "returnParameters": {
+              "id": 5745,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5744,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5757,
+                  "src": "700:7:50",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5743,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "700:7:50",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "699:9:50"
+            },
+            "scope": 5815,
+            "src": "628:182:50",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 5775,
+              "nodeType": "Block",
+              "src": "1196:105:50",
+              "statements": [
+                {
+                  "expression": {
+                    "baseExpression": {
+                      "id": 5765,
+                      "name": "addressStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2898,
+                      "src": "1213:14:50",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                        "typeString": "mapping(bytes32 => address)"
+                      }
+                    },
+                    "id": 5773,
+                    "indexExpression": {
+                      "arguments": [
+                        {
+                          "arguments": [
+                            {
+                              "hexValue": "666f726569676e546f6b656e41646472657373",
+                              "id": 5769,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "string",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "1255:21:50",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_stringliteral_3453f56298d3b30002cd941c5f1dccb16b956a9c9dc4c1e313e36f59050f2bf1",
+                                "typeString": "literal_string \"foreignTokenAddress\""
+                              },
+                              "value": "foreignTokenAddress"
+                            },
+                            {
+                              "id": 5770,
+                              "name": "_bridgedToken",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 5760,
+                              "src": "1278:13:50",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_stringliteral_3453f56298d3b30002cd941c5f1dccb16b956a9c9dc4c1e313e36f59050f2bf1",
+                                "typeString": "literal_string \"foreignTokenAddress\""
+                              },
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            ],
+                            "expression": {
+                              "id": 5767,
+                              "name": "abi",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": -1,
+                              "src": "1238:3:50",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_abi",
+                                "typeString": "abi"
+                              }
+                            },
+                            "id": 5768,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "memberName": "encodePacked",
+                            "nodeType": "MemberAccess",
+                            "src": "1238:16:50",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                              "typeString": "function () pure returns (bytes memory)"
+                            }
+                          },
+                          "id": 5771,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1238:54:50",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        ],
+                        "id": 5766,
+                        "name": "keccak256",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": -8,
+                        "src": "1228:9:50",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                          "typeString": "function (bytes memory) pure returns (bytes32)"
+                        }
+                      },
+                      "id": 5772,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1228:65:50",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "1213:81:50",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "functionReturnParameters": 5764,
+                  "id": 5774,
+                  "nodeType": "Return",
+                  "src": "1206:88:50"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 5758,
+              "nodeType": "StructuredDocumentation",
+              "src": "816:294:50",
+              "text": " @dev Retrieves address of the native token contract associated with a specific bridged token contract.\n @param _bridgedToken address of the created bridged token contract on this side.\n @return address of the native token contract on the other side of the bridge."
+            },
+            "functionSelector": "61c04f84",
+            "id": 5776,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "nativeTokenAddress",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5761,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5760,
+                  "mutability": "mutable",
+                  "name": "_bridgedToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5776,
+                  "src": "1143:21:50",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5759,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1143:7:50",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1142:23:50"
+            },
+            "returnParameters": {
+              "id": 5764,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5763,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5776,
+                  "src": "1187:7:50",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5762,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1187:7:50",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1186:9:50"
+            },
+            "scope": 5815,
+            "src": "1115:186:50",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 5813,
+              "nodeType": "Block",
+              "src": "1664:279:50",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 5794,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 5784,
+                        "name": "addressStorage",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2898,
+                        "src": "1674:14:50",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                          "typeString": "mapping(bytes32 => address)"
+                        }
+                      },
+                      "id": 5792,
+                      "indexExpression": {
+                        "arguments": [
+                          {
+                            "arguments": [
+                              {
+                                "hexValue": "686f6d65546f6b656e41646472657373",
+                                "id": 5788,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "string",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "1716:18:50",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_stringliteral_34265b5278fe277d68c706c3c2029bce47254a0cbb9430f530bd7dfcc794ea44",
+                                  "typeString": "literal_string \"homeTokenAddress\""
+                                },
+                                "value": "homeTokenAddress"
+                              },
+                              {
+                                "id": 5789,
+                                "name": "_nativeToken",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 5779,
+                                "src": "1736:12:50",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_stringliteral_34265b5278fe277d68c706c3c2029bce47254a0cbb9430f530bd7dfcc794ea44",
+                                  "typeString": "literal_string \"homeTokenAddress\""
+                                },
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "expression": {
+                                "id": 5786,
+                                "name": "abi",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": -1,
+                                "src": "1699:3:50",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_magic_abi",
+                                  "typeString": "abi"
+                                }
+                              },
+                              "id": 5787,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "memberName": "encodePacked",
+                              "nodeType": "MemberAccess",
+                              "src": "1699:16:50",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                                "typeString": "function () pure returns (bytes memory)"
+                              }
+                            },
+                            "id": 5790,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "functionCall",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1699:50:50",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          ],
+                          "id": 5785,
+                          "name": "keccak256",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": -8,
+                          "src": "1689:9:50",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                            "typeString": "function (bytes memory) pure returns (bytes32)"
+                          }
+                        },
+                        "id": 5791,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1689:61:50",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1674:77:50",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 5793,
+                      "name": "_bridgedToken",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5781,
+                      "src": "1754:13:50",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1674:93:50",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 5795,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1674:93:50"
+                },
+                {
+                  "expression": {
+                    "id": 5806,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 5796,
+                        "name": "addressStorage",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2898,
+                        "src": "1777:14:50",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                          "typeString": "mapping(bytes32 => address)"
+                        }
+                      },
+                      "id": 5804,
+                      "indexExpression": {
+                        "arguments": [
+                          {
+                            "arguments": [
+                              {
+                                "hexValue": "666f726569676e546f6b656e41646472657373",
+                                "id": 5800,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "string",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "1819:21:50",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_stringliteral_3453f56298d3b30002cd941c5f1dccb16b956a9c9dc4c1e313e36f59050f2bf1",
+                                  "typeString": "literal_string \"foreignTokenAddress\""
+                                },
+                                "value": "foreignTokenAddress"
+                              },
+                              {
+                                "id": 5801,
+                                "name": "_bridgedToken",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 5781,
+                                "src": "1842:13:50",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_stringliteral_3453f56298d3b30002cd941c5f1dccb16b956a9c9dc4c1e313e36f59050f2bf1",
+                                  "typeString": "literal_string \"foreignTokenAddress\""
+                                },
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "expression": {
+                                "id": 5798,
+                                "name": "abi",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": -1,
+                                "src": "1802:3:50",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_magic_abi",
+                                  "typeString": "abi"
+                                }
+                              },
+                              "id": 5799,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "memberName": "encodePacked",
+                              "nodeType": "MemberAccess",
+                              "src": "1802:16:50",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                                "typeString": "function () pure returns (bytes memory)"
+                              }
+                            },
+                            "id": 5802,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "functionCall",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1802:54:50",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          ],
+                          "id": 5797,
+                          "name": "keccak256",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": -8,
+                          "src": "1792:9:50",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                            "typeString": "function (bytes memory) pure returns (bytes32)"
+                          }
+                        },
+                        "id": 5803,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1792:65:50",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1777:81:50",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 5805,
+                      "name": "_nativeToken",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5779,
+                      "src": "1861:12:50",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1777:96:50",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 5807,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1777:96:50"
+                },
+                {
+                  "eventCall": {
+                    "arguments": [
+                      {
+                        "id": 5809,
+                        "name": "_nativeToken",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5779,
+                        "src": "1908:12:50",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      {
+                        "id": 5810,
+                        "name": "_bridgedToken",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 5781,
+                        "src": "1922:13:50",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 5808,
+                      "name": "NewTokenRegistered",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5738,
+                      "src": "1889:18:50",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_event_nonpayable$_t_address_$_t_address_$returns$__$",
+                        "typeString": "function (address,address)"
+                      }
+                    },
+                    "id": 5811,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1889:47:50",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 5812,
+                  "nodeType": "EmitStatement",
+                  "src": "1884:52:50"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 5777,
+              "nodeType": "StructuredDocumentation",
+              "src": "1307:268:50",
+              "text": " @dev Internal function for updating a pair of addresses for the bridged token.\n @param _nativeToken address of the native token contract on the other side.\n @param _bridgedToken address of the created bridged token contract on this side."
+            },
+            "id": 5814,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_setTokenAddressPair",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5782,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5779,
+                  "mutability": "mutable",
+                  "name": "_nativeToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5814,
+                  "src": "1610:20:50",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5778,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1610:7:50",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5781,
+                  "mutability": "mutable",
+                  "name": "_bridgedToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5814,
+                  "src": "1632:21:50",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5780,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1632:7:50",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1609:45:50"
+            },
+            "returnParameters": {
+              "id": 5783,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1664:0:50"
+            },
+            "scope": 5815,
+            "src": "1580:363:50",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 5816,
+        "src": "193:1752:50"
+      }
+    ],
+    "src": "0:1946:50"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/upgradeable_contracts/components/bridged/BridgedTokensRegistry.sol",
+      "exportedSymbols": {
+        "BridgedTokensRegistry": [
+          5815
+        ],
+        "EternalStorage": [
+          2911
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.7",
+            ".5"
+          ]
+        },
+        "id": 5728,
+        "name": "PragmaDirective",
+        "src": "0:22:50"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 2912,
+          "absolutePath": "project:/contracts/upgradeability/EternalStorage.sol",
+          "file": "../../../upgradeability/EternalStorage.sol",
+          "scope": 5816,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 5729,
+        "name": "ImportDirective",
+        "src": "24:52:50"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "contractDependencies": [
+            2911
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            5815,
+            2911
+          ],
+          "name": "BridgedTokensRegistry",
+          "scope": 5816
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": " @title BridgedTokensRegistry\n @dev Functionality for keeping track of registered bridged token pairs."
+            },
+            "id": 5730,
+            "name": "StructuredDocumentation",
+            "src": "78:114:50"
+          },
+          {
+            "attributes": {},
+            "children": [
+              {
+                "attributes": {
+                  "name": "EternalStorage",
+                  "referencedDeclaration": 2911,
+                  "type": "contract EternalStorage"
+                },
+                "id": 5731,
+                "name": "UserDefinedTypeName",
+                "src": "227:14:50"
+              }
+            ],
+            "id": 5732,
+            "name": "InheritanceSpecifier",
+            "src": "227:14:50"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "name": "NewTokenRegistered"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "mutability": "mutable",
+                      "name": "nativeToken",
+                      "scope": 5738,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 5733,
+                        "name": "ElementaryTypeName",
+                        "src": "273:7:50"
+                      }
+                    ],
+                    "id": 5734,
+                    "name": "VariableDeclaration",
+                    "src": "273:27:50"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "mutability": "mutable",
+                      "name": "bridgedToken",
+                      "scope": 5738,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 5735,
+                        "name": "ElementaryTypeName",
+                        "src": "302:7:50"
+                      }
+                    ],
+                    "id": 5736,
+                    "name": "VariableDeclaration",
+                    "src": "302:28:50"
+                  }
+                ],
+                "id": 5737,
+                "name": "ParameterList",
+                "src": "272:59:50"
+              }
+            ],
+            "id": 5738,
+            "name": "EventDefinition",
+            "src": "248:84:50"
+          },
+          {
+            "attributes": {
+              "functionSelector": "2d70061f",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "bridgedTokenAddress",
+              "scope": 5815,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Retrieves address of the bridged token contract associated with a specific native token contract on the other side.\n @param _nativeToken address of the native token contract on the other side.\n @return address of the deployed bridged token contract."
+                },
+                "id": 5739,
+                "name": "StructuredDocumentation",
+                "src": "338:285:50"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_nativeToken",
+                      "scope": 5757,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 5740,
+                        "name": "ElementaryTypeName",
+                        "src": "657:7:50"
+                      }
+                    ],
+                    "id": 5741,
+                    "name": "VariableDeclaration",
+                    "src": "657:20:50"
+                  }
+                ],
+                "id": 5742,
+                "name": "ParameterList",
+                "src": "656:22:50"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 5757,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 5743,
+                        "name": "ElementaryTypeName",
+                        "src": "700:7:50"
+                      }
+                    ],
+                    "id": 5744,
+                    "name": "VariableDeclaration",
+                    "src": "700:7:50"
+                  }
+                ],
+                "id": 5745,
+                "name": "ParameterList",
+                "src": "699:9:50"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 5745
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2898,
+                              "type": "mapping(bytes32 => address)",
+                              "value": "addressStorage"
+                            },
+                            "id": 5746,
+                            "name": "Identifier",
+                            "src": "726:14:50"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "tryCall": false,
+                              "type": "bytes32",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bytes_memory_ptr",
+                                      "typeString": "bytes memory"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": -8,
+                                  "type": "function (bytes memory) pure returns (bytes32)",
+                                  "value": "keccak256"
+                                },
+                                "id": 5747,
+                                "name": "Identifier",
+                                "src": "741:9:50"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "bytes memory",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_stringliteral_34265b5278fe277d68c706c3c2029bce47254a0cbb9430f530bd7dfcc794ea44",
+                                          "typeString": "literal_string \"homeTokenAddress\""
+                                        },
+                                        {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "member_name": "encodePacked",
+                                      "type": "function () pure returns (bytes memory)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": -1,
+                                          "type": "abi",
+                                          "value": "abi"
+                                        },
+                                        "id": 5748,
+                                        "name": "Identifier",
+                                        "src": "751:3:50"
+                                      }
+                                    ],
+                                    "id": 5749,
+                                    "name": "MemberAccess",
+                                    "src": "751:16:50"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "hexvalue": "686f6d65546f6b656e41646472657373",
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "token": "string",
+                                      "type": "literal_string \"homeTokenAddress\"",
+                                      "value": "homeTokenAddress"
+                                    },
+                                    "id": 5750,
+                                    "name": "Literal",
+                                    "src": "768:18:50"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 5741,
+                                      "type": "address",
+                                      "value": "_nativeToken"
+                                    },
+                                    "id": 5751,
+                                    "name": "Identifier",
+                                    "src": "788:12:50"
+                                  }
+                                ],
+                                "id": 5752,
+                                "name": "FunctionCall",
+                                "src": "751:50:50"
+                              }
+                            ],
+                            "id": 5753,
+                            "name": "FunctionCall",
+                            "src": "741:61:50"
+                          }
+                        ],
+                        "id": 5754,
+                        "name": "IndexAccess",
+                        "src": "726:77:50"
+                      }
+                    ],
+                    "id": 5755,
+                    "name": "Return",
+                    "src": "719:84:50"
+                  }
+                ],
+                "id": 5756,
+                "name": "Block",
+                "src": "709:101:50"
+              }
+            ],
+            "id": 5757,
+            "name": "FunctionDefinition",
+            "src": "628:182:50"
+          },
+          {
+            "attributes": {
+              "functionSelector": "61c04f84",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "nativeTokenAddress",
+              "scope": 5815,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Retrieves address of the native token contract associated with a specific bridged token contract.\n @param _bridgedToken address of the created bridged token contract on this side.\n @return address of the native token contract on the other side of the bridge."
+                },
+                "id": 5758,
+                "name": "StructuredDocumentation",
+                "src": "816:294:50"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_bridgedToken",
+                      "scope": 5776,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 5759,
+                        "name": "ElementaryTypeName",
+                        "src": "1143:7:50"
+                      }
+                    ],
+                    "id": 5760,
+                    "name": "VariableDeclaration",
+                    "src": "1143:21:50"
+                  }
+                ],
+                "id": 5761,
+                "name": "ParameterList",
+                "src": "1142:23:50"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 5776,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 5762,
+                        "name": "ElementaryTypeName",
+                        "src": "1187:7:50"
+                      }
+                    ],
+                    "id": 5763,
+                    "name": "VariableDeclaration",
+                    "src": "1187:7:50"
+                  }
+                ],
+                "id": 5764,
+                "name": "ParameterList",
+                "src": "1186:9:50"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 5764
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2898,
+                              "type": "mapping(bytes32 => address)",
+                              "value": "addressStorage"
+                            },
+                            "id": 5765,
+                            "name": "Identifier",
+                            "src": "1213:14:50"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "tryCall": false,
+                              "type": "bytes32",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bytes_memory_ptr",
+                                      "typeString": "bytes memory"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": -8,
+                                  "type": "function (bytes memory) pure returns (bytes32)",
+                                  "value": "keccak256"
+                                },
+                                "id": 5766,
+                                "name": "Identifier",
+                                "src": "1228:9:50"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "bytes memory",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_stringliteral_3453f56298d3b30002cd941c5f1dccb16b956a9c9dc4c1e313e36f59050f2bf1",
+                                          "typeString": "literal_string \"foreignTokenAddress\""
+                                        },
+                                        {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "member_name": "encodePacked",
+                                      "type": "function () pure returns (bytes memory)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": -1,
+                                          "type": "abi",
+                                          "value": "abi"
+                                        },
+                                        "id": 5767,
+                                        "name": "Identifier",
+                                        "src": "1238:3:50"
+                                      }
+                                    ],
+                                    "id": 5768,
+                                    "name": "MemberAccess",
+                                    "src": "1238:16:50"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "hexvalue": "666f726569676e546f6b656e41646472657373",
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "token": "string",
+                                      "type": "literal_string \"foreignTokenAddress\"",
+                                      "value": "foreignTokenAddress"
+                                    },
+                                    "id": 5769,
+                                    "name": "Literal",
+                                    "src": "1255:21:50"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 5760,
+                                      "type": "address",
+                                      "value": "_bridgedToken"
+                                    },
+                                    "id": 5770,
+                                    "name": "Identifier",
+                                    "src": "1278:13:50"
+                                  }
+                                ],
+                                "id": 5771,
+                                "name": "FunctionCall",
+                                "src": "1238:54:50"
+                              }
+                            ],
+                            "id": 5772,
+                            "name": "FunctionCall",
+                            "src": "1228:65:50"
+                          }
+                        ],
+                        "id": 5773,
+                        "name": "IndexAccess",
+                        "src": "1213:81:50"
+                      }
+                    ],
+                    "id": 5774,
+                    "name": "Return",
+                    "src": "1206:88:50"
+                  }
+                ],
+                "id": 5775,
+                "name": "Block",
+                "src": "1196:105:50"
+              }
+            ],
+            "id": 5776,
+            "name": "FunctionDefinition",
+            "src": "1115:186:50"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_setTokenAddressPair",
+              "scope": 5815,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Internal function for updating a pair of addresses for the bridged token.\n @param _nativeToken address of the native token contract on the other side.\n @param _bridgedToken address of the created bridged token contract on this side."
+                },
+                "id": 5777,
+                "name": "StructuredDocumentation",
+                "src": "1307:268:50"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_nativeToken",
+                      "scope": 5814,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 5778,
+                        "name": "ElementaryTypeName",
+                        "src": "1610:7:50"
+                      }
+                    ],
+                    "id": 5779,
+                    "name": "VariableDeclaration",
+                    "src": "1610:20:50"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_bridgedToken",
+                      "scope": 5814,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 5780,
+                        "name": "ElementaryTypeName",
+                        "src": "1632:7:50"
+                      }
+                    ],
+                    "id": 5781,
+                    "name": "VariableDeclaration",
+                    "src": "1632:21:50"
+                  }
+                ],
+                "id": 5782,
+                "name": "ParameterList",
+                "src": "1609:45:50"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 5783,
+                "name": "ParameterList",
+                "src": "1664:0:50"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2898,
+                                  "type": "mapping(bytes32 => address)",
+                                  "value": "addressStorage"
+                                },
+                                "id": 5784,
+                                "name": "Identifier",
+                                "src": "1674:14:50"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "bytes32",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_bytes_memory_ptr",
+                                          "typeString": "bytes memory"
+                                        }
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": -8,
+                                      "type": "function (bytes memory) pure returns (bytes32)",
+                                      "value": "keccak256"
+                                    },
+                                    "id": 5785,
+                                    "name": "Identifier",
+                                    "src": "1689:9:50"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "isStructConstructorCall": false,
+                                      "lValueRequested": false,
+                                      "names": [
+                                        null
+                                      ],
+                                      "tryCall": false,
+                                      "type": "bytes memory",
+                                      "type_conversion": false
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": [
+                                            {
+                                              "typeIdentifier": "t_stringliteral_34265b5278fe277d68c706c3c2029bce47254a0cbb9430f530bd7dfcc794ea44",
+                                              "typeString": "literal_string \"homeTokenAddress\""
+                                            },
+                                            {
+                                              "typeIdentifier": "t_address",
+                                              "typeString": "address"
+                                            }
+                                          ],
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "member_name": "encodePacked",
+                                          "type": "function () pure returns (bytes memory)"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": -1,
+                                              "type": "abi",
+                                              "value": "abi"
+                                            },
+                                            "id": 5786,
+                                            "name": "Identifier",
+                                            "src": "1699:3:50"
+                                          }
+                                        ],
+                                        "id": 5787,
+                                        "name": "MemberAccess",
+                                        "src": "1699:16:50"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "hexvalue": "686f6d65546f6b656e41646472657373",
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "token": "string",
+                                          "type": "literal_string \"homeTokenAddress\"",
+                                          "value": "homeTokenAddress"
+                                        },
+                                        "id": 5788,
+                                        "name": "Literal",
+                                        "src": "1716:18:50"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 5779,
+                                          "type": "address",
+                                          "value": "_nativeToken"
+                                        },
+                                        "id": 5789,
+                                        "name": "Identifier",
+                                        "src": "1736:12:50"
+                                      }
+                                    ],
+                                    "id": 5790,
+                                    "name": "FunctionCall",
+                                    "src": "1699:50:50"
+                                  }
+                                ],
+                                "id": 5791,
+                                "name": "FunctionCall",
+                                "src": "1689:61:50"
+                              }
+                            ],
+                            "id": 5792,
+                            "name": "IndexAccess",
+                            "src": "1674:77:50"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 5781,
+                              "type": "address",
+                              "value": "_bridgedToken"
+                            },
+                            "id": 5793,
+                            "name": "Identifier",
+                            "src": "1754:13:50"
+                          }
+                        ],
+                        "id": 5794,
+                        "name": "Assignment",
+                        "src": "1674:93:50"
+                      }
+                    ],
+                    "id": 5795,
+                    "name": "ExpressionStatement",
+                    "src": "1674:93:50"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2898,
+                                  "type": "mapping(bytes32 => address)",
+                                  "value": "addressStorage"
+                                },
+                                "id": 5796,
+                                "name": "Identifier",
+                                "src": "1777:14:50"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "bytes32",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_bytes_memory_ptr",
+                                          "typeString": "bytes memory"
+                                        }
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": -8,
+                                      "type": "function (bytes memory) pure returns (bytes32)",
+                                      "value": "keccak256"
+                                    },
+                                    "id": 5797,
+                                    "name": "Identifier",
+                                    "src": "1792:9:50"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "isStructConstructorCall": false,
+                                      "lValueRequested": false,
+                                      "names": [
+                                        null
+                                      ],
+                                      "tryCall": false,
+                                      "type": "bytes memory",
+                                      "type_conversion": false
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": [
+                                            {
+                                              "typeIdentifier": "t_stringliteral_3453f56298d3b30002cd941c5f1dccb16b956a9c9dc4c1e313e36f59050f2bf1",
+                                              "typeString": "literal_string \"foreignTokenAddress\""
+                                            },
+                                            {
+                                              "typeIdentifier": "t_address",
+                                              "typeString": "address"
+                                            }
+                                          ],
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "member_name": "encodePacked",
+                                          "type": "function () pure returns (bytes memory)"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": -1,
+                                              "type": "abi",
+                                              "value": "abi"
+                                            },
+                                            "id": 5798,
+                                            "name": "Identifier",
+                                            "src": "1802:3:50"
+                                          }
+                                        ],
+                                        "id": 5799,
+                                        "name": "MemberAccess",
+                                        "src": "1802:16:50"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "hexvalue": "666f726569676e546f6b656e41646472657373",
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "token": "string",
+                                          "type": "literal_string \"foreignTokenAddress\"",
+                                          "value": "foreignTokenAddress"
+                                        },
+                                        "id": 5800,
+                                        "name": "Literal",
+                                        "src": "1819:21:50"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 5781,
+                                          "type": "address",
+                                          "value": "_bridgedToken"
+                                        },
+                                        "id": 5801,
+                                        "name": "Identifier",
+                                        "src": "1842:13:50"
+                                      }
+                                    ],
+                                    "id": 5802,
+                                    "name": "FunctionCall",
+                                    "src": "1802:54:50"
+                                  }
+                                ],
+                                "id": 5803,
+                                "name": "FunctionCall",
+                                "src": "1792:65:50"
+                              }
+                            ],
+                            "id": 5804,
+                            "name": "IndexAccess",
+                            "src": "1777:81:50"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 5779,
+                              "type": "address",
+                              "value": "_nativeToken"
+                            },
+                            "id": 5805,
+                            "name": "Identifier",
+                            "src": "1861:12:50"
+                          }
+                        ],
+                        "id": 5806,
+                        "name": "Assignment",
+                        "src": "1777:96:50"
+                      }
+                    ],
+                    "id": 5807,
+                    "name": "ExpressionStatement",
+                    "src": "1777:96:50"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                },
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 5738,
+                              "type": "function (address,address)",
+                              "value": "NewTokenRegistered"
+                            },
+                            "id": 5808,
+                            "name": "Identifier",
+                            "src": "1889:18:50"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 5779,
+                              "type": "address",
+                              "value": "_nativeToken"
+                            },
+                            "id": 5809,
+                            "name": "Identifier",
+                            "src": "1908:12:50"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 5781,
+                              "type": "address",
+                              "value": "_bridgedToken"
+                            },
+                            "id": 5810,
+                            "name": "Identifier",
+                            "src": "1922:13:50"
+                          }
+                        ],
+                        "id": 5811,
+                        "name": "FunctionCall",
+                        "src": "1889:47:50"
+                      }
+                    ],
+                    "id": 5812,
+                    "name": "EmitStatement",
+                    "src": "1884:52:50"
+                  }
+                ],
+                "id": 5813,
+                "name": "Block",
+                "src": "1664:279:50"
+              }
+            ],
+            "id": 5814,
+            "name": "FunctionDefinition",
+            "src": "1580:363:50"
+          }
+        ],
+        "id": 5815,
+        "name": "ContractDefinition",
+        "src": "193:1752:50"
+      }
+    ],
+    "id": 5816,
+    "name": "SourceUnit",
+    "src": "0:1946:50"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.5+commit.eb77ed08.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:31.295Z",
+  "devdoc": {
+    "details": "Functionality for keeping track of registered bridged token pairs.",
+    "kind": "dev",
+    "methods": {
+      "bridgedTokenAddress(address)": {
+        "details": "Retrieves address of the bridged token contract associated with a specific native token contract on the other side.",
+        "params": {
+          "_nativeToken": "address of the native token contract on the other side."
+        },
+        "returns": {
+          "_0": "address of the deployed bridged token contract."
+        }
+      },
+      "nativeTokenAddress(address)": {
+        "details": "Retrieves address of the native token contract associated with a specific bridged token contract.",
+        "params": {
+          "_bridgedToken": "address of the created bridged token contract on this side."
+        },
+        "returns": {
+          "_0": "address of the native token contract on the other side of the bridge."
+        }
+      }
+    },
+    "title": "BridgedTokensRegistry",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

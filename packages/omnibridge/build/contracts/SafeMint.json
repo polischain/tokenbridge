@@ -1,0 +1,688 @@
+{
+  "contractName": "SafeMint",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.5+commit.eb77ed08\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"details\":\"Wrapper around the mint() function in all mintable tokens that verifies the return value.\",\"kind\":\"dev\",\"methods\":{},\"title\":\"SafeMint\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/libraries/SafeMint.sol\":\"SafeMint\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xbd74f587ab9b9711801baf667db1426e4a03fd2d7f15af33e0e0d0394e7cef76\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2d0913dfbfce90d170df0d496ad7596c0778518e5fa7aba6c32562522546f66b\",\"dweb:/ipfs/QmR6B8nLj2PJf5e1JWD9Nk7ErkAwkqUwadCnvE82FJr1RU\"]},\"project:/contracts/interfaces/IBurnableMintableERC677Token.sol\":{\"keccak256\":\"0x4fafbd4d9aef81e33577505c89aa1ec5e0fbabd0a1e54f07e661448e9d8160ba\",\"urls\":[\"bzz-raw://98a1228b2d0a3015ffde26e3e8ed7086afd1cc600eb130bcc1b4369f758fc5fe\",\"dweb:/ipfs/Qmd7NWtfhygCfNwJtF8nAH8wiEC8Aa5a3dJJuhrNiBM2o8\"]},\"project:/contracts/interfaces/IERC677.sol\":{\"keccak256\":\"0xf1d073f73fa37bebba851600956ef1b54bee689792672dd6cf2356527351f611\",\"urls\":[\"bzz-raw://7df4ff9ef695fec12fe3d9c13c87cbb1586c774cc7da602c42f69a14d38ab89a\",\"dweb:/ipfs/QmbkXsXBfDhS5zrYV2pkKowCCRrkmtN8VRs8HRvsaU2Zri\"]},\"project:/contracts/libraries/SafeMint.sol\":{\"keccak256\":\"0x3922a6fc73a236996a4d7fba6a39bf00ea924f246411040f50933ba324a6f15f\",\"urls\":[\"bzz-raw://8d9006ebed8a7ce47c07a552d337d5f44e9f3b59c4d29cd451f2251b659251cc\",\"dweb:/ipfs/QmapXut9KikK8tR5MyGj6bkFiHFCRdB7RsUchq3dp9poMN\"]}},\"version\":1}",
+  "bytecode": "0x60566023600b82828239805160001a607314601657fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122036d3fc186fe1c0f077e86a5fd02fb67015cef5591e5781c6ec6f6dd84b4abf3964736f6c63430007050033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122036d3fc186fe1c0f077e86a5fd02fb67015cef5591e5781c6ec6f6dd84b4abf3964736f6c63430007050033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "207:452:24:-:0;;;;;;;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "207:452:24:-:0;;;;;;;;",
+  "source": "pragma solidity 0.7.5;\n\nimport \"../interfaces/IBurnableMintableERC677Token.sol\";\n\n/**\n * @title SafeMint\n * @dev Wrapper around the mint() function in all mintable tokens that verifies the return value.\n */\nlibrary SafeMint {\n    /**\n     * @dev Wrapper around IBurnableMintableERC677Token.mint() that verifies that output value is true.\n     * @param _token token contract.\n     * @param _to address of the tokens receiver.\n     * @param _value amount of tokens to mint.\n     */\n    function safeMint(\n        IBurnableMintableERC677Token _token,\n        address _to,\n        uint256 _value\n    ) internal {\n        require(_token.mint(_to, _value));\n    }\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/omnibridge/contracts/libraries/SafeMint.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/libraries/SafeMint.sol",
+    "exportedSymbols": {
+      "IBurnableMintableERC677Token": [
+        1026
+      ],
+      "IERC20": [
+        273
+      ],
+      "IERC677": [
+        1177
+      ],
+      "SafeMint": [
+        1412
+      ]
+    },
+    "id": 1413,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1390,
+        "literals": [
+          "solidity",
+          "0.7",
+          ".5"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:24"
+      },
+      {
+        "absolutePath": "project:/contracts/interfaces/IBurnableMintableERC677Token.sol",
+        "file": "../interfaces/IBurnableMintableERC677Token.sol",
+        "id": 1391,
+        "nodeType": "ImportDirective",
+        "scope": 1413,
+        "sourceUnit": 1027,
+        "src": "24:56:24",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": {
+          "id": 1392,
+          "nodeType": "StructuredDocumentation",
+          "src": "82:124:24",
+          "text": " @title SafeMint\n @dev Wrapper around the mint() function in all mintable tokens that verifies the return value."
+        },
+        "fullyImplemented": true,
+        "id": 1412,
+        "linearizedBaseContracts": [
+          1412
+        ],
+        "name": "SafeMint",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 1410,
+              "nodeType": "Block",
+              "src": "607:50:24",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "id": 1405,
+                            "name": "_to",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1397,
+                            "src": "637:3:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          {
+                            "id": 1406,
+                            "name": "_value",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1399,
+                            "src": "642:6:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            },
+                            {
+                              "typeIdentifier": "t_uint256",
+                              "typeString": "uint256"
+                            }
+                          ],
+                          "expression": {
+                            "id": 1403,
+                            "name": "_token",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 1395,
+                            "src": "625:6:24",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_IBurnableMintableERC677Token_$1026",
+                              "typeString": "contract IBurnableMintableERC677Token"
+                            }
+                          },
+                          "id": 1404,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "mint",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1013,
+                          "src": "625:11:24",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$_t_bool_$",
+                            "typeString": "function (address,uint256) external returns (bool)"
+                          }
+                        },
+                        "id": 1407,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "625:24:24",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 1402,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        -18,
+                        -18
+                      ],
+                      "referencedDeclaration": -18,
+                      "src": "617:7:24",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 1408,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "617:33:24",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 1409,
+                  "nodeType": "ExpressionStatement",
+                  "src": "617:33:24"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 1393,
+              "nodeType": "StructuredDocumentation",
+              "src": "230:249:24",
+              "text": " @dev Wrapper around IBurnableMintableERC677Token.mint() that verifies that output value is true.\n @param _token token contract.\n @param _to address of the tokens receiver.\n @param _value amount of tokens to mint."
+            },
+            "id": 1411,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "safeMint",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1400,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1395,
+                  "mutability": "mutable",
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1411,
+                  "src": "511:35:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IBurnableMintableERC677Token_$1026",
+                    "typeString": "contract IBurnableMintableERC677Token"
+                  },
+                  "typeName": {
+                    "id": 1394,
+                    "name": "IBurnableMintableERC677Token",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 1026,
+                    "src": "511:28:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IBurnableMintableERC677Token_$1026",
+                      "typeString": "contract IBurnableMintableERC677Token"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1397,
+                  "mutability": "mutable",
+                  "name": "_to",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1411,
+                  "src": "556:11:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1396,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "556:7:24",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 1399,
+                  "mutability": "mutable",
+                  "name": "_value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1411,
+                  "src": "577:14:24",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 1398,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "577:7:24",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "501:96:24"
+            },
+            "returnParameters": {
+              "id": 1401,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "607:0:24"
+            },
+            "scope": 1412,
+            "src": "484:173:24",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 1413,
+        "src": "207:452:24"
+      }
+    ],
+    "src": "0:660:24"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/libraries/SafeMint.sol",
+      "exportedSymbols": {
+        "IBurnableMintableERC677Token": [
+          1026
+        ],
+        "IERC20": [
+          273
+        ],
+        "IERC677": [
+          1177
+        ],
+        "SafeMint": [
+          1412
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.7",
+            ".5"
+          ]
+        },
+        "id": 1390,
+        "name": "PragmaDirective",
+        "src": "0:22:24"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 1027,
+          "absolutePath": "project:/contracts/interfaces/IBurnableMintableERC677Token.sol",
+          "file": "../interfaces/IBurnableMintableERC677Token.sol",
+          "scope": 1413,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 1391,
+        "name": "ImportDirective",
+        "src": "24:56:24"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "library",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            1412
+          ],
+          "name": "SafeMint",
+          "scope": 1413
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": " @title SafeMint\n @dev Wrapper around the mint() function in all mintable tokens that verifies the return value."
+            },
+            "id": 1392,
+            "name": "StructuredDocumentation",
+            "src": "82:124:24"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "safeMint",
+              "scope": 1412,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Wrapper around IBurnableMintableERC677Token.mint() that verifies that output value is true.\n @param _token token contract.\n @param _to address of the tokens receiver.\n @param _value amount of tokens to mint."
+                },
+                "id": 1393,
+                "name": "StructuredDocumentation",
+                "src": "230:249:24"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_token",
+                      "scope": 1411,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract IBurnableMintableERC677Token",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "IBurnableMintableERC677Token",
+                          "referencedDeclaration": 1026,
+                          "type": "contract IBurnableMintableERC677Token"
+                        },
+                        "id": 1394,
+                        "name": "UserDefinedTypeName",
+                        "src": "511:28:24"
+                      }
+                    ],
+                    "id": 1395,
+                    "name": "VariableDeclaration",
+                    "src": "511:35:24"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_to",
+                      "scope": 1411,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 1396,
+                        "name": "ElementaryTypeName",
+                        "src": "556:7:24"
+                      }
+                    ],
+                    "id": 1397,
+                    "name": "VariableDeclaration",
+                    "src": "556:11:24"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_value",
+                      "scope": 1411,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 1398,
+                        "name": "ElementaryTypeName",
+                        "src": "577:7:24"
+                      }
+                    ],
+                    "id": 1399,
+                    "name": "VariableDeclaration",
+                    "src": "577:14:24"
+                  }
+                ],
+                "id": 1400,
+                "name": "ParameterList",
+                "src": "501:96:24"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1401,
+                "name": "ParameterList",
+                "src": "607:0:24"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                -18,
+                                -18
+                              ],
+                              "referencedDeclaration": -18,
+                              "type": "function (bool) pure",
+                              "value": "require"
+                            },
+                            "id": 1402,
+                            "name": "Identifier",
+                            "src": "617:7:24"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "tryCall": false,
+                              "type": "bool",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    },
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "mint",
+                                  "referencedDeclaration": 1013,
+                                  "type": "function (address,uint256) external returns (bool)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 1395,
+                                      "type": "contract IBurnableMintableERC677Token",
+                                      "value": "_token"
+                                    },
+                                    "id": 1403,
+                                    "name": "Identifier",
+                                    "src": "625:6:24"
+                                  }
+                                ],
+                                "id": 1404,
+                                "name": "MemberAccess",
+                                "src": "625:11:24"
+                              },
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 1397,
+                                  "type": "address",
+                                  "value": "_to"
+                                },
+                                "id": 1405,
+                                "name": "Identifier",
+                                "src": "637:3:24"
+                              },
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 1399,
+                                  "type": "uint256",
+                                  "value": "_value"
+                                },
+                                "id": 1406,
+                                "name": "Identifier",
+                                "src": "642:6:24"
+                              }
+                            ],
+                            "id": 1407,
+                            "name": "FunctionCall",
+                            "src": "625:24:24"
+                          }
+                        ],
+                        "id": 1408,
+                        "name": "FunctionCall",
+                        "src": "617:33:24"
+                      }
+                    ],
+                    "id": 1409,
+                    "name": "ExpressionStatement",
+                    "src": "617:33:24"
+                  }
+                ],
+                "id": 1410,
+                "name": "Block",
+                "src": "607:50:24"
+              }
+            ],
+            "id": 1411,
+            "name": "FunctionDefinition",
+            "src": "484:173:24"
+          }
+        ],
+        "id": 1412,
+        "name": "ContractDefinition",
+        "src": "207:452:24"
+      }
+    ],
+    "id": 1413,
+    "name": "SourceUnit",
+    "src": "0:660:24"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.5+commit.eb77ed08.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:31.147Z",
+  "devdoc": {
+    "details": "Wrapper around the mint() function in all mintable tokens that verifies the return value.",
+    "kind": "dev",
+    "methods": {},
+    "title": "SafeMint",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

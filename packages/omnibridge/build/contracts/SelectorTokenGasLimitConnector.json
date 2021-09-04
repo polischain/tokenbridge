@@ -1,0 +1,3096 @@
+{
+  "contractName": "SelectorTokenGasLimitConnector",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "bridgeContract",
+      "outputs": [
+        {
+          "internalType": "contract IAMB",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "mediatorContractOnOtherSide",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_bridgeContract",
+          "type": "address"
+        }
+      ],
+      "name": "setBridgeContract",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_mediatorContract",
+          "type": "address"
+        }
+      ],
+      "name": "setMediatorContractOnOtherSide",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_manager",
+          "type": "address"
+        }
+      ],
+      "name": "setGasLimitManager",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "gasLimitManager",
+      "outputs": [
+        {
+          "internalType": "contract SelectorTokenGasLimitManager",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.5+commit.eb77ed08\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"bridgeContract\",\"outputs\":[{\"internalType\":\"contract IAMB\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"gasLimitManager\",\"outputs\":[{\"internalType\":\"contract SelectorTokenGasLimitManager\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"mediatorContractOnOtherSide\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_bridgeContract\",\"type\":\"address\"}],\"name\":\"setBridgeContract\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_manager\",\"type\":\"address\"}],\"name\":\"setGasLimitManager\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_mediatorContract\",\"type\":\"address\"}],\"name\":\"setMediatorContractOnOtherSide\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Connectivity functionality that is required for using gas limit manager.\",\"kind\":\"dev\",\"methods\":{\"bridgeContract()\":{\"details\":\"Get the AMB interface for the bridge contract address\",\"returns\":{\"_0\":\"AMB interface for the bridge contract address\"}},\"gasLimitManager()\":{\"details\":\"Retrieves an address of the gas limit manager contract.\",\"returns\":{\"_0\":\"address of the gas limit manager contract.\"}},\"mediatorContractOnOtherSide()\":{\"details\":\"Tells the mediator contract address from the other network.\",\"returns\":{\"_0\":\"the address of the mediator contract.\"}},\"owner()\":{\"details\":\"Tells the address of the owner\",\"returns\":{\"_0\":\"the address of the owner\"}},\"setBridgeContract(address)\":{\"details\":\"Sets the AMB bridge contract address. Only the owner can call this method.\",\"params\":{\"_bridgeContract\":\"the address of the bridge contract.\"}},\"setGasLimitManager(address)\":{\"details\":\"Updates an address of the used gas limit manager contract.\",\"params\":{\"_manager\":\"address of gas limit manager contract.\"}},\"setMediatorContractOnOtherSide(address)\":{\"details\":\"Sets the mediator contract address from the other network. Only the owner can call this method.\",\"params\":{\"_mediatorContract\":\"the address of the mediator contract.\"}},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"the address to transfer ownership to.\"}}},\"title\":\"SelectorTokenGasLimitConnector\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/upgradeable_contracts/modules/gas_limit/SelectorTokenGasLimitConnector.sol\":\"SelectorTokenGasLimitConnector\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/math/SafeMath.sol\":{\"keccak256\":\"0xba96bc371ba999f452985a98717cca1e4c4abb598dc038a9a9c3db08129b1ba4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://26e50e3f7b6482fb6f598f2e006994a74aa492687daa4b3eee7fd4fb5398ce7f\",\"dweb:/ipfs/QmZudqoPSkA4USLMFsBBmt19dDPZFS8aaAmL5R7pECXu6t\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0xbd74f587ab9b9711801baf667db1426e4a03fd2d7f15af33e0e0d0394e7cef76\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://2d0913dfbfce90d170df0d496ad7596c0778518e5fa7aba6c32562522546f66b\",\"dweb:/ipfs/QmR6B8nLj2PJf5e1JWD9Nk7ErkAwkqUwadCnvE82FJr1RU\"]},\"@openzeppelin/contracts/token/ERC20/SafeERC20.sol\":{\"keccak256\":\"0xc77dd6233a82c7c6e3dc49da8f3456baa00ecd3ea4dfa9222002a9aebf155dcd\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8e5f78a5b3e707177aa47371e008a54b83dbd28a52055d1746534502b010c21b\",\"dweb:/ipfs/Qmeqfky5DvkMZZY3RtP6kYhFD5bZrPAMVPbqkwWhoUjZ3u\"]},\"@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0x698f929f1097637d051976b322a2d532c27df022b09010e8d091e2888a5ebdf8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4bd4c9419d1182612ef415c60a83a9039b227fccb799937963448114c0473b58\",\"dweb:/ipfs/Qmat1U571v55F5JDDHHX7igGcmLF8Ehk9CzsWpjbdx3RTH\"]},\"project:/contracts/interfaces/IAMB.sol\":{\"keccak256\":\"0xfe88f8c7f7bd2dfd7374f3e9884c5a50562ae8d7b2c378e7b3066bc27c2eafd9\",\"urls\":[\"bzz-raw://f4043937cf0f062f6acf5789841a9be5c29ed2772d6fa728803a755904bc592c\",\"dweb:/ipfs/QmcFtuwDQfLy9vZ4dNR8Ap2Bq9vPjgT7aHawioPQz2Sj8W\"]},\"project:/contracts/interfaces/IBurnableMintableERC677Token.sol\":{\"keccak256\":\"0x4fafbd4d9aef81e33577505c89aa1ec5e0fbabd0a1e54f07e661448e9d8160ba\",\"urls\":[\"bzz-raw://98a1228b2d0a3015ffde26e3e8ed7086afd1cc600eb130bcc1b4369f758fc5fe\",\"dweb:/ipfs/Qmd7NWtfhygCfNwJtF8nAH8wiEC8Aa5a3dJJuhrNiBM2o8\"]},\"project:/contracts/interfaces/IERC20Metadata.sol\":{\"keccak256\":\"0x3e8720bec0dbf45d56e0b57fec4d50f4da71a32514cf01feab2ba43ee05450c7\",\"urls\":[\"bzz-raw://077f6e15bfed0d2e081206158065fbb05a69266f4c8e37933b9af5361f17f133\",\"dweb:/ipfs/QmRPoSgXAVbUWLGge9tZquniJKKK2bcSjXH3zM5NipyBMp\"]},\"project:/contracts/interfaces/IERC20Receiver.sol\":{\"keccak256\":\"0x08b949f2771e94cbdd84eb63bbd68a749e44717bcb130ad12bd2217bf68b7a43\",\"urls\":[\"bzz-raw://704864af6e7780d4cb8f4a6f12872ab3bf2e1764f24a1e092ccc8b530b993404\",\"dweb:/ipfs/QmYvZXcpLcaHwx7q3cXgFy6wEaZgSM3bVq6DbDQ4imXwdU\"]},\"project:/contracts/interfaces/IERC677.sol\":{\"keccak256\":\"0xf1d073f73fa37bebba851600956ef1b54bee689792672dd6cf2356527351f611\",\"urls\":[\"bzz-raw://7df4ff9ef695fec12fe3d9c13c87cbb1586c774cc7da602c42f69a14d38ab89a\",\"dweb:/ipfs/QmbkXsXBfDhS5zrYV2pkKowCCRrkmtN8VRs8HRvsaU2Zri\"]},\"project:/contracts/interfaces/IUpgradeabilityOwnerStorage.sol\":{\"keccak256\":\"0xf43326666f1abfec8a74b26eed4b56efea29a81865431a4ba4f38ec3f34dc67f\",\"urls\":[\"bzz-raw://e9e0deb3ba99bbc2476db4f41d81455b7bf1706cf5d0f8d1810000ac043e0815\",\"dweb:/ipfs/QmTHAqNbxjpTVHPCpYESuvaDAHUoWDeCgQAJie7ZyrF6Eg\"]},\"project:/contracts/libraries/AddressHelper.sol\":{\"keccak256\":\"0x8b560a990ed8d230a9c3c39183867f97eeb8edf2dd89c6c0d6d5fcd7ac48c868\",\"urls\":[\"bzz-raw://55dc85f212eacf5122f3430fecdf159ac66ad0606bb3fbee643ce33d86b086b4\",\"dweb:/ipfs/QmdmCdXWVs7HEEd3Jzv2zkyd3Zp7KpyboAL6E2N19JQ5ZT\"]},\"project:/contracts/libraries/Bytes.sol\":{\"keccak256\":\"0x3ff1032b3d97ed3ef682588efc9fc713f84807c8843249093e15591c4e0f5d4d\",\"urls\":[\"bzz-raw://90d15a7f529fd39ab6256dbff43e08a6408213e495d87ecbfd7bc6e6442a1976\",\"dweb:/ipfs/QmeJbjNb8PdwGziJkfWbbu3VF9oRf4PXhWewUg6iqcoAGP\"]},\"project:/contracts/libraries/SafeMint.sol\":{\"keccak256\":\"0x3922a6fc73a236996a4d7fba6a39bf00ea924f246411040f50933ba324a6f15f\",\"urls\":[\"bzz-raw://8d9006ebed8a7ce47c07a552d337d5f44e9f3b59c4d29cd451f2251b659251cc\",\"dweb:/ipfs/QmapXut9KikK8tR5MyGj6bkFiHFCRdB7RsUchq3dp9poMN\"]},\"project:/contracts/libraries/TokenReader.sol\":{\"keccak256\":\"0x9bece59323cdae1ff0d915d12663ad39be7e1960c8178bb36460bb3564050140\",\"urls\":[\"bzz-raw://bda9cc9656bf3e4ee8c23b75a79fd1e7d4990660efb753310b1f3e5f3c85cb81\",\"dweb:/ipfs/QmeH5ohbZW8FxKtXZjPbWiTFAuk2U3ma7pNVX2MK1dUiWv\"]},\"project:/contracts/upgradeability/EternalStorage.sol\":{\"keccak256\":\"0x69e24ec05ae65648eada7ff65aba3e7d90d72ad186f6d5bb9f01c54b0fa00b41\",\"urls\":[\"bzz-raw://a7c173e5610184402d8a7af1ef21e468c5805e4736bba5da0e8be3e4e4a29d48\",\"dweb:/ipfs/QmRakjK88qux7f6dg9Hpcw2PD3cMUPKTnj6YDC6yJ1caqE\"]},\"project:/contracts/upgradeability/Proxy.sol\":{\"keccak256\":\"0x934223948bd9f0bdb87383879d1cbbee4b8f3061a40743e68e42b30ebac218cc\",\"urls\":[\"bzz-raw://a312fdb8150e214ab6f9a7e4612d970260042d7b08f261c6ea29cf3eeaaebc04\",\"dweb:/ipfs/QmQTt7EF5CgxsKsaEfLQgzn6aY1Hkt7iGBq2mTdmjtHppK\"]},\"project:/contracts/upgradeable_contracts/BasicAMBMediator.sol\":{\"keccak256\":\"0x45a41cda946e6960f9ca3ddea2ae2cd598fd9e0b1a78eb167191457a7becabdf\",\"urls\":[\"bzz-raw://1b38df61c3d533b6b045de538202fa419eb33715ce342942434215eb3e027c4c\",\"dweb:/ipfs/QmQia9wT6SM3ozb6Witt5TqqfwbFZqKvYgRkWejYLmhwuu\"]},\"project:/contracts/upgradeable_contracts/BasicOmnibridge.sol\":{\"keccak256\":\"0x84c4bd6ebcca8dd2fe24c7d8f4d9099b17c13fb0a2b5c26ff3c0f36f6b1aabca\",\"urls\":[\"bzz-raw://23d0bae91d81142474ac74f57a0a511922b86fbb1ed7a4c7377a867c8540e45b\",\"dweb:/ipfs/QmXx4sy392MR72TPRNY4fzfQeBk9LfsEJVk3omWVRVMf7g\"]},\"project:/contracts/upgradeable_contracts/Claimable.sol\":{\"keccak256\":\"0xf9e184a45642ae44551b983b4eca692ddcba94738f83a9fef37a5a1462b5d693\",\"urls\":[\"bzz-raw://46b22208fb67630f1c9fd5de7e75588b3f7c1fa6067bfb88f8a9c8242e5c616e\",\"dweb:/ipfs/QmePfQvtaFKkrPsjbByP5KE3VzBP1piep4Q3BT3iCzxurR\"]},\"project:/contracts/upgradeable_contracts/Initializable.sol\":{\"keccak256\":\"0x642a725cc71c4e5b50e47fe7cba2c6b67e5a28d4d2430ee105cf144aaa5d00b5\",\"urls\":[\"bzz-raw://7c26833c26d83a7c9ba2d2f24571e8558c239efb176f0f70ed26e172b29f488c\",\"dweb:/ipfs/QmW2sN5CJzfszbWAc7RJrSBY9btSrGDEzzVUcaNCwHEhDt\"]},\"project:/contracts/upgradeable_contracts/Ownable.sol\":{\"keccak256\":\"0xaedb5428853f1589f728b3a1a6def0bb12fe13dcedbffeae8381f563048f528e\",\"urls\":[\"bzz-raw://cedb034e5f02c5dc5ee5059e5e07c46ba1d0d1780b1aa1fc934f9bc2814107e2\",\"dweb:/ipfs/QmPzj8LNRTjfChy2KkJqj8NSuiporjKjrd8NjMxAcyWsNq\"]},\"project:/contracts/upgradeable_contracts/ReentrancyGuard.sol\":{\"keccak256\":\"0xa5f837c440d5af3ab20c6b80cab323676fc401da5620f1da60700ed1b19d2394\",\"urls\":[\"bzz-raw://f0bdcf2a4fd42aa446b32bb76a379a3482b5a64aa5d20ddb0e3551ee7e1ad781\",\"dweb:/ipfs/QmcUiVSPFkM3qTvw3p6n8iUJCfkfdqQwCP9bJv3e5sj1iM\"]},\"project:/contracts/upgradeable_contracts/Sacrifice.sol\":{\"keccak256\":\"0x33cb4a218ca8206e61a902d7b4e213a52f1e51bb724deb380aaa297c54aaf2e1\",\"urls\":[\"bzz-raw://0312ed15df95729843b46f2cef22ffb897a6b96eb70a25463c2d5f194bb0814c\",\"dweb:/ipfs/QmdZaR2tLVYng2kxzb8VgBA16nTcEAyk2saVQUJu7ojBCy\"]},\"project:/contracts/upgradeable_contracts/Upgradeable.sol\":{\"keccak256\":\"0x33a2285fd6fa9a14dfab8b828531fbda596c1befd1bf09acfa06f2e5735df2cc\",\"urls\":[\"bzz-raw://82a112f7e93a240a6b9212b6cbc2916df66900bf922318bc7d56ec8e26cefb1f\",\"dweb:/ipfs/QmZ2xf3EBpGkbCzeVUQ3op5EEfFcP4mTKJiaovgsa9eFZ1\"]},\"project:/contracts/upgradeable_contracts/VersionableBridge.sol\":{\"keccak256\":\"0x90d19e36575c6439d3c892dbb8d39bea66d8247e8ef00b14e84952c015b0b157\",\"urls\":[\"bzz-raw://80cded0f98436e42e71eaa8514de3f2f8960f459bdb400b4dc43eaadcaa68564\",\"dweb:/ipfs/QmYP5GokVhHRFBVks8NNERoetBm8ysd3YKKy4UxzHQhJgA\"]},\"project:/contracts/upgradeable_contracts/components/bridged/BridgedTokensRegistry.sol\":{\"keccak256\":\"0xa7893c2acde75bb713cf386b59d7511de54ec03703c8362d38ab87e3002eee50\",\"urls\":[\"bzz-raw://8a9663999ad566325be0870957899e78126bb03475fbf75d27a700e294f82a91\",\"dweb:/ipfs/Qme9JYNCnvP4fUBayrHgX74rKf8sRGsWyzAVMC3du7V8LZ\"]},\"project:/contracts/upgradeable_contracts/components/common/BridgeOperationsStorage.sol\":{\"keccak256\":\"0x6a82ede68e1083884ca0112a3d5c3929a3f1106623efc098516588373923f7e4\",\"urls\":[\"bzz-raw://1ad34e6449817782eb39d4d032111dd6e651a7b8c4884923982b7a76c3c93266\",\"dweb:/ipfs/QmVvpf97AMkm5MusLogycCQuefbr9uLFPNn324hLEbWUuT\"]},\"project:/contracts/upgradeable_contracts/components/common/FailedMessagesProcessor.sol\":{\"keccak256\":\"0xfbbb819873aee03e4804e395423064a56345a865c89cfc9837018c17e26dad60\",\"urls\":[\"bzz-raw://ff6578dba00aefd80bc95344caac77ccdaf2eb7f774122864bdd3f71a9994b2c\",\"dweb:/ipfs/QmTTBTFMoGFiYJDDN9XeMjB1e7GTBkcWCo8CYcpKYnxTKB\"]},\"project:/contracts/upgradeable_contracts/components/common/OmnibridgeInfo.sol\":{\"keccak256\":\"0xe9e9efb68d826a8f0833000a3699c5103252ecf6aac5f413e3755eefca1fcc5a\",\"urls\":[\"bzz-raw://7da7c7a0d1df7820e5e5e82c9713da3c2a9691a0eccd10f121e91830f1e22a73\",\"dweb:/ipfs/QmetU8SrEnxGYp6VLH4s1LVR9deuoTZJSGEouSpiLVBzVb\"]},\"project:/contracts/upgradeable_contracts/components/common/TokensBridgeLimits.sol\":{\"keccak256\":\"0x3fb015c770f33965b4d61d64d13432b6511c3177c575054412fc19253146a3d6\",\"urls\":[\"bzz-raw://25a1315689140e4947fc4771db338c8aae9f25273a5022ab93decd42325b07af\",\"dweb:/ipfs/QmVQynCnU8ofeuQU7ym9rfBcymGSoSf452mSXosTiZMWfg\"]},\"project:/contracts/upgradeable_contracts/components/common/TokensRelayer.sol\":{\"keccak256\":\"0xf4db9c47ca9c85c0f43b94813247249b5764abf956515610ffcf60f9f61740e5\",\"urls\":[\"bzz-raw://185e23f412ab0d553ce4513bc5e833a7d120cecf1c2e49dd76abf05298eb579f\",\"dweb:/ipfs/QmeS1uQvf6AYaSmNFqvMv3r8D1PiZCwfUU9CBxYosT3LUM\"]},\"project:/contracts/upgradeable_contracts/components/native/MediatorBalanceStorage.sol\":{\"keccak256\":\"0x8362355a9493335007ac353f75c5532aae6a0d0289d76910e6c6fcd4bb23e1b0\",\"urls\":[\"bzz-raw://8c0d6302ee324b676dbd508d31dc2b398f848a14eb8fd2852469d1408e334c26\",\"dweb:/ipfs/QmaoYJrns2hCuFbwzGBFCcJ8vs9DZ9RjPPRq4s2g85Fhb2\"]},\"project:/contracts/upgradeable_contracts/components/native/NativeTokensRegistry.sol\":{\"keccak256\":\"0x5093c3c43dae01dd95095845e3908516c7a750382bd62b06e102079e82dcc8eb\",\"urls\":[\"bzz-raw://35696905b4fb3fa14a15e980e58be60df45f5da8b069b469beb9972ba249e112\",\"dweb:/ipfs/QmTQgd2CzBa6vmZct3m9nz1ZnMQ9F2zh3EyGzPKGkmb7jT\"]},\"project:/contracts/upgradeable_contracts/modules/OwnableModule.sol\":{\"keccak256\":\"0x0e06915f6f2a0da5948a8a8fa5754fdde78e08c5f51bdc0965b5b4aeb6905603\",\"urls\":[\"bzz-raw://3dede6d2f00d5959697013a6269c4563e04f2ac9088d9d447b71e768e63bcee1\",\"dweb:/ipfs/QmUKqHYt9zCiQh4PGrAjPqa9yAKp5Q3EJPds8VJ2x4YxYY\"]},\"project:/contracts/upgradeable_contracts/modules/factory/TokenFactory.sol\":{\"keccak256\":\"0xdcf168c0818cb3ebd541bd3e0fdcee9d9439d6fb8b160170dab8bc5e35ab5ea8\",\"urls\":[\"bzz-raw://8036c5eee913a02e5b9cd4dcdd4324d3b9a64241ee1829f7452baf9c3674f1ca\",\"dweb:/ipfs/QmSqoMyw1XY5bwpqPeRc99QeFwcVin7FiXnjzykFbHq5xk\"]},\"project:/contracts/upgradeable_contracts/modules/factory/TokenFactoryConnector.sol\":{\"keccak256\":\"0xcbc0e5dbfe38172ab14ca2793cb809f61988b95290bcf29aa39513f17f30a564\",\"urls\":[\"bzz-raw://ba1727d548eee042dad568addf749c541a151f5502fba0e2fa36d6f0d043f3d5\",\"dweb:/ipfs/Qmbhywo6B4FDu4nYJ3tHLaxPEp4phGjS8VQFWJ8wvwJmk1\"]},\"project:/contracts/upgradeable_contracts/modules/factory/TokenProxy.sol\":{\"keccak256\":\"0xc9578c3727535980c03d3e73482ff4e197a3675badf524a967b7a4e73ea54ad0\",\"urls\":[\"bzz-raw://00b0ff42ca05b4ab557a6815eb0111d4dede8f127dbfdd0c7c7572969f64c9e7\",\"dweb:/ipfs/QmZRCvsbRVAhE3oQ9U78B5mdartLix6CRHs1KZ6CGT6nXg\"]},\"project:/contracts/upgradeable_contracts/modules/gas_limit/SelectorTokenGasLimitConnector.sol\":{\"keccak256\":\"0xc9bc90cb001cbdb05b6a79ee025aae0f33d2a01c4d8c32b6985cf1bb926f3a34\",\"urls\":[\"bzz-raw://2088c0b965db58668a3a1458e8d5dc28af2540a1b48c8a203ea38bd2d01fa3c6\",\"dweb:/ipfs/QmS3LUZvAVgyJ85iy7guaMcCkL51HpxxaKduqfZvVTv7SZ\"]},\"project:/contracts/upgradeable_contracts/modules/gas_limit/SelectorTokenGasLimitManager.sol\":{\"keccak256\":\"0x0bac37cbd331be6a121ce09b749c2b2d4cc9bde95b834a8fd443f7324d090fce\",\"urls\":[\"bzz-raw://b9bbe383f74ef4e22ca00321ba05d5248d16ed36d84bac144ee6642cf6bef158\",\"dweb:/ipfs/QmdcxPvkAoXtvHXJp16eKYoBYx5VrJCBHt1RmMQm2ohVqT\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.7.5;\n\nimport \"../../Ownable.sol\";\nimport \"./SelectorTokenGasLimitManager.sol\";\nimport \"../../BasicAMBMediator.sol\";\n\n/**\n * @title SelectorTokenGasLimitConnector\n * @dev Connectivity functionality that is required for using gas limit manager.\n */\nabstract contract SelectorTokenGasLimitConnector is Ownable, BasicAMBMediator {\n    bytes32 internal constant GAS_LIMIT_MANAGER_CONTRACT =\n        0x5f5bc4e0b888be22a35f2166061a04607296c26861006b9b8e089a172696a822; // keccak256(abi.encodePacked(\"gasLimitManagerContract\"))\n\n    /**\n     * @dev Updates an address of the used gas limit manager contract.\n     * @param _manager address of gas limit manager contract.\n     */\n    function setGasLimitManager(address _manager) external onlyOwner {\n        _setGasLimitManager(_manager);\n    }\n\n    /**\n     * @dev Retrieves an address of the gas limit manager contract.\n     * @return address of the gas limit manager contract.\n     */\n    function gasLimitManager() public view returns (SelectorTokenGasLimitManager) {\n        return SelectorTokenGasLimitManager(addressStorage[GAS_LIMIT_MANAGER_CONTRACT]);\n    }\n\n    /**\n     * @dev Internal function for updating an address of the used gas limit manager contract.\n     * @param _manager address of gas limit manager contract.\n     */\n    function _setGasLimitManager(address _manager) internal {\n        require(_manager == address(0) || Address.isContract(_manager));\n        addressStorage[GAS_LIMIT_MANAGER_CONTRACT] = _manager;\n    }\n\n    /**\n     * @dev Tells the gas limit to use for the message execution by the AMB bridge on the other network.\n     * @param _data calldata to be used on the other side of the bridge, when execution a message.\n     * @return the gas limit for the message execution.\n     */\n    function _chooseRequestGasLimit(bytes memory _data) internal view returns (uint256) {\n        SelectorTokenGasLimitManager manager = gasLimitManager();\n        if (address(manager) == address(0)) {\n            return bridgeContract().maxGasPerTx();\n        } else {\n            return manager.requestGasLimit(_data);\n        }\n    }\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/omnibridge/contracts/upgradeable_contracts/modules/gas_limit/SelectorTokenGasLimitConnector.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/upgradeable_contracts/modules/gas_limit/SelectorTokenGasLimitConnector.sol",
+    "exportedSymbols": {
+      "Address": [
+        690
+      ],
+      "AddressHelper": [
+        1374
+      ],
+      "BasicAMBMediator": [
+        3363
+      ],
+      "BasicOmnibridge": [
+        4407
+      ],
+      "BridgeOperationsStorage": [
+        5942
+      ],
+      "BridgedTokensRegistry": [
+        5815
+      ],
+      "Bytes": [
+        1388
+      ],
+      "Claimable": [
+        4519
+      ],
+      "EternalStorage": [
+        2911
+      ],
+      "FailedMessagesProcessor": [
+        6121
+      ],
+      "IAMB": [
+        988
+      ],
+      "IBurnableMintableERC677Token": [
+        1026
+      ],
+      "IERC20": [
+        273
+      ],
+      "IERC20Metadata": [
+        1120
+      ],
+      "IERC20Receiver": [
+        1132
+      ],
+      "IERC677": [
+        1177
+      ],
+      "IPermittableTokenVersion": [
+        8041
+      ],
+      "ITokenDetails": [
+        1433
+      ],
+      "IUpgradeabilityOwnerStorage": [
+        1327
+      ],
+      "Initializable": [
+        5504
+      ],
+      "MediatorBalanceStorage": [
+        7738
+      ],
+      "NativeTokensRegistry": [
+        7795
+      ],
+      "OmnibridgeInfo": [
+        6487
+      ],
+      "Ownable": [
+        5648
+      ],
+      "OwnableModule": [
+        7883
+      ],
+      "Proxy": [
+        3070
+      ],
+      "ReentrancyGuard": [
+        5665
+      ],
+      "Sacrifice": [
+        5678
+      ],
+      "SafeERC20": [
+        486
+      ],
+      "SafeMath": [
+        195
+      ],
+      "SafeMint": [
+        1412
+      ],
+      "SelectorTokenGasLimitConnector": [
+        9577
+      ],
+      "SelectorTokenGasLimitManager": [
+        10136
+      ],
+      "TokenFactory": [
+        7974
+      ],
+      "TokenFactoryConnector": [
+        8032
+      ],
+      "TokenProxy": [
+        8180
+      ],
+      "TokenReader": [
+        1644
+      ],
+      "TokensBridgeLimits": [
+        7456
+      ],
+      "TokensRelayer": [
+        7690
+      ],
+      "Upgradeable": [
+        5709
+      ],
+      "VersionableBridge": [
+        5726
+      ]
+    },
+    "id": 9578,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 9476,
+        "literals": [
+          "solidity",
+          "0.7",
+          ".5"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:69"
+      },
+      {
+        "absolutePath": "project:/contracts/upgradeable_contracts/Ownable.sol",
+        "file": "../../Ownable.sol",
+        "id": 9477,
+        "nodeType": "ImportDirective",
+        "scope": 9578,
+        "sourceUnit": 5649,
+        "src": "24:27:69",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/upgradeable_contracts/modules/gas_limit/SelectorTokenGasLimitManager.sol",
+        "file": "./SelectorTokenGasLimitManager.sol",
+        "id": 9478,
+        "nodeType": "ImportDirective",
+        "scope": 9578,
+        "sourceUnit": 10137,
+        "src": "52:44:69",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/upgradeable_contracts/BasicAMBMediator.sol",
+        "file": "../../BasicAMBMediator.sol",
+        "id": 9479,
+        "nodeType": "ImportDirective",
+        "scope": 9578,
+        "sourceUnit": 3364,
+        "src": "97:36:69",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 9481,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 5648,
+              "src": "317:7:69",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$5648",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 9482,
+            "nodeType": "InheritanceSpecifier",
+            "src": "317:7:69"
+          },
+          {
+            "baseName": {
+              "id": 9483,
+              "name": "BasicAMBMediator",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3363,
+              "src": "326:16:69",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_BasicAMBMediator_$3363",
+                "typeString": "contract BasicAMBMediator"
+              }
+            },
+            "id": 9484,
+            "nodeType": "InheritanceSpecifier",
+            "src": "326:16:69"
+          }
+        ],
+        "contractDependencies": [
+          2911,
+          3363,
+          5648
+        ],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 9480,
+          "nodeType": "StructuredDocumentation",
+          "src": "135:129:69",
+          "text": " @title SelectorTokenGasLimitConnector\n @dev Connectivity functionality that is required for using gas limit manager."
+        },
+        "fullyImplemented": false,
+        "id": 9577,
+        "linearizedBaseContracts": [
+          9577,
+          3363,
+          5648,
+          2911
+        ],
+        "name": "SelectorTokenGasLimitConnector",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 9487,
+            "mutability": "constant",
+            "name": "GAS_LIMIT_MANAGER_CONTRACT",
+            "nodeType": "VariableDeclaration",
+            "scope": 9577,
+            "src": "349:129:69",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes32",
+              "typeString": "bytes32"
+            },
+            "typeName": {
+              "id": 9485,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "349:7:69",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes32",
+                "typeString": "bytes32"
+              }
+            },
+            "value": {
+              "hexValue": "307835663562633465306238383862653232613335663231363630363161303436303732393663323638363130303662396238653038396131373236393661383232",
+              "id": 9486,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "412:66:69",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_43131862499050878619322698136071417350651048330201540475215952651479841941538_by_1",
+                "typeString": "int_const 4313...(69 digits omitted)...1538"
+              },
+              "value": "0x5f5bc4e0b888be22a35f2166061a04607296c26861006b9b8e089a172696a822"
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 9499,
+              "nodeType": "Block",
+              "src": "757:46:69",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 9496,
+                        "name": "_manager",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9490,
+                        "src": "787:8:69",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 9495,
+                      "name": "_setGasLimitManager",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9540,
+                      "src": "767:19:69",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 9497,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "767:29:69",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 9498,
+                  "nodeType": "ExpressionStatement",
+                  "src": "767:29:69"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 9488,
+              "nodeType": "StructuredDocumentation",
+              "src": "543:144:69",
+              "text": " @dev Updates an address of the used gas limit manager contract.\n @param _manager address of gas limit manager contract."
+            },
+            "functionSelector": "613fa2f2",
+            "id": 9500,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 9493,
+                "modifierName": {
+                  "id": 9492,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 5529,
+                  "src": "747:9:69",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "747:9:69"
+              }
+            ],
+            "name": "setGasLimitManager",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9491,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9490,
+                  "mutability": "mutable",
+                  "name": "_manager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9500,
+                  "src": "720:16:69",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9489,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "720:7:69",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "719:18:69"
+            },
+            "returnParameters": {
+              "id": 9494,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "757:0:69"
+            },
+            "scope": 9577,
+            "src": "692:111:69",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 9512,
+              "nodeType": "Block",
+              "src": "1029:96:69",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "baseExpression": {
+                          "id": 9507,
+                          "name": "addressStorage",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2898,
+                          "src": "1075:14:69",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                            "typeString": "mapping(bytes32 => address)"
+                          }
+                        },
+                        "id": 9509,
+                        "indexExpression": {
+                          "id": 9508,
+                          "name": "GAS_LIMIT_MANAGER_CONTRACT",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9487,
+                          "src": "1090:26:69",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1075:42:69",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 9506,
+                      "name": "SelectorTokenGasLimitManager",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10136,
+                      "src": "1046:28:69",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_SelectorTokenGasLimitManager_$10136_$",
+                        "typeString": "type(contract SelectorTokenGasLimitManager)"
+                      }
+                    },
+                    "id": 9510,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1046:72:69",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_SelectorTokenGasLimitManager_$10136",
+                      "typeString": "contract SelectorTokenGasLimitManager"
+                    }
+                  },
+                  "functionReturnParameters": 9505,
+                  "id": 9511,
+                  "nodeType": "Return",
+                  "src": "1039:79:69"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 9501,
+              "nodeType": "StructuredDocumentation",
+              "src": "809:137:69",
+              "text": " @dev Retrieves an address of the gas limit manager contract.\n @return address of the gas limit manager contract."
+            },
+            "functionSelector": "9d4051ae",
+            "id": 9513,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "gasLimitManager",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9502,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "975:2:69"
+            },
+            "returnParameters": {
+              "id": 9505,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9504,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9513,
+                  "src": "999:28:69",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_SelectorTokenGasLimitManager_$10136",
+                    "typeString": "contract SelectorTokenGasLimitManager"
+                  },
+                  "typeName": {
+                    "id": 9503,
+                    "name": "SelectorTokenGasLimitManager",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 10136,
+                    "src": "999:28:69",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_SelectorTokenGasLimitManager_$10136",
+                      "typeString": "contract SelectorTokenGasLimitManager"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "998:30:69"
+            },
+            "scope": 9577,
+            "src": "951:174:69",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 9539,
+              "nodeType": "Block",
+              "src": "1359:143:69",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "id": 9530,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "commonType": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "id": 9525,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "id": 9520,
+                            "name": "_manager",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 9516,
+                            "src": "1377:8:69",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "==",
+                          "rightExpression": {
+                            "arguments": [
+                              {
+                                "hexValue": "30",
+                                "id": 9523,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "number",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "1397:1:69",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_rational_0_by_1",
+                                  "typeString": "int_const 0"
+                                },
+                                "value": "0"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_rational_0_by_1",
+                                  "typeString": "int_const 0"
+                                }
+                              ],
+                              "id": 9522,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "1389:7:69",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_address_$",
+                                "typeString": "type(address)"
+                              },
+                              "typeName": {
+                                "id": 9521,
+                                "name": "address",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "1389:7:69",
+                                "typeDescriptions": {}
+                              }
+                            },
+                            "id": 9524,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1389:10:69",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          },
+                          "src": "1377:22:69",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "||",
+                        "rightExpression": {
+                          "arguments": [
+                            {
+                              "id": 9528,
+                              "name": "_manager",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 9516,
+                              "src": "1422:8:69",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            ],
+                            "expression": {
+                              "id": 9526,
+                              "name": "Address",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 690,
+                              "src": "1403:7:69",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_contract$_Address_$690_$",
+                                "typeString": "type(library Address)"
+                              }
+                            },
+                            "id": 9527,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "isContract",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 515,
+                            "src": "1403:18:69",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$",
+                              "typeString": "function (address) view returns (bool)"
+                            }
+                          },
+                          "id": 9529,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1403:28:69",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "src": "1377:54:69",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 9519,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        -18,
+                        -18
+                      ],
+                      "referencedDeclaration": -18,
+                      "src": "1369:7:69",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 9531,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1369:63:69",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 9532,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1369:63:69"
+                },
+                {
+                  "expression": {
+                    "id": 9537,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 9533,
+                        "name": "addressStorage",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2898,
+                        "src": "1442:14:69",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                          "typeString": "mapping(bytes32 => address)"
+                        }
+                      },
+                      "id": 9535,
+                      "indexExpression": {
+                        "id": 9534,
+                        "name": "GAS_LIMIT_MANAGER_CONTRACT",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9487,
+                        "src": "1457:26:69",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1442:42:69",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 9536,
+                      "name": "_manager",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9516,
+                      "src": "1487:8:69",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1442:53:69",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 9538,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1442:53:69"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 9514,
+              "nodeType": "StructuredDocumentation",
+              "src": "1131:167:69",
+              "text": " @dev Internal function for updating an address of the used gas limit manager contract.\n @param _manager address of gas limit manager contract."
+            },
+            "id": 9540,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_setGasLimitManager",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9517,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9516,
+                  "mutability": "mutable",
+                  "name": "_manager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9540,
+                  "src": "1332:16:69",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9515,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1332:7:69",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1331:18:69"
+            },
+            "returnParameters": {
+              "id": 9518,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1359:0:69"
+            },
+            "scope": 9577,
+            "src": "1303:199:69",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 9575,
+              "nodeType": "Block",
+              "src": "1868:248:69",
+              "statements": [
+                {
+                  "assignments": [
+                    9549
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 9549,
+                      "mutability": "mutable",
+                      "name": "manager",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 9575,
+                      "src": "1878:36:69",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_SelectorTokenGasLimitManager_$10136",
+                        "typeString": "contract SelectorTokenGasLimitManager"
+                      },
+                      "typeName": {
+                        "id": 9548,
+                        "name": "SelectorTokenGasLimitManager",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 10136,
+                        "src": "1878:28:69",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_SelectorTokenGasLimitManager_$10136",
+                          "typeString": "contract SelectorTokenGasLimitManager"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 9552,
+                  "initialValue": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 9550,
+                      "name": "gasLimitManager",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9513,
+                      "src": "1917:15:69",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$__$returns$_t_contract$_SelectorTokenGasLimitManager_$10136_$",
+                        "typeString": "function () view returns (contract SelectorTokenGasLimitManager)"
+                      }
+                    },
+                    "id": 9551,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1917:17:69",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_SelectorTokenGasLimitManager_$10136",
+                      "typeString": "contract SelectorTokenGasLimitManager"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1878:56:69"
+                },
+                {
+                  "condition": {
+                    "commonType": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    },
+                    "id": 9561,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "arguments": [
+                        {
+                          "id": 9555,
+                          "name": "manager",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9549,
+                          "src": "1956:7:69",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_SelectorTokenGasLimitManager_$10136",
+                            "typeString": "contract SelectorTokenGasLimitManager"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_contract$_SelectorTokenGasLimitManager_$10136",
+                            "typeString": "contract SelectorTokenGasLimitManager"
+                          }
+                        ],
+                        "id": 9554,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "1948:7:69",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_address_$",
+                          "typeString": "type(address)"
+                        },
+                        "typeName": {
+                          "id": 9553,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1948:7:69",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 9556,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1948:16:69",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "==",
+                    "rightExpression": {
+                      "arguments": [
+                        {
+                          "hexValue": "30",
+                          "id": 9559,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "kind": "number",
+                          "lValueRequested": false,
+                          "nodeType": "Literal",
+                          "src": "1976:1:69",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          },
+                          "value": "0"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_rational_0_by_1",
+                            "typeString": "int_const 0"
+                          }
+                        ],
+                        "id": 9558,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "lValueRequested": false,
+                        "nodeType": "ElementaryTypeNameExpression",
+                        "src": "1968:7:69",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_type$_t_address_$",
+                          "typeString": "type(address)"
+                        },
+                        "typeName": {
+                          "id": 9557,
+                          "name": "address",
+                          "nodeType": "ElementaryTypeName",
+                          "src": "1968:7:69",
+                          "typeDescriptions": {}
+                        }
+                      },
+                      "id": 9560,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "kind": "typeConversion",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1968:10:69",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address_payable",
+                        "typeString": "address payable"
+                      }
+                    },
+                    "src": "1948:30:69",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "id": 9573,
+                    "nodeType": "Block",
+                    "src": "2048:62:69",
+                    "statements": [
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "id": 9570,
+                              "name": "_data",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 9543,
+                              "src": "2093:5:69",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes_memory_ptr",
+                                "typeString": "bytes memory"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_bytes_memory_ptr",
+                                "typeString": "bytes memory"
+                              }
+                            ],
+                            "expression": {
+                              "id": 9568,
+                              "name": "manager",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 9549,
+                              "src": "2069:7:69",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_SelectorTokenGasLimitManager_$10136",
+                                "typeString": "contract SelectorTokenGasLimitManager"
+                              }
+                            },
+                            "id": 9569,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "requestGasLimit",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 9847,
+                            "src": "2069:23:69",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_external_view$_t_bytes_memory_ptr_$returns$_t_uint256_$",
+                              "typeString": "function (bytes memory) view external returns (uint256)"
+                            }
+                          },
+                          "id": 9571,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "2069:30:69",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "functionReturnParameters": 9547,
+                        "id": 9572,
+                        "nodeType": "Return",
+                        "src": "2062:37:69"
+                      }
+                    ]
+                  },
+                  "id": 9574,
+                  "nodeType": "IfStatement",
+                  "src": "1944:166:69",
+                  "trueBody": {
+                    "id": 9567,
+                    "nodeType": "Block",
+                    "src": "1980:62:69",
+                    "statements": [
+                      {
+                        "expression": {
+                          "arguments": [],
+                          "expression": {
+                            "argumentTypes": [],
+                            "expression": {
+                              "arguments": [],
+                              "expression": {
+                                "argumentTypes": [],
+                                "id": 9562,
+                                "name": "bridgeContract",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 3285,
+                                "src": "2001:14:69",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_function_internal_view$__$returns$_t_contract$_IAMB_$988_$",
+                                  "typeString": "function () view returns (contract IAMB)"
+                                }
+                              },
+                              "id": 9563,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "functionCall",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "2001:16:69",
+                              "tryCall": false,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_IAMB_$988",
+                                "typeString": "contract IAMB"
+                              }
+                            },
+                            "id": 9564,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "maxGasPerTx",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 912,
+                            "src": "2001:28:69",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
+                              "typeString": "function () view external returns (uint256)"
+                            }
+                          },
+                          "id": 9565,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "2001:30:69",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "functionReturnParameters": 9547,
+                        "id": 9566,
+                        "nodeType": "Return",
+                        "src": "1994:37:69"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": {
+              "id": 9541,
+              "nodeType": "StructuredDocumentation",
+              "src": "1508:271:69",
+              "text": " @dev Tells the gas limit to use for the message execution by the AMB bridge on the other network.\n @param _data calldata to be used on the other side of the bridge, when execution a message.\n @return the gas limit for the message execution."
+            },
+            "id": 9576,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_chooseRequestGasLimit",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9544,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9543,
+                  "mutability": "mutable",
+                  "name": "_data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9576,
+                  "src": "1816:18:69",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 9542,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1816:5:69",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1815:20:69"
+            },
+            "returnParameters": {
+              "id": 9547,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9546,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9576,
+                  "src": "1859:7:69",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9545,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1859:7:69",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1858:9:69"
+            },
+            "scope": 9577,
+            "src": "1784:332:69",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 9578,
+        "src": "265:1853:69"
+      }
+    ],
+    "src": "0:2119:69"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/upgradeable_contracts/modules/gas_limit/SelectorTokenGasLimitConnector.sol",
+      "exportedSymbols": {
+        "Address": [
+          690
+        ],
+        "AddressHelper": [
+          1374
+        ],
+        "BasicAMBMediator": [
+          3363
+        ],
+        "BasicOmnibridge": [
+          4407
+        ],
+        "BridgeOperationsStorage": [
+          5942
+        ],
+        "BridgedTokensRegistry": [
+          5815
+        ],
+        "Bytes": [
+          1388
+        ],
+        "Claimable": [
+          4519
+        ],
+        "EternalStorage": [
+          2911
+        ],
+        "FailedMessagesProcessor": [
+          6121
+        ],
+        "IAMB": [
+          988
+        ],
+        "IBurnableMintableERC677Token": [
+          1026
+        ],
+        "IERC20": [
+          273
+        ],
+        "IERC20Metadata": [
+          1120
+        ],
+        "IERC20Receiver": [
+          1132
+        ],
+        "IERC677": [
+          1177
+        ],
+        "IPermittableTokenVersion": [
+          8041
+        ],
+        "ITokenDetails": [
+          1433
+        ],
+        "IUpgradeabilityOwnerStorage": [
+          1327
+        ],
+        "Initializable": [
+          5504
+        ],
+        "MediatorBalanceStorage": [
+          7738
+        ],
+        "NativeTokensRegistry": [
+          7795
+        ],
+        "OmnibridgeInfo": [
+          6487
+        ],
+        "Ownable": [
+          5648
+        ],
+        "OwnableModule": [
+          7883
+        ],
+        "Proxy": [
+          3070
+        ],
+        "ReentrancyGuard": [
+          5665
+        ],
+        "Sacrifice": [
+          5678
+        ],
+        "SafeERC20": [
+          486
+        ],
+        "SafeMath": [
+          195
+        ],
+        "SafeMint": [
+          1412
+        ],
+        "SelectorTokenGasLimitConnector": [
+          9577
+        ],
+        "SelectorTokenGasLimitManager": [
+          10136
+        ],
+        "TokenFactory": [
+          7974
+        ],
+        "TokenFactoryConnector": [
+          8032
+        ],
+        "TokenProxy": [
+          8180
+        ],
+        "TokenReader": [
+          1644
+        ],
+        "TokensBridgeLimits": [
+          7456
+        ],
+        "TokensRelayer": [
+          7690
+        ],
+        "Upgradeable": [
+          5709
+        ],
+        "VersionableBridge": [
+          5726
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.7",
+            ".5"
+          ]
+        },
+        "id": 9476,
+        "name": "PragmaDirective",
+        "src": "0:22:69"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 5649,
+          "absolutePath": "project:/contracts/upgradeable_contracts/Ownable.sol",
+          "file": "../../Ownable.sol",
+          "scope": 9578,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 9477,
+        "name": "ImportDirective",
+        "src": "24:27:69"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 10137,
+          "absolutePath": "project:/contracts/upgradeable_contracts/modules/gas_limit/SelectorTokenGasLimitManager.sol",
+          "file": "./SelectorTokenGasLimitManager.sol",
+          "scope": 9578,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 9478,
+        "name": "ImportDirective",
+        "src": "52:44:69"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 3364,
+          "absolutePath": "project:/contracts/upgradeable_contracts/BasicAMBMediator.sol",
+          "file": "../../BasicAMBMediator.sol",
+          "scope": 9578,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 9479,
+        "name": "ImportDirective",
+        "src": "97:36:69"
+      },
+      {
+        "attributes": {
+          "abstract": true,
+          "contractDependencies": [
+            2911,
+            3363,
+            5648
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            9577,
+            3363,
+            5648,
+            2911
+          ],
+          "name": "SelectorTokenGasLimitConnector",
+          "scope": 9578
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": " @title SelectorTokenGasLimitConnector\n @dev Connectivity functionality that is required for using gas limit manager."
+            },
+            "id": 9480,
+            "name": "StructuredDocumentation",
+            "src": "135:129:69"
+          },
+          {
+            "attributes": {},
+            "children": [
+              {
+                "attributes": {
+                  "name": "Ownable",
+                  "referencedDeclaration": 5648,
+                  "type": "contract Ownable"
+                },
+                "id": 9481,
+                "name": "UserDefinedTypeName",
+                "src": "317:7:69"
+              }
+            ],
+            "id": 9482,
+            "name": "InheritanceSpecifier",
+            "src": "317:7:69"
+          },
+          {
+            "attributes": {},
+            "children": [
+              {
+                "attributes": {
+                  "name": "BasicAMBMediator",
+                  "referencedDeclaration": 3363,
+                  "type": "contract BasicAMBMediator"
+                },
+                "id": 9483,
+                "name": "UserDefinedTypeName",
+                "src": "326:16:69"
+              }
+            ],
+            "id": 9484,
+            "name": "InheritanceSpecifier",
+            "src": "326:16:69"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "mutability": "constant",
+              "name": "GAS_LIMIT_MANAGER_CONTRACT",
+              "scope": 9577,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "bytes32",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "bytes32",
+                  "type": "bytes32"
+                },
+                "id": 9485,
+                "name": "ElementaryTypeName",
+                "src": "349:7:69"
+              },
+              {
+                "attributes": {
+                  "hexvalue": "307835663562633465306238383862653232613335663231363630363161303436303732393663323638363130303662396238653038396131373236393661383232",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "token": "number",
+                  "type": "int_const 4313...(69 digits omitted)...1538",
+                  "value": "0x5f5bc4e0b888be22a35f2166061a04607296c26861006b9b8e089a172696a822"
+                },
+                "id": 9486,
+                "name": "Literal",
+                "src": "412:66:69"
+              }
+            ],
+            "id": 9487,
+            "name": "VariableDeclaration",
+            "src": "349:129:69"
+          },
+          {
+            "attributes": {
+              "functionSelector": "613fa2f2",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "name": "setGasLimitManager",
+              "scope": 9577,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Updates an address of the used gas limit manager contract.\n @param _manager address of gas limit manager contract."
+                },
+                "id": 9488,
+                "name": "StructuredDocumentation",
+                "src": "543:144:69"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_manager",
+                      "scope": 9500,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 9489,
+                        "name": "ElementaryTypeName",
+                        "src": "720:7:69"
+                      }
+                    ],
+                    "id": 9490,
+                    "name": "VariableDeclaration",
+                    "src": "720:16:69"
+                  }
+                ],
+                "id": 9491,
+                "name": "ParameterList",
+                "src": "719:18:69"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 9494,
+                "name": "ParameterList",
+                "src": "757:0:69"
+              },
+              {
+                "attributes": {},
+                "children": [
+                  {
+                    "attributes": {
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 5529,
+                      "type": "modifier ()",
+                      "value": "onlyOwner"
+                    },
+                    "id": 9492,
+                    "name": "Identifier",
+                    "src": "747:9:69"
+                  }
+                ],
+                "id": 9493,
+                "name": "ModifierInvocation",
+                "src": "747:9:69"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 9540,
+                              "type": "function (address)",
+                              "value": "_setGasLimitManager"
+                            },
+                            "id": 9495,
+                            "name": "Identifier",
+                            "src": "767:19:69"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 9490,
+                              "type": "address",
+                              "value": "_manager"
+                            },
+                            "id": 9496,
+                            "name": "Identifier",
+                            "src": "787:8:69"
+                          }
+                        ],
+                        "id": 9497,
+                        "name": "FunctionCall",
+                        "src": "767:29:69"
+                      }
+                    ],
+                    "id": 9498,
+                    "name": "ExpressionStatement",
+                    "src": "767:29:69"
+                  }
+                ],
+                "id": 9499,
+                "name": "Block",
+                "src": "757:46:69"
+              }
+            ],
+            "id": 9500,
+            "name": "FunctionDefinition",
+            "src": "692:111:69"
+          },
+          {
+            "attributes": {
+              "functionSelector": "9d4051ae",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "gasLimitManager",
+              "scope": 9577,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Retrieves an address of the gas limit manager contract.\n @return address of the gas limit manager contract."
+                },
+                "id": 9501,
+                "name": "StructuredDocumentation",
+                "src": "809:137:69"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 9502,
+                "name": "ParameterList",
+                "src": "975:2:69"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 9513,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract SelectorTokenGasLimitManager",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "SelectorTokenGasLimitManager",
+                          "referencedDeclaration": 10136,
+                          "type": "contract SelectorTokenGasLimitManager"
+                        },
+                        "id": 9503,
+                        "name": "UserDefinedTypeName",
+                        "src": "999:28:69"
+                      }
+                    ],
+                    "id": 9504,
+                    "name": "VariableDeclaration",
+                    "src": "999:28:69"
+                  }
+                ],
+                "id": 9505,
+                "name": "ParameterList",
+                "src": "998:30:69"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 9505
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "contract SelectorTokenGasLimitManager",
+                          "type_conversion": true
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 10136,
+                              "type": "type(contract SelectorTokenGasLimitManager)",
+                              "value": "SelectorTokenGasLimitManager"
+                            },
+                            "id": 9506,
+                            "name": "Identifier",
+                            "src": "1046:28:69"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2898,
+                                  "type": "mapping(bytes32 => address)",
+                                  "value": "addressStorage"
+                                },
+                                "id": 9507,
+                                "name": "Identifier",
+                                "src": "1075:14:69"
+                              },
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 9487,
+                                  "type": "bytes32",
+                                  "value": "GAS_LIMIT_MANAGER_CONTRACT"
+                                },
+                                "id": 9508,
+                                "name": "Identifier",
+                                "src": "1090:26:69"
+                              }
+                            ],
+                            "id": 9509,
+                            "name": "IndexAccess",
+                            "src": "1075:42:69"
+                          }
+                        ],
+                        "id": 9510,
+                        "name": "FunctionCall",
+                        "src": "1046:72:69"
+                      }
+                    ],
+                    "id": 9511,
+                    "name": "Return",
+                    "src": "1039:79:69"
+                  }
+                ],
+                "id": 9512,
+                "name": "Block",
+                "src": "1029:96:69"
+              }
+            ],
+            "id": 9513,
+            "name": "FunctionDefinition",
+            "src": "951:174:69"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_setGasLimitManager",
+              "scope": 9577,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Internal function for updating an address of the used gas limit manager contract.\n @param _manager address of gas limit manager contract."
+                },
+                "id": 9514,
+                "name": "StructuredDocumentation",
+                "src": "1131:167:69"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_manager",
+                      "scope": 9540,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 9515,
+                        "name": "ElementaryTypeName",
+                        "src": "1332:7:69"
+                      }
+                    ],
+                    "id": 9516,
+                    "name": "VariableDeclaration",
+                    "src": "1332:16:69"
+                  }
+                ],
+                "id": 9517,
+                "name": "ParameterList",
+                "src": "1331:18:69"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 9518,
+                "name": "ParameterList",
+                "src": "1359:0:69"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                -18,
+                                -18
+                              ],
+                              "referencedDeclaration": -18,
+                              "type": "function (bool) pure",
+                              "value": "require"
+                            },
+                            "id": 9519,
+                            "name": "Identifier",
+                            "src": "1369:7:69"
+                          },
+                          {
+                            "attributes": {
+                              "commonType": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "||",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "commonType": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "==",
+                                  "type": "bool"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 9516,
+                                      "type": "address",
+                                      "value": "_manager"
+                                    },
+                                    "id": 9520,
+                                    "name": "Identifier",
+                                    "src": "1377:8:69"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "isStructConstructorCall": false,
+                                      "lValueRequested": false,
+                                      "names": [
+                                        null
+                                      ],
+                                      "tryCall": false,
+                                      "type": "address payable",
+                                      "type_conversion": true
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": [
+                                            {
+                                              "typeIdentifier": "t_rational_0_by_1",
+                                              "typeString": "int_const 0"
+                                            }
+                                          ],
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "type": "type(address)"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "name": "address"
+                                            },
+                                            "id": 9521,
+                                            "name": "ElementaryTypeName",
+                                            "src": "1389:7:69"
+                                          }
+                                        ],
+                                        "id": 9522,
+                                        "name": "ElementaryTypeNameExpression",
+                                        "src": "1389:7:69"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "hexvalue": "30",
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "token": "number",
+                                          "type": "int_const 0",
+                                          "value": "0"
+                                        },
+                                        "id": 9523,
+                                        "name": "Literal",
+                                        "src": "1397:1:69"
+                                      }
+                                    ],
+                                    "id": 9524,
+                                    "name": "FunctionCall",
+                                    "src": "1389:10:69"
+                                  }
+                                ],
+                                "id": 9525,
+                                "name": "BinaryOperation",
+                                "src": "1377:22:69"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "bool",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "isContract",
+                                      "referencedDeclaration": 515,
+                                      "type": "function (address) view returns (bool)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 690,
+                                          "type": "type(library Address)",
+                                          "value": "Address"
+                                        },
+                                        "id": 9526,
+                                        "name": "Identifier",
+                                        "src": "1403:7:69"
+                                      }
+                                    ],
+                                    "id": 9527,
+                                    "name": "MemberAccess",
+                                    "src": "1403:18:69"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 9516,
+                                      "type": "address",
+                                      "value": "_manager"
+                                    },
+                                    "id": 9528,
+                                    "name": "Identifier",
+                                    "src": "1422:8:69"
+                                  }
+                                ],
+                                "id": 9529,
+                                "name": "FunctionCall",
+                                "src": "1403:28:69"
+                              }
+                            ],
+                            "id": 9530,
+                            "name": "BinaryOperation",
+                            "src": "1377:54:69"
+                          }
+                        ],
+                        "id": 9531,
+                        "name": "FunctionCall",
+                        "src": "1369:63:69"
+                      }
+                    ],
+                    "id": 9532,
+                    "name": "ExpressionStatement",
+                    "src": "1369:63:69"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2898,
+                                  "type": "mapping(bytes32 => address)",
+                                  "value": "addressStorage"
+                                },
+                                "id": 9533,
+                                "name": "Identifier",
+                                "src": "1442:14:69"
+                              },
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 9487,
+                                  "type": "bytes32",
+                                  "value": "GAS_LIMIT_MANAGER_CONTRACT"
+                                },
+                                "id": 9534,
+                                "name": "Identifier",
+                                "src": "1457:26:69"
+                              }
+                            ],
+                            "id": 9535,
+                            "name": "IndexAccess",
+                            "src": "1442:42:69"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 9516,
+                              "type": "address",
+                              "value": "_manager"
+                            },
+                            "id": 9536,
+                            "name": "Identifier",
+                            "src": "1487:8:69"
+                          }
+                        ],
+                        "id": 9537,
+                        "name": "Assignment",
+                        "src": "1442:53:69"
+                      }
+                    ],
+                    "id": 9538,
+                    "name": "ExpressionStatement",
+                    "src": "1442:53:69"
+                  }
+                ],
+                "id": 9539,
+                "name": "Block",
+                "src": "1359:143:69"
+              }
+            ],
+            "id": 9540,
+            "name": "FunctionDefinition",
+            "src": "1303:199:69"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_chooseRequestGasLimit",
+              "scope": 9577,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Tells the gas limit to use for the message execution by the AMB bridge on the other network.\n @param _data calldata to be used on the other side of the bridge, when execution a message.\n @return the gas limit for the message execution."
+                },
+                "id": 9541,
+                "name": "StructuredDocumentation",
+                "src": "1508:271:69"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_data",
+                      "scope": 9576,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 9542,
+                        "name": "ElementaryTypeName",
+                        "src": "1816:5:69"
+                      }
+                    ],
+                    "id": 9543,
+                    "name": "VariableDeclaration",
+                    "src": "1816:18:69"
+                  }
+                ],
+                "id": 9544,
+                "name": "ParameterList",
+                "src": "1815:20:69"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 9576,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 9545,
+                        "name": "ElementaryTypeName",
+                        "src": "1859:7:69"
+                      }
+                    ],
+                    "id": 9546,
+                    "name": "VariableDeclaration",
+                    "src": "1859:7:69"
+                  }
+                ],
+                "id": 9547,
+                "name": "ParameterList",
+                "src": "1858:9:69"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        9549
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "mutability": "mutable",
+                          "name": "manager",
+                          "scope": 9575,
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "type": "contract SelectorTokenGasLimitManager",
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "SelectorTokenGasLimitManager",
+                              "referencedDeclaration": 10136,
+                              "type": "contract SelectorTokenGasLimitManager"
+                            },
+                            "id": 9548,
+                            "name": "UserDefinedTypeName",
+                            "src": "1878:28:69"
+                          }
+                        ],
+                        "id": 9549,
+                        "name": "VariableDeclaration",
+                        "src": "1878:36:69"
+                      },
+                      {
+                        "attributes": {
+                          "arguments": [
+                            null
+                          ],
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "contract SelectorTokenGasLimitManager",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                null
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 9513,
+                              "type": "function () view returns (contract SelectorTokenGasLimitManager)",
+                              "value": "gasLimitManager"
+                            },
+                            "id": 9550,
+                            "name": "Identifier",
+                            "src": "1917:15:69"
+                          }
+                        ],
+                        "id": 9551,
+                        "name": "FunctionCall",
+                        "src": "1917:17:69"
+                      }
+                    ],
+                    "id": 9552,
+                    "name": "VariableDeclarationStatement",
+                    "src": "1878:56:69"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "commonType": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "==",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "tryCall": false,
+                              "type": "address",
+                              "type_conversion": true
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_contract$_SelectorTokenGasLimitManager_$10136",
+                                      "typeString": "contract SelectorTokenGasLimitManager"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "type": "type(address)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "name": "address"
+                                    },
+                                    "id": 9553,
+                                    "name": "ElementaryTypeName",
+                                    "src": "1948:7:69"
+                                  }
+                                ],
+                                "id": 9554,
+                                "name": "ElementaryTypeNameExpression",
+                                "src": "1948:7:69"
+                              },
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 9549,
+                                  "type": "contract SelectorTokenGasLimitManager",
+                                  "value": "manager"
+                                },
+                                "id": 9555,
+                                "name": "Identifier",
+                                "src": "1956:7:69"
+                              }
+                            ],
+                            "id": 9556,
+                            "name": "FunctionCall",
+                            "src": "1948:16:69"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "tryCall": false,
+                              "type": "address payable",
+                              "type_conversion": true
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_rational_0_by_1",
+                                      "typeString": "int_const 0"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "type": "type(address)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "name": "address"
+                                    },
+                                    "id": 9557,
+                                    "name": "ElementaryTypeName",
+                                    "src": "1968:7:69"
+                                  }
+                                ],
+                                "id": 9558,
+                                "name": "ElementaryTypeNameExpression",
+                                "src": "1968:7:69"
+                              },
+                              {
+                                "attributes": {
+                                  "hexvalue": "30",
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "token": "number",
+                                  "type": "int_const 0",
+                                  "value": "0"
+                                },
+                                "id": 9559,
+                                "name": "Literal",
+                                "src": "1976:1:69"
+                              }
+                            ],
+                            "id": 9560,
+                            "name": "FunctionCall",
+                            "src": "1968:10:69"
+                          }
+                        ],
+                        "id": 9561,
+                        "name": "BinaryOperation",
+                        "src": "1948:30:69"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "functionReturnParameters": 9547
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "arguments": [
+                                    null
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "uint256",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        null
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "maxGasPerTx",
+                                      "referencedDeclaration": 912,
+                                      "type": "function () view external returns (uint256)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "arguments": [
+                                            null
+                                          ],
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "isStructConstructorCall": false,
+                                          "lValueRequested": false,
+                                          "names": [
+                                            null
+                                          ],
+                                          "tryCall": false,
+                                          "type": "contract IAMB",
+                                          "type_conversion": false
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": [
+                                                null
+                                              ],
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": 3285,
+                                              "type": "function () view returns (contract IAMB)",
+                                              "value": "bridgeContract"
+                                            },
+                                            "id": 9562,
+                                            "name": "Identifier",
+                                            "src": "2001:14:69"
+                                          }
+                                        ],
+                                        "id": 9563,
+                                        "name": "FunctionCall",
+                                        "src": "2001:16:69"
+                                      }
+                                    ],
+                                    "id": 9564,
+                                    "name": "MemberAccess",
+                                    "src": "2001:28:69"
+                                  }
+                                ],
+                                "id": 9565,
+                                "name": "FunctionCall",
+                                "src": "2001:30:69"
+                              }
+                            ],
+                            "id": 9566,
+                            "name": "Return",
+                            "src": "1994:37:69"
+                          }
+                        ],
+                        "id": 9567,
+                        "name": "Block",
+                        "src": "1980:62:69"
+                      },
+                      {
+                        "children": [
+                          {
+                            "attributes": {
+                              "functionReturnParameters": 9547
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "uint256",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_bytes_memory_ptr",
+                                          "typeString": "bytes memory"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "requestGasLimit",
+                                      "referencedDeclaration": 9847,
+                                      "type": "function (bytes memory) view external returns (uint256)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 9549,
+                                          "type": "contract SelectorTokenGasLimitManager",
+                                          "value": "manager"
+                                        },
+                                        "id": 9568,
+                                        "name": "Identifier",
+                                        "src": "2069:7:69"
+                                      }
+                                    ],
+                                    "id": 9569,
+                                    "name": "MemberAccess",
+                                    "src": "2069:23:69"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 9543,
+                                      "type": "bytes memory",
+                                      "value": "_data"
+                                    },
+                                    "id": 9570,
+                                    "name": "Identifier",
+                                    "src": "2093:5:69"
+                                  }
+                                ],
+                                "id": 9571,
+                                "name": "FunctionCall",
+                                "src": "2069:30:69"
+                              }
+                            ],
+                            "id": 9572,
+                            "name": "Return",
+                            "src": "2062:37:69"
+                          }
+                        ],
+                        "id": 9573,
+                        "name": "Block",
+                        "src": "2048:62:69"
+                      }
+                    ],
+                    "id": 9574,
+                    "name": "IfStatement",
+                    "src": "1944:166:69"
+                  }
+                ],
+                "id": 9575,
+                "name": "Block",
+                "src": "1868:248:69"
+              }
+            ],
+            "id": 9576,
+            "name": "FunctionDefinition",
+            "src": "1784:332:69"
+          }
+        ],
+        "id": 9577,
+        "name": "ContractDefinition",
+        "src": "265:1853:69"
+      }
+    ],
+    "id": 9578,
+    "name": "SourceUnit",
+    "src": "0:2119:69"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.5+commit.eb77ed08.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:31.345Z",
+  "devdoc": {
+    "details": "Connectivity functionality that is required for using gas limit manager.",
+    "kind": "dev",
+    "methods": {
+      "bridgeContract()": {
+        "details": "Get the AMB interface for the bridge contract address",
+        "returns": {
+          "_0": "AMB interface for the bridge contract address"
+        }
+      },
+      "gasLimitManager()": {
+        "details": "Retrieves an address of the gas limit manager contract.",
+        "returns": {
+          "_0": "address of the gas limit manager contract."
+        }
+      },
+      "mediatorContractOnOtherSide()": {
+        "details": "Tells the mediator contract address from the other network.",
+        "returns": {
+          "_0": "the address of the mediator contract."
+        }
+      },
+      "owner()": {
+        "details": "Tells the address of the owner",
+        "returns": {
+          "_0": "the address of the owner"
+        }
+      },
+      "setBridgeContract(address)": {
+        "details": "Sets the AMB bridge contract address. Only the owner can call this method.",
+        "params": {
+          "_bridgeContract": "the address of the bridge contract."
+        }
+      },
+      "setGasLimitManager(address)": {
+        "details": "Updates an address of the used gas limit manager contract.",
+        "params": {
+          "_manager": "address of gas limit manager contract."
+        }
+      },
+      "setMediatorContractOnOtherSide(address)": {
+        "details": "Sets the mediator contract address from the other network. Only the owner can call this method.",
+        "params": {
+          "_mediatorContract": "the address of the mediator contract."
+        }
+      },
+      "transferOwnership(address)": {
+        "details": "Allows the current owner to transfer control of the contract to a newOwner.",
+        "params": {
+          "newOwner": "the address to transfer ownership to."
+        }
+      }
+    },
+    "title": "SelectorTokenGasLimitConnector",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

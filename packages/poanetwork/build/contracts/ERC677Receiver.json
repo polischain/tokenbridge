@@ -1,0 +1,418 @@
+{
+  "contractName": "ERC677Receiver",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "_from",
+          "type": "address"
+        },
+        {
+          "name": "_value",
+          "type": "uint256"
+        },
+        {
+          "name": "_data",
+          "type": "bytes"
+        }
+      ],
+      "name": "onTokenTransfer",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.4.24;\n\ncontract ERC677Receiver {\n    function onTokenTransfer(address _from, uint256 _value, bytes _data) external returns (bool);\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/poanetwork/contracts/interfaces/ERC677Receiver.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/ERC677Receiver.sol",
+    "exportedSymbols": {
+      "ERC677Receiver": [
+        4504
+      ]
+    },
+    "id": 4505,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4492,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:30"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 4504,
+        "linearizedBaseContracts": [
+          4504
+        ],
+        "name": "ERC677Receiver",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": null,
+            "id": 4503,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "onTokenTransfer",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4499,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4494,
+                  "name": "_from",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4503,
+                  "src": "80:13:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4493,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "80:7:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4496,
+                  "name": "_value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4503,
+                  "src": "95:14:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4495,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "95:7:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4498,
+                  "name": "_data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4503,
+                  "src": "111:11:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 4497,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "111:5:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "79:44:30"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 4502,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4501,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4503,
+                  "src": "142:4:30",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 4500,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "142:4:30",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "141:6:30"
+            },
+            "scope": 4504,
+            "src": "55:93:30",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 4505,
+        "src": "25:125:30"
+      }
+    ],
+    "src": "0:151:30"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/interfaces/ERC677Receiver.sol",
+      "exportedSymbols": {
+        "ERC677Receiver": [
+          4504
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.4",
+            ".24"
+          ]
+        },
+        "id": 4492,
+        "name": "PragmaDirective",
+        "src": "0:23:30"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            4504
+          ],
+          "name": "ERC677Receiver",
+          "scope": 4505
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "constant": false,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "onTokenTransfer",
+              "payable": false,
+              "scope": 4504,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_from",
+                      "scope": 4503,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 4493,
+                        "name": "ElementaryTypeName",
+                        "src": "80:7:30"
+                      }
+                    ],
+                    "id": 4494,
+                    "name": "VariableDeclaration",
+                    "src": "80:13:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_value",
+                      "scope": 4503,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 4495,
+                        "name": "ElementaryTypeName",
+                        "src": "95:7:30"
+                      }
+                    ],
+                    "id": 4496,
+                    "name": "VariableDeclaration",
+                    "src": "95:14:30"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_data",
+                      "scope": 4503,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 4497,
+                        "name": "ElementaryTypeName",
+                        "src": "111:5:30"
+                      }
+                    ],
+                    "id": 4498,
+                    "name": "VariableDeclaration",
+                    "src": "111:11:30"
+                  }
+                ],
+                "id": 4499,
+                "name": "ParameterList",
+                "src": "79:44:30"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 4503,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 4500,
+                        "name": "ElementaryTypeName",
+                        "src": "142:4:30"
+                      }
+                    ],
+                    "id": 4501,
+                    "name": "VariableDeclaration",
+                    "src": "142:4:30"
+                  }
+                ],
+                "id": 4502,
+                "name": "ParameterList",
+                "src": "141:6:30"
+              }
+            ],
+            "id": 4503,
+            "name": "FunctionDefinition",
+            "src": "55:93:30"
+          }
+        ],
+        "id": 4504,
+        "name": "ContractDefinition",
+        "src": "25:125:30"
+      }
+    ],
+    "id": 4505,
+    "name": "SourceUnit",
+    "src": "0:151:30"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:19.195Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

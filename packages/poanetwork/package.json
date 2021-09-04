@@ -6,14 +6,14 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@nomiclabs/hardhat-ethers": "2.0.2",
+    "dotenv": "10.0.0",
     "openzeppelin-solidity": "1.12.0",
-    "dotenv": "10.0.0"
+    "web3": "1.5.2"
   },
   "devDependencies": {
-    "hardhat": "2.6.2"
   },
   "scripts": {
-    "compile": "hardhat compile"
+    "compile": "truffle compile",
+    "deploy-am": "node scripts/deploy_am.js"
   }
 }

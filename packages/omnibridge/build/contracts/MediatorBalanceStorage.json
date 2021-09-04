@@ -1,0 +1,1334 @@
+{
+  "contractName": "MediatorBalanceStorage",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "name": "mediatorBalance",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.5+commit.eb77ed08\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"}],\"name\":\"mediatorBalance\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Functionality for storing expected mediator balance for native tokens.\",\"kind\":\"dev\",\"methods\":{\"mediatorBalance(address)\":{\"details\":\"Tells the expected token balance of the contract.\",\"params\":{\"_token\":\"address of token contract.\"},\"returns\":{\"_0\":\"the current tracked token balance of the contract.\"}}},\"title\":\"MediatorBalanceStorage\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/upgradeable_contracts/components/native/MediatorBalanceStorage.sol\":\"MediatorBalanceStorage\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/math/SafeMath.sol\":{\"keccak256\":\"0xba96bc371ba999f452985a98717cca1e4c4abb598dc038a9a9c3db08129b1ba4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://26e50e3f7b6482fb6f598f2e006994a74aa492687daa4b3eee7fd4fb5398ce7f\",\"dweb:/ipfs/QmZudqoPSkA4USLMFsBBmt19dDPZFS8aaAmL5R7pECXu6t\"]},\"project:/contracts/upgradeability/EternalStorage.sol\":{\"keccak256\":\"0x69e24ec05ae65648eada7ff65aba3e7d90d72ad186f6d5bb9f01c54b0fa00b41\",\"urls\":[\"bzz-raw://a7c173e5610184402d8a7af1ef21e468c5805e4736bba5da0e8be3e4e4a29d48\",\"dweb:/ipfs/QmRakjK88qux7f6dg9Hpcw2PD3cMUPKTnj6YDC6yJ1caqE\"]},\"project:/contracts/upgradeable_contracts/components/native/MediatorBalanceStorage.sol\":{\"keccak256\":\"0x8362355a9493335007ac353f75c5532aae6a0d0289d76910e6c6fcd4bb23e1b0\",\"urls\":[\"bzz-raw://8c0d6302ee324b676dbd508d31dc2b398f848a14eb8fd2852469d1408e334c26\",\"dweb:/ipfs/QmaoYJrns2hCuFbwzGBFCcJ8vs9DZ9RjPPRq4s2g85Fhb2\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b5060f88061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c8063194153d314602d575b600080fd5b605060048036036020811015604157600080fd5b50356001600160a01b03166062565b60408051918252519081900360200190f35b604080516e6d65646961746f7242616c616e636560881b60208083019190915260609390931b6bffffffffffffffffffffffff1916602f82015281518082036023018152604390910182528051908301206000908152918290529020549056fea264697066735822122022dd470a446c57bda1e75435b0be7db268fbb403121584087cbf53e340a3ec7764736f6c63430007050033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c8063194153d314602d575b600080fd5b605060048036036020811015604157600080fd5b50356001600160a01b03166062565b60408051918252519081900360200190f35b604080516e6d65646961746f7242616c616e636560881b60208083019190915260609390931b6bffffffffffffffffffffffff1916602f82015281518082036023018152604390910182528051908301206000908152918290529020549056fea264697066735822122022dd470a446c57bda1e75435b0be7db268fbb403121584087cbf53e340a3ec7764736f6c63430007050033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "250:771:58:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "250:771:58:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;498:162;;;;;;;;;;;;;;;;-1:-1:-1;498:162:58;-1:-1:-1;;;;;498:162:58;;:::i;:::-;;;;;;;;;;;;;;;;;608:43;;;-1:-1:-1;;;608:43:58;;;;;;;;;;;;;-1:-1:-1;;608:43:58;;;;;;;;;;;;;;;;;;;;598:54;;;;;;-1:-1:-1;586:67:58;;;;;;;;;;;498:162::o",
+  "source": "pragma solidity 0.7.5;\n\nimport \"@openzeppelin/contracts/math/SafeMath.sol\";\nimport \"../../../upgradeability/EternalStorage.sol\";\n\n/**\n * @title MediatorBalanceStorage\n * @dev Functionality for storing expected mediator balance for native tokens.\n */\ncontract MediatorBalanceStorage is EternalStorage {\n    /**\n     * @dev Tells the expected token balance of the contract.\n     * @param _token address of token contract.\n     * @return the current tracked token balance of the contract.\n     */\n    function mediatorBalance(address _token) public view returns (uint256) {\n        return uintStorage[keccak256(abi.encodePacked(\"mediatorBalance\", _token))];\n    }\n\n    /**\n     * @dev Updates expected token balance of the contract.\n     * @param _token address of token contract.\n     * @param _balance the new token balance of the contract.\n     */\n    function _setMediatorBalance(address _token, uint256 _balance) internal {\n        uintStorage[keccak256(abi.encodePacked(\"mediatorBalance\", _token))] = _balance;\n    }\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/omnibridge/contracts/upgradeable_contracts/components/native/MediatorBalanceStorage.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/upgradeable_contracts/components/native/MediatorBalanceStorage.sol",
+    "exportedSymbols": {
+      "EternalStorage": [
+        2911
+      ],
+      "MediatorBalanceStorage": [
+        7738
+      ],
+      "SafeMath": [
+        195
+      ]
+    },
+    "id": 7739,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7692,
+        "literals": [
+          "solidity",
+          "0.7",
+          ".5"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:58"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts/math/SafeMath.sol",
+        "file": "@openzeppelin/contracts/math/SafeMath.sol",
+        "id": 7693,
+        "nodeType": "ImportDirective",
+        "scope": 7739,
+        "sourceUnit": 196,
+        "src": "24:51:58",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/upgradeability/EternalStorage.sol",
+        "file": "../../../upgradeability/EternalStorage.sol",
+        "id": 7694,
+        "nodeType": "ImportDirective",
+        "scope": 7739,
+        "sourceUnit": 2912,
+        "src": "76:52:58",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 7696,
+              "name": "EternalStorage",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2911,
+              "src": "285:14:58",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_EternalStorage_$2911",
+                "typeString": "contract EternalStorage"
+              }
+            },
+            "id": 7697,
+            "nodeType": "InheritanceSpecifier",
+            "src": "285:14:58"
+          }
+        ],
+        "contractDependencies": [
+          2911
+        ],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 7695,
+          "nodeType": "StructuredDocumentation",
+          "src": "130:119:58",
+          "text": " @title MediatorBalanceStorage\n @dev Functionality for storing expected mediator balance for native tokens."
+        },
+        "fullyImplemented": true,
+        "id": 7738,
+        "linearizedBaseContracts": [
+          7738,
+          2911
+        ],
+        "name": "MediatorBalanceStorage",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 7715,
+              "nodeType": "Block",
+              "src": "569:91:58",
+              "statements": [
+                {
+                  "expression": {
+                    "baseExpression": {
+                      "id": 7705,
+                      "name": "uintStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2890,
+                      "src": "586:11:58",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
+                        "typeString": "mapping(bytes32 => uint256)"
+                      }
+                    },
+                    "id": 7713,
+                    "indexExpression": {
+                      "arguments": [
+                        {
+                          "arguments": [
+                            {
+                              "hexValue": "6d65646961746f7242616c616e6365",
+                              "id": 7709,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "string",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "625:17:58",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_stringliteral_3db340e280667ee926fa8c51e8f9fcf88a0ff221a66d84d63b4778127d97d139",
+                                "typeString": "literal_string \"mediatorBalance\""
+                              },
+                              "value": "mediatorBalance"
+                            },
+                            {
+                              "id": 7710,
+                              "name": "_token",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 7700,
+                              "src": "644:6:58",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_stringliteral_3db340e280667ee926fa8c51e8f9fcf88a0ff221a66d84d63b4778127d97d139",
+                                "typeString": "literal_string \"mediatorBalance\""
+                              },
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            ],
+                            "expression": {
+                              "id": 7707,
+                              "name": "abi",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": -1,
+                              "src": "608:3:58",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_abi",
+                                "typeString": "abi"
+                              }
+                            },
+                            "id": 7708,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "memberName": "encodePacked",
+                            "nodeType": "MemberAccess",
+                            "src": "608:16:58",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                              "typeString": "function () pure returns (bytes memory)"
+                            }
+                          },
+                          "id": 7711,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "608:43:58",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        ],
+                        "id": 7706,
+                        "name": "keccak256",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": -8,
+                        "src": "598:9:58",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                          "typeString": "function (bytes memory) pure returns (bytes32)"
+                        }
+                      },
+                      "id": 7712,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "598:54:58",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "586:67:58",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 7704,
+                  "id": 7714,
+                  "nodeType": "Return",
+                  "src": "579:74:58"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 7698,
+              "nodeType": "StructuredDocumentation",
+              "src": "306:187:58",
+              "text": " @dev Tells the expected token balance of the contract.\n @param _token address of token contract.\n @return the current tracked token balance of the contract."
+            },
+            "functionSelector": "194153d3",
+            "id": 7716,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "mediatorBalance",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7701,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7700,
+                  "mutability": "mutable",
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7716,
+                  "src": "523:14:58",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7699,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "523:7:58",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "522:16:58"
+            },
+            "returnParameters": {
+              "id": 7704,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7703,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7716,
+                  "src": "560:7:58",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7702,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "560:7:58",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "559:9:58"
+            },
+            "scope": 7738,
+            "src": "498:162:58",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 7736,
+              "nodeType": "Block",
+              "src": "924:95:58",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 7734,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 7724,
+                        "name": "uintStorage",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2890,
+                        "src": "934:11:58",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
+                          "typeString": "mapping(bytes32 => uint256)"
+                        }
+                      },
+                      "id": 7732,
+                      "indexExpression": {
+                        "arguments": [
+                          {
+                            "arguments": [
+                              {
+                                "hexValue": "6d65646961746f7242616c616e6365",
+                                "id": 7728,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "string",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "973:17:58",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_stringliteral_3db340e280667ee926fa8c51e8f9fcf88a0ff221a66d84d63b4778127d97d139",
+                                  "typeString": "literal_string \"mediatorBalance\""
+                                },
+                                "value": "mediatorBalance"
+                              },
+                              {
+                                "id": 7729,
+                                "name": "_token",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 7719,
+                                "src": "992:6:58",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_stringliteral_3db340e280667ee926fa8c51e8f9fcf88a0ff221a66d84d63b4778127d97d139",
+                                  "typeString": "literal_string \"mediatorBalance\""
+                                },
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "expression": {
+                                "id": 7726,
+                                "name": "abi",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": -1,
+                                "src": "956:3:58",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_magic_abi",
+                                  "typeString": "abi"
+                                }
+                              },
+                              "id": 7727,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "memberName": "encodePacked",
+                              "nodeType": "MemberAccess",
+                              "src": "956:16:58",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                                "typeString": "function () pure returns (bytes memory)"
+                              }
+                            },
+                            "id": 7730,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "functionCall",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "956:43:58",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          ],
+                          "id": 7725,
+                          "name": "keccak256",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": -8,
+                          "src": "946:9:58",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                            "typeString": "function (bytes memory) pure returns (bytes32)"
+                          }
+                        },
+                        "id": 7731,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "946:54:58",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "934:67:58",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 7733,
+                      "name": "_balance",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7721,
+                      "src": "1004:8:58",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "934:78:58",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 7735,
+                  "nodeType": "ExpressionStatement",
+                  "src": "934:78:58"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 7717,
+              "nodeType": "StructuredDocumentation",
+              "src": "666:181:58",
+              "text": " @dev Updates expected token balance of the contract.\n @param _token address of token contract.\n @param _balance the new token balance of the contract."
+            },
+            "id": 7737,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_setMediatorBalance",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7722,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7719,
+                  "mutability": "mutable",
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7737,
+                  "src": "881:14:58",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7718,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "881:7:58",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 7721,
+                  "mutability": "mutable",
+                  "name": "_balance",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7737,
+                  "src": "897:16:58",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 7720,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "897:7:58",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "880:34:58"
+            },
+            "returnParameters": {
+              "id": 7723,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "924:0:58"
+            },
+            "scope": 7738,
+            "src": "852:167:58",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 7739,
+        "src": "250:771:58"
+      }
+    ],
+    "src": "0:1022:58"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/upgradeable_contracts/components/native/MediatorBalanceStorage.sol",
+      "exportedSymbols": {
+        "EternalStorage": [
+          2911
+        ],
+        "MediatorBalanceStorage": [
+          7738
+        ],
+        "SafeMath": [
+          195
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.7",
+            ".5"
+          ]
+        },
+        "id": 7692,
+        "name": "PragmaDirective",
+        "src": "0:22:58"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 196,
+          "absolutePath": "@openzeppelin/contracts/math/SafeMath.sol",
+          "file": "@openzeppelin/contracts/math/SafeMath.sol",
+          "scope": 7739,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 7693,
+        "name": "ImportDirective",
+        "src": "24:51:58"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 2912,
+          "absolutePath": "project:/contracts/upgradeability/EternalStorage.sol",
+          "file": "../../../upgradeability/EternalStorage.sol",
+          "scope": 7739,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 7694,
+        "name": "ImportDirective",
+        "src": "76:52:58"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "contractDependencies": [
+            2911
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            7738,
+            2911
+          ],
+          "name": "MediatorBalanceStorage",
+          "scope": 7739
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": " @title MediatorBalanceStorage\n @dev Functionality for storing expected mediator balance for native tokens."
+            },
+            "id": 7695,
+            "name": "StructuredDocumentation",
+            "src": "130:119:58"
+          },
+          {
+            "attributes": {},
+            "children": [
+              {
+                "attributes": {
+                  "name": "EternalStorage",
+                  "referencedDeclaration": 2911,
+                  "type": "contract EternalStorage"
+                },
+                "id": 7696,
+                "name": "UserDefinedTypeName",
+                "src": "285:14:58"
+              }
+            ],
+            "id": 7697,
+            "name": "InheritanceSpecifier",
+            "src": "285:14:58"
+          },
+          {
+            "attributes": {
+              "functionSelector": "194153d3",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "mediatorBalance",
+              "scope": 7738,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Tells the expected token balance of the contract.\n @param _token address of token contract.\n @return the current tracked token balance of the contract."
+                },
+                "id": 7698,
+                "name": "StructuredDocumentation",
+                "src": "306:187:58"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_token",
+                      "scope": 7716,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 7699,
+                        "name": "ElementaryTypeName",
+                        "src": "523:7:58"
+                      }
+                    ],
+                    "id": 7700,
+                    "name": "VariableDeclaration",
+                    "src": "523:14:58"
+                  }
+                ],
+                "id": 7701,
+                "name": "ParameterList",
+                "src": "522:16:58"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 7716,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 7702,
+                        "name": "ElementaryTypeName",
+                        "src": "560:7:58"
+                      }
+                    ],
+                    "id": 7703,
+                    "name": "VariableDeclaration",
+                    "src": "560:7:58"
+                  }
+                ],
+                "id": 7704,
+                "name": "ParameterList",
+                "src": "559:9:58"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 7704
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2890,
+                              "type": "mapping(bytes32 => uint256)",
+                              "value": "uintStorage"
+                            },
+                            "id": 7705,
+                            "name": "Identifier",
+                            "src": "586:11:58"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "tryCall": false,
+                              "type": "bytes32",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bytes_memory_ptr",
+                                      "typeString": "bytes memory"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": -8,
+                                  "type": "function (bytes memory) pure returns (bytes32)",
+                                  "value": "keccak256"
+                                },
+                                "id": 7706,
+                                "name": "Identifier",
+                                "src": "598:9:58"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "bytes memory",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_stringliteral_3db340e280667ee926fa8c51e8f9fcf88a0ff221a66d84d63b4778127d97d139",
+                                          "typeString": "literal_string \"mediatorBalance\""
+                                        },
+                                        {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "member_name": "encodePacked",
+                                      "type": "function () pure returns (bytes memory)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": -1,
+                                          "type": "abi",
+                                          "value": "abi"
+                                        },
+                                        "id": 7707,
+                                        "name": "Identifier",
+                                        "src": "608:3:58"
+                                      }
+                                    ],
+                                    "id": 7708,
+                                    "name": "MemberAccess",
+                                    "src": "608:16:58"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "hexvalue": "6d65646961746f7242616c616e6365",
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "token": "string",
+                                      "type": "literal_string \"mediatorBalance\"",
+                                      "value": "mediatorBalance"
+                                    },
+                                    "id": 7709,
+                                    "name": "Literal",
+                                    "src": "625:17:58"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 7700,
+                                      "type": "address",
+                                      "value": "_token"
+                                    },
+                                    "id": 7710,
+                                    "name": "Identifier",
+                                    "src": "644:6:58"
+                                  }
+                                ],
+                                "id": 7711,
+                                "name": "FunctionCall",
+                                "src": "608:43:58"
+                              }
+                            ],
+                            "id": 7712,
+                            "name": "FunctionCall",
+                            "src": "598:54:58"
+                          }
+                        ],
+                        "id": 7713,
+                        "name": "IndexAccess",
+                        "src": "586:67:58"
+                      }
+                    ],
+                    "id": 7714,
+                    "name": "Return",
+                    "src": "579:74:58"
+                  }
+                ],
+                "id": 7715,
+                "name": "Block",
+                "src": "569:91:58"
+              }
+            ],
+            "id": 7716,
+            "name": "FunctionDefinition",
+            "src": "498:162:58"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_setMediatorBalance",
+              "scope": 7738,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Updates expected token balance of the contract.\n @param _token address of token contract.\n @param _balance the new token balance of the contract."
+                },
+                "id": 7717,
+                "name": "StructuredDocumentation",
+                "src": "666:181:58"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_token",
+                      "scope": 7737,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 7718,
+                        "name": "ElementaryTypeName",
+                        "src": "881:7:58"
+                      }
+                    ],
+                    "id": 7719,
+                    "name": "VariableDeclaration",
+                    "src": "881:14:58"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_balance",
+                      "scope": 7737,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 7720,
+                        "name": "ElementaryTypeName",
+                        "src": "897:7:58"
+                      }
+                    ],
+                    "id": 7721,
+                    "name": "VariableDeclaration",
+                    "src": "897:16:58"
+                  }
+                ],
+                "id": 7722,
+                "name": "ParameterList",
+                "src": "880:34:58"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 7723,
+                "name": "ParameterList",
+                "src": "924:0:58"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2890,
+                                  "type": "mapping(bytes32 => uint256)",
+                                  "value": "uintStorage"
+                                },
+                                "id": 7724,
+                                "name": "Identifier",
+                                "src": "934:11:58"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "bytes32",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_bytes_memory_ptr",
+                                          "typeString": "bytes memory"
+                                        }
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": -8,
+                                      "type": "function (bytes memory) pure returns (bytes32)",
+                                      "value": "keccak256"
+                                    },
+                                    "id": 7725,
+                                    "name": "Identifier",
+                                    "src": "946:9:58"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "isStructConstructorCall": false,
+                                      "lValueRequested": false,
+                                      "names": [
+                                        null
+                                      ],
+                                      "tryCall": false,
+                                      "type": "bytes memory",
+                                      "type_conversion": false
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": [
+                                            {
+                                              "typeIdentifier": "t_stringliteral_3db340e280667ee926fa8c51e8f9fcf88a0ff221a66d84d63b4778127d97d139",
+                                              "typeString": "literal_string \"mediatorBalance\""
+                                            },
+                                            {
+                                              "typeIdentifier": "t_address",
+                                              "typeString": "address"
+                                            }
+                                          ],
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "member_name": "encodePacked",
+                                          "type": "function () pure returns (bytes memory)"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": -1,
+                                              "type": "abi",
+                                              "value": "abi"
+                                            },
+                                            "id": 7726,
+                                            "name": "Identifier",
+                                            "src": "956:3:58"
+                                          }
+                                        ],
+                                        "id": 7727,
+                                        "name": "MemberAccess",
+                                        "src": "956:16:58"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "hexvalue": "6d65646961746f7242616c616e6365",
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "token": "string",
+                                          "type": "literal_string \"mediatorBalance\"",
+                                          "value": "mediatorBalance"
+                                        },
+                                        "id": 7728,
+                                        "name": "Literal",
+                                        "src": "973:17:58"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 7719,
+                                          "type": "address",
+                                          "value": "_token"
+                                        },
+                                        "id": 7729,
+                                        "name": "Identifier",
+                                        "src": "992:6:58"
+                                      }
+                                    ],
+                                    "id": 7730,
+                                    "name": "FunctionCall",
+                                    "src": "956:43:58"
+                                  }
+                                ],
+                                "id": 7731,
+                                "name": "FunctionCall",
+                                "src": "946:54:58"
+                              }
+                            ],
+                            "id": 7732,
+                            "name": "IndexAccess",
+                            "src": "934:67:58"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 7721,
+                              "type": "uint256",
+                              "value": "_balance"
+                            },
+                            "id": 7733,
+                            "name": "Identifier",
+                            "src": "1004:8:58"
+                          }
+                        ],
+                        "id": 7734,
+                        "name": "Assignment",
+                        "src": "934:78:58"
+                      }
+                    ],
+                    "id": 7735,
+                    "name": "ExpressionStatement",
+                    "src": "934:78:58"
+                  }
+                ],
+                "id": 7736,
+                "name": "Block",
+                "src": "924:95:58"
+              }
+            ],
+            "id": 7737,
+            "name": "FunctionDefinition",
+            "src": "852:167:58"
+          }
+        ],
+        "id": 7738,
+        "name": "ContractDefinition",
+        "src": "250:771:58"
+      }
+    ],
+    "id": 7739,
+    "name": "SourceUnit",
+    "src": "0:1022:58"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.5+commit.eb77ed08.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:31.322Z",
+  "devdoc": {
+    "details": "Functionality for storing expected mediator balance for native tokens.",
+    "kind": "dev",
+    "methods": {
+      "mediatorBalance(address)": {
+        "details": "Tells the expected token balance of the contract.",
+        "params": {
+          "_token": "address of token contract."
+        },
+        "returns": {
+          "_0": "the current tracked token balance of the contract."
+        }
+      }
+    },
+    "title": "MediatorBalanceStorage",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

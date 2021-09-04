@@ -1,0 +1,4352 @@
+{
+  "contractName": "BasicAMBMediator",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_bridgeContract",
+          "type": "address"
+        }
+      ],
+      "name": "setBridgeContract",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_mediatorContract",
+          "type": "address"
+        }
+      ],
+      "name": "setMediatorContractOnOtherSide",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "bridgeContract",
+      "outputs": [
+        {
+          "internalType": "contract IAMB",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "mediatorContractOnOtherSide",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.5+commit.eb77ed08\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"bridgeContract\",\"outputs\":[{\"internalType\":\"contract IAMB\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"mediatorContractOnOtherSide\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_bridgeContract\",\"type\":\"address\"}],\"name\":\"setBridgeContract\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_mediatorContract\",\"type\":\"address\"}],\"name\":\"setMediatorContractOnOtherSide\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Basic storage and methods needed by mediators to interact with AMB bridge.\",\"kind\":\"dev\",\"methods\":{\"bridgeContract()\":{\"details\":\"Get the AMB interface for the bridge contract address\",\"returns\":{\"_0\":\"AMB interface for the bridge contract address\"}},\"mediatorContractOnOtherSide()\":{\"details\":\"Tells the mediator contract address from the other network.\",\"returns\":{\"_0\":\"the address of the mediator contract.\"}},\"owner()\":{\"details\":\"Tells the address of the owner\",\"returns\":{\"_0\":\"the address of the owner\"}},\"setBridgeContract(address)\":{\"details\":\"Sets the AMB bridge contract address. Only the owner can call this method.\",\"params\":{\"_bridgeContract\":\"the address of the bridge contract.\"}},\"setMediatorContractOnOtherSide(address)\":{\"details\":\"Sets the mediator contract address from the other network. Only the owner can call this method.\",\"params\":{\"_mediatorContract\":\"the address of the mediator contract.\"}},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"the address to transfer ownership to.\"}}},\"title\":\"BasicAMBMediator\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/upgradeable_contracts/BasicAMBMediator.sol\":\"BasicAMBMediator\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0x698f929f1097637d051976b322a2d532c27df022b09010e8d091e2888a5ebdf8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4bd4c9419d1182612ef415c60a83a9039b227fccb799937963448114c0473b58\",\"dweb:/ipfs/Qmat1U571v55F5JDDHHX7igGcmLF8Ehk9CzsWpjbdx3RTH\"]},\"project:/contracts/interfaces/IAMB.sol\":{\"keccak256\":\"0xfe88f8c7f7bd2dfd7374f3e9884c5a50562ae8d7b2c378e7b3066bc27c2eafd9\",\"urls\":[\"bzz-raw://f4043937cf0f062f6acf5789841a9be5c29ed2772d6fa728803a755904bc592c\",\"dweb:/ipfs/QmcFtuwDQfLy9vZ4dNR8Ap2Bq9vPjgT7aHawioPQz2Sj8W\"]},\"project:/contracts/interfaces/IUpgradeabilityOwnerStorage.sol\":{\"keccak256\":\"0xf43326666f1abfec8a74b26eed4b56efea29a81865431a4ba4f38ec3f34dc67f\",\"urls\":[\"bzz-raw://e9e0deb3ba99bbc2476db4f41d81455b7bf1706cf5d0f8d1810000ac043e0815\",\"dweb:/ipfs/QmTHAqNbxjpTVHPCpYESuvaDAHUoWDeCgQAJie7ZyrF6Eg\"]},\"project:/contracts/upgradeability/EternalStorage.sol\":{\"keccak256\":\"0x69e24ec05ae65648eada7ff65aba3e7d90d72ad186f6d5bb9f01c54b0fa00b41\",\"urls\":[\"bzz-raw://a7c173e5610184402d8a7af1ef21e468c5805e4736bba5da0e8be3e4e4a29d48\",\"dweb:/ipfs/QmRakjK88qux7f6dg9Hpcw2PD3cMUPKTnj6YDC6yJ1caqE\"]},\"project:/contracts/upgradeable_contracts/BasicAMBMediator.sol\":{\"keccak256\":\"0x45a41cda946e6960f9ca3ddea2ae2cd598fd9e0b1a78eb167191457a7becabdf\",\"urls\":[\"bzz-raw://1b38df61c3d533b6b045de538202fa419eb33715ce342942434215eb3e027c4c\",\"dweb:/ipfs/QmQia9wT6SM3ozb6Witt5TqqfwbFZqKvYgRkWejYLmhwuu\"]},\"project:/contracts/upgradeable_contracts/Ownable.sol\":{\"keccak256\":\"0xaedb5428853f1589f728b3a1a6def0bb12fe13dcedbffeae8381f563048f528e\",\"urls\":[\"bzz-raw://cedb034e5f02c5dc5ee5059e5e07c46ba1d0d1780b1aa1fc934f9bc2814107e2\",\"dweb:/ipfs/QmPzj8LNRTjfChy2KkJqj8NSuiporjKjrd8NjMxAcyWsNq\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.7.5;\n\nimport \"./Ownable.sol\";\nimport \"../interfaces/IAMB.sol\";\nimport \"@openzeppelin/contracts/utils/Address.sol\";\n\n/**\n * @title BasicAMBMediator\n * @dev Basic storage and methods needed by mediators to interact with AMB bridge.\n */\nabstract contract BasicAMBMediator is Ownable {\n    bytes32 internal constant BRIDGE_CONTRACT = 0x811bbb11e8899da471f0e69a3ed55090fc90215227fc5fb1cb0d6e962ea7b74f; // keccak256(abi.encodePacked(\"bridgeContract\"))\n    bytes32 internal constant MEDIATOR_CONTRACT = 0x98aa806e31e94a687a31c65769cb99670064dd7f5a87526da075c5fb4eab9880; // keccak256(abi.encodePacked(\"mediatorContract\"))\n\n    /**\n     * @dev Throws if caller on the other side is not an associated mediator.\n     */\n    modifier onlyMediator {\n        _onlyMediator();\n        _;\n    }\n\n    /**\n     * @dev Internal function for reducing onlyMediator modifier bytecode overhead.\n     */\n    function _onlyMediator() internal view {\n        IAMB bridge = bridgeContract();\n        require(msg.sender == address(bridge));\n        require(bridge.messageSender() == mediatorContractOnOtherSide());\n    }\n\n    /**\n     * @dev Sets the AMB bridge contract address. Only the owner can call this method.\n     * @param _bridgeContract the address of the bridge contract.\n     */\n    function setBridgeContract(address _bridgeContract) external onlyOwner {\n        _setBridgeContract(_bridgeContract);\n    }\n\n    /**\n     * @dev Sets the mediator contract address from the other network. Only the owner can call this method.\n     * @param _mediatorContract the address of the mediator contract.\n     */\n    function setMediatorContractOnOtherSide(address _mediatorContract) external onlyOwner {\n        _setMediatorContractOnOtherSide(_mediatorContract);\n    }\n\n    /**\n     * @dev Get the AMB interface for the bridge contract address\n     * @return AMB interface for the bridge contract address\n     */\n    function bridgeContract() public view returns (IAMB) {\n        return IAMB(addressStorage[BRIDGE_CONTRACT]);\n    }\n\n    /**\n     * @dev Tells the mediator contract address from the other network.\n     * @return the address of the mediator contract.\n     */\n    function mediatorContractOnOtherSide() public view virtual returns (address) {\n        return addressStorage[MEDIATOR_CONTRACT];\n    }\n\n    /**\n     * @dev Stores a valid AMB bridge contract address.\n     * @param _bridgeContract the address of the bridge contract.\n     */\n    function _setBridgeContract(address _bridgeContract) internal {\n        require(Address.isContract(_bridgeContract));\n        addressStorage[BRIDGE_CONTRACT] = _bridgeContract;\n    }\n\n    /**\n     * @dev Stores the mediator contract address from the other network.\n     * @param _mediatorContract the address of the mediator contract.\n     */\n    function _setMediatorContractOnOtherSide(address _mediatorContract) internal {\n        addressStorage[MEDIATOR_CONTRACT] = _mediatorContract;\n    }\n\n    /**\n     * @dev Tells the id of the message originated on the other network.\n     * @return the id of the message originated on the other network.\n     */\n    function messageId() internal view returns (bytes32) {\n        return bridgeContract().messageId();\n    }\n\n    /**\n     * @dev Tells the maximum gas limit that a message can use on its execution by the AMB bridge on the other network.\n     * @return the maximum gas limit value.\n     */\n    function maxGasPerTx() internal view returns (uint256) {\n        return bridgeContract().maxGasPerTx();\n    }\n\n    function _passMessage(bytes memory _data, bool _useOracleLane) internal virtual returns (bytes32);\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/omnibridge/contracts/upgradeable_contracts/BasicAMBMediator.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/upgradeable_contracts/BasicAMBMediator.sol",
+    "exportedSymbols": {
+      "Address": [
+        690
+      ],
+      "BasicAMBMediator": [
+        3363
+      ],
+      "EternalStorage": [
+        2911
+      ],
+      "IAMB": [
+        988
+      ],
+      "IUpgradeabilityOwnerStorage": [
+        1327
+      ],
+      "Ownable": [
+        5648
+      ]
+    },
+    "id": 3364,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 3197,
+        "literals": [
+          "solidity",
+          "0.7",
+          ".5"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:39"
+      },
+      {
+        "absolutePath": "project:/contracts/upgradeable_contracts/Ownable.sol",
+        "file": "./Ownable.sol",
+        "id": 3198,
+        "nodeType": "ImportDirective",
+        "scope": 3364,
+        "sourceUnit": 5649,
+        "src": "24:23:39",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/interfaces/IAMB.sol",
+        "file": "../interfaces/IAMB.sol",
+        "id": 3199,
+        "nodeType": "ImportDirective",
+        "scope": 3364,
+        "sourceUnit": 989,
+        "src": "48:32:39",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts/utils/Address.sol",
+        "file": "@openzeppelin/contracts/utils/Address.sol",
+        "id": 3200,
+        "nodeType": "ImportDirective",
+        "scope": 3364,
+        "sourceUnit": 691,
+        "src": "81:51:39",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 3202,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 5648,
+              "src": "290:7:39",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$5648",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 3203,
+            "nodeType": "InheritanceSpecifier",
+            "src": "290:7:39"
+          }
+        ],
+        "contractDependencies": [
+          2911,
+          5648
+        ],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 3201,
+          "nodeType": "StructuredDocumentation",
+          "src": "134:117:39",
+          "text": " @title BasicAMBMediator\n @dev Basic storage and methods needed by mediators to interact with AMB bridge."
+        },
+        "fullyImplemented": false,
+        "id": 3363,
+        "linearizedBaseContracts": [
+          3363,
+          5648,
+          2911
+        ],
+        "name": "BasicAMBMediator",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 3206,
+            "mutability": "constant",
+            "name": "BRIDGE_CONTRACT",
+            "nodeType": "VariableDeclaration",
+            "scope": 3363,
+            "src": "304:110:39",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes32",
+              "typeString": "bytes32"
+            },
+            "typeName": {
+              "id": 3204,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "304:7:39",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes32",
+                "typeString": "bytes32"
+              }
+            },
+            "value": {
+              "hexValue": "307838313162626231316538383939646134373166306536396133656435353039306663393032313532323766633566623163623064366539363265613762373466",
+              "id": 3205,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "348:66:39",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_58397353447365387173751670041134285710087346745216472083595775031126809622351_by_1",
+                "typeString": "int_const 5839...(69 digits omitted)...2351"
+              },
+              "value": "0x811bbb11e8899da471f0e69a3ed55090fc90215227fc5fb1cb0d6e962ea7b74f"
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": true,
+            "id": 3209,
+            "mutability": "constant",
+            "name": "MEDIATOR_CONTRACT",
+            "nodeType": "VariableDeclaration",
+            "scope": 3363,
+            "src": "469:112:39",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes32",
+              "typeString": "bytes32"
+            },
+            "typeName": {
+              "id": 3207,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "469:7:39",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes32",
+                "typeString": "bytes32"
+              }
+            },
+            "value": {
+              "hexValue": "307839386161383036653331653934613638376133316336353736396362393936373030363464643766356138373532366461303735633566623465616239383830",
+              "id": 3208,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "515:66:39",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_69052803380051611448962918803519209080668811177668675186667959837647576995968_by_1",
+                "typeString": "int_const 6905...(69 digits omitted)...5968"
+              },
+              "value": "0x98aa806e31e94a687a31c65769cb99670064dd7f5a87526da075c5fb4eab9880"
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 3216,
+              "nodeType": "Block",
+              "src": "755:43:39",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 3212,
+                      "name": "_onlyMediator",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3246,
+                      "src": "765:13:39",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$__$returns$__$",
+                        "typeString": "function () view"
+                      }
+                    },
+                    "id": 3213,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "765:15:39",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 3214,
+                  "nodeType": "ExpressionStatement",
+                  "src": "765:15:39"
+                },
+                {
+                  "id": 3215,
+                  "nodeType": "PlaceholderStatement",
+                  "src": "790:1:39"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 3210,
+              "nodeType": "StructuredDocumentation",
+              "src": "639:89:39",
+              "text": " @dev Throws if caller on the other side is not an associated mediator."
+            },
+            "id": 3217,
+            "name": "onlyMediator",
+            "nodeType": "ModifierDefinition",
+            "parameters": {
+              "id": 3211,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "755:0:39"
+            },
+            "src": "733:65:39",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 3245,
+              "nodeType": "Block",
+              "src": "943:169:39",
+              "statements": [
+                {
+                  "assignments": [
+                    3222
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 3222,
+                      "mutability": "mutable",
+                      "name": "bridge",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 3245,
+                      "src": "953:11:39",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_IAMB_$988",
+                        "typeString": "contract IAMB"
+                      },
+                      "typeName": {
+                        "id": 3221,
+                        "name": "IAMB",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 988,
+                        "src": "953:4:39",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IAMB_$988",
+                          "typeString": "contract IAMB"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 3225,
+                  "initialValue": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 3223,
+                      "name": "bridgeContract",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3285,
+                      "src": "967:14:39",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$__$returns$_t_contract$_IAMB_$988_$",
+                        "typeString": "function () view returns (contract IAMB)"
+                      }
+                    },
+                    "id": 3224,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "967:16:39",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IAMB_$988",
+                      "typeString": "contract IAMB"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "953:30:39"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 3233,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "expression": {
+                            "id": 3227,
+                            "name": "msg",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": -15,
+                            "src": "1001:3:39",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_magic_message",
+                              "typeString": "msg"
+                            }
+                          },
+                          "id": 3228,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "sender",
+                          "nodeType": "MemberAccess",
+                          "src": "1001:10:39",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address_payable",
+                            "typeString": "address payable"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "arguments": [
+                            {
+                              "id": 3231,
+                              "name": "bridge",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 3222,
+                              "src": "1023:6:39",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_IAMB_$988",
+                                "typeString": "contract IAMB"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_contract$_IAMB_$988",
+                                "typeString": "contract IAMB"
+                              }
+                            ],
+                            "id": 3230,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "nodeType": "ElementaryTypeNameExpression",
+                            "src": "1015:7:39",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_address_$",
+                              "typeString": "type(address)"
+                            },
+                            "typeName": {
+                              "id": 3229,
+                              "name": "address",
+                              "nodeType": "ElementaryTypeName",
+                              "src": "1015:7:39",
+                              "typeDescriptions": {}
+                            }
+                          },
+                          "id": 3232,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "typeConversion",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1015:15:39",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "1001:29:39",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 3226,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        -18,
+                        -18
+                      ],
+                      "referencedDeclaration": -18,
+                      "src": "993:7:39",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 3234,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "993:38:39",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 3235,
+                  "nodeType": "ExpressionStatement",
+                  "src": "993:38:39"
+                },
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        },
+                        "id": 3242,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "arguments": [],
+                          "expression": {
+                            "argumentTypes": [],
+                            "expression": {
+                              "id": 3237,
+                              "name": "bridge",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 3222,
+                              "src": "1049:6:39",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_contract$_IAMB_$988",
+                                "typeString": "contract IAMB"
+                              }
+                            },
+                            "id": 3238,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "messageSender",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 907,
+                            "src": "1049:20:39",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                              "typeString": "function () view external returns (address)"
+                            }
+                          },
+                          "id": 3239,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1049:22:39",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "==",
+                        "rightExpression": {
+                          "arguments": [],
+                          "expression": {
+                            "argumentTypes": [],
+                            "id": 3240,
+                            "name": "mediatorContractOnOtherSide",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3296,
+                            "src": "1075:27:39",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_view$__$returns$_t_address_$",
+                              "typeString": "function () view returns (address)"
+                            }
+                          },
+                          "id": 3241,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1075:29:39",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "src": "1049:55:39",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 3236,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        -18,
+                        -18
+                      ],
+                      "referencedDeclaration": -18,
+                      "src": "1041:7:39",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 3243,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1041:64:39",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 3244,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1041:64:39"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 3218,
+              "nodeType": "StructuredDocumentation",
+              "src": "804:95:39",
+              "text": " @dev Internal function for reducing onlyMediator modifier bytecode overhead."
+            },
+            "id": 3246,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_onlyMediator",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3219,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "926:2:39"
+            },
+            "returnParameters": {
+              "id": 3220,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "943:0:39"
+            },
+            "scope": 3363,
+            "src": "904:208:39",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 3258,
+              "nodeType": "Block",
+              "src": "1358:52:39",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 3255,
+                        "name": "_bridgeContract",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3249,
+                        "src": "1387:15:39",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 3254,
+                      "name": "_setBridgeContract",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3316,
+                      "src": "1368:18:39",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 3256,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1368:35:39",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 3257,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1368:35:39"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 3247,
+              "nodeType": "StructuredDocumentation",
+              "src": "1118:164:39",
+              "text": " @dev Sets the AMB bridge contract address. Only the owner can call this method.\n @param _bridgeContract the address of the bridge contract."
+            },
+            "functionSelector": "0b26cf66",
+            "id": 3259,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 3252,
+                "modifierName": {
+                  "id": 3251,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 5529,
+                  "src": "1348:9:39",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1348:9:39"
+              }
+            ],
+            "name": "setBridgeContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3250,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3249,
+                  "mutability": "mutable",
+                  "name": "_bridgeContract",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3259,
+                  "src": "1314:23:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3248,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1314:7:39",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1313:25:39"
+            },
+            "returnParameters": {
+              "id": 3253,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1358:0:39"
+            },
+            "scope": 3363,
+            "src": "1287:123:39",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 3271,
+              "nodeType": "Block",
+              "src": "1696:67:39",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 3268,
+                        "name": "_mediatorContract",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3262,
+                        "src": "1738:17:39",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 3267,
+                      "name": "_setMediatorContractOnOtherSide",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3329,
+                      "src": "1706:31:39",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 3269,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1706:50:39",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 3270,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1706:50:39"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 3260,
+              "nodeType": "StructuredDocumentation",
+              "src": "1416:189:39",
+              "text": " @dev Sets the mediator contract address from the other network. Only the owner can call this method.\n @param _mediatorContract the address of the mediator contract."
+            },
+            "functionSelector": "6e5d6bea",
+            "id": 3272,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 3265,
+                "modifierName": {
+                  "id": 3264,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 5529,
+                  "src": "1686:9:39",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "1686:9:39"
+              }
+            ],
+            "name": "setMediatorContractOnOtherSide",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3263,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3262,
+                  "mutability": "mutable",
+                  "name": "_mediatorContract",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3272,
+                  "src": "1650:25:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3261,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1650:7:39",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1649:27:39"
+            },
+            "returnParameters": {
+              "id": 3266,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1696:0:39"
+            },
+            "scope": 3363,
+            "src": "1610:153:39",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 3284,
+              "nodeType": "Block",
+              "src": "1965:61:39",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "baseExpression": {
+                          "id": 3279,
+                          "name": "addressStorage",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2898,
+                          "src": "1987:14:39",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                            "typeString": "mapping(bytes32 => address)"
+                          }
+                        },
+                        "id": 3281,
+                        "indexExpression": {
+                          "id": 3280,
+                          "name": "BRIDGE_CONTRACT",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3206,
+                          "src": "2002:15:39",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1987:31:39",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 3278,
+                      "name": "IAMB",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 988,
+                      "src": "1982:4:39",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IAMB_$988_$",
+                        "typeString": "type(contract IAMB)"
+                      }
+                    },
+                    "id": 3282,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1982:37:39",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IAMB_$988",
+                      "typeString": "contract IAMB"
+                    }
+                  },
+                  "functionReturnParameters": 3277,
+                  "id": 3283,
+                  "nodeType": "Return",
+                  "src": "1975:44:39"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 3273,
+              "nodeType": "StructuredDocumentation",
+              "src": "1769:138:39",
+              "text": " @dev Get the AMB interface for the bridge contract address\n @return AMB interface for the bridge contract address"
+            },
+            "functionSelector": "cd596583",
+            "id": 3285,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "bridgeContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3274,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1935:2:39"
+            },
+            "returnParameters": {
+              "id": 3277,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3276,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3285,
+                  "src": "1959:4:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IAMB_$988",
+                    "typeString": "contract IAMB"
+                  },
+                  "typeName": {
+                    "id": 3275,
+                    "name": "IAMB",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 988,
+                    "src": "1959:4:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IAMB_$988",
+                      "typeString": "contract IAMB"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1958:6:39"
+            },
+            "scope": 3363,
+            "src": "1912:114:39",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 3295,
+              "nodeType": "Block",
+              "src": "2250:57:39",
+              "statements": [
+                {
+                  "expression": {
+                    "baseExpression": {
+                      "id": 3291,
+                      "name": "addressStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2898,
+                      "src": "2267:14:39",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                        "typeString": "mapping(bytes32 => address)"
+                      }
+                    },
+                    "id": 3293,
+                    "indexExpression": {
+                      "id": 3292,
+                      "name": "MEDIATOR_CONTRACT",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3209,
+                      "src": "2282:17:39",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "2267:33:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "functionReturnParameters": 3290,
+                  "id": 3294,
+                  "nodeType": "Return",
+                  "src": "2260:40:39"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 3286,
+              "nodeType": "StructuredDocumentation",
+              "src": "2032:136:39",
+              "text": " @dev Tells the mediator contract address from the other network.\n @return the address of the mediator contract."
+            },
+            "functionSelector": "871c0760",
+            "id": 3296,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "mediatorContractOnOtherSide",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3287,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2209:2:39"
+            },
+            "returnParameters": {
+              "id": 3290,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3289,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3296,
+                  "src": "2241:7:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3288,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2241:7:39",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2240:9:39"
+            },
+            "scope": 3363,
+            "src": "2173:134:39",
+            "stateMutability": "view",
+            "virtual": true,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 3315,
+              "nodeType": "Block",
+              "src": "2513:120:39",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "id": 3305,
+                            "name": "_bridgeContract",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3299,
+                            "src": "2550:15:39",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "expression": {
+                            "id": 3303,
+                            "name": "Address",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 690,
+                            "src": "2531:7:39",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_contract$_Address_$690_$",
+                              "typeString": "type(library Address)"
+                            }
+                          },
+                          "id": 3304,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "isContract",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 515,
+                          "src": "2531:18:39",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$",
+                            "typeString": "function (address) view returns (bool)"
+                          }
+                        },
+                        "id": 3306,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "2531:35:39",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 3302,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        -18,
+                        -18
+                      ],
+                      "referencedDeclaration": -18,
+                      "src": "2523:7:39",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 3307,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2523:44:39",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 3308,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2523:44:39"
+                },
+                {
+                  "expression": {
+                    "id": 3313,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 3309,
+                        "name": "addressStorage",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2898,
+                        "src": "2577:14:39",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                          "typeString": "mapping(bytes32 => address)"
+                        }
+                      },
+                      "id": 3311,
+                      "indexExpression": {
+                        "id": 3310,
+                        "name": "BRIDGE_CONTRACT",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3206,
+                        "src": "2592:15:39",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "2577:31:39",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 3312,
+                      "name": "_bridgeContract",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3299,
+                      "src": "2611:15:39",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "2577:49:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 3314,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2577:49:39"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 3297,
+              "nodeType": "StructuredDocumentation",
+              "src": "2313:133:39",
+              "text": " @dev Stores a valid AMB bridge contract address.\n @param _bridgeContract the address of the bridge contract."
+            },
+            "id": 3316,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_setBridgeContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3300,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3299,
+                  "mutability": "mutable",
+                  "name": "_bridgeContract",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3316,
+                  "src": "2479:23:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3298,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2479:7:39",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2478:25:39"
+            },
+            "returnParameters": {
+              "id": 3301,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2513:0:39"
+            },
+            "scope": 3363,
+            "src": "2451:182:39",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 3328,
+              "nodeType": "Block",
+              "src": "2875:70:39",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 3326,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 3322,
+                        "name": "addressStorage",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2898,
+                        "src": "2885:14:39",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                          "typeString": "mapping(bytes32 => address)"
+                        }
+                      },
+                      "id": 3324,
+                      "indexExpression": {
+                        "id": 3323,
+                        "name": "MEDIATOR_CONTRACT",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 3209,
+                        "src": "2900:17:39",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "2885:33:39",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 3325,
+                      "name": "_mediatorContract",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 3319,
+                      "src": "2921:17:39",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "2885:53:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 3327,
+                  "nodeType": "ExpressionStatement",
+                  "src": "2885:53:39"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 3317,
+              "nodeType": "StructuredDocumentation",
+              "src": "2639:154:39",
+              "text": " @dev Stores the mediator contract address from the other network.\n @param _mediatorContract the address of the mediator contract."
+            },
+            "id": 3329,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_setMediatorContractOnOtherSide",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3320,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3319,
+                  "mutability": "mutable",
+                  "name": "_mediatorContract",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3329,
+                  "src": "2839:25:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3318,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2839:7:39",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2838:27:39"
+            },
+            "returnParameters": {
+              "id": 3321,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2875:0:39"
+            },
+            "scope": 3363,
+            "src": "2798:147:39",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 3340,
+              "nodeType": "Block",
+              "src": "3163:52:39",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "arguments": [],
+                        "expression": {
+                          "argumentTypes": [],
+                          "id": 3335,
+                          "name": "bridgeContract",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3285,
+                          "src": "3180:14:39",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_view$__$returns$_t_contract$_IAMB_$988_$",
+                            "typeString": "function () view returns (contract IAMB)"
+                          }
+                        },
+                        "id": 3336,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "3180:16:39",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IAMB_$988",
+                          "typeString": "contract IAMB"
+                        }
+                      },
+                      "id": 3337,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "messageId",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 922,
+                      "src": "3180:26:39",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$__$returns$_t_bytes32_$",
+                        "typeString": "function () view external returns (bytes32)"
+                      }
+                    },
+                    "id": 3338,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "3180:28:39",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "functionReturnParameters": 3334,
+                  "id": 3339,
+                  "nodeType": "Return",
+                  "src": "3173:35:39"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 3330,
+              "nodeType": "StructuredDocumentation",
+              "src": "2951:154:39",
+              "text": " @dev Tells the id of the message originated on the other network.\n @return the id of the message originated on the other network."
+            },
+            "id": 3341,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "messageId",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3331,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3128:2:39"
+            },
+            "returnParameters": {
+              "id": 3334,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3333,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3341,
+                  "src": "3154:7:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 3332,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3154:7:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3153:9:39"
+            },
+            "scope": 3363,
+            "src": "3110:105:39",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 3352,
+              "nodeType": "Block",
+              "src": "3456:54:39",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "expression": {
+                        "arguments": [],
+                        "expression": {
+                          "argumentTypes": [],
+                          "id": 3347,
+                          "name": "bridgeContract",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 3285,
+                          "src": "3473:14:39",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_view$__$returns$_t_contract$_IAMB_$988_$",
+                            "typeString": "function () view returns (contract IAMB)"
+                          }
+                        },
+                        "id": 3348,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "3473:16:39",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_IAMB_$988",
+                          "typeString": "contract IAMB"
+                        }
+                      },
+                      "id": 3349,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "maxGasPerTx",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 912,
+                      "src": "3473:28:39",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
+                        "typeString": "function () view external returns (uint256)"
+                      }
+                    },
+                    "id": 3350,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "3473:30:39",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 3346,
+                  "id": 3351,
+                  "nodeType": "Return",
+                  "src": "3466:37:39"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 3342,
+              "nodeType": "StructuredDocumentation",
+              "src": "3221:175:39",
+              "text": " @dev Tells the maximum gas limit that a message can use on its execution by the AMB bridge on the other network.\n @return the maximum gas limit value."
+            },
+            "id": 3353,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "maxGasPerTx",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3343,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3421:2:39"
+            },
+            "returnParameters": {
+              "id": 3346,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3345,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3353,
+                  "src": "3447:7:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3344,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3447:7:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3446:9:39"
+            },
+            "scope": 3363,
+            "src": "3401:109:39",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "id": 3362,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_passMessage",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3358,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3355,
+                  "mutability": "mutable",
+                  "name": "_data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3362,
+                  "src": "3538:18:39",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 3354,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3538:5:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3357,
+                  "mutability": "mutable",
+                  "name": "_useOracleLane",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3362,
+                  "src": "3558:19:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 3356,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3558:4:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3537:41:39"
+            },
+            "returnParameters": {
+              "id": 3361,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3360,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3362,
+                  "src": "3605:7:39",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 3359,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3605:7:39",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3604:9:39"
+            },
+            "scope": 3363,
+            "src": "3516:98:39",
+            "stateMutability": "nonpayable",
+            "virtual": true,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 3364,
+        "src": "252:3364:39"
+      }
+    ],
+    "src": "0:3617:39"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/upgradeable_contracts/BasicAMBMediator.sol",
+      "exportedSymbols": {
+        "Address": [
+          690
+        ],
+        "BasicAMBMediator": [
+          3363
+        ],
+        "EternalStorage": [
+          2911
+        ],
+        "IAMB": [
+          988
+        ],
+        "IUpgradeabilityOwnerStorage": [
+          1327
+        ],
+        "Ownable": [
+          5648
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.7",
+            ".5"
+          ]
+        },
+        "id": 3197,
+        "name": "PragmaDirective",
+        "src": "0:22:39"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 5649,
+          "absolutePath": "project:/contracts/upgradeable_contracts/Ownable.sol",
+          "file": "./Ownable.sol",
+          "scope": 3364,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 3198,
+        "name": "ImportDirective",
+        "src": "24:23:39"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 989,
+          "absolutePath": "project:/contracts/interfaces/IAMB.sol",
+          "file": "../interfaces/IAMB.sol",
+          "scope": 3364,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 3199,
+        "name": "ImportDirective",
+        "src": "48:32:39"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 691,
+          "absolutePath": "@openzeppelin/contracts/utils/Address.sol",
+          "file": "@openzeppelin/contracts/utils/Address.sol",
+          "scope": 3364,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 3200,
+        "name": "ImportDirective",
+        "src": "81:51:39"
+      },
+      {
+        "attributes": {
+          "abstract": true,
+          "contractDependencies": [
+            2911,
+            5648
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            3363,
+            5648,
+            2911
+          ],
+          "name": "BasicAMBMediator",
+          "scope": 3364
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": " @title BasicAMBMediator\n @dev Basic storage and methods needed by mediators to interact with AMB bridge."
+            },
+            "id": 3201,
+            "name": "StructuredDocumentation",
+            "src": "134:117:39"
+          },
+          {
+            "attributes": {},
+            "children": [
+              {
+                "attributes": {
+                  "name": "Ownable",
+                  "referencedDeclaration": 5648,
+                  "type": "contract Ownable"
+                },
+                "id": 3202,
+                "name": "UserDefinedTypeName",
+                "src": "290:7:39"
+              }
+            ],
+            "id": 3203,
+            "name": "InheritanceSpecifier",
+            "src": "290:7:39"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "mutability": "constant",
+              "name": "BRIDGE_CONTRACT",
+              "scope": 3363,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "bytes32",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "bytes32",
+                  "type": "bytes32"
+                },
+                "id": 3204,
+                "name": "ElementaryTypeName",
+                "src": "304:7:39"
+              },
+              {
+                "attributes": {
+                  "hexvalue": "307838313162626231316538383939646134373166306536396133656435353039306663393032313532323766633566623163623064366539363265613762373466",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "token": "number",
+                  "type": "int_const 5839...(69 digits omitted)...2351",
+                  "value": "0x811bbb11e8899da471f0e69a3ed55090fc90215227fc5fb1cb0d6e962ea7b74f"
+                },
+                "id": 3205,
+                "name": "Literal",
+                "src": "348:66:39"
+              }
+            ],
+            "id": 3206,
+            "name": "VariableDeclaration",
+            "src": "304:110:39"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "mutability": "constant",
+              "name": "MEDIATOR_CONTRACT",
+              "scope": 3363,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "bytes32",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "bytes32",
+                  "type": "bytes32"
+                },
+                "id": 3207,
+                "name": "ElementaryTypeName",
+                "src": "469:7:39"
+              },
+              {
+                "attributes": {
+                  "hexvalue": "307839386161383036653331653934613638376133316336353736396362393936373030363464643766356138373532366461303735633566623465616239383830",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "token": "number",
+                  "type": "int_const 6905...(69 digits omitted)...5968",
+                  "value": "0x98aa806e31e94a687a31c65769cb99670064dd7f5a87526da075c5fb4eab9880"
+                },
+                "id": 3208,
+                "name": "Literal",
+                "src": "515:66:39"
+              }
+            ],
+            "id": 3209,
+            "name": "VariableDeclaration",
+            "src": "469:112:39"
+          },
+          {
+            "attributes": {
+              "name": "onlyMediator",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Throws if caller on the other side is not an associated mediator."
+                },
+                "id": 3210,
+                "name": "StructuredDocumentation",
+                "src": "639:89:39"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3211,
+                "name": "ParameterList",
+                "src": "755:0:39"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "arguments": [
+                            null
+                          ],
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                null
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3246,
+                              "type": "function () view",
+                              "value": "_onlyMediator"
+                            },
+                            "id": 3212,
+                            "name": "Identifier",
+                            "src": "765:13:39"
+                          }
+                        ],
+                        "id": 3213,
+                        "name": "FunctionCall",
+                        "src": "765:15:39"
+                      }
+                    ],
+                    "id": 3214,
+                    "name": "ExpressionStatement",
+                    "src": "765:15:39"
+                  },
+                  {
+                    "id": 3215,
+                    "name": "PlaceholderStatement",
+                    "src": "790:1:39"
+                  }
+                ],
+                "id": 3216,
+                "name": "Block",
+                "src": "755:43:39"
+              }
+            ],
+            "id": 3217,
+            "name": "ModifierDefinition",
+            "src": "733:65:39"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_onlyMediator",
+              "scope": 3363,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Internal function for reducing onlyMediator modifier bytecode overhead."
+                },
+                "id": 3218,
+                "name": "StructuredDocumentation",
+                "src": "804:95:39"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3219,
+                "name": "ParameterList",
+                "src": "926:2:39"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3220,
+                "name": "ParameterList",
+                "src": "943:0:39"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        3222
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "mutability": "mutable",
+                          "name": "bridge",
+                          "scope": 3245,
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "type": "contract IAMB",
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "IAMB",
+                              "referencedDeclaration": 988,
+                              "type": "contract IAMB"
+                            },
+                            "id": 3221,
+                            "name": "UserDefinedTypeName",
+                            "src": "953:4:39"
+                          }
+                        ],
+                        "id": 3222,
+                        "name": "VariableDeclaration",
+                        "src": "953:11:39"
+                      },
+                      {
+                        "attributes": {
+                          "arguments": [
+                            null
+                          ],
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "contract IAMB",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                null
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3285,
+                              "type": "function () view returns (contract IAMB)",
+                              "value": "bridgeContract"
+                            },
+                            "id": 3223,
+                            "name": "Identifier",
+                            "src": "967:14:39"
+                          }
+                        ],
+                        "id": 3224,
+                        "name": "FunctionCall",
+                        "src": "967:16:39"
+                      }
+                    ],
+                    "id": 3225,
+                    "name": "VariableDeclarationStatement",
+                    "src": "953:30:39"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                -18,
+                                -18
+                              ],
+                              "referencedDeclaration": -18,
+                              "type": "function (bool) pure",
+                              "value": "require"
+                            },
+                            "id": 3226,
+                            "name": "Identifier",
+                            "src": "993:7:39"
+                          },
+                          {
+                            "attributes": {
+                              "commonType": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "==",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "sender",
+                                  "type": "address payable"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": -15,
+                                      "type": "msg",
+                                      "value": "msg"
+                                    },
+                                    "id": 3227,
+                                    "name": "Identifier",
+                                    "src": "1001:3:39"
+                                  }
+                                ],
+                                "id": 3228,
+                                "name": "MemberAccess",
+                                "src": "1001:10:39"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "address",
+                                  "type_conversion": true
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_contract$_IAMB_$988",
+                                          "typeString": "contract IAMB"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "type": "type(address)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "name": "address"
+                                        },
+                                        "id": 3229,
+                                        "name": "ElementaryTypeName",
+                                        "src": "1015:7:39"
+                                      }
+                                    ],
+                                    "id": 3230,
+                                    "name": "ElementaryTypeNameExpression",
+                                    "src": "1015:7:39"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 3222,
+                                      "type": "contract IAMB",
+                                      "value": "bridge"
+                                    },
+                                    "id": 3231,
+                                    "name": "Identifier",
+                                    "src": "1023:6:39"
+                                  }
+                                ],
+                                "id": 3232,
+                                "name": "FunctionCall",
+                                "src": "1015:15:39"
+                              }
+                            ],
+                            "id": 3233,
+                            "name": "BinaryOperation",
+                            "src": "1001:29:39"
+                          }
+                        ],
+                        "id": 3234,
+                        "name": "FunctionCall",
+                        "src": "993:38:39"
+                      }
+                    ],
+                    "id": 3235,
+                    "name": "ExpressionStatement",
+                    "src": "993:38:39"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                -18,
+                                -18
+                              ],
+                              "referencedDeclaration": -18,
+                              "type": "function (bool) pure",
+                              "value": "require"
+                            },
+                            "id": 3236,
+                            "name": "Identifier",
+                            "src": "1041:7:39"
+                          },
+                          {
+                            "attributes": {
+                              "commonType": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "==",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "arguments": [
+                                    null
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "address",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        null
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "messageSender",
+                                      "referencedDeclaration": 907,
+                                      "type": "function () view external returns (address)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 3222,
+                                          "type": "contract IAMB",
+                                          "value": "bridge"
+                                        },
+                                        "id": 3237,
+                                        "name": "Identifier",
+                                        "src": "1049:6:39"
+                                      }
+                                    ],
+                                    "id": 3238,
+                                    "name": "MemberAccess",
+                                    "src": "1049:20:39"
+                                  }
+                                ],
+                                "id": 3239,
+                                "name": "FunctionCall",
+                                "src": "1049:22:39"
+                              },
+                              {
+                                "attributes": {
+                                  "arguments": [
+                                    null
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "address",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        null
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 3296,
+                                      "type": "function () view returns (address)",
+                                      "value": "mediatorContractOnOtherSide"
+                                    },
+                                    "id": 3240,
+                                    "name": "Identifier",
+                                    "src": "1075:27:39"
+                                  }
+                                ],
+                                "id": 3241,
+                                "name": "FunctionCall",
+                                "src": "1075:29:39"
+                              }
+                            ],
+                            "id": 3242,
+                            "name": "BinaryOperation",
+                            "src": "1049:55:39"
+                          }
+                        ],
+                        "id": 3243,
+                        "name": "FunctionCall",
+                        "src": "1041:64:39"
+                      }
+                    ],
+                    "id": 3244,
+                    "name": "ExpressionStatement",
+                    "src": "1041:64:39"
+                  }
+                ],
+                "id": 3245,
+                "name": "Block",
+                "src": "943:169:39"
+              }
+            ],
+            "id": 3246,
+            "name": "FunctionDefinition",
+            "src": "904:208:39"
+          },
+          {
+            "attributes": {
+              "functionSelector": "0b26cf66",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "name": "setBridgeContract",
+              "scope": 3363,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Sets the AMB bridge contract address. Only the owner can call this method.\n @param _bridgeContract the address of the bridge contract."
+                },
+                "id": 3247,
+                "name": "StructuredDocumentation",
+                "src": "1118:164:39"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_bridgeContract",
+                      "scope": 3259,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 3248,
+                        "name": "ElementaryTypeName",
+                        "src": "1314:7:39"
+                      }
+                    ],
+                    "id": 3249,
+                    "name": "VariableDeclaration",
+                    "src": "1314:23:39"
+                  }
+                ],
+                "id": 3250,
+                "name": "ParameterList",
+                "src": "1313:25:39"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3253,
+                "name": "ParameterList",
+                "src": "1358:0:39"
+              },
+              {
+                "attributes": {},
+                "children": [
+                  {
+                    "attributes": {
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 5529,
+                      "type": "modifier ()",
+                      "value": "onlyOwner"
+                    },
+                    "id": 3251,
+                    "name": "Identifier",
+                    "src": "1348:9:39"
+                  }
+                ],
+                "id": 3252,
+                "name": "ModifierInvocation",
+                "src": "1348:9:39"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3316,
+                              "type": "function (address)",
+                              "value": "_setBridgeContract"
+                            },
+                            "id": 3254,
+                            "name": "Identifier",
+                            "src": "1368:18:39"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3249,
+                              "type": "address",
+                              "value": "_bridgeContract"
+                            },
+                            "id": 3255,
+                            "name": "Identifier",
+                            "src": "1387:15:39"
+                          }
+                        ],
+                        "id": 3256,
+                        "name": "FunctionCall",
+                        "src": "1368:35:39"
+                      }
+                    ],
+                    "id": 3257,
+                    "name": "ExpressionStatement",
+                    "src": "1368:35:39"
+                  }
+                ],
+                "id": 3258,
+                "name": "Block",
+                "src": "1358:52:39"
+              }
+            ],
+            "id": 3259,
+            "name": "FunctionDefinition",
+            "src": "1287:123:39"
+          },
+          {
+            "attributes": {
+              "functionSelector": "6e5d6bea",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "name": "setMediatorContractOnOtherSide",
+              "scope": 3363,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Sets the mediator contract address from the other network. Only the owner can call this method.\n @param _mediatorContract the address of the mediator contract."
+                },
+                "id": 3260,
+                "name": "StructuredDocumentation",
+                "src": "1416:189:39"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_mediatorContract",
+                      "scope": 3272,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 3261,
+                        "name": "ElementaryTypeName",
+                        "src": "1650:7:39"
+                      }
+                    ],
+                    "id": 3262,
+                    "name": "VariableDeclaration",
+                    "src": "1650:25:39"
+                  }
+                ],
+                "id": 3263,
+                "name": "ParameterList",
+                "src": "1649:27:39"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3266,
+                "name": "ParameterList",
+                "src": "1696:0:39"
+              },
+              {
+                "attributes": {},
+                "children": [
+                  {
+                    "attributes": {
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 5529,
+                      "type": "modifier ()",
+                      "value": "onlyOwner"
+                    },
+                    "id": 3264,
+                    "name": "Identifier",
+                    "src": "1686:9:39"
+                  }
+                ],
+                "id": 3265,
+                "name": "ModifierInvocation",
+                "src": "1686:9:39"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3329,
+                              "type": "function (address)",
+                              "value": "_setMediatorContractOnOtherSide"
+                            },
+                            "id": 3267,
+                            "name": "Identifier",
+                            "src": "1706:31:39"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3262,
+                              "type": "address",
+                              "value": "_mediatorContract"
+                            },
+                            "id": 3268,
+                            "name": "Identifier",
+                            "src": "1738:17:39"
+                          }
+                        ],
+                        "id": 3269,
+                        "name": "FunctionCall",
+                        "src": "1706:50:39"
+                      }
+                    ],
+                    "id": 3270,
+                    "name": "ExpressionStatement",
+                    "src": "1706:50:39"
+                  }
+                ],
+                "id": 3271,
+                "name": "Block",
+                "src": "1696:67:39"
+              }
+            ],
+            "id": 3272,
+            "name": "FunctionDefinition",
+            "src": "1610:153:39"
+          },
+          {
+            "attributes": {
+              "functionSelector": "cd596583",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "bridgeContract",
+              "scope": 3363,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Get the AMB interface for the bridge contract address\n @return AMB interface for the bridge contract address"
+                },
+                "id": 3273,
+                "name": "StructuredDocumentation",
+                "src": "1769:138:39"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3274,
+                "name": "ParameterList",
+                "src": "1935:2:39"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 3285,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract IAMB",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "IAMB",
+                          "referencedDeclaration": 988,
+                          "type": "contract IAMB"
+                        },
+                        "id": 3275,
+                        "name": "UserDefinedTypeName",
+                        "src": "1959:4:39"
+                      }
+                    ],
+                    "id": 3276,
+                    "name": "VariableDeclaration",
+                    "src": "1959:4:39"
+                  }
+                ],
+                "id": 3277,
+                "name": "ParameterList",
+                "src": "1958:6:39"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 3277
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "contract IAMB",
+                          "type_conversion": true
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 988,
+                              "type": "type(contract IAMB)",
+                              "value": "IAMB"
+                            },
+                            "id": 3278,
+                            "name": "Identifier",
+                            "src": "1982:4:39"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2898,
+                                  "type": "mapping(bytes32 => address)",
+                                  "value": "addressStorage"
+                                },
+                                "id": 3279,
+                                "name": "Identifier",
+                                "src": "1987:14:39"
+                              },
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3206,
+                                  "type": "bytes32",
+                                  "value": "BRIDGE_CONTRACT"
+                                },
+                                "id": 3280,
+                                "name": "Identifier",
+                                "src": "2002:15:39"
+                              }
+                            ],
+                            "id": 3281,
+                            "name": "IndexAccess",
+                            "src": "1987:31:39"
+                          }
+                        ],
+                        "id": 3282,
+                        "name": "FunctionCall",
+                        "src": "1982:37:39"
+                      }
+                    ],
+                    "id": 3283,
+                    "name": "Return",
+                    "src": "1975:44:39"
+                  }
+                ],
+                "id": 3284,
+                "name": "Block",
+                "src": "1965:61:39"
+              }
+            ],
+            "id": 3285,
+            "name": "FunctionDefinition",
+            "src": "1912:114:39"
+          },
+          {
+            "attributes": {
+              "functionSelector": "871c0760",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "mediatorContractOnOtherSide",
+              "scope": 3363,
+              "stateMutability": "view",
+              "virtual": true,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Tells the mediator contract address from the other network.\n @return the address of the mediator contract."
+                },
+                "id": 3286,
+                "name": "StructuredDocumentation",
+                "src": "2032:136:39"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3287,
+                "name": "ParameterList",
+                "src": "2209:2:39"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 3296,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 3288,
+                        "name": "ElementaryTypeName",
+                        "src": "2241:7:39"
+                      }
+                    ],
+                    "id": 3289,
+                    "name": "VariableDeclaration",
+                    "src": "2241:7:39"
+                  }
+                ],
+                "id": 3290,
+                "name": "ParameterList",
+                "src": "2240:9:39"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 3290
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2898,
+                              "type": "mapping(bytes32 => address)",
+                              "value": "addressStorage"
+                            },
+                            "id": 3291,
+                            "name": "Identifier",
+                            "src": "2267:14:39"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3209,
+                              "type": "bytes32",
+                              "value": "MEDIATOR_CONTRACT"
+                            },
+                            "id": 3292,
+                            "name": "Identifier",
+                            "src": "2282:17:39"
+                          }
+                        ],
+                        "id": 3293,
+                        "name": "IndexAccess",
+                        "src": "2267:33:39"
+                      }
+                    ],
+                    "id": 3294,
+                    "name": "Return",
+                    "src": "2260:40:39"
+                  }
+                ],
+                "id": 3295,
+                "name": "Block",
+                "src": "2250:57:39"
+              }
+            ],
+            "id": 3296,
+            "name": "FunctionDefinition",
+            "src": "2173:134:39"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_setBridgeContract",
+              "scope": 3363,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Stores a valid AMB bridge contract address.\n @param _bridgeContract the address of the bridge contract."
+                },
+                "id": 3297,
+                "name": "StructuredDocumentation",
+                "src": "2313:133:39"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_bridgeContract",
+                      "scope": 3316,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 3298,
+                        "name": "ElementaryTypeName",
+                        "src": "2479:7:39"
+                      }
+                    ],
+                    "id": 3299,
+                    "name": "VariableDeclaration",
+                    "src": "2479:23:39"
+                  }
+                ],
+                "id": 3300,
+                "name": "ParameterList",
+                "src": "2478:25:39"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3301,
+                "name": "ParameterList",
+                "src": "2513:0:39"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                -18,
+                                -18
+                              ],
+                              "referencedDeclaration": -18,
+                              "type": "function (bool) pure",
+                              "value": "require"
+                            },
+                            "id": 3302,
+                            "name": "Identifier",
+                            "src": "2523:7:39"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "tryCall": false,
+                              "type": "bool",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "isContract",
+                                  "referencedDeclaration": 515,
+                                  "type": "function (address) view returns (bool)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 690,
+                                      "type": "type(library Address)",
+                                      "value": "Address"
+                                    },
+                                    "id": 3303,
+                                    "name": "Identifier",
+                                    "src": "2531:7:39"
+                                  }
+                                ],
+                                "id": 3304,
+                                "name": "MemberAccess",
+                                "src": "2531:18:39"
+                              },
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3299,
+                                  "type": "address",
+                                  "value": "_bridgeContract"
+                                },
+                                "id": 3305,
+                                "name": "Identifier",
+                                "src": "2550:15:39"
+                              }
+                            ],
+                            "id": 3306,
+                            "name": "FunctionCall",
+                            "src": "2531:35:39"
+                          }
+                        ],
+                        "id": 3307,
+                        "name": "FunctionCall",
+                        "src": "2523:44:39"
+                      }
+                    ],
+                    "id": 3308,
+                    "name": "ExpressionStatement",
+                    "src": "2523:44:39"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2898,
+                                  "type": "mapping(bytes32 => address)",
+                                  "value": "addressStorage"
+                                },
+                                "id": 3309,
+                                "name": "Identifier",
+                                "src": "2577:14:39"
+                              },
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3206,
+                                  "type": "bytes32",
+                                  "value": "BRIDGE_CONTRACT"
+                                },
+                                "id": 3310,
+                                "name": "Identifier",
+                                "src": "2592:15:39"
+                              }
+                            ],
+                            "id": 3311,
+                            "name": "IndexAccess",
+                            "src": "2577:31:39"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3299,
+                              "type": "address",
+                              "value": "_bridgeContract"
+                            },
+                            "id": 3312,
+                            "name": "Identifier",
+                            "src": "2611:15:39"
+                          }
+                        ],
+                        "id": 3313,
+                        "name": "Assignment",
+                        "src": "2577:49:39"
+                      }
+                    ],
+                    "id": 3314,
+                    "name": "ExpressionStatement",
+                    "src": "2577:49:39"
+                  }
+                ],
+                "id": 3315,
+                "name": "Block",
+                "src": "2513:120:39"
+              }
+            ],
+            "id": 3316,
+            "name": "FunctionDefinition",
+            "src": "2451:182:39"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_setMediatorContractOnOtherSide",
+              "scope": 3363,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Stores the mediator contract address from the other network.\n @param _mediatorContract the address of the mediator contract."
+                },
+                "id": 3317,
+                "name": "StructuredDocumentation",
+                "src": "2639:154:39"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_mediatorContract",
+                      "scope": 3329,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 3318,
+                        "name": "ElementaryTypeName",
+                        "src": "2839:7:39"
+                      }
+                    ],
+                    "id": 3319,
+                    "name": "VariableDeclaration",
+                    "src": "2839:25:39"
+                  }
+                ],
+                "id": 3320,
+                "name": "ParameterList",
+                "src": "2838:27:39"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3321,
+                "name": "ParameterList",
+                "src": "2875:0:39"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2898,
+                                  "type": "mapping(bytes32 => address)",
+                                  "value": "addressStorage"
+                                },
+                                "id": 3322,
+                                "name": "Identifier",
+                                "src": "2885:14:39"
+                              },
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 3209,
+                                  "type": "bytes32",
+                                  "value": "MEDIATOR_CONTRACT"
+                                },
+                                "id": 3323,
+                                "name": "Identifier",
+                                "src": "2900:17:39"
+                              }
+                            ],
+                            "id": 3324,
+                            "name": "IndexAccess",
+                            "src": "2885:33:39"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 3319,
+                              "type": "address",
+                              "value": "_mediatorContract"
+                            },
+                            "id": 3325,
+                            "name": "Identifier",
+                            "src": "2921:17:39"
+                          }
+                        ],
+                        "id": 3326,
+                        "name": "Assignment",
+                        "src": "2885:53:39"
+                      }
+                    ],
+                    "id": 3327,
+                    "name": "ExpressionStatement",
+                    "src": "2885:53:39"
+                  }
+                ],
+                "id": 3328,
+                "name": "Block",
+                "src": "2875:70:39"
+              }
+            ],
+            "id": 3329,
+            "name": "FunctionDefinition",
+            "src": "2798:147:39"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "messageId",
+              "scope": 3363,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Tells the id of the message originated on the other network.\n @return the id of the message originated on the other network."
+                },
+                "id": 3330,
+                "name": "StructuredDocumentation",
+                "src": "2951:154:39"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3331,
+                "name": "ParameterList",
+                "src": "3128:2:39"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 3341,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 3332,
+                        "name": "ElementaryTypeName",
+                        "src": "3154:7:39"
+                      }
+                    ],
+                    "id": 3333,
+                    "name": "VariableDeclaration",
+                    "src": "3154:7:39"
+                  }
+                ],
+                "id": 3334,
+                "name": "ParameterList",
+                "src": "3153:9:39"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 3334
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "arguments": [
+                            null
+                          ],
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "bytes32",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                null
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "messageId",
+                              "referencedDeclaration": 922,
+                              "type": "function () view external returns (bytes32)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "arguments": [
+                                    null
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "contract IAMB",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        null
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 3285,
+                                      "type": "function () view returns (contract IAMB)",
+                                      "value": "bridgeContract"
+                                    },
+                                    "id": 3335,
+                                    "name": "Identifier",
+                                    "src": "3180:14:39"
+                                  }
+                                ],
+                                "id": 3336,
+                                "name": "FunctionCall",
+                                "src": "3180:16:39"
+                              }
+                            ],
+                            "id": 3337,
+                            "name": "MemberAccess",
+                            "src": "3180:26:39"
+                          }
+                        ],
+                        "id": 3338,
+                        "name": "FunctionCall",
+                        "src": "3180:28:39"
+                      }
+                    ],
+                    "id": 3339,
+                    "name": "Return",
+                    "src": "3173:35:39"
+                  }
+                ],
+                "id": 3340,
+                "name": "Block",
+                "src": "3163:52:39"
+              }
+            ],
+            "id": 3341,
+            "name": "FunctionDefinition",
+            "src": "3110:105:39"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "maxGasPerTx",
+              "scope": 3363,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Tells the maximum gas limit that a message can use on its execution by the AMB bridge on the other network.\n @return the maximum gas limit value."
+                },
+                "id": 3342,
+                "name": "StructuredDocumentation",
+                "src": "3221:175:39"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3343,
+                "name": "ParameterList",
+                "src": "3421:2:39"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 3353,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 3344,
+                        "name": "ElementaryTypeName",
+                        "src": "3447:7:39"
+                      }
+                    ],
+                    "id": 3345,
+                    "name": "VariableDeclaration",
+                    "src": "3447:7:39"
+                  }
+                ],
+                "id": 3346,
+                "name": "ParameterList",
+                "src": "3446:9:39"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 3346
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "arguments": [
+                            null
+                          ],
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "uint256",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                null
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "maxGasPerTx",
+                              "referencedDeclaration": 912,
+                              "type": "function () view external returns (uint256)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "arguments": [
+                                    null
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "contract IAMB",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        null
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 3285,
+                                      "type": "function () view returns (contract IAMB)",
+                                      "value": "bridgeContract"
+                                    },
+                                    "id": 3347,
+                                    "name": "Identifier",
+                                    "src": "3473:14:39"
+                                  }
+                                ],
+                                "id": 3348,
+                                "name": "FunctionCall",
+                                "src": "3473:16:39"
+                              }
+                            ],
+                            "id": 3349,
+                            "name": "MemberAccess",
+                            "src": "3473:28:39"
+                          }
+                        ],
+                        "id": 3350,
+                        "name": "FunctionCall",
+                        "src": "3473:30:39"
+                      }
+                    ],
+                    "id": 3351,
+                    "name": "Return",
+                    "src": "3466:37:39"
+                  }
+                ],
+                "id": 3352,
+                "name": "Block",
+                "src": "3456:54:39"
+              }
+            ],
+            "id": 3353,
+            "name": "FunctionDefinition",
+            "src": "3401:109:39"
+          },
+          {
+            "attributes": {
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_passMessage",
+              "scope": 3363,
+              "stateMutability": "nonpayable",
+              "virtual": true,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_data",
+                      "scope": 3362,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 3354,
+                        "name": "ElementaryTypeName",
+                        "src": "3538:5:39"
+                      }
+                    ],
+                    "id": 3355,
+                    "name": "VariableDeclaration",
+                    "src": "3538:18:39"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_useOracleLane",
+                      "scope": 3362,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 3356,
+                        "name": "ElementaryTypeName",
+                        "src": "3558:4:39"
+                      }
+                    ],
+                    "id": 3357,
+                    "name": "VariableDeclaration",
+                    "src": "3558:19:39"
+                  }
+                ],
+                "id": 3358,
+                "name": "ParameterList",
+                "src": "3537:41:39"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 3362,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 3359,
+                        "name": "ElementaryTypeName",
+                        "src": "3605:7:39"
+                      }
+                    ],
+                    "id": 3360,
+                    "name": "VariableDeclaration",
+                    "src": "3605:7:39"
+                  }
+                ],
+                "id": 3361,
+                "name": "ParameterList",
+                "src": "3604:9:39"
+              }
+            ],
+            "id": 3362,
+            "name": "FunctionDefinition",
+            "src": "3516:98:39"
+          }
+        ],
+        "id": 3363,
+        "name": "ContractDefinition",
+        "src": "252:3364:39"
+      }
+    ],
+    "id": 3364,
+    "name": "SourceUnit",
+    "src": "0:3617:39"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.5+commit.eb77ed08.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:31.257Z",
+  "devdoc": {
+    "details": "Basic storage and methods needed by mediators to interact with AMB bridge.",
+    "kind": "dev",
+    "methods": {
+      "bridgeContract()": {
+        "details": "Get the AMB interface for the bridge contract address",
+        "returns": {
+          "_0": "AMB interface for the bridge contract address"
+        }
+      },
+      "mediatorContractOnOtherSide()": {
+        "details": "Tells the mediator contract address from the other network.",
+        "returns": {
+          "_0": "the address of the mediator contract."
+        }
+      },
+      "owner()": {
+        "details": "Tells the address of the owner",
+        "returns": {
+          "_0": "the address of the owner"
+        }
+      },
+      "setBridgeContract(address)": {
+        "details": "Sets the AMB bridge contract address. Only the owner can call this method.",
+        "params": {
+          "_bridgeContract": "the address of the bridge contract."
+        }
+      },
+      "setMediatorContractOnOtherSide(address)": {
+        "details": "Sets the mediator contract address from the other network. Only the owner can call this method.",
+        "params": {
+          "_mediatorContract": "the address of the mediator contract."
+        }
+      },
+      "transferOwnership(address)": {
+        "details": "Allows the current owner to transfer control of the contract to a newOwner.",
+        "params": {
+          "newOwner": "the address to transfer ownership to."
+        }
+      }
+    },
+    "title": "BasicAMBMediator",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

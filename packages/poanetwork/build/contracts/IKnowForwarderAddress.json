@@ -1,0 +1,256 @@
+{
+  "contractName": "IKnowForwarderAddress",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getTrustedForwarder",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier:MIT\npragma solidity 0.4.24;\n\ninterface IKnowForwarderAddress {\n    /**\n     * return the forwarder we trust to forward relayed transactions to us.\n     * the forwarder is required to verify the sender's signature, and verify\n     * the call is not a replay.\n     */\n    function getTrustedForwarder() external view returns (address);\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/poanetwork/contracts/gsn/interfaces/IKnowForwarderAddress.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/gsn/interfaces/IKnowForwarderAddress.sol",
+    "exportedSymbols": {
+      "IKnowForwarderAddress": [
+        2676
+      ]
+    },
+    "id": 2677,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2670,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "31:23:19"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 2676,
+        "linearizedBaseContracts": [
+          2676
+        ],
+        "name": "IKnowForwarderAddress",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "return the forwarder we trust to forward relayed transactions to us.\nthe forwarder is required to verify the sender's signature, and verify\nthe call is not a replay.",
+            "id": 2675,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getTrustedForwarder",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2671,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "325:2:19"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2674,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2673,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2675,
+                  "src": "351:7:19",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2672,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "351:7:19",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "350:9:19"
+            },
+            "scope": 2676,
+            "src": "297:63:19",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2677,
+        "src": "56:306:19"
+      }
+    ],
+    "src": "31:332:19"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/gsn/interfaces/IKnowForwarderAddress.sol",
+      "exportedSymbols": {
+        "IKnowForwarderAddress": [
+          2676
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.4",
+            ".24"
+          ]
+        },
+        "id": 2670,
+        "name": "PragmaDirective",
+        "src": "31:23:19"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "documentation": null,
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            2676
+          ],
+          "name": "IKnowForwarderAddress",
+          "scope": 2677
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "constant": true,
+              "documentation": "return the forwarder we trust to forward relayed transactions to us.\nthe forwarder is required to verify the sender's signature, and verify\nthe call is not a replay.",
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "getTrustedForwarder",
+              "payable": false,
+              "scope": 2676,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 2671,
+                "name": "ParameterList",
+                "src": "325:2:19"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 2675,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 2672,
+                        "name": "ElementaryTypeName",
+                        "src": "351:7:19"
+                      }
+                    ],
+                    "id": 2673,
+                    "name": "VariableDeclaration",
+                    "src": "351:7:19"
+                  }
+                ],
+                "id": 2674,
+                "name": "ParameterList",
+                "src": "350:9:19"
+              }
+            ],
+            "id": 2675,
+            "name": "FunctionDefinition",
+            "src": "297:63:19"
+          }
+        ],
+        "id": 2676,
+        "name": "ContractDefinition",
+        "src": "56:306:19"
+      }
+    ],
+    "id": 2677,
+    "name": "SourceUnit",
+    "src": "31:332:19"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:19.171Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {
+      "getTrustedForwarder()": {
+        "notice": "return the forwarder we trust to forward relayed transactions to us. the forwarder is required to verify the sender's signature, and verify the call is not a replay."
+      }
+    }
+  }
+}

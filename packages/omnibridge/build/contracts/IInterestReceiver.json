@@ -1,0 +1,255 @@
+{
+  "contractName": "IInterestReceiver",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "name": "onInterestReceived",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.5+commit.eb77ed08\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"}],\"name\":\"onInterestReceived\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/interfaces/IInterestReceiver.sol\":\"IInterestReceiver\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/interfaces/IInterestReceiver.sol\":{\"keccak256\":\"0xec86849ef2ce7e027c478dd7846b441181a02b8b0aa6bba256ef6e2ddc674e7f\",\"urls\":[\"bzz-raw://88b35ae7b3c1e25b64485cd0b78f6ae48b4547e362d292b1f8d4b259e58fbe5c\",\"dweb:/ipfs/QmcFGjdyo6Zxo62xmyJnkWrZqwkBHnddCXN5F7xBkeCuJ5\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.7.5;\n\ninterface IInterestReceiver {\n    function onInterestReceived(address _token) external;\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/omnibridge/contracts/interfaces/IInterestReceiver.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/interfaces/IInterestReceiver.sol",
+    "exportedSymbols": {
+      "IInterestReceiver": [
+        1225
+      ]
+    },
+    "id": 1226,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1219,
+        "literals": [
+          "solidity",
+          "0.7",
+          ".5"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:15"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 1225,
+        "linearizedBaseContracts": [
+          1225
+        ],
+        "name": "IInterestReceiver",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "81e3f276",
+            "id": 1224,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "onInterestReceived",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 1222,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 1221,
+                  "mutability": "mutable",
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 1224,
+                  "src": "86:14:15",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 1220,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "86:7:15",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "85:16:15"
+            },
+            "returnParameters": {
+              "id": 1223,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "110:0:15"
+            },
+            "scope": 1225,
+            "src": "58:53:15",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 1226,
+        "src": "24:89:15"
+      }
+    ],
+    "src": "0:114:15"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/interfaces/IInterestReceiver.sol",
+      "exportedSymbols": {
+        "IInterestReceiver": [
+          1225
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.7",
+            ".5"
+          ]
+        },
+        "id": 1219,
+        "name": "PragmaDirective",
+        "src": "0:22:15"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "interface",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            1225
+          ],
+          "name": "IInterestReceiver",
+          "scope": 1226
+        },
+        "children": [
+          {
+            "attributes": {
+              "functionSelector": "81e3f276",
+              "implemented": false,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "onInterestReceived",
+              "scope": 1225,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_token",
+                      "scope": 1224,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 1220,
+                        "name": "ElementaryTypeName",
+                        "src": "86:7:15"
+                      }
+                    ],
+                    "id": 1221,
+                    "name": "VariableDeclaration",
+                    "src": "86:14:15"
+                  }
+                ],
+                "id": 1222,
+                "name": "ParameterList",
+                "src": "85:16:15"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 1223,
+                "name": "ParameterList",
+                "src": "110:0:15"
+              }
+            ],
+            "id": 1224,
+            "name": "FunctionDefinition",
+            "src": "58:53:15"
+          }
+        ],
+        "id": 1225,
+        "name": "ContractDefinition",
+        "src": "24:89:15"
+      }
+    ],
+    "id": 1226,
+    "name": "SourceUnit",
+    "src": "0:114:15"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.5+commit.eb77ed08.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:31.136Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

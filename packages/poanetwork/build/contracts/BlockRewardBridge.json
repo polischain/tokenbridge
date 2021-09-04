@@ -1,0 +1,2662 @@
+{
+  "contractName": "BlockRewardBridge",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.4.24+commit.e67f0147\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/upgradeable_contracts/BlockRewardBridge.sol\":\"BlockRewardBridge\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"openzeppelin-solidity/contracts/AddressUtils.sol\":{\"keccak256\":\"0x5ed3dc711dbb34917afff3c753adf3b0580514d1339cfedaa5a73645d8ac9b56\",\"urls\":[\"bzzr://d597eeb695a3d64766453239e973ddd65994c258ab8d5cab0d90103033ce85fc\"]},\"project:/contracts/interfaces/IBlockReward.sol\":{\"keccak256\":\"0xdb49a581a7d2b8591b75036d2fd28b44f05e7887e75d49d28899e1c4b5b42bcb\",\"urls\":[\"bzzr://2fc6833d316577caa3b305cf60a2db2c6ce1d25f810c9cd04c99c4ec61869ff7\"]},\"project:/contracts/upgradeability/EternalStorage.sol\":{\"keccak256\":\"0x8f2df79a1cda812d4be25da8f2b138f9b7492e76da1dfba21d87012e649cc51c\",\"urls\":[\"bzzr://0846d08e1b7a84e541ae31c91d2c0b34d88cf3abbd18891ec6eedeea7e958af2\"]},\"project:/contracts/upgradeable_contracts/BlockRewardBridge.sol\":{\"keccak256\":\"0xd2a368b6bbef37c0c0de2cb62bc65221a0176a9bc61eceaf25bebda6e1b5eddd\",\"urls\":[\"bzzr://007080f2afccb51bc63e9b633afeae7ed6b3539dc866246e72f987bcf82eaa33\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a7230582096c1f281a2a2bb31524b48b7ecfad1824dc3a1e9126caecbb7cf6fc09b147a730029",
+  "deployedBytecode": "0x6080604052600080fd00a165627a7a7230582096c1f281a2a2bb31524b48b7ecfad1824dc3a1e9126caecbb7cf6fc09b147a730029",
+  "sourceMap": "173:1405:86:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;173:1405:86;;;;;;;",
+  "deployedSourceMap": "173:1405:86:-;;;;;",
+  "source": "pragma solidity 0.4.24;\n\nimport \"../interfaces/IBlockReward.sol\";\nimport \"../upgradeability/EternalStorage.sol\";\nimport \"openzeppelin-solidity/contracts/AddressUtils.sol\";\n\ncontract BlockRewardBridge is EternalStorage {\n    bytes32 internal constant BLOCK_REWARD_CONTRACT = 0x20ae0b8a761b32f3124efb075f427dd6ca669e88ae7747fec9fd1ad688699f32; // keccak256(abi.encodePacked(\"blockRewardContract\"))\n    bytes4 internal constant BLOCK_REWARD_CONTRACT_ID = 0x2ee57f8d; // blockRewardContractId()\n    bytes4 internal constant BRIDGES_ALLOWED_LENGTH = 0x10f2ee7c; // bridgesAllowedLength()\n\n    function _blockRewardContract() internal view returns (IBlockReward) {\n        return IBlockReward(addressStorage[BLOCK_REWARD_CONTRACT]);\n    }\n\n    function _setBlockRewardContract(address _blockReward) internal {\n        require(AddressUtils.isContract(_blockReward));\n\n        // Before store the contract we need to make sure that it is the block reward contract in actual fact,\n        // call a specific method from the contract that should return a specific value\n        bool isBlockRewardContract = false;\n        if (_blockReward.call(BLOCK_REWARD_CONTRACT_ID)) {\n            isBlockRewardContract =\n                IBlockReward(_blockReward).blockRewardContractId() == bytes4(keccak256(\"blockReward\"));\n        } else if (_blockReward.call(BRIDGES_ALLOWED_LENGTH)) {\n            isBlockRewardContract = IBlockReward(_blockReward).bridgesAllowedLength() != 0;\n        }\n        require(isBlockRewardContract);\n        addressStorage[BLOCK_REWARD_CONTRACT] = _blockReward;\n    }\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/poanetwork/contracts/upgradeable_contracts/BlockRewardBridge.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/upgradeable_contracts/BlockRewardBridge.sol",
+    "exportedSymbols": {
+      "BlockRewardBridge": [
+        10889
+      ]
+    },
+    "id": 10890,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 10799,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:86"
+      },
+      {
+        "absolutePath": "project:/contracts/interfaces/IBlockReward.sol",
+        "file": "../interfaces/IBlockReward.sol",
+        "id": 10800,
+        "nodeType": "ImportDirective",
+        "scope": 10890,
+        "sourceUnit": 4656,
+        "src": "25:40:86",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/upgradeability/EternalStorage.sol",
+        "file": "../upgradeability/EternalStorage.sol",
+        "id": 10801,
+        "nodeType": "ImportDirective",
+        "scope": 10890,
+        "sourceUnit": 8003,
+        "src": "66:46:86",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "openzeppelin-solidity/contracts/AddressUtils.sol",
+        "file": "openzeppelin-solidity/contracts/AddressUtils.sol",
+        "id": 10802,
+        "nodeType": "ImportDirective",
+        "scope": 10890,
+        "sourceUnit": 19,
+        "src": "113:58:86",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 10803,
+              "name": "EternalStorage",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 8002,
+              "src": "203:14:86",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_EternalStorage_$8002",
+                "typeString": "contract EternalStorage"
+              }
+            },
+            "id": 10804,
+            "nodeType": "InheritanceSpecifier",
+            "src": "203:14:86"
+          }
+        ],
+        "contractDependencies": [
+          8002
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 10889,
+        "linearizedBaseContracts": [
+          10889,
+          8002
+        ],
+        "name": "BlockRewardBridge",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 10807,
+            "name": "BLOCK_REWARD_CONTRACT",
+            "nodeType": "VariableDeclaration",
+            "scope": 10889,
+            "src": "224:116:86",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes32",
+              "typeString": "bytes32"
+            },
+            "typeName": {
+              "id": 10805,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "224:7:86",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes32",
+                "typeString": "bytes32"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "307832306165306238613736316233326633313234656662303735663432376464366361363639653838616537373437666563396664316164363838363939663332",
+              "id": 10806,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "274:66:86",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_14781522196056457509622344709748553308001066293411441650988840030401991384882_by_1",
+                "typeString": "int_const 1478...(69 digits omitted)...4882"
+              },
+              "value": "0x20ae0b8a761b32f3124efb075f427dd6ca669e88ae7747fec9fd1ad688699f32"
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": true,
+            "id": 10810,
+            "name": "BLOCK_REWARD_CONTRACT_ID",
+            "nodeType": "VariableDeclaration",
+            "scope": 10889,
+            "src": "400:62:86",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes4",
+              "typeString": "bytes4"
+            },
+            "typeName": {
+              "id": 10808,
+              "name": "bytes4",
+              "nodeType": "ElementaryTypeName",
+              "src": "400:6:86",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes4",
+                "typeString": "bytes4"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "30783265653537663864",
+              "id": 10809,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "452:10:86",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_786792333_by_1",
+                "typeString": "int_const 786792333"
+              },
+              "value": "0x2ee57f8d"
+            },
+            "visibility": "internal"
+          },
+          {
+            "constant": true,
+            "id": 10813,
+            "name": "BRIDGES_ALLOWED_LENGTH",
+            "nodeType": "VariableDeclaration",
+            "scope": 10889,
+            "src": "495:60:86",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes4",
+              "typeString": "bytes4"
+            },
+            "typeName": {
+              "id": 10811,
+              "name": "bytes4",
+              "nodeType": "ElementaryTypeName",
+              "src": "495:6:86",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes4",
+                "typeString": "bytes4"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "30783130663265653763",
+              "id": 10812,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "545:10:86",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_284356220_by_1",
+                "typeString": "int_const 284356220"
+              },
+              "value": "0x10f2ee7c"
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 10824,
+              "nodeType": "Block",
+              "src": "657:75:86",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "baseExpression": {
+                          "argumentTypes": null,
+                          "id": 10819,
+                          "name": "addressStorage",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 7989,
+                          "src": "687:14:86",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                            "typeString": "mapping(bytes32 => address)"
+                          }
+                        },
+                        "id": 10821,
+                        "indexExpression": {
+                          "argumentTypes": null,
+                          "id": 10820,
+                          "name": "BLOCK_REWARD_CONTRACT",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 10807,
+                          "src": "702:21:86",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "687:37:86",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 10818,
+                      "name": "IBlockReward",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 4655,
+                      "src": "674:12:86",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_IBlockReward_$4655_$",
+                        "typeString": "type(contract IBlockReward)"
+                      }
+                    },
+                    "id": 10822,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "674:51:86",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IBlockReward_$4655",
+                      "typeString": "contract IBlockReward"
+                    }
+                  },
+                  "functionReturnParameters": 10817,
+                  "id": 10823,
+                  "nodeType": "Return",
+                  "src": "667:58:86"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 10825,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "_blockRewardContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10814,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "617:2:86"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 10817,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10816,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10825,
+                  "src": "643:12:86",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_IBlockReward_$4655",
+                    "typeString": "contract IBlockReward"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 10815,
+                    "name": "IBlockReward",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 4655,
+                    "src": "643:12:86",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_IBlockReward_$4655",
+                      "typeString": "contract IBlockReward"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "642:14:86"
+            },
+            "scope": 10889,
+            "src": "588:144:86",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 10887,
+              "nodeType": "Block",
+              "src": "802:774:86",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "arguments": [
+                          {
+                            "argumentTypes": null,
+                            "id": 10833,
+                            "name": "_blockReward",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 10827,
+                            "src": "844:12:86",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 10831,
+                            "name": "AddressUtils",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 18,
+                            "src": "820:12:86",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_type$_t_contract$_AddressUtils_$18_$",
+                              "typeString": "type(library AddressUtils)"
+                            }
+                          },
+                          "id": 10832,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "isContract",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 17,
+                          "src": "820:23:86",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$",
+                            "typeString": "function (address) view returns (bool)"
+                          }
+                        },
+                        "id": 10834,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "820:37:86",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 10830,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        19340,
+                        19341
+                      ],
+                      "referencedDeclaration": 19340,
+                      "src": "812:7:86",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 10835,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "812:46:86",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 10836,
+                  "nodeType": "ExpressionStatement",
+                  "src": "812:46:86"
+                },
+                {
+                  "assignments": [
+                    10838
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 10838,
+                      "name": "isBlockRewardContract",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 10888,
+                      "src": "1068:26:86",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      },
+                      "typeName": {
+                        "id": 10837,
+                        "name": "bool",
+                        "nodeType": "ElementaryTypeName",
+                        "src": "1068:4:86",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      },
+                      "value": null,
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 10840,
+                  "initialValue": {
+                    "argumentTypes": null,
+                    "hexValue": "66616c7365",
+                    "id": 10839,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "kind": "bool",
+                    "lValueRequested": false,
+                    "nodeType": "Literal",
+                    "src": "1097:5:86",
+                    "subdenomination": null,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "value": "false"
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "1068:34:86"
+                },
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 10843,
+                        "name": "BLOCK_REWARD_CONTRACT_ID",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 10810,
+                        "src": "1134:24:86",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes4",
+                          "typeString": "bytes4"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bytes4",
+                          "typeString": "bytes4"
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": null,
+                        "id": 10841,
+                        "name": "_blockReward",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 10827,
+                        "src": "1116:12:86",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "id": 10842,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberName": "call",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": null,
+                      "src": "1116:17:86",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_barecall_payable$__$returns$_t_bool_$",
+                        "typeString": "function () payable returns (bool)"
+                      }
+                    },
+                    "id": 10844,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1116:43:86",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": {
+                    "condition": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 10862,
+                          "name": "BRIDGES_ALLOWED_LENGTH",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 10813,
+                          "src": "1340:22:86",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes4",
+                            "typeString": "bytes4"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_bytes4",
+                            "typeString": "bytes4"
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 10860,
+                          "name": "_blockReward",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 10827,
+                          "src": "1322:12:86",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "id": 10861,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "call",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "1322:17:86",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_barecall_payable$__$returns$_t_bool_$",
+                          "typeString": "function () payable returns (bool)"
+                        }
+                      },
+                      "id": 10863,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1322:41:86",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "falseBody": null,
+                    "id": 10875,
+                    "nodeType": "IfStatement",
+                    "src": "1318:150:86",
+                    "trueBody": {
+                      "id": 10874,
+                      "nodeType": "Block",
+                      "src": "1365:103:86",
+                      "statements": [
+                        {
+                          "expression": {
+                            "argumentTypes": null,
+                            "id": 10872,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "leftHandSide": {
+                              "argumentTypes": null,
+                              "id": 10864,
+                              "name": "isBlockRewardContract",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 10838,
+                              "src": "1379:21:86",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              }
+                            },
+                            "nodeType": "Assignment",
+                            "operator": "=",
+                            "rightHandSide": {
+                              "argumentTypes": null,
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "id": 10871,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "leftExpression": {
+                                "argumentTypes": null,
+                                "arguments": [],
+                                "expression": {
+                                  "argumentTypes": [],
+                                  "expression": {
+                                    "argumentTypes": null,
+                                    "arguments": [
+                                      {
+                                        "argumentTypes": null,
+                                        "id": 10866,
+                                        "name": "_blockReward",
+                                        "nodeType": "Identifier",
+                                        "overloadedDeclarations": [],
+                                        "referencedDeclaration": 10827,
+                                        "src": "1416:12:86",
+                                        "typeDescriptions": {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        }
+                                      }
+                                    ],
+                                    "expression": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        }
+                                      ],
+                                      "id": 10865,
+                                      "name": "IBlockReward",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 4655,
+                                      "src": "1403:12:86",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_type$_t_contract$_IBlockReward_$4655_$",
+                                        "typeString": "type(contract IBlockReward)"
+                                      }
+                                    },
+                                    "id": 10867,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "kind": "typeConversion",
+                                    "lValueRequested": false,
+                                    "names": [],
+                                    "nodeType": "FunctionCall",
+                                    "src": "1403:26:86",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_contract$_IBlockReward_$4655",
+                                      "typeString": "contract IBlockReward"
+                                    }
+                                  },
+                                  "id": 10868,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "memberName": "bridgesAllowedLength",
+                                  "nodeType": "MemberAccess",
+                                  "referencedDeclaration": 4639,
+                                  "src": "1403:47:86",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
+                                    "typeString": "function () view external returns (uint256)"
+                                  }
+                                },
+                                "id": 10869,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "kind": "functionCall",
+                                "lValueRequested": false,
+                                "names": [],
+                                "nodeType": "FunctionCall",
+                                "src": "1403:49:86",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              },
+                              "nodeType": "BinaryOperation",
+                              "operator": "!=",
+                              "rightExpression": {
+                                "argumentTypes": null,
+                                "hexValue": "30",
+                                "id": 10870,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "number",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "1456:1:86",
+                                "subdenomination": null,
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_rational_0_by_1",
+                                  "typeString": "int_const 0"
+                                },
+                                "value": "0"
+                              },
+                              "src": "1403:54:86",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              }
+                            },
+                            "src": "1379:78:86",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            }
+                          },
+                          "id": 10873,
+                          "nodeType": "ExpressionStatement",
+                          "src": "1379:78:86"
+                        }
+                      ]
+                    }
+                  },
+                  "id": 10876,
+                  "nodeType": "IfStatement",
+                  "src": "1112:356:86",
+                  "trueBody": {
+                    "id": 10859,
+                    "nodeType": "Block",
+                    "src": "1161:151:86",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 10857,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "argumentTypes": null,
+                            "id": 10845,
+                            "name": "isBlockRewardContract",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 10838,
+                            "src": "1175:21:86",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "argumentTypes": null,
+                            "commonType": {
+                              "typeIdentifier": "t_bytes4",
+                              "typeString": "bytes4"
+                            },
+                            "id": 10856,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "leftExpression": {
+                              "argumentTypes": null,
+                              "arguments": [],
+                              "expression": {
+                                "argumentTypes": [],
+                                "expression": {
+                                  "argumentTypes": null,
+                                  "arguments": [
+                                    {
+                                      "argumentTypes": null,
+                                      "id": 10847,
+                                      "name": "_blockReward",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 10827,
+                                      "src": "1228:12:86",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                      }
+                                    }
+                                  ],
+                                  "expression": {
+                                    "argumentTypes": [
+                                      {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                      }
+                                    ],
+                                    "id": 10846,
+                                    "name": "IBlockReward",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 4655,
+                                    "src": "1215:12:86",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_type$_t_contract$_IBlockReward_$4655_$",
+                                      "typeString": "type(contract IBlockReward)"
+                                    }
+                                  },
+                                  "id": 10848,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "kind": "typeConversion",
+                                  "lValueRequested": false,
+                                  "names": [],
+                                  "nodeType": "FunctionCall",
+                                  "src": "1215:26:86",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_contract$_IBlockReward_$4655",
+                                    "typeString": "contract IBlockReward"
+                                  }
+                                },
+                                "id": 10849,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "memberName": "blockRewardContractId",
+                                "nodeType": "MemberAccess",
+                                "referencedDeclaration": 4654,
+                                "src": "1215:48:86",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_function_external_pure$__$returns$_t_bytes4_$",
+                                  "typeString": "function () pure external returns (bytes4)"
+                                }
+                              },
+                              "id": 10850,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "functionCall",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "1215:50:86",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes4",
+                                "typeString": "bytes4"
+                              }
+                            },
+                            "nodeType": "BinaryOperation",
+                            "operator": "==",
+                            "rightExpression": {
+                              "argumentTypes": null,
+                              "arguments": [
+                                {
+                                  "argumentTypes": null,
+                                  "arguments": [
+                                    {
+                                      "argumentTypes": null,
+                                      "hexValue": "626c6f636b526577617264",
+                                      "id": 10853,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "kind": "string",
+                                      "lValueRequested": false,
+                                      "nodeType": "Literal",
+                                      "src": "1286:13:86",
+                                      "subdenomination": null,
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_stringliteral_0d35a7ca859f8d9d806ed9a0e3bed9e2dfedcfe541911a67faacdd2c81f1d735",
+                                        "typeString": "literal_string \"blockReward\""
+                                      },
+                                      "value": "blockReward"
+                                    }
+                                  ],
+                                  "expression": {
+                                    "argumentTypes": [
+                                      {
+                                        "typeIdentifier": "t_stringliteral_0d35a7ca859f8d9d806ed9a0e3bed9e2dfedcfe541911a67faacdd2c81f1d735",
+                                        "typeString": "literal_string \"blockReward\""
+                                      }
+                                    ],
+                                    "id": 10852,
+                                    "name": "keccak256",
+                                    "nodeType": "Identifier",
+                                    "overloadedDeclarations": [],
+                                    "referencedDeclaration": 19331,
+                                    "src": "1276:9:86",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_function_sha3_pure$__$returns$_t_bytes32_$",
+                                      "typeString": "function () pure returns (bytes32)"
+                                    }
+                                  },
+                                  "id": 10854,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "kind": "functionCall",
+                                  "lValueRequested": false,
+                                  "names": [],
+                                  "nodeType": "FunctionCall",
+                                  "src": "1276:24:86",
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_bytes32",
+                                    "typeString": "bytes32"
+                                  }
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_bytes32",
+                                    "typeString": "bytes32"
+                                  }
+                                ],
+                                "id": 10851,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "lValueRequested": false,
+                                "nodeType": "ElementaryTypeNameExpression",
+                                "src": "1269:6:86",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_type$_t_bytes4_$",
+                                  "typeString": "type(bytes4)"
+                                },
+                                "typeName": "bytes4"
+                              },
+                              "id": 10855,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "typeConversion",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "1269:32:86",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes4",
+                                "typeString": "bytes4"
+                              }
+                            },
+                            "src": "1215:86:86",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            }
+                          },
+                          "src": "1175:126:86",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "id": 10858,
+                        "nodeType": "ExpressionStatement",
+                        "src": "1175:126:86"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "arguments": [
+                      {
+                        "argumentTypes": null,
+                        "id": 10878,
+                        "name": "isBlockRewardContract",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 10838,
+                        "src": "1485:21:86",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 10877,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        19340,
+                        19341
+                      ],
+                      "referencedDeclaration": 19340,
+                      "src": "1477:7:86",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 10879,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1477:30:86",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 10880,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1477:30:86"
+                },
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 10885,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "baseExpression": {
+                        "argumentTypes": null,
+                        "id": 10881,
+                        "name": "addressStorage",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 7989,
+                        "src": "1517:14:86",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                          "typeString": "mapping(bytes32 => address)"
+                        }
+                      },
+                      "id": 10883,
+                      "indexExpression": {
+                        "argumentTypes": null,
+                        "id": 10882,
+                        "name": "BLOCK_REWARD_CONTRACT",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 10807,
+                        "src": "1532:21:86",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1517:37:86",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 10884,
+                      "name": "_blockReward",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 10827,
+                      "src": "1557:12:86",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1517:52:86",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 10886,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1517:52:86"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 10888,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "_setBlockRewardContract",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 10828,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 10827,
+                  "name": "_blockReward",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 10888,
+                  "src": "771:20:86",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 10826,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "771:7:86",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "770:22:86"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 10829,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "802:0:86"
+            },
+            "scope": 10889,
+            "src": "738:838:86",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 10890,
+        "src": "173:1405:86"
+      }
+    ],
+    "src": "0:1579:86"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/upgradeable_contracts/BlockRewardBridge.sol",
+      "exportedSymbols": {
+        "BlockRewardBridge": [
+          10889
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.4",
+            ".24"
+          ]
+        },
+        "id": 10799,
+        "name": "PragmaDirective",
+        "src": "0:23:86"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 4656,
+          "absolutePath": "project:/contracts/interfaces/IBlockReward.sol",
+          "file": "../interfaces/IBlockReward.sol",
+          "scope": 10890,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 10800,
+        "name": "ImportDirective",
+        "src": "25:40:86"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 8003,
+          "absolutePath": "project:/contracts/upgradeability/EternalStorage.sol",
+          "file": "../upgradeability/EternalStorage.sol",
+          "scope": 10890,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 10801,
+        "name": "ImportDirective",
+        "src": "66:46:86"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 19,
+          "absolutePath": "openzeppelin-solidity/contracts/AddressUtils.sol",
+          "file": "openzeppelin-solidity/contracts/AddressUtils.sol",
+          "scope": 10890,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 10802,
+        "name": "ImportDirective",
+        "src": "113:58:86"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            8002
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            10889,
+            8002
+          ],
+          "name": "BlockRewardBridge",
+          "scope": 10890
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "EternalStorage",
+                  "referencedDeclaration": 8002,
+                  "type": "contract EternalStorage"
+                },
+                "id": 10803,
+                "name": "UserDefinedTypeName",
+                "src": "203:14:86"
+              }
+            ],
+            "id": 10804,
+            "name": "InheritanceSpecifier",
+            "src": "203:14:86"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "name": "BLOCK_REWARD_CONTRACT",
+              "scope": 10889,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "bytes32",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "bytes32",
+                  "type": "bytes32"
+                },
+                "id": 10805,
+                "name": "ElementaryTypeName",
+                "src": "224:7:86"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "307832306165306238613736316233326633313234656662303735663432376464366361363639653838616537373437666563396664316164363838363939663332",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 1478...(69 digits omitted)...4882",
+                  "value": "0x20ae0b8a761b32f3124efb075f427dd6ca669e88ae7747fec9fd1ad688699f32"
+                },
+                "id": 10806,
+                "name": "Literal",
+                "src": "274:66:86"
+              }
+            ],
+            "id": 10807,
+            "name": "VariableDeclaration",
+            "src": "224:116:86"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "name": "BLOCK_REWARD_CONTRACT_ID",
+              "scope": 10889,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "bytes4",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "bytes4",
+                  "type": "bytes4"
+                },
+                "id": 10808,
+                "name": "ElementaryTypeName",
+                "src": "400:6:86"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "30783265653537663864",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 786792333",
+                  "value": "0x2ee57f8d"
+                },
+                "id": 10809,
+                "name": "Literal",
+                "src": "452:10:86"
+              }
+            ],
+            "id": 10810,
+            "name": "VariableDeclaration",
+            "src": "400:62:86"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "name": "BRIDGES_ALLOWED_LENGTH",
+              "scope": 10889,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "bytes4",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "bytes4",
+                  "type": "bytes4"
+                },
+                "id": 10811,
+                "name": "ElementaryTypeName",
+                "src": "495:6:86"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "30783130663265653763",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 284356220",
+                  "value": "0x10f2ee7c"
+                },
+                "id": 10812,
+                "name": "Literal",
+                "src": "545:10:86"
+              }
+            ],
+            "id": 10813,
+            "name": "VariableDeclaration",
+            "src": "495:60:86"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "_blockRewardContract",
+              "payable": false,
+              "scope": 10889,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 10814,
+                "name": "ParameterList",
+                "src": "617:2:86"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 10825,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract IBlockReward",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "IBlockReward",
+                          "referencedDeclaration": 4655,
+                          "type": "contract IBlockReward"
+                        },
+                        "id": 10815,
+                        "name": "UserDefinedTypeName",
+                        "src": "643:12:86"
+                      }
+                    ],
+                    "id": 10816,
+                    "name": "VariableDeclaration",
+                    "src": "643:12:86"
+                  }
+                ],
+                "id": 10817,
+                "name": "ParameterList",
+                "src": "642:14:86"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 10817
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "contract IBlockReward",
+                          "type_conversion": true
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 4655,
+                              "type": "type(contract IBlockReward)",
+                              "value": "IBlockReward"
+                            },
+                            "id": 10818,
+                            "name": "Identifier",
+                            "src": "674:12:86"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 7989,
+                                  "type": "mapping(bytes32 => address)",
+                                  "value": "addressStorage"
+                                },
+                                "id": 10819,
+                                "name": "Identifier",
+                                "src": "687:14:86"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 10807,
+                                  "type": "bytes32",
+                                  "value": "BLOCK_REWARD_CONTRACT"
+                                },
+                                "id": 10820,
+                                "name": "Identifier",
+                                "src": "702:21:86"
+                              }
+                            ],
+                            "id": 10821,
+                            "name": "IndexAccess",
+                            "src": "687:37:86"
+                          }
+                        ],
+                        "id": 10822,
+                        "name": "FunctionCall",
+                        "src": "674:51:86"
+                      }
+                    ],
+                    "id": 10823,
+                    "name": "Return",
+                    "src": "667:58:86"
+                  }
+                ],
+                "id": 10824,
+                "name": "Block",
+                "src": "657:75:86"
+              }
+            ],
+            "id": 10825,
+            "name": "FunctionDefinition",
+            "src": "588:144:86"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "_setBlockRewardContract",
+              "payable": false,
+              "scope": 10889,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_blockReward",
+                      "scope": 10888,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 10826,
+                        "name": "ElementaryTypeName",
+                        "src": "771:7:86"
+                      }
+                    ],
+                    "id": 10827,
+                    "name": "VariableDeclaration",
+                    "src": "771:20:86"
+                  }
+                ],
+                "id": 10828,
+                "name": "ParameterList",
+                "src": "770:22:86"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 10829,
+                "name": "ParameterList",
+                "src": "802:0:86"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                19340,
+                                19341
+                              ],
+                              "referencedDeclaration": 19340,
+                              "type": "function (bool) pure",
+                              "value": "require"
+                            },
+                            "id": 10830,
+                            "name": "Identifier",
+                            "src": "812:7:86"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "bool",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_address",
+                                      "typeString": "address"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "isContract",
+                                  "referencedDeclaration": 17,
+                                  "type": "function (address) view returns (bool)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 18,
+                                      "type": "type(library AddressUtils)",
+                                      "value": "AddressUtils"
+                                    },
+                                    "id": 10831,
+                                    "name": "Identifier",
+                                    "src": "820:12:86"
+                                  }
+                                ],
+                                "id": 10832,
+                                "name": "MemberAccess",
+                                "src": "820:23:86"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 10827,
+                                  "type": "address",
+                                  "value": "_blockReward"
+                                },
+                                "id": 10833,
+                                "name": "Identifier",
+                                "src": "844:12:86"
+                              }
+                            ],
+                            "id": 10834,
+                            "name": "FunctionCall",
+                            "src": "820:37:86"
+                          }
+                        ],
+                        "id": 10835,
+                        "name": "FunctionCall",
+                        "src": "812:46:86"
+                      }
+                    ],
+                    "id": 10836,
+                    "name": "ExpressionStatement",
+                    "src": "812:46:86"
+                  },
+                  {
+                    "attributes": {
+                      "assignments": [
+                        10838
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "name": "isBlockRewardContract",
+                          "scope": 10888,
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "type": "bool",
+                          "value": null,
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "bool",
+                              "type": "bool"
+                            },
+                            "id": 10837,
+                            "name": "ElementaryTypeName",
+                            "src": "1068:4:86"
+                          }
+                        ],
+                        "id": 10838,
+                        "name": "VariableDeclaration",
+                        "src": "1068:26:86"
+                      },
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "hexvalue": "66616c7365",
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "subdenomination": null,
+                          "token": "bool",
+                          "type": "bool",
+                          "value": "false"
+                        },
+                        "id": 10839,
+                        "name": "Literal",
+                        "src": "1097:5:86"
+                      }
+                    ],
+                    "id": 10840,
+                    "name": "VariableDeclarationStatement",
+                    "src": "1068:34:86"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "bool",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bytes4",
+                                  "typeString": "bytes4"
+                                }
+                              ],
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "member_name": "call",
+                              "referencedDeclaration": null,
+                              "type": "function () payable returns (bool)"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 10827,
+                                  "type": "address",
+                                  "value": "_blockReward"
+                                },
+                                "id": 10841,
+                                "name": "Identifier",
+                                "src": "1116:12:86"
+                              }
+                            ],
+                            "id": 10842,
+                            "name": "MemberAccess",
+                            "src": "1116:17:86"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 10810,
+                              "type": "bytes4",
+                              "value": "BLOCK_REWARD_CONTRACT_ID"
+                            },
+                            "id": 10843,
+                            "name": "Identifier",
+                            "src": "1134:24:86"
+                          }
+                        ],
+                        "id": 10844,
+                        "name": "FunctionCall",
+                        "src": "1116:43:86"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "=",
+                                  "type": "bool"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 10838,
+                                      "type": "bool",
+                                      "value": "isBlockRewardContract"
+                                    },
+                                    "id": 10845,
+                                    "name": "Identifier",
+                                    "src": "1175:21:86"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "commonType": {
+                                        "typeIdentifier": "t_bytes4",
+                                        "typeString": "bytes4"
+                                      },
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "operator": "==",
+                                      "type": "bool"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "arguments": [
+                                            null
+                                          ],
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "isStructConstructorCall": false,
+                                          "lValueRequested": false,
+                                          "names": [
+                                            null
+                                          ],
+                                          "type": "bytes4",
+                                          "type_conversion": false
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": [
+                                                null
+                                              ],
+                                              "isConstant": false,
+                                              "isLValue": false,
+                                              "isPure": false,
+                                              "lValueRequested": false,
+                                              "member_name": "blockRewardContractId",
+                                              "referencedDeclaration": 4654,
+                                              "type": "function () pure external returns (bytes4)"
+                                            },
+                                            "children": [
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": null,
+                                                  "isConstant": false,
+                                                  "isLValue": false,
+                                                  "isPure": false,
+                                                  "isStructConstructorCall": false,
+                                                  "lValueRequested": false,
+                                                  "names": [
+                                                    null
+                                                  ],
+                                                  "type": "contract IBlockReward",
+                                                  "type_conversion": true
+                                                },
+                                                "children": [
+                                                  {
+                                                    "attributes": {
+                                                      "argumentTypes": [
+                                                        {
+                                                          "typeIdentifier": "t_address",
+                                                          "typeString": "address"
+                                                        }
+                                                      ],
+                                                      "overloadedDeclarations": [
+                                                        null
+                                                      ],
+                                                      "referencedDeclaration": 4655,
+                                                      "type": "type(contract IBlockReward)",
+                                                      "value": "IBlockReward"
+                                                    },
+                                                    "id": 10846,
+                                                    "name": "Identifier",
+                                                    "src": "1215:12:86"
+                                                  },
+                                                  {
+                                                    "attributes": {
+                                                      "argumentTypes": null,
+                                                      "overloadedDeclarations": [
+                                                        null
+                                                      ],
+                                                      "referencedDeclaration": 10827,
+                                                      "type": "address",
+                                                      "value": "_blockReward"
+                                                    },
+                                                    "id": 10847,
+                                                    "name": "Identifier",
+                                                    "src": "1228:12:86"
+                                                  }
+                                                ],
+                                                "id": 10848,
+                                                "name": "FunctionCall",
+                                                "src": "1215:26:86"
+                                              }
+                                            ],
+                                            "id": 10849,
+                                            "name": "MemberAccess",
+                                            "src": "1215:48:86"
+                                          }
+                                        ],
+                                        "id": 10850,
+                                        "name": "FunctionCall",
+                                        "src": "1215:50:86"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "isStructConstructorCall": false,
+                                          "lValueRequested": false,
+                                          "names": [
+                                            null
+                                          ],
+                                          "type": "bytes4",
+                                          "type_conversion": true
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": [
+                                                {
+                                                  "typeIdentifier": "t_bytes32",
+                                                  "typeString": "bytes32"
+                                                }
+                                              ],
+                                              "isConstant": false,
+                                              "isLValue": false,
+                                              "isPure": true,
+                                              "lValueRequested": false,
+                                              "type": "type(bytes4)",
+                                              "value": "bytes4"
+                                            },
+                                            "id": 10851,
+                                            "name": "ElementaryTypeNameExpression",
+                                            "src": "1269:6:86"
+                                          },
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "isConstant": false,
+                                              "isLValue": false,
+                                              "isPure": true,
+                                              "isStructConstructorCall": false,
+                                              "lValueRequested": false,
+                                              "names": [
+                                                null
+                                              ],
+                                              "type": "bytes32",
+                                              "type_conversion": false
+                                            },
+                                            "children": [
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": [
+                                                    {
+                                                      "typeIdentifier": "t_stringliteral_0d35a7ca859f8d9d806ed9a0e3bed9e2dfedcfe541911a67faacdd2c81f1d735",
+                                                      "typeString": "literal_string \"blockReward\""
+                                                    }
+                                                  ],
+                                                  "overloadedDeclarations": [
+                                                    null
+                                                  ],
+                                                  "referencedDeclaration": 19331,
+                                                  "type": "function () pure returns (bytes32)",
+                                                  "value": "keccak256"
+                                                },
+                                                "id": 10852,
+                                                "name": "Identifier",
+                                                "src": "1276:9:86"
+                                              },
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": null,
+                                                  "hexvalue": "626c6f636b526577617264",
+                                                  "isConstant": false,
+                                                  "isLValue": false,
+                                                  "isPure": true,
+                                                  "lValueRequested": false,
+                                                  "subdenomination": null,
+                                                  "token": "string",
+                                                  "type": "literal_string \"blockReward\"",
+                                                  "value": "blockReward"
+                                                },
+                                                "id": 10853,
+                                                "name": "Literal",
+                                                "src": "1286:13:86"
+                                              }
+                                            ],
+                                            "id": 10854,
+                                            "name": "FunctionCall",
+                                            "src": "1276:24:86"
+                                          }
+                                        ],
+                                        "id": 10855,
+                                        "name": "FunctionCall",
+                                        "src": "1269:32:86"
+                                      }
+                                    ],
+                                    "id": 10856,
+                                    "name": "BinaryOperation",
+                                    "src": "1215:86:86"
+                                  }
+                                ],
+                                "id": 10857,
+                                "name": "Assignment",
+                                "src": "1175:126:86"
+                              }
+                            ],
+                            "id": 10858,
+                            "name": "ExpressionStatement",
+                            "src": "1175:126:86"
+                          }
+                        ],
+                        "id": 10859,
+                        "name": "Block",
+                        "src": "1161:151:86"
+                      },
+                      {
+                        "attributes": {
+                          "falseBody": null
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "bool",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bytes4",
+                                      "typeString": "bytes4"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "call",
+                                  "referencedDeclaration": null,
+                                  "type": "function () payable returns (bool)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 10827,
+                                      "type": "address",
+                                      "value": "_blockReward"
+                                    },
+                                    "id": 10860,
+                                    "name": "Identifier",
+                                    "src": "1322:12:86"
+                                  }
+                                ],
+                                "id": 10861,
+                                "name": "MemberAccess",
+                                "src": "1322:17:86"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 10813,
+                                  "type": "bytes4",
+                                  "value": "BRIDGES_ALLOWED_LENGTH"
+                                },
+                                "id": 10862,
+                                "name": "Identifier",
+                                "src": "1340:22:86"
+                              }
+                            ],
+                            "id": 10863,
+                            "name": "FunctionCall",
+                            "src": "1322:41:86"
+                          },
+                          {
+                            "children": [
+                              {
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "operator": "=",
+                                      "type": "bool"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 10838,
+                                          "type": "bool",
+                                          "value": "isBlockRewardContract"
+                                        },
+                                        "id": 10864,
+                                        "name": "Identifier",
+                                        "src": "1379:21:86"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "commonType": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                          },
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "operator": "!=",
+                                          "type": "bool"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "arguments": [
+                                                null
+                                              ],
+                                              "isConstant": false,
+                                              "isLValue": false,
+                                              "isPure": false,
+                                              "isStructConstructorCall": false,
+                                              "lValueRequested": false,
+                                              "names": [
+                                                null
+                                              ],
+                                              "type": "uint256",
+                                              "type_conversion": false
+                                            },
+                                            "children": [
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": [
+                                                    null
+                                                  ],
+                                                  "isConstant": false,
+                                                  "isLValue": false,
+                                                  "isPure": false,
+                                                  "lValueRequested": false,
+                                                  "member_name": "bridgesAllowedLength",
+                                                  "referencedDeclaration": 4639,
+                                                  "type": "function () view external returns (uint256)"
+                                                },
+                                                "children": [
+                                                  {
+                                                    "attributes": {
+                                                      "argumentTypes": null,
+                                                      "isConstant": false,
+                                                      "isLValue": false,
+                                                      "isPure": false,
+                                                      "isStructConstructorCall": false,
+                                                      "lValueRequested": false,
+                                                      "names": [
+                                                        null
+                                                      ],
+                                                      "type": "contract IBlockReward",
+                                                      "type_conversion": true
+                                                    },
+                                                    "children": [
+                                                      {
+                                                        "attributes": {
+                                                          "argumentTypes": [
+                                                            {
+                                                              "typeIdentifier": "t_address",
+                                                              "typeString": "address"
+                                                            }
+                                                          ],
+                                                          "overloadedDeclarations": [
+                                                            null
+                                                          ],
+                                                          "referencedDeclaration": 4655,
+                                                          "type": "type(contract IBlockReward)",
+                                                          "value": "IBlockReward"
+                                                        },
+                                                        "id": 10865,
+                                                        "name": "Identifier",
+                                                        "src": "1403:12:86"
+                                                      },
+                                                      {
+                                                        "attributes": {
+                                                          "argumentTypes": null,
+                                                          "overloadedDeclarations": [
+                                                            null
+                                                          ],
+                                                          "referencedDeclaration": 10827,
+                                                          "type": "address",
+                                                          "value": "_blockReward"
+                                                        },
+                                                        "id": 10866,
+                                                        "name": "Identifier",
+                                                        "src": "1416:12:86"
+                                                      }
+                                                    ],
+                                                    "id": 10867,
+                                                    "name": "FunctionCall",
+                                                    "src": "1403:26:86"
+                                                  }
+                                                ],
+                                                "id": 10868,
+                                                "name": "MemberAccess",
+                                                "src": "1403:47:86"
+                                              }
+                                            ],
+                                            "id": 10869,
+                                            "name": "FunctionCall",
+                                            "src": "1403:49:86"
+                                          },
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "hexvalue": "30",
+                                              "isConstant": false,
+                                              "isLValue": false,
+                                              "isPure": true,
+                                              "lValueRequested": false,
+                                              "subdenomination": null,
+                                              "token": "number",
+                                              "type": "int_const 0",
+                                              "value": "0"
+                                            },
+                                            "id": 10870,
+                                            "name": "Literal",
+                                            "src": "1456:1:86"
+                                          }
+                                        ],
+                                        "id": 10871,
+                                        "name": "BinaryOperation",
+                                        "src": "1403:54:86"
+                                      }
+                                    ],
+                                    "id": 10872,
+                                    "name": "Assignment",
+                                    "src": "1379:78:86"
+                                  }
+                                ],
+                                "id": 10873,
+                                "name": "ExpressionStatement",
+                                "src": "1379:78:86"
+                              }
+                            ],
+                            "id": 10874,
+                            "name": "Block",
+                            "src": "1365:103:86"
+                          }
+                        ],
+                        "id": 10875,
+                        "name": "IfStatement",
+                        "src": "1318:150:86"
+                      }
+                    ],
+                    "id": 10876,
+                    "name": "IfStatement",
+                    "src": "1112:356:86"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                19340,
+                                19341
+                              ],
+                              "referencedDeclaration": 19340,
+                              "type": "function (bool) pure",
+                              "value": "require"
+                            },
+                            "id": 10877,
+                            "name": "Identifier",
+                            "src": "1477:7:86"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 10838,
+                              "type": "bool",
+                              "value": "isBlockRewardContract"
+                            },
+                            "id": 10878,
+                            "name": "Identifier",
+                            "src": "1485:21:86"
+                          }
+                        ],
+                        "id": 10879,
+                        "name": "FunctionCall",
+                        "src": "1477:30:86"
+                      }
+                    ],
+                    "id": 10880,
+                    "name": "ExpressionStatement",
+                    "src": "1477:30:86"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 7989,
+                                  "type": "mapping(bytes32 => address)",
+                                  "value": "addressStorage"
+                                },
+                                "id": 10881,
+                                "name": "Identifier",
+                                "src": "1517:14:86"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 10807,
+                                  "type": "bytes32",
+                                  "value": "BLOCK_REWARD_CONTRACT"
+                                },
+                                "id": 10882,
+                                "name": "Identifier",
+                                "src": "1532:21:86"
+                              }
+                            ],
+                            "id": 10883,
+                            "name": "IndexAccess",
+                            "src": "1517:37:86"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 10827,
+                              "type": "address",
+                              "value": "_blockReward"
+                            },
+                            "id": 10884,
+                            "name": "Identifier",
+                            "src": "1557:12:86"
+                          }
+                        ],
+                        "id": 10885,
+                        "name": "Assignment",
+                        "src": "1517:52:86"
+                      }
+                    ],
+                    "id": 10886,
+                    "name": "ExpressionStatement",
+                    "src": "1517:52:86"
+                  }
+                ],
+                "id": 10887,
+                "name": "Block",
+                "src": "802:774:86"
+              }
+            ],
+            "id": 10888,
+            "name": "FunctionDefinition",
+            "src": "738:838:86"
+          }
+        ],
+        "id": 10889,
+        "name": "ContractDefinition",
+        "src": "173:1405:86"
+      }
+    ],
+    "id": 10890,
+    "name": "SourceUnit",
+    "src": "0:1579:86"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:19.282Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

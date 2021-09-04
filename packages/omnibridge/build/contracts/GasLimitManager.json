@@ -1,0 +1,1541 @@
+{
+  "contractName": "GasLimitManager",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "bridgeContract",
+      "outputs": [
+        {
+          "internalType": "contract IAMB",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "mediatorContractOnOtherSide",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_bridgeContract",
+          "type": "address"
+        }
+      ],
+      "name": "setBridgeContract",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_mediatorContract",
+          "type": "address"
+        }
+      ],
+      "name": "setMediatorContractOnOtherSide",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_gasLimit",
+          "type": "uint256"
+        }
+      ],
+      "name": "setRequestGasLimit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "requestGasLimit",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.5+commit.eb77ed08\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"bridgeContract\",\"outputs\":[{\"internalType\":\"contract IAMB\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"mediatorContractOnOtherSide\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"requestGasLimit\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_bridgeContract\",\"type\":\"address\"}],\"name\":\"setBridgeContract\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_mediatorContract\",\"type\":\"address\"}],\"name\":\"setMediatorContractOnOtherSide\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_gasLimit\",\"type\":\"uint256\"}],\"name\":\"setRequestGasLimit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Functionality for determining the request gas limit for AMB execution.\",\"kind\":\"dev\",\"methods\":{\"bridgeContract()\":{\"details\":\"Get the AMB interface for the bridge contract address\",\"returns\":{\"_0\":\"AMB interface for the bridge contract address\"}},\"mediatorContractOnOtherSide()\":{\"details\":\"Tells the mediator contract address from the other network.\",\"returns\":{\"_0\":\"the address of the mediator contract.\"}},\"owner()\":{\"details\":\"Tells the address of the owner\",\"returns\":{\"_0\":\"the address of the owner\"}},\"requestGasLimit()\":{\"details\":\"Tells the default gas limit to be used in the message execution by the AMB bridge on the other network.\",\"returns\":{\"_0\":\"the gas limit for the message execution.\"}},\"setBridgeContract(address)\":{\"details\":\"Sets the AMB bridge contract address. Only the owner can call this method.\",\"params\":{\"_bridgeContract\":\"the address of the bridge contract.\"}},\"setMediatorContractOnOtherSide(address)\":{\"details\":\"Sets the mediator contract address from the other network. Only the owner can call this method.\",\"params\":{\"_mediatorContract\":\"the address of the mediator contract.\"}},\"setRequestGasLimit(uint256)\":{\"details\":\"Sets the default gas limit to be used in the message execution by the AMB bridge on the other network. This value can't exceed the parameter maxGasPerTx defined on the AMB bridge. Only the owner can call this method.\",\"params\":{\"_gasLimit\":\"the gas limit for the message execution.\"}},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"the address to transfer ownership to.\"}}},\"title\":\"GasLimitManager\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/upgradeable_contracts/components/common/GasLimitManager.sol\":\"GasLimitManager\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0x698f929f1097637d051976b322a2d532c27df022b09010e8d091e2888a5ebdf8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4bd4c9419d1182612ef415c60a83a9039b227fccb799937963448114c0473b58\",\"dweb:/ipfs/Qmat1U571v55F5JDDHHX7igGcmLF8Ehk9CzsWpjbdx3RTH\"]},\"project:/contracts/interfaces/IAMB.sol\":{\"keccak256\":\"0xfe88f8c7f7bd2dfd7374f3e9884c5a50562ae8d7b2c378e7b3066bc27c2eafd9\",\"urls\":[\"bzz-raw://f4043937cf0f062f6acf5789841a9be5c29ed2772d6fa728803a755904bc592c\",\"dweb:/ipfs/QmcFtuwDQfLy9vZ4dNR8Ap2Bq9vPjgT7aHawioPQz2Sj8W\"]},\"project:/contracts/interfaces/IUpgradeabilityOwnerStorage.sol\":{\"keccak256\":\"0xf43326666f1abfec8a74b26eed4b56efea29a81865431a4ba4f38ec3f34dc67f\",\"urls\":[\"bzz-raw://e9e0deb3ba99bbc2476db4f41d81455b7bf1706cf5d0f8d1810000ac043e0815\",\"dweb:/ipfs/QmTHAqNbxjpTVHPCpYESuvaDAHUoWDeCgQAJie7ZyrF6Eg\"]},\"project:/contracts/upgradeability/EternalStorage.sol\":{\"keccak256\":\"0x69e24ec05ae65648eada7ff65aba3e7d90d72ad186f6d5bb9f01c54b0fa00b41\",\"urls\":[\"bzz-raw://a7c173e5610184402d8a7af1ef21e468c5805e4736bba5da0e8be3e4e4a29d48\",\"dweb:/ipfs/QmRakjK88qux7f6dg9Hpcw2PD3cMUPKTnj6YDC6yJ1caqE\"]},\"project:/contracts/upgradeable_contracts/BasicAMBMediator.sol\":{\"keccak256\":\"0x45a41cda946e6960f9ca3ddea2ae2cd598fd9e0b1a78eb167191457a7becabdf\",\"urls\":[\"bzz-raw://1b38df61c3d533b6b045de538202fa419eb33715ce342942434215eb3e027c4c\",\"dweb:/ipfs/QmQia9wT6SM3ozb6Witt5TqqfwbFZqKvYgRkWejYLmhwuu\"]},\"project:/contracts/upgradeable_contracts/Ownable.sol\":{\"keccak256\":\"0xaedb5428853f1589f728b3a1a6def0bb12fe13dcedbffeae8381f563048f528e\",\"urls\":[\"bzz-raw://cedb034e5f02c5dc5ee5059e5e07c46ba1d0d1780b1aa1fc934f9bc2814107e2\",\"dweb:/ipfs/QmPzj8LNRTjfChy2KkJqj8NSuiporjKjrd8NjMxAcyWsNq\"]},\"project:/contracts/upgradeable_contracts/components/common/GasLimitManager.sol\":{\"keccak256\":\"0x897faeba7bb0130695c7fb6850214a117bef8edbdcfd76d42af8de24e07d9835\",\"urls\":[\"bzz-raw://79999021e3a9cb8e91e1753566fa14e50b8e00c14abe25d11db53c439aa38c95\",\"dweb:/ipfs/QmW5VgDZFfzf9Ngmk4xDpdHcVC8CLpGULk9su3DyTKYTWX\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.7.5;\n\nimport \"../../BasicAMBMediator.sol\";\n\n/**\n * @title GasLimitManager\n * @dev Functionality for determining the request gas limit for AMB execution.\n */\nabstract contract GasLimitManager is BasicAMBMediator {\n    bytes32 internal constant REQUEST_GAS_LIMIT = 0x2dfd6c9f781bb6bbb5369c114e949b69ebb440ef3d4dd6b2836225eb1dc3a2be; // keccak256(abi.encodePacked(\"requestGasLimit\"))\n\n    /**\n     * @dev Sets the default gas limit to be used in the message execution by the AMB bridge on the other network.\n     * This value can't exceed the parameter maxGasPerTx defined on the AMB bridge.\n     * Only the owner can call this method.\n     * @param _gasLimit the gas limit for the message execution.\n     */\n    function setRequestGasLimit(uint256 _gasLimit) external onlyOwner {\n        _setRequestGasLimit(_gasLimit);\n    }\n\n    /**\n     * @dev Tells the default gas limit to be used in the message execution by the AMB bridge on the other network.\n     * @return the gas limit for the message execution.\n     */\n    function requestGasLimit() public view returns (uint256) {\n        return uintStorage[REQUEST_GAS_LIMIT];\n    }\n\n    /**\n     * @dev Stores the gas limit to be used in the message execution by the AMB bridge on the other network.\n     * @param _gasLimit the gas limit for the message execution.\n     */\n    function _setRequestGasLimit(uint256 _gasLimit) internal {\n        require(_gasLimit <= maxGasPerTx());\n        uintStorage[REQUEST_GAS_LIMIT] = _gasLimit;\n    }\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/omnibridge/contracts/upgradeable_contracts/components/common/GasLimitManager.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/upgradeable_contracts/components/common/GasLimitManager.sol",
+    "exportedSymbols": {
+      "Address": [
+        690
+      ],
+      "BasicAMBMediator": [
+        3363
+      ],
+      "EternalStorage": [
+        2911
+      ],
+      "GasLimitManager": [
+        6175
+      ],
+      "IAMB": [
+        988
+      ],
+      "IUpgradeabilityOwnerStorage": [
+        1327
+      ],
+      "Ownable": [
+        5648
+      ]
+    },
+    "id": 6176,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6123,
+        "literals": [
+          "solidity",
+          "0.7",
+          ".5"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:53"
+      },
+      {
+        "absolutePath": "project:/contracts/upgradeable_contracts/BasicAMBMediator.sol",
+        "file": "../../BasicAMBMediator.sol",
+        "id": 6124,
+        "nodeType": "ImportDirective",
+        "scope": 6176,
+        "sourceUnit": 3364,
+        "src": "24:36:53",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 6126,
+              "name": "BasicAMBMediator",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 3363,
+              "src": "212:16:53",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_BasicAMBMediator_$3363",
+                "typeString": "contract BasicAMBMediator"
+              }
+            },
+            "id": 6127,
+            "nodeType": "InheritanceSpecifier",
+            "src": "212:16:53"
+          }
+        ],
+        "contractDependencies": [
+          2911,
+          3363,
+          5648
+        ],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 6125,
+          "nodeType": "StructuredDocumentation",
+          "src": "62:112:53",
+          "text": " @title GasLimitManager\n @dev Functionality for determining the request gas limit for AMB execution."
+        },
+        "fullyImplemented": false,
+        "id": 6175,
+        "linearizedBaseContracts": [
+          6175,
+          3363,
+          5648,
+          2911
+        ],
+        "name": "GasLimitManager",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 6130,
+            "mutability": "constant",
+            "name": "REQUEST_GAS_LIMIT",
+            "nodeType": "VariableDeclaration",
+            "scope": 6175,
+            "src": "235:112:53",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes32",
+              "typeString": "bytes32"
+            },
+            "typeName": {
+              "id": 6128,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "235:7:53",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes32",
+                "typeString": "bytes32"
+              }
+            },
+            "value": {
+              "hexValue": "307832646664366339663738316262366262623533363963313134653934396236396562623434306566336434646436623238333632323565623164633361326265",
+              "id": 6129,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "281:66:53",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_20801840181521767966999129630630633399251189849383603609438566914287877726910_by_1",
+                "typeString": "int_const 2080...(69 digits omitted)...6910"
+              },
+              "value": "0x2dfd6c9f781bb6bbb5369c114e949b69ebb440ef3d4dd6b2836225eb1dc3a2be"
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 6142,
+              "nodeType": "Block",
+              "src": "794:47:53",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 6139,
+                        "name": "_gasLimit",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6133,
+                        "src": "824:9:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "id": 6138,
+                      "name": "_setRequestGasLimit",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6174,
+                      "src": "804:19:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256)"
+                      }
+                    },
+                    "id": 6140,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "804:30:53",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6141,
+                  "nodeType": "ExpressionStatement",
+                  "src": "804:30:53"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 6131,
+              "nodeType": "StructuredDocumentation",
+              "src": "404:319:53",
+              "text": " @dev Sets the default gas limit to be used in the message execution by the AMB bridge on the other network.\n This value can't exceed the parameter maxGasPerTx defined on the AMB bridge.\n Only the owner can call this method.\n @param _gasLimit the gas limit for the message execution."
+            },
+            "functionSelector": "f3b83791",
+            "id": 6143,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 6136,
+                "modifierName": {
+                  "id": 6135,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 5529,
+                  "src": "784:9:53",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "784:9:53"
+              }
+            ],
+            "name": "setRequestGasLimit",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6134,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6133,
+                  "mutability": "mutable",
+                  "name": "_gasLimit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6143,
+                  "src": "756:17:53",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6132,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "756:7:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "755:19:53"
+            },
+            "returnParameters": {
+              "id": 6137,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "794:0:53"
+            },
+            "scope": 6175,
+            "src": "728:113:53",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 6153,
+              "nodeType": "Block",
+              "src": "1092:54:53",
+              "statements": [
+                {
+                  "expression": {
+                    "baseExpression": {
+                      "id": 6149,
+                      "name": "uintStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2890,
+                      "src": "1109:11:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
+                        "typeString": "mapping(bytes32 => uint256)"
+                      }
+                    },
+                    "id": 6151,
+                    "indexExpression": {
+                      "id": 6150,
+                      "name": "REQUEST_GAS_LIMIT",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6130,
+                      "src": "1121:17:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "1109:30:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 6148,
+                  "id": 6152,
+                  "nodeType": "Return",
+                  "src": "1102:37:53"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 6144,
+              "nodeType": "StructuredDocumentation",
+              "src": "847:183:53",
+              "text": " @dev Tells the default gas limit to be used in the message execution by the AMB bridge on the other network.\n @return the gas limit for the message execution."
+            },
+            "functionSelector": "be3b625b",
+            "id": 6154,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "requestGasLimit",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6145,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1059:2:53"
+            },
+            "returnParameters": {
+              "id": 6148,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6147,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6154,
+                  "src": "1083:7:53",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6146,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1083:7:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1082:9:53"
+            },
+            "scope": 6175,
+            "src": "1035:111:53",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 6173,
+              "nodeType": "Block",
+              "src": "1399:104:53",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        },
+                        "id": 6164,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "id": 6161,
+                          "name": "_gasLimit",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 6157,
+                          "src": "1417:9:53",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "<=",
+                        "rightExpression": {
+                          "arguments": [],
+                          "expression": {
+                            "argumentTypes": [],
+                            "id": 6162,
+                            "name": "maxGasPerTx",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 3353,
+                            "src": "1430:11:53",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_view$__$returns$_t_uint256_$",
+                              "typeString": "function () view returns (uint256)"
+                            }
+                          },
+                          "id": 6163,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1430:13:53",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        },
+                        "src": "1417:26:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 6160,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        -18,
+                        -18
+                      ],
+                      "referencedDeclaration": -18,
+                      "src": "1409:7:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 6165,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1409:35:53",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 6166,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1409:35:53"
+                },
+                {
+                  "expression": {
+                    "id": 6171,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 6167,
+                        "name": "uintStorage",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2890,
+                        "src": "1454:11:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
+                          "typeString": "mapping(bytes32 => uint256)"
+                        }
+                      },
+                      "id": 6169,
+                      "indexExpression": {
+                        "id": 6168,
+                        "name": "REQUEST_GAS_LIMIT",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 6130,
+                        "src": "1466:17:53",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1454:30:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 6170,
+                      "name": "_gasLimit",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 6157,
+                      "src": "1487:9:53",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1454:42:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 6172,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1454:42:53"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 6155,
+              "nodeType": "StructuredDocumentation",
+              "src": "1152:185:53",
+              "text": " @dev Stores the gas limit to be used in the message execution by the AMB bridge on the other network.\n @param _gasLimit the gas limit for the message execution."
+            },
+            "id": 6174,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_setRequestGasLimit",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6158,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6157,
+                  "mutability": "mutable",
+                  "name": "_gasLimit",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6174,
+                  "src": "1371:17:53",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 6156,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1371:7:53",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1370:19:53"
+            },
+            "returnParameters": {
+              "id": 6159,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1399:0:53"
+            },
+            "scope": 6175,
+            "src": "1342:161:53",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 6176,
+        "src": "175:1330:53"
+      }
+    ],
+    "src": "0:1506:53"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/upgradeable_contracts/components/common/GasLimitManager.sol",
+      "exportedSymbols": {
+        "Address": [
+          690
+        ],
+        "BasicAMBMediator": [
+          3363
+        ],
+        "EternalStorage": [
+          2911
+        ],
+        "GasLimitManager": [
+          6175
+        ],
+        "IAMB": [
+          988
+        ],
+        "IUpgradeabilityOwnerStorage": [
+          1327
+        ],
+        "Ownable": [
+          5648
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.7",
+            ".5"
+          ]
+        },
+        "id": 6123,
+        "name": "PragmaDirective",
+        "src": "0:22:53"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 3364,
+          "absolutePath": "project:/contracts/upgradeable_contracts/BasicAMBMediator.sol",
+          "file": "../../BasicAMBMediator.sol",
+          "scope": 6176,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 6124,
+        "name": "ImportDirective",
+        "src": "24:36:53"
+      },
+      {
+        "attributes": {
+          "abstract": true,
+          "contractDependencies": [
+            2911,
+            3363,
+            5648
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            6175,
+            3363,
+            5648,
+            2911
+          ],
+          "name": "GasLimitManager",
+          "scope": 6176
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": " @title GasLimitManager\n @dev Functionality for determining the request gas limit for AMB execution."
+            },
+            "id": 6125,
+            "name": "StructuredDocumentation",
+            "src": "62:112:53"
+          },
+          {
+            "attributes": {},
+            "children": [
+              {
+                "attributes": {
+                  "name": "BasicAMBMediator",
+                  "referencedDeclaration": 3363,
+                  "type": "contract BasicAMBMediator"
+                },
+                "id": 6126,
+                "name": "UserDefinedTypeName",
+                "src": "212:16:53"
+              }
+            ],
+            "id": 6127,
+            "name": "InheritanceSpecifier",
+            "src": "212:16:53"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "mutability": "constant",
+              "name": "REQUEST_GAS_LIMIT",
+              "scope": 6175,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "bytes32",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "bytes32",
+                  "type": "bytes32"
+                },
+                "id": 6128,
+                "name": "ElementaryTypeName",
+                "src": "235:7:53"
+              },
+              {
+                "attributes": {
+                  "hexvalue": "307832646664366339663738316262366262623533363963313134653934396236396562623434306566336434646436623238333632323565623164633361326265",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "token": "number",
+                  "type": "int_const 2080...(69 digits omitted)...6910",
+                  "value": "0x2dfd6c9f781bb6bbb5369c114e949b69ebb440ef3d4dd6b2836225eb1dc3a2be"
+                },
+                "id": 6129,
+                "name": "Literal",
+                "src": "281:66:53"
+              }
+            ],
+            "id": 6130,
+            "name": "VariableDeclaration",
+            "src": "235:112:53"
+          },
+          {
+            "attributes": {
+              "functionSelector": "f3b83791",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "name": "setRequestGasLimit",
+              "scope": 6175,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Sets the default gas limit to be used in the message execution by the AMB bridge on the other network.\n This value can't exceed the parameter maxGasPerTx defined on the AMB bridge.\n Only the owner can call this method.\n @param _gasLimit the gas limit for the message execution."
+                },
+                "id": 6131,
+                "name": "StructuredDocumentation",
+                "src": "404:319:53"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_gasLimit",
+                      "scope": 6143,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 6132,
+                        "name": "ElementaryTypeName",
+                        "src": "756:7:53"
+                      }
+                    ],
+                    "id": 6133,
+                    "name": "VariableDeclaration",
+                    "src": "756:17:53"
+                  }
+                ],
+                "id": 6134,
+                "name": "ParameterList",
+                "src": "755:19:53"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 6137,
+                "name": "ParameterList",
+                "src": "794:0:53"
+              },
+              {
+                "attributes": {},
+                "children": [
+                  {
+                    "attributes": {
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 5529,
+                      "type": "modifier ()",
+                      "value": "onlyOwner"
+                    },
+                    "id": 6135,
+                    "name": "Identifier",
+                    "src": "784:9:53"
+                  }
+                ],
+                "id": 6136,
+                "name": "ModifierInvocation",
+                "src": "784:9:53"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6174,
+                              "type": "function (uint256)",
+                              "value": "_setRequestGasLimit"
+                            },
+                            "id": 6138,
+                            "name": "Identifier",
+                            "src": "804:19:53"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6133,
+                              "type": "uint256",
+                              "value": "_gasLimit"
+                            },
+                            "id": 6139,
+                            "name": "Identifier",
+                            "src": "824:9:53"
+                          }
+                        ],
+                        "id": 6140,
+                        "name": "FunctionCall",
+                        "src": "804:30:53"
+                      }
+                    ],
+                    "id": 6141,
+                    "name": "ExpressionStatement",
+                    "src": "804:30:53"
+                  }
+                ],
+                "id": 6142,
+                "name": "Block",
+                "src": "794:47:53"
+              }
+            ],
+            "id": 6143,
+            "name": "FunctionDefinition",
+            "src": "728:113:53"
+          },
+          {
+            "attributes": {
+              "functionSelector": "be3b625b",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "requestGasLimit",
+              "scope": 6175,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Tells the default gas limit to be used in the message execution by the AMB bridge on the other network.\n @return the gas limit for the message execution."
+                },
+                "id": 6144,
+                "name": "StructuredDocumentation",
+                "src": "847:183:53"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 6145,
+                "name": "ParameterList",
+                "src": "1059:2:53"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 6154,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 6146,
+                        "name": "ElementaryTypeName",
+                        "src": "1083:7:53"
+                      }
+                    ],
+                    "id": 6147,
+                    "name": "VariableDeclaration",
+                    "src": "1083:7:53"
+                  }
+                ],
+                "id": 6148,
+                "name": "ParameterList",
+                "src": "1082:9:53"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 6148
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2890,
+                              "type": "mapping(bytes32 => uint256)",
+                              "value": "uintStorage"
+                            },
+                            "id": 6149,
+                            "name": "Identifier",
+                            "src": "1109:11:53"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6130,
+                              "type": "bytes32",
+                              "value": "REQUEST_GAS_LIMIT"
+                            },
+                            "id": 6150,
+                            "name": "Identifier",
+                            "src": "1121:17:53"
+                          }
+                        ],
+                        "id": 6151,
+                        "name": "IndexAccess",
+                        "src": "1109:30:53"
+                      }
+                    ],
+                    "id": 6152,
+                    "name": "Return",
+                    "src": "1102:37:53"
+                  }
+                ],
+                "id": 6153,
+                "name": "Block",
+                "src": "1092:54:53"
+              }
+            ],
+            "id": 6154,
+            "name": "FunctionDefinition",
+            "src": "1035:111:53"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_setRequestGasLimit",
+              "scope": 6175,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Stores the gas limit to be used in the message execution by the AMB bridge on the other network.\n @param _gasLimit the gas limit for the message execution."
+                },
+                "id": 6155,
+                "name": "StructuredDocumentation",
+                "src": "1152:185:53"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_gasLimit",
+                      "scope": 6174,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 6156,
+                        "name": "ElementaryTypeName",
+                        "src": "1371:7:53"
+                      }
+                    ],
+                    "id": 6157,
+                    "name": "VariableDeclaration",
+                    "src": "1371:17:53"
+                  }
+                ],
+                "id": 6158,
+                "name": "ParameterList",
+                "src": "1370:19:53"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 6159,
+                "name": "ParameterList",
+                "src": "1399:0:53"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                -18,
+                                -18
+                              ],
+                              "referencedDeclaration": -18,
+                              "type": "function (bool) pure",
+                              "value": "require"
+                            },
+                            "id": 6160,
+                            "name": "Identifier",
+                            "src": "1409:7:53"
+                          },
+                          {
+                            "attributes": {
+                              "commonType": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "<=",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 6157,
+                                  "type": "uint256",
+                                  "value": "_gasLimit"
+                                },
+                                "id": 6161,
+                                "name": "Identifier",
+                                "src": "1417:9:53"
+                              },
+                              {
+                                "attributes": {
+                                  "arguments": [
+                                    null
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "uint256",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        null
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 3353,
+                                      "type": "function () view returns (uint256)",
+                                      "value": "maxGasPerTx"
+                                    },
+                                    "id": 6162,
+                                    "name": "Identifier",
+                                    "src": "1430:11:53"
+                                  }
+                                ],
+                                "id": 6163,
+                                "name": "FunctionCall",
+                                "src": "1430:13:53"
+                              }
+                            ],
+                            "id": 6164,
+                            "name": "BinaryOperation",
+                            "src": "1417:26:53"
+                          }
+                        ],
+                        "id": 6165,
+                        "name": "FunctionCall",
+                        "src": "1409:35:53"
+                      }
+                    ],
+                    "id": 6166,
+                    "name": "ExpressionStatement",
+                    "src": "1409:35:53"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2890,
+                                  "type": "mapping(bytes32 => uint256)",
+                                  "value": "uintStorage"
+                                },
+                                "id": 6167,
+                                "name": "Identifier",
+                                "src": "1454:11:53"
+                              },
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 6130,
+                                  "type": "bytes32",
+                                  "value": "REQUEST_GAS_LIMIT"
+                                },
+                                "id": 6168,
+                                "name": "Identifier",
+                                "src": "1466:17:53"
+                              }
+                            ],
+                            "id": 6169,
+                            "name": "IndexAccess",
+                            "src": "1454:30:53"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 6157,
+                              "type": "uint256",
+                              "value": "_gasLimit"
+                            },
+                            "id": 6170,
+                            "name": "Identifier",
+                            "src": "1487:9:53"
+                          }
+                        ],
+                        "id": 6171,
+                        "name": "Assignment",
+                        "src": "1454:42:53"
+                      }
+                    ],
+                    "id": 6172,
+                    "name": "ExpressionStatement",
+                    "src": "1454:42:53"
+                  }
+                ],
+                "id": 6173,
+                "name": "Block",
+                "src": "1399:104:53"
+              }
+            ],
+            "id": 6174,
+            "name": "FunctionDefinition",
+            "src": "1342:161:53"
+          }
+        ],
+        "id": 6175,
+        "name": "ContractDefinition",
+        "src": "175:1330:53"
+      }
+    ],
+    "id": 6176,
+    "name": "SourceUnit",
+    "src": "0:1506:53"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.5+commit.eb77ed08.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:31.301Z",
+  "devdoc": {
+    "details": "Functionality for determining the request gas limit for AMB execution.",
+    "kind": "dev",
+    "methods": {
+      "bridgeContract()": {
+        "details": "Get the AMB interface for the bridge contract address",
+        "returns": {
+          "_0": "AMB interface for the bridge contract address"
+        }
+      },
+      "mediatorContractOnOtherSide()": {
+        "details": "Tells the mediator contract address from the other network.",
+        "returns": {
+          "_0": "the address of the mediator contract."
+        }
+      },
+      "owner()": {
+        "details": "Tells the address of the owner",
+        "returns": {
+          "_0": "the address of the owner"
+        }
+      },
+      "requestGasLimit()": {
+        "details": "Tells the default gas limit to be used in the message execution by the AMB bridge on the other network.",
+        "returns": {
+          "_0": "the gas limit for the message execution."
+        }
+      },
+      "setBridgeContract(address)": {
+        "details": "Sets the AMB bridge contract address. Only the owner can call this method.",
+        "params": {
+          "_bridgeContract": "the address of the bridge contract."
+        }
+      },
+      "setMediatorContractOnOtherSide(address)": {
+        "details": "Sets the mediator contract address from the other network. Only the owner can call this method.",
+        "params": {
+          "_mediatorContract": "the address of the mediator contract."
+        }
+      },
+      "setRequestGasLimit(uint256)": {
+        "details": "Sets the default gas limit to be used in the message execution by the AMB bridge on the other network. This value can't exceed the parameter maxGasPerTx defined on the AMB bridge. Only the owner can call this method.",
+        "params": {
+          "_gasLimit": "the gas limit for the message execution."
+        }
+      },
+      "transferOwnership(address)": {
+        "details": "Allows the current owner to transfer control of the contract to a newOwner.",
+        "params": {
+          "newOwner": "the address to transfer ownership to."
+        }
+      }
+    },
+    "title": "GasLimitManager",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

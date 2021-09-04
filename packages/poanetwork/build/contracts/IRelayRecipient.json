@@ -1,0 +1,693 @@
+{
+  "contractName": "IRelayRecipient",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "forwarder",
+          "type": "address"
+        }
+      ],
+      "name": "isTrustedForwarder",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "versionRecipient",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier:MIT\npragma solidity 0.4.24;\n\n/**\n * a contract must implement this interface in order to support relayed transaction.\n * It is better to inherit the BaseRelayRecipient as its implementation.\n */\ncontract IRelayRecipient {\n    /**\n     * return if the forwarder is trusted to forward relayed transactions to us.\n     * the forwarder is required to verify the sender's signature, and verify\n     * the call is not a replay.\n     */\n    function isTrustedForwarder(address forwarder) public view returns (bool);\n\n    /**\n     * return the sender of this call.\n     * if the call came through our trusted forwarder, then the real sender is appended as the last 20 bytes\n     * of the msg.data.\n     * otherwise, return `msg.sender`\n     * should be used in the contract anywhere instead of msg.sender\n     */\n    function _msgSender() internal view returns (address);\n\n    /**\n     * return the msg.data of this call.\n     * if the call came through our trusted forwarder, then the real sender was appended as the last 20 bytes\n     * of the msg.data - so this method will strip those 20 bytes off.\n     * otherwise, return `msg.data`\n     * should be used in the contract instead of msg.data, where the difference matters (e.g. when explicitly\n     * signing or hashing the\n     */\n    function _msgData() internal view returns (bytes memory);\n\n    function versionRecipient() external view returns (string memory);\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/poanetwork/contracts/gsn/interfaces/IRelayRecipient.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/gsn/interfaces/IRelayRecipient.sol",
+    "exportedSymbols": {
+      "IRelayRecipient": [
+        2988
+      ]
+    },
+    "id": 2989,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2965,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "31:23:22"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "a contract must implement this interface in order to support relayed transaction.\nIt is better to inherit the BaseRelayRecipient as its implementation.",
+        "fullyImplemented": false,
+        "id": 2988,
+        "linearizedBaseContracts": [
+          2988
+        ],
+        "name": "IRelayRecipient",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "return if the forwarder is trusted to forward relayed transactions to us.\nthe forwarder is required to verify the sender's signature, and verify\nthe call is not a replay.",
+            "id": 2972,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "isTrustedForwarder",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2968,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2967,
+                  "name": "forwarder",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2972,
+                  "src": "489:17:22",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2966,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "489:7:22",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "488:19:22"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2971,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2970,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2972,
+                  "src": "529:4:22",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 2969,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "529:4:22",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "528:6:22"
+            },
+            "scope": 2988,
+            "src": "461:74:22",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": "return the sender of this call.\nif the call came through our trusted forwarder, then the real sender is appended as the last 20 bytes\nof the msg.data.\notherwise, return `msg.sender`\nshould be used in the contract anywhere instead of msg.sender",
+            "id": 2977,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "_msgSender",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2973,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "855:2:22"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2976,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2975,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2977,
+                  "src": "881:7:22",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2974,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "881:7:22",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "880:9:22"
+            },
+            "scope": 2988,
+            "src": "836:54:22",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "documentation": "return the msg.data of this call.\nif the call came through our trusted forwarder, then the real sender was appended as the last 20 bytes\nof the msg.data - so this method will strip those 20 bytes off.\notherwise, return `msg.data`\nshould be used in the contract instead of msg.data, where the difference matters (e.g. when explicitly\nsigning or hashing the",
+            "id": 2982,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "_msgData",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2978,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1327:2:22"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2981,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2980,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2982,
+                  "src": "1353:5:22",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_memory_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 2979,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1353:5:22",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1352:14:22"
+            },
+            "scope": 2988,
+            "src": "1310:57:22",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "internal"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 2987,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "versionRecipient",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 2983,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1398:2:22"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 2986,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2985,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 2987,
+                  "src": "1424:6:22",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 2984,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1424:6:22",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1423:15:22"
+            },
+            "scope": 2988,
+            "src": "1373:66:22",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 2989,
+        "src": "222:1219:22"
+      }
+    ],
+    "src": "31:1411:22"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/gsn/interfaces/IRelayRecipient.sol",
+      "exportedSymbols": {
+        "IRelayRecipient": [
+          2988
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.4",
+            ".24"
+          ]
+        },
+        "id": 2965,
+        "name": "PragmaDirective",
+        "src": "31:23:22"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": "a contract must implement this interface in order to support relayed transaction.\nIt is better to inherit the BaseRelayRecipient as its implementation.",
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            2988
+          ],
+          "name": "IRelayRecipient",
+          "scope": 2989
+        },
+        "children": [
+          {
+            "attributes": {
+              "body": null,
+              "constant": true,
+              "documentation": "return if the forwarder is trusted to forward relayed transactions to us.\nthe forwarder is required to verify the sender's signature, and verify\nthe call is not a replay.",
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "isTrustedForwarder",
+              "payable": false,
+              "scope": 2988,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "forwarder",
+                      "scope": 2972,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 2966,
+                        "name": "ElementaryTypeName",
+                        "src": "489:7:22"
+                      }
+                    ],
+                    "id": 2967,
+                    "name": "VariableDeclaration",
+                    "src": "489:17:22"
+                  }
+                ],
+                "id": 2968,
+                "name": "ParameterList",
+                "src": "488:19:22"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 2972,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 2969,
+                        "name": "ElementaryTypeName",
+                        "src": "529:4:22"
+                      }
+                    ],
+                    "id": 2970,
+                    "name": "VariableDeclaration",
+                    "src": "529:4:22"
+                  }
+                ],
+                "id": 2971,
+                "name": "ParameterList",
+                "src": "528:6:22"
+              }
+            ],
+            "id": 2972,
+            "name": "FunctionDefinition",
+            "src": "461:74:22"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "constant": true,
+              "documentation": "return the sender of this call.\nif the call came through our trusted forwarder, then the real sender is appended as the last 20 bytes\nof the msg.data.\notherwise, return `msg.sender`\nshould be used in the contract anywhere instead of msg.sender",
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "_msgSender",
+              "payable": false,
+              "scope": 2988,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 2973,
+                "name": "ParameterList",
+                "src": "855:2:22"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 2977,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 2974,
+                        "name": "ElementaryTypeName",
+                        "src": "881:7:22"
+                      }
+                    ],
+                    "id": 2975,
+                    "name": "VariableDeclaration",
+                    "src": "881:7:22"
+                  }
+                ],
+                "id": 2976,
+                "name": "ParameterList",
+                "src": "880:9:22"
+              }
+            ],
+            "id": 2977,
+            "name": "FunctionDefinition",
+            "src": "836:54:22"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "constant": true,
+              "documentation": "return the msg.data of this call.\nif the call came through our trusted forwarder, then the real sender was appended as the last 20 bytes\nof the msg.data - so this method will strip those 20 bytes off.\notherwise, return `msg.data`\nshould be used in the contract instead of msg.data, where the difference matters (e.g. when explicitly\nsigning or hashing the",
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "_msgData",
+              "payable": false,
+              "scope": 2988,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 2978,
+                "name": "ParameterList",
+                "src": "1327:2:22"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 2982,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "bytes",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes",
+                          "type": "bytes"
+                        },
+                        "id": 2979,
+                        "name": "ElementaryTypeName",
+                        "src": "1353:5:22"
+                      }
+                    ],
+                    "id": 2980,
+                    "name": "VariableDeclaration",
+                    "src": "1353:5:22"
+                  }
+                ],
+                "id": 2981,
+                "name": "ParameterList",
+                "src": "1352:14:22"
+              }
+            ],
+            "id": 2982,
+            "name": "FunctionDefinition",
+            "src": "1310:57:22"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "constant": true,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "versionRecipient",
+              "payable": false,
+              "scope": 2988,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 2983,
+                "name": "ParameterList",
+                "src": "1398:2:22"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 2987,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 2984,
+                        "name": "ElementaryTypeName",
+                        "src": "1424:6:22"
+                      }
+                    ],
+                    "id": 2985,
+                    "name": "VariableDeclaration",
+                    "src": "1424:6:22"
+                  }
+                ],
+                "id": 2986,
+                "name": "ParameterList",
+                "src": "1423:15:22"
+              }
+            ],
+            "id": 2987,
+            "name": "FunctionDefinition",
+            "src": "1373:66:22"
+          }
+        ],
+        "id": 2988,
+        "name": "ContractDefinition",
+        "src": "222:1219:22"
+      }
+    ],
+    "id": 2989,
+    "name": "SourceUnit",
+    "src": "31:1411:22"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:19.175Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {
+      "isTrustedForwarder(address)": {
+        "notice": "return if the forwarder is trusted to forward relayed transactions to us. the forwarder is required to verify the sender's signature, and verify the call is not a replay."
+      }
+    }
+  }
+}

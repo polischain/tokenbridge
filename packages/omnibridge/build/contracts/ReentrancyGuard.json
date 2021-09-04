@@ -1,0 +1,517 @@
+{
+  "contractName": "ReentrancyGuard",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.5+commit.eb77ed08\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/upgradeable_contracts/ReentrancyGuard.sol\":\"ReentrancyGuard\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/upgradeable_contracts/ReentrancyGuard.sol\":{\"keccak256\":\"0xa5f837c440d5af3ab20c6b80cab323676fc401da5620f1da60700ed1b19d2394\",\"urls\":[\"bzz-raw://f0bdcf2a4fd42aa446b32bb76a379a3482b5a64aa5d20ddb0e3551ee7e1ad781\",\"dweb:/ipfs/QmcUiVSPFkM3qTvw3p6n8iUJCfkfdqQwCP9bJv3e5sj1iM\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212204541fa4caadc538941037dda6ef4169271a25cc57733cde0cc8fdafb5c085c1e64736f6c63430007050033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212204541fa4caadc538941037dda6ef4169271a25cc57733cde0cc8fdafb5c085c1e64736f6c63430007050033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "24:1053:46:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "24:1053:46:-:0;;;;;",
+  "source": "pragma solidity 0.7.5;\n\ncontract ReentrancyGuard {\n    function lock() internal view returns (bool res) {\n        assembly {\n            // Even though this is not the same as boolStorage[keccak256(abi.encodePacked(\"lock\"))],\n            // since solidity mapping introduces another level of addressing, such slot change is safe\n            // for temporary variables which are cleared at the end of the call execution.\n            res := sload(0x6168652c307c1e813ca11cfb3a601f1cf3b22452021a5052d8b05f1f1f8a3e92) // keccak256(abi.encodePacked(\"lock\"))\n        }\n    }\n\n    function setLock(bool _lock) internal {\n        assembly {\n            // Even though this is not the same as boolStorage[keccak256(abi.encodePacked(\"lock\"))],\n            // since solidity mapping introduces another level of addressing, such slot change is safe\n            // for temporary variables which are cleared at the end of the call execution.\n            sstore(0x6168652c307c1e813ca11cfb3a601f1cf3b22452021a5052d8b05f1f1f8a3e92, _lock) // keccak256(abi.encodePacked(\"lock\"))\n        }\n    }\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/omnibridge/contracts/upgradeable_contracts/ReentrancyGuard.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/upgradeable_contracts/ReentrancyGuard.sol",
+    "exportedSymbols": {
+      "ReentrancyGuard": [
+        5665
+      ]
+    },
+    "id": 5666,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 5650,
+        "literals": [
+          "solidity",
+          "0.7",
+          ".5"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:46"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 5665,
+        "linearizedBaseContracts": [
+          5665
+        ],
+        "name": "ReentrancyGuard",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 5656,
+              "nodeType": "Block",
+              "src": "104:463:46",
+              "statements": [
+                {
+                  "AST": {
+                    "nodeType": "YulBlock",
+                    "src": "123:438:46",
+                    "statements": [
+                      {
+                        "nodeType": "YulAssignment",
+                        "src": "432:80:46",
+                        "value": {
+                          "arguments": [
+                            {
+                              "kind": "number",
+                              "nodeType": "YulLiteral",
+                              "src": "445:66:46",
+                              "type": "",
+                              "value": "0x6168652c307c1e813ca11cfb3a601f1cf3b22452021a5052d8b05f1f1f8a3e92"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "sload",
+                            "nodeType": "YulIdentifier",
+                            "src": "439:5:46"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "439:73:46"
+                        },
+                        "variableNames": [
+                          {
+                            "name": "res",
+                            "nodeType": "YulIdentifier",
+                            "src": "432:3:46"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "evmVersion": "istanbul",
+                  "externalReferences": [
+                    {
+                      "declaration": 5653,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "432:3:46",
+                      "valueSize": 1
+                    }
+                  ],
+                  "id": 5655,
+                  "nodeType": "InlineAssembly",
+                  "src": "114:447:46"
+                }
+              ]
+            },
+            "id": 5657,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "lock",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5651,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "68:2:46"
+            },
+            "returnParameters": {
+              "id": 5654,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5653,
+                  "mutability": "mutable",
+                  "name": "res",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5657,
+                  "src": "94:8:46",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 5652,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "94:4:46",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "93:10:46"
+            },
+            "scope": 5665,
+            "src": "55:512:46",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 5663,
+              "nodeType": "Block",
+              "src": "611:464:46",
+              "statements": [
+                {
+                  "AST": {
+                    "nodeType": "YulBlock",
+                    "src": "630:439:46",
+                    "statements": [
+                      {
+                        "expression": {
+                          "arguments": [
+                            {
+                              "kind": "number",
+                              "nodeType": "YulLiteral",
+                              "src": "946:66:46",
+                              "type": "",
+                              "value": "0x6168652c307c1e813ca11cfb3a601f1cf3b22452021a5052d8b05f1f1f8a3e92"
+                            },
+                            {
+                              "name": "_lock",
+                              "nodeType": "YulIdentifier",
+                              "src": "1014:5:46"
+                            }
+                          ],
+                          "functionName": {
+                            "name": "sstore",
+                            "nodeType": "YulIdentifier",
+                            "src": "939:6:46"
+                          },
+                          "nodeType": "YulFunctionCall",
+                          "src": "939:81:46"
+                        },
+                        "nodeType": "YulExpressionStatement",
+                        "src": "939:81:46"
+                      }
+                    ]
+                  },
+                  "evmVersion": "istanbul",
+                  "externalReferences": [
+                    {
+                      "declaration": 5659,
+                      "isOffset": false,
+                      "isSlot": false,
+                      "src": "1014:5:46",
+                      "valueSize": 1
+                    }
+                  ],
+                  "id": 5662,
+                  "nodeType": "InlineAssembly",
+                  "src": "621:448:46"
+                }
+              ]
+            },
+            "id": 5664,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setLock",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5660,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5659,
+                  "mutability": "mutable",
+                  "name": "_lock",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5664,
+                  "src": "590:10:46",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 5658,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "590:4:46",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "589:12:46"
+            },
+            "returnParameters": {
+              "id": 5661,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "611:0:46"
+            },
+            "scope": 5665,
+            "src": "573:502:46",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 5666,
+        "src": "24:1053:46"
+      }
+    ],
+    "src": "0:1078:46"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/upgradeable_contracts/ReentrancyGuard.sol",
+      "exportedSymbols": {
+        "ReentrancyGuard": [
+          5665
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.7",
+            ".5"
+          ]
+        },
+        "id": 5650,
+        "name": "PragmaDirective",
+        "src": "0:22:46"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            5665
+          ],
+          "name": "ReentrancyGuard",
+          "scope": 5666
+        },
+        "children": [
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "lock",
+              "scope": 5665,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 5651,
+                "name": "ParameterList",
+                "src": "68:2:46"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "res",
+                      "scope": 5657,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 5652,
+                        "name": "ElementaryTypeName",
+                        "src": "94:4:46"
+                      }
+                    ],
+                    "id": 5653,
+                    "name": "VariableDeclaration",
+                    "src": "94:8:46"
+                  }
+                ],
+                "id": 5654,
+                "name": "ParameterList",
+                "src": "93:10:46"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "evmVersion": "istanbul",
+                      "externalReferences": [
+                        {
+                          "declaration": 5653,
+                          "isOffset": false,
+                          "isSlot": false,
+                          "src": "432:3:46",
+                          "valueSize": 1
+                        }
+                      ],
+                      "operations": "{\n    res := sload(0x6168652c307c1e813ca11cfb3a601f1cf3b22452021a5052d8b05f1f1f8a3e92)\n}"
+                    },
+                    "children": [],
+                    "id": 5655,
+                    "name": "InlineAssembly",
+                    "src": "114:447:46"
+                  }
+                ],
+                "id": 5656,
+                "name": "Block",
+                "src": "104:463:46"
+              }
+            ],
+            "id": 5657,
+            "name": "FunctionDefinition",
+            "src": "55:512:46"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "setLock",
+              "scope": 5665,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_lock",
+                      "scope": 5664,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 5658,
+                        "name": "ElementaryTypeName",
+                        "src": "590:4:46"
+                      }
+                    ],
+                    "id": 5659,
+                    "name": "VariableDeclaration",
+                    "src": "590:10:46"
+                  }
+                ],
+                "id": 5660,
+                "name": "ParameterList",
+                "src": "589:12:46"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 5661,
+                "name": "ParameterList",
+                "src": "611:0:46"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "evmVersion": "istanbul",
+                      "externalReferences": [
+                        {
+                          "declaration": 5659,
+                          "isOffset": false,
+                          "isSlot": false,
+                          "src": "1014:5:46",
+                          "valueSize": 1
+                        }
+                      ],
+                      "operations": "{\n    sstore(0x6168652c307c1e813ca11cfb3a601f1cf3b22452021a5052d8b05f1f1f8a3e92, _lock)\n}"
+                    },
+                    "children": [],
+                    "id": 5662,
+                    "name": "InlineAssembly",
+                    "src": "621:448:46"
+                  }
+                ],
+                "id": 5663,
+                "name": "Block",
+                "src": "611:464:46"
+              }
+            ],
+            "id": 5664,
+            "name": "FunctionDefinition",
+            "src": "573:502:46"
+          }
+        ],
+        "id": 5665,
+        "name": "ContractDefinition",
+        "src": "24:1053:46"
+      }
+    ],
+    "id": 5666,
+    "name": "SourceUnit",
+    "src": "0:1078:46"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.5+commit.eb77ed08.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:31.294Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

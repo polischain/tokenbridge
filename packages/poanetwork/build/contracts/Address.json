@@ -1,0 +1,808 @@
+{
+  "contractName": "Address",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.4.24+commit.e67f0147\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{},\"title\":\"Address\"},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/libraries/Address.sol\":\"Address\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/libraries/Address.sol\":{\"keccak256\":\"0x9d5d8f089aedf9dfa743c9bc66bc901db5da5be78892af178340800873e1c722\",\"urls\":[\"bzzr://97602c15f88d529b68d7929717afa75fd03cd0f23a1363c14cd263dbcc17599e\"]},\"project:/contracts/upgradeable_contracts/Sacrifice.sol\":{\"keccak256\":\"0x2c8f9b5e39d33552cd16d3fdd84e58f2138042166ae9b351e97fe674f7e3f337\",\"urls\":[\"bzzr://a438edd320ea1fa8141d54002897c3a50cf6cb13b07b4088d01ffb099bb9e859\"]}},\"version\":1}",
+  "bytecode": "0x604c602c600b82828239805160001a60731460008114601c57601e565bfe5b5030600052607381538281f30073000000000000000000000000000000000000000030146080604052600080fd00a165627a7a723058205f32f5c4104e006dc4a0b5f931a9e1239d08ace0966e52340425c967b2adcc060029",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fd00a165627a7a723058205f32f5c4104e006dc4a0b5f931a9e1239d08ace0966e52340425c967b2adcc060029",
+  "sourceMap": "142:468:45:-;;132:2:-1;166:7;155:9;146:7;137:37;252:7;246:14;243:1;238:23;232:4;229:33;270:1;265:20;;;;222:63;;265:20;274:9;222:63;;298:9;295:1;288:20;328:4;319:7;311:22;352:7;343;336:24",
+  "deployedSourceMap": "142:468:45:-;;;;;;;;",
+  "source": "pragma solidity 0.4.24;\n\nimport \"../upgradeable_contracts/Sacrifice.sol\";\n\n/**\n * @title Address\n * @dev Helper methods for Address type.\n */\nlibrary Address {\n    /**\n    * @dev Try to send native tokens to the address. If it fails, it will force the transfer by creating a selfdestruct contract\n    * @param _receiver address that will receive the native tokens\n    * @param _value the amount of native tokens to send\n    */\n    function safeSendValue(address _receiver, uint256 _value) internal {\n        if (!_receiver.send(_value)) {\n            (new Sacrifice).value(_value)(_receiver);\n        }\n    }\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/poanetwork/contracts/libraries/Address.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/libraries/Address.sol",
+    "exportedSymbols": {
+      "Address": [
+        4966
+      ]
+    },
+    "id": 4967,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4940,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:45"
+      },
+      {
+        "absolutePath": "project:/contracts/upgradeable_contracts/Sacrifice.sol",
+        "file": "../upgradeable_contracts/Sacrifice.sol",
+        "id": 4941,
+        "nodeType": "ImportDirective",
+        "scope": 4967,
+        "sourceUnit": 13322,
+        "src": "25:48:45",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [
+          13321
+        ],
+        "contractKind": "library",
+        "documentation": "@title Address\n@dev Helper methods for Address type.",
+        "fullyImplemented": true,
+        "id": 4966,
+        "linearizedBaseContracts": [
+          4966
+        ],
+        "name": "Address",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 4964,
+              "nodeType": "Block",
+              "src": "498:110:45",
+              "statements": [
+                {
+                  "condition": {
+                    "argumentTypes": null,
+                    "id": 4952,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "!",
+                    "prefix": true,
+                    "src": "512:23:45",
+                    "subExpression": {
+                      "argumentTypes": null,
+                      "arguments": [
+                        {
+                          "argumentTypes": null,
+                          "id": 4950,
+                          "name": "_value",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4945,
+                          "src": "528:6:45",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": null,
+                          "id": 4948,
+                          "name": "_receiver",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 4943,
+                          "src": "513:9:45",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          }
+                        },
+                        "id": 4949,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "memberName": "send",
+                        "nodeType": "MemberAccess",
+                        "referencedDeclaration": null,
+                        "src": "513:14:45",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_send_nonpayable$_t_uint256_$returns$_t_bool_$",
+                          "typeString": "function (uint256) returns (bool)"
+                        }
+                      },
+                      "id": 4951,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "513:22:45",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "falseBody": null,
+                  "id": 4963,
+                  "nodeType": "IfStatement",
+                  "src": "508:94:45",
+                  "trueBody": {
+                    "id": 4962,
+                    "nodeType": "Block",
+                    "src": "537:65:45",
+                    "statements": [
+                      {
+                        "expression": {
+                          "argumentTypes": null,
+                          "arguments": [
+                            {
+                              "argumentTypes": null,
+                              "id": 4959,
+                              "name": "_receiver",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 4943,
+                              "src": "581:9:45",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            ],
+                            "arguments": [
+                              {
+                                "argumentTypes": null,
+                                "id": 4957,
+                                "name": "_value",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 4945,
+                                "src": "573:6:45",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_uint256",
+                                  "typeString": "uint256"
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": null,
+                                "components": [
+                                  {
+                                    "argumentTypes": null,
+                                    "id": 4954,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": false,
+                                    "lValueRequested": false,
+                                    "nodeType": "NewExpression",
+                                    "src": "552:13:45",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_function_creation_payable$_t_address_$returns$_t_contract$_Sacrifice_$13321_$",
+                                      "typeString": "function (address) payable returns (contract Sacrifice)"
+                                    },
+                                    "typeName": {
+                                      "contractScope": null,
+                                      "id": 4953,
+                                      "name": "Sacrifice",
+                                      "nodeType": "UserDefinedTypeName",
+                                      "referencedDeclaration": 13321,
+                                      "src": "556:9:45",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_contract$_Sacrifice_$13321",
+                                        "typeString": "contract Sacrifice"
+                                      }
+                                    }
+                                  }
+                                ],
+                                "id": 4955,
+                                "isConstant": false,
+                                "isInlineArray": false,
+                                "isLValue": false,
+                                "isPure": false,
+                                "lValueRequested": false,
+                                "nodeType": "TupleExpression",
+                                "src": "551:15:45",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_function_creation_payable$_t_address_$returns$_t_contract$_Sacrifice_$13321_$",
+                                  "typeString": "function (address) payable returns (contract Sacrifice)"
+                                }
+                              },
+                              "id": 4956,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "memberName": "value",
+                              "nodeType": "MemberAccess",
+                              "referencedDeclaration": null,
+                              "src": "551:21:45",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_function_setvalue_nonpayable$_t_uint256_$returns$_t_function_creation_payable$_t_address_$returns$_t_contract$_Sacrifice_$13321_$value_$",
+                                "typeString": "function (uint256) returns (function (address) payable returns (contract Sacrifice))"
+                              }
+                            },
+                            "id": 4958,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "functionCall",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "551:29:45",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_creation_payable$_t_address_$returns$_t_contract$_Sacrifice_$13321_$value",
+                              "typeString": "function (address) payable returns (contract Sacrifice)"
+                            }
+                          },
+                          "id": 4960,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "551:40:45",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_contract$_Sacrifice_$13321",
+                            "typeString": "contract Sacrifice"
+                          }
+                        },
+                        "id": 4961,
+                        "nodeType": "ExpressionStatement",
+                        "src": "551:40:45"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": "@dev Try to send native tokens to the address. If it fails, it will force the transfer by creating a selfdestruct contract\n@param _receiver address that will receive the native tokens\n@param _value the amount of native tokens to send",
+            "id": 4965,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "safeSendValue",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4946,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4943,
+                  "name": "_receiver",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4965,
+                  "src": "454:17:45",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4942,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "454:7:45",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4945,
+                  "name": "_value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4965,
+                  "src": "473:14:45",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4944,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "473:7:45",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "453:35:45"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 4947,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "498:0:45"
+            },
+            "scope": 4966,
+            "src": "431:177:45",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 4967,
+        "src": "142:468:45"
+      }
+    ],
+    "src": "0:611:45"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/libraries/Address.sol",
+      "exportedSymbols": {
+        "Address": [
+          4966
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.4",
+            ".24"
+          ]
+        },
+        "id": 4940,
+        "name": "PragmaDirective",
+        "src": "0:23:45"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 13322,
+          "absolutePath": "project:/contracts/upgradeable_contracts/Sacrifice.sol",
+          "file": "../upgradeable_contracts/Sacrifice.sol",
+          "scope": 4967,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 4941,
+        "name": "ImportDirective",
+        "src": "25:48:45"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            13321
+          ],
+          "contractKind": "library",
+          "documentation": "@title Address\n@dev Helper methods for Address type.",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            4966
+          ],
+          "name": "Address",
+          "scope": 4967
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": false,
+              "documentation": "@dev Try to send native tokens to the address. If it fails, it will force the transfer by creating a selfdestruct contract\n@param _receiver address that will receive the native tokens\n@param _value the amount of native tokens to send",
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "safeSendValue",
+              "payable": false,
+              "scope": 4966,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_receiver",
+                      "scope": 4965,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 4942,
+                        "name": "ElementaryTypeName",
+                        "src": "454:7:45"
+                      }
+                    ],
+                    "id": 4943,
+                    "name": "VariableDeclaration",
+                    "src": "454:17:45"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "_value",
+                      "scope": 4965,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 4944,
+                        "name": "ElementaryTypeName",
+                        "src": "473:7:45"
+                      }
+                    ],
+                    "id": 4945,
+                    "name": "VariableDeclaration",
+                    "src": "473:14:45"
+                  }
+                ],
+                "id": 4946,
+                "name": "ParameterList",
+                "src": "453:35:45"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4947,
+                "name": "ParameterList",
+                "src": "498:0:45"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "falseBody": null
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "!",
+                          "prefix": true,
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "type": "bool",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_uint256",
+                                      "typeString": "uint256"
+                                    }
+                                  ],
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "member_name": "send",
+                                  "referencedDeclaration": null,
+                                  "type": "function (uint256) returns (bool)"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 4943,
+                                      "type": "address",
+                                      "value": "_receiver"
+                                    },
+                                    "id": 4948,
+                                    "name": "Identifier",
+                                    "src": "513:9:45"
+                                  }
+                                ],
+                                "id": 4949,
+                                "name": "MemberAccess",
+                                "src": "513:14:45"
+                              },
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 4945,
+                                  "type": "uint256",
+                                  "value": "_value"
+                                },
+                                "id": 4950,
+                                "name": "Identifier",
+                                "src": "528:6:45"
+                              }
+                            ],
+                            "id": 4951,
+                            "name": "FunctionCall",
+                            "src": "513:22:45"
+                          }
+                        ],
+                        "id": 4952,
+                        "name": "UnaryOperation",
+                        "src": "512:23:45"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": null,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "type": "contract Sacrifice",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "isStructConstructorCall": false,
+                                      "lValueRequested": false,
+                                      "names": [
+                                        null
+                                      ],
+                                      "type": "function (address) payable returns (contract Sacrifice)",
+                                      "type_conversion": false
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": [
+                                            {
+                                              "typeIdentifier": "t_uint256",
+                                              "typeString": "uint256"
+                                            }
+                                          ],
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "lValueRequested": false,
+                                          "member_name": "value",
+                                          "referencedDeclaration": null,
+                                          "type": "function (uint256) returns (function (address) payable returns (contract Sacrifice))"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": null,
+                                              "isConstant": false,
+                                              "isInlineArray": false,
+                                              "isLValue": false,
+                                              "isPure": false,
+                                              "lValueRequested": false,
+                                              "type": "function (address) payable returns (contract Sacrifice)"
+                                            },
+                                            "children": [
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": null,
+                                                  "isConstant": false,
+                                                  "isLValue": false,
+                                                  "isPure": false,
+                                                  "lValueRequested": false,
+                                                  "type": "function (address) payable returns (contract Sacrifice)"
+                                                },
+                                                "children": [
+                                                  {
+                                                    "attributes": {
+                                                      "contractScope": null,
+                                                      "name": "Sacrifice",
+                                                      "referencedDeclaration": 13321,
+                                                      "type": "contract Sacrifice"
+                                                    },
+                                                    "id": 4953,
+                                                    "name": "UserDefinedTypeName",
+                                                    "src": "556:9:45"
+                                                  }
+                                                ],
+                                                "id": 4954,
+                                                "name": "NewExpression",
+                                                "src": "552:13:45"
+                                              }
+                                            ],
+                                            "id": 4955,
+                                            "name": "TupleExpression",
+                                            "src": "551:15:45"
+                                          }
+                                        ],
+                                        "id": 4956,
+                                        "name": "MemberAccess",
+                                        "src": "551:21:45"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": null,
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 4945,
+                                          "type": "uint256",
+                                          "value": "_value"
+                                        },
+                                        "id": 4957,
+                                        "name": "Identifier",
+                                        "src": "573:6:45"
+                                      }
+                                    ],
+                                    "id": 4958,
+                                    "name": "FunctionCall",
+                                    "src": "551:29:45"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": null,
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 4943,
+                                      "type": "address",
+                                      "value": "_receiver"
+                                    },
+                                    "id": 4959,
+                                    "name": "Identifier",
+                                    "src": "581:9:45"
+                                  }
+                                ],
+                                "id": 4960,
+                                "name": "FunctionCall",
+                                "src": "551:40:45"
+                              }
+                            ],
+                            "id": 4961,
+                            "name": "ExpressionStatement",
+                            "src": "551:40:45"
+                          }
+                        ],
+                        "id": 4962,
+                        "name": "Block",
+                        "src": "537:65:45"
+                      }
+                    ],
+                    "id": 4963,
+                    "name": "IfStatement",
+                    "src": "508:94:45"
+                  }
+                ],
+                "id": 4964,
+                "name": "Block",
+                "src": "498:110:45"
+              }
+            ],
+            "id": 4965,
+            "name": "FunctionDefinition",
+            "src": "431:177:45"
+          }
+        ],
+        "id": 4966,
+        "name": "ContractDefinition",
+        "src": "142:468:45"
+      }
+    ],
+    "id": 4967,
+    "name": "SourceUnit",
+    "src": "0:611:45"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:19.202Z",
+  "devdoc": {
+    "methods": {},
+    "title": "Address"
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

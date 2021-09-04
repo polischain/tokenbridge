@@ -1,0 +1,2859 @@
+{
+  "contractName": "MultiTokenForwardingRulesConnector",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_manager",
+          "type": "address"
+        }
+      ],
+      "name": "setForwardingRulesManager",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "forwardingRulesManager",
+      "outputs": [
+        {
+          "internalType": "contract MultiTokenForwardingRulesManager",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.5+commit.eb77ed08\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"address\",\"name\":\"previousOwner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[],\"name\":\"forwardingRulesManager\",\"outputs\":[{\"internalType\":\"contract MultiTokenForwardingRulesManager\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_manager\",\"type\":\"address\"}],\"name\":\"setForwardingRulesManager\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Connectivity functionality that is required for using forwarding rules manager.\",\"kind\":\"dev\",\"methods\":{\"forwardingRulesManager()\":{\"details\":\"Retrieves an address of the forwarding rules manager contract.\",\"returns\":{\"_0\":\"address of the forwarding rules manager contract.\"}},\"owner()\":{\"details\":\"Tells the address of the owner\",\"returns\":{\"_0\":\"the address of the owner\"}},\"setForwardingRulesManager(address)\":{\"details\":\"Updates an address of the used forwarding rules manager contract.\",\"params\":{\"_manager\":\"address of forwarding rules manager contract.\"}},\"transferOwnership(address)\":{\"details\":\"Allows the current owner to transfer control of the contract to a newOwner.\",\"params\":{\"newOwner\":\"the address to transfer ownership to.\"}}},\"title\":\"MultiTokenForwardingRulesConnector\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/upgradeable_contracts/modules/forwarding_rules/MultiTokenForwardingRulesConnector.sol\":\"MultiTokenForwardingRulesConnector\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/utils/Address.sol\":{\"keccak256\":\"0x698f929f1097637d051976b322a2d532c27df022b09010e8d091e2888a5ebdf8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4bd4c9419d1182612ef415c60a83a9039b227fccb799937963448114c0473b58\",\"dweb:/ipfs/Qmat1U571v55F5JDDHHX7igGcmLF8Ehk9CzsWpjbdx3RTH\"]},\"project:/contracts/interfaces/IUpgradeabilityOwnerStorage.sol\":{\"keccak256\":\"0xf43326666f1abfec8a74b26eed4b56efea29a81865431a4ba4f38ec3f34dc67f\",\"urls\":[\"bzz-raw://e9e0deb3ba99bbc2476db4f41d81455b7bf1706cf5d0f8d1810000ac043e0815\",\"dweb:/ipfs/QmTHAqNbxjpTVHPCpYESuvaDAHUoWDeCgQAJie7ZyrF6Eg\"]},\"project:/contracts/upgradeability/EternalStorage.sol\":{\"keccak256\":\"0x69e24ec05ae65648eada7ff65aba3e7d90d72ad186f6d5bb9f01c54b0fa00b41\",\"urls\":[\"bzz-raw://a7c173e5610184402d8a7af1ef21e468c5805e4736bba5da0e8be3e4e4a29d48\",\"dweb:/ipfs/QmRakjK88qux7f6dg9Hpcw2PD3cMUPKTnj6YDC6yJ1caqE\"]},\"project:/contracts/upgradeable_contracts/Ownable.sol\":{\"keccak256\":\"0xaedb5428853f1589f728b3a1a6def0bb12fe13dcedbffeae8381f563048f528e\",\"urls\":[\"bzz-raw://cedb034e5f02c5dc5ee5059e5e07c46ba1d0d1780b1aa1fc934f9bc2814107e2\",\"dweb:/ipfs/QmPzj8LNRTjfChy2KkJqj8NSuiporjKjrd8NjMxAcyWsNq\"]},\"project:/contracts/upgradeable_contracts/modules/OwnableModule.sol\":{\"keccak256\":\"0x0e06915f6f2a0da5948a8a8fa5754fdde78e08c5f51bdc0965b5b4aeb6905603\",\"urls\":[\"bzz-raw://3dede6d2f00d5959697013a6269c4563e04f2ac9088d9d447b71e768e63bcee1\",\"dweb:/ipfs/QmUKqHYt9zCiQh4PGrAjPqa9yAKp5Q3EJPds8VJ2x4YxYY\"]},\"project:/contracts/upgradeable_contracts/modules/forwarding_rules/MultiTokenForwardingRulesConnector.sol\":{\"keccak256\":\"0x0636d42610890ac7e7e23e1a0b47bec9e8efaba5ff196bf371fdeb8fc690bdee\",\"urls\":[\"bzz-raw://a0d8e857619a63ffa9613fc2f958b8f5c1c6b1a45b1868891ad2bfa40a6b77e4\",\"dweb:/ipfs/QmbMG89ceGcY2NyYVFKCkLRwMoMWaTAeux6qdJhRzymCxA\"]},\"project:/contracts/upgradeable_contracts/modules/forwarding_rules/MultiTokenForwardingRulesManager.sol\":{\"keccak256\":\"0xe32442bf0efa0e6b04407b78a3e2ae18d957cd4a8e94daa283d0bae89be3a0a7\",\"urls\":[\"bzz-raw://21b120aeb6a67751ec766b1ff208e021735631fb0b9a8b01d411a17d12a940ae\",\"dweb:/ipfs/QmQTcRbWcqJ7cdcLt6RTEargiH46tyxjZX3vr7wmDMGodg\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061038c806100206000396000f3fe608060405234801561001057600080fd5b506004361061004c5760003560e01c80638da5cb5b1461005157806390ad84a814610075578063c722b1be1461009d578063f2fde38b146100a5575b600080fd5b6100596100cb565b604080516001600160a01b039092168252519081900360200190f35b61009b6004803603602081101561008b57600080fd5b50356001600160a01b0316610122565b005b610059610136565b61009b600480360360208110156100bb57600080fd5b50356001600160a01b031661018d565b7f02016836a56b71f0d02689e69e326f4f4c1b9057164ef592671cf0d37c8040c060005260026020527fb7802e97e87ef2842a6cce7da7ffaeaedaa2f61a6a7870b23d9d01fc9b73712e546001600160a01b031690565b61012a61019e565b610133816101c5565b50565b7f5f86f226cd489cc09187d5f5e0adfb94308af0d4ceac482dd8a8adea9d80daf460005260026020527fab9e97adef29adb9492a44df89badb4a706f8f35202918df21ca61ed056c4868546001600160a01b031690565b61019561019e565b61013381610252565b6101a66100cb565b6001600160a01b0316336001600160a01b0316146101c357600080fd5b565b6001600160a01b03811615806101df57506101df8161031a565b6101e857600080fd5b7f5f86f226cd489cc09187d5f5e0adfb94308af0d4ceac482dd8a8adea9d80daf460005260026020527fab9e97adef29adb9492a44df89badb4a706f8f35202918df21ca61ed056c486880546001600160a01b0319166001600160a01b0392909216919091179055565b6001600160a01b03811661026557600080fd5b7f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e061028e6100cb565b604080516001600160a01b03928316815291841660208301528051918290030190a17f02016836a56b71f0d02689e69e326f4f4c1b9057164ef592671cf0d37c8040c060005260026020527fb7802e97e87ef2842a6cce7da7ffaeaedaa2f61a6a7870b23d9d01fc9b73712e80546001600160a01b0319166001600160a01b0392909216919091179055565b6000813f7fc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a47081811480159061034e57508115155b94935050505056fea264697066735822122088975b72127f84cd64bb95620f7dbf1224b2ea5aab01c09f7f7a7fec6c20756364736f6c63430007050033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061004c5760003560e01c80638da5cb5b1461005157806390ad84a814610075578063c722b1be1461009d578063f2fde38b146100a5575b600080fd5b6100596100cb565b604080516001600160a01b039092168252519081900360200190f35b61009b6004803603602081101561008b57600080fd5b50356001600160a01b0316610122565b005b610059610136565b61009b600480360360208110156100bb57600080fd5b50356001600160a01b031661018d565b7f02016836a56b71f0d02689e69e326f4f4c1b9057164ef592671cf0d37c8040c060005260026020527fb7802e97e87ef2842a6cce7da7ffaeaedaa2f61a6a7870b23d9d01fc9b73712e546001600160a01b031690565b61012a61019e565b610133816101c5565b50565b7f5f86f226cd489cc09187d5f5e0adfb94308af0d4ceac482dd8a8adea9d80daf460005260026020527fab9e97adef29adb9492a44df89badb4a706f8f35202918df21ca61ed056c4868546001600160a01b031690565b61019561019e565b61013381610252565b6101a66100cb565b6001600160a01b0316336001600160a01b0316146101c357600080fd5b565b6001600160a01b03811615806101df57506101df8161031a565b6101e857600080fd5b7f5f86f226cd489cc09187d5f5e0adfb94308af0d4ceac482dd8a8adea9d80daf460005260026020527fab9e97adef29adb9492a44df89badb4a706f8f35202918df21ca61ed056c486880546001600160a01b0319166001600160a01b0392909216919091179055565b6001600160a01b03811661026557600080fd5b7f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e061028e6100cb565b604080516001600160a01b03928316815291841660208301528051918290030190a17f02016836a56b71f0d02689e69e326f4f4c1b9057164ef592671cf0d37c8040c060005260026020527fb7802e97e87ef2842a6cce7da7ffaeaedaa2f61a6a7870b23d9d01fc9b73712e80546001600160a01b0319166001600160a01b0392909216919091179055565b6000813f7fc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a47081811480159061034e57508115155b94935050505056fea264697066735822122088975b72127f84cd64bb95620f7dbf1224b2ea5aab01c09f7f7a7fec6c20756364736f6c63430007050033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "295:2173:67:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "295:2173:67:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1893:92:45;;;:::i;:::-;;;;-1:-1:-1;;;;;1893:92:45;;;;;;;;;;;;;;727:125:67;;;;;;;;;;;;;;;;-1:-1:-1;727:125:67;-1:-1:-1;;;;;727:125:67;;:::i;:::-;;1014:196;;;:::i;2156:100:45:-;;;;;;;;;;;;;;;;-1:-1:-1;2156:100:45;-1:-1:-1;;;;;2156:100:45;;:::i;1893:92::-;1681:66;1931:7;1957:21;:14;:21;;;;-1:-1:-1;;;;;1957:21:45;1893:92;:::o;727:125:67:-;766:12:45;:10;:12::i;:::-;809:36:67::1;836:8;809:26;:36::i;:::-;727:125:::0;:::o;1014:196::-;426:66;1069:32;1153:49;:14;:49;;;;-1:-1:-1;;;;;1153:49:67;1014:196;:::o;2156:100:45:-;766:12;:10;:12::i;:::-;2230:19:::1;2240:8;2230:9;:19::i;899:83::-:0;967:7;:5;:7::i;:::-;-1:-1:-1;;;;;953:21:45;:10;-1:-1:-1;;;;;953:21:45;;945:30;;;;;;899:83::o;1402:213:67:-;-1:-1:-1;;;;;1483:22:67;;;;:54;;;1509:28;1528:8;1509:18;:28::i;:::-;1475:63;;;;;;426:66;1548:49;;:14;:49;;;:60;;-1:-1:-1;;;;;;1548:60:67;-1:-1:-1;;;;;1548:60:67;;;;;;;;;;1402:213::o;2315:190:45:-;-1:-1:-1;;;;;2379:22:45;;2371:31;;;;;;2417:39;2438:7;:5;:7::i;:::-;2417:39;;;-1:-1:-1;;;;;2417:39:45;;;;;;;;;;;;;;;;;;;;;1681:66;2466:21;;:14;:21;;;:32;;-1:-1:-1;;;;;;2466:32:45;-1:-1:-1;;;;;2466:32:45;;;;;;;;;;2315:190::o;718:610:3:-;778:4;1239:20;;1084:66;1278:23;;;;;;:42;;-1:-1:-1;1305:15:3;;;1278:42;1270:51;718:610;-1:-1:-1;;;;718:610:3:o",
+  "source": "pragma solidity 0.7.5;\n\nimport \"@openzeppelin/contracts/utils/Address.sol\";\nimport \"../../Ownable.sol\";\nimport \"./MultiTokenForwardingRulesManager.sol\";\n\n/**\n * @title MultiTokenForwardingRulesConnector\n * @dev Connectivity functionality that is required for using forwarding rules manager.\n */\ncontract MultiTokenForwardingRulesConnector is Ownable {\n    bytes32 internal constant FORWARDING_RULES_MANAGER_CONTRACT =\n        0x5f86f226cd489cc09187d5f5e0adfb94308af0d4ceac482dd8a8adea9d80daf4; // keccak256(abi.encodePacked(\"forwardingRulesManagerContract\"))\n\n    /**\n     * @dev Updates an address of the used forwarding rules manager contract.\n     * @param _manager address of forwarding rules manager contract.\n     */\n    function setForwardingRulesManager(address _manager) external onlyOwner {\n        _setForwardingRulesManager(_manager);\n    }\n\n    /**\n     * @dev Retrieves an address of the forwarding rules manager contract.\n     * @return address of the forwarding rules manager contract.\n     */\n    function forwardingRulesManager() public view returns (MultiTokenForwardingRulesManager) {\n        return MultiTokenForwardingRulesManager(addressStorage[FORWARDING_RULES_MANAGER_CONTRACT]);\n    }\n\n    /**\n     * @dev Internal function for updating an address of the used forwarding rules manager contract.\n     * @param _manager address of forwarding rules manager contract.\n     */\n    function _setForwardingRulesManager(address _manager) internal {\n        require(_manager == address(0) || Address.isContract(_manager));\n        addressStorage[FORWARDING_RULES_MANAGER_CONTRACT] = _manager;\n    }\n\n    /**\n     * @dev Checks if bridge operation is allowed to use oracle driven lane.\n     * @param _token address of the token contract on the foreign side of the bridge.\n     * @param _sender address of the tokens sender on the home side of the bridge.\n     * @param _receiver address of the tokens receiver on the foreign side of the bridge.\n     * @return true, if message can be forwarded to the oracle-driven lane.\n     */\n    function _isOracleDrivenLaneAllowed(\n        address _token,\n        address _sender,\n        address _receiver\n    ) internal view returns (bool) {\n        MultiTokenForwardingRulesManager manager = forwardingRulesManager();\n        // If the manager is defined the default behavior is to use manual lane\n        return address(manager) == address(0) || manager.destinationLane(_token, _sender, _receiver) > 0;\n    }\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/omnibridge/contracts/upgradeable_contracts/modules/forwarding_rules/MultiTokenForwardingRulesConnector.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/upgradeable_contracts/modules/forwarding_rules/MultiTokenForwardingRulesConnector.sol",
+    "exportedSymbols": {
+      "Address": [
+        690
+      ],
+      "EternalStorage": [
+        2911
+      ],
+      "IUpgradeabilityOwnerStorage": [
+        1327
+      ],
+      "MultiTokenForwardingRulesConnector": [
+        9127
+      ],
+      "MultiTokenForwardingRulesManager": [
+        9474
+      ],
+      "Ownable": [
+        5648
+      ],
+      "OwnableModule": [
+        7883
+      ]
+    },
+    "id": 9128,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 9027,
+        "literals": [
+          "solidity",
+          "0.7",
+          ".5"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:67"
+      },
+      {
+        "absolutePath": "@openzeppelin/contracts/utils/Address.sol",
+        "file": "@openzeppelin/contracts/utils/Address.sol",
+        "id": 9028,
+        "nodeType": "ImportDirective",
+        "scope": 9128,
+        "sourceUnit": 691,
+        "src": "24:51:67",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/upgradeable_contracts/Ownable.sol",
+        "file": "../../Ownable.sol",
+        "id": 9029,
+        "nodeType": "ImportDirective",
+        "scope": 9128,
+        "sourceUnit": 5649,
+        "src": "76:27:67",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "project:/contracts/upgradeable_contracts/modules/forwarding_rules/MultiTokenForwardingRulesManager.sol",
+        "file": "./MultiTokenForwardingRulesManager.sol",
+        "id": 9030,
+        "nodeType": "ImportDirective",
+        "scope": 9128,
+        "sourceUnit": 9475,
+        "src": "104:48:67",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 9032,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 5648,
+              "src": "342:7:67",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$5648",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 9033,
+            "nodeType": "InheritanceSpecifier",
+            "src": "342:7:67"
+          }
+        ],
+        "contractDependencies": [
+          2911,
+          5648
+        ],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 9031,
+          "nodeType": "StructuredDocumentation",
+          "src": "154:140:67",
+          "text": " @title MultiTokenForwardingRulesConnector\n @dev Connectivity functionality that is required for using forwarding rules manager."
+        },
+        "fullyImplemented": true,
+        "id": 9127,
+        "linearizedBaseContracts": [
+          9127,
+          5648,
+          2911
+        ],
+        "name": "MultiTokenForwardingRulesConnector",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 9036,
+            "mutability": "constant",
+            "name": "FORWARDING_RULES_MANAGER_CONTRACT",
+            "nodeType": "VariableDeclaration",
+            "scope": 9127,
+            "src": "356:136:67",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes32",
+              "typeString": "bytes32"
+            },
+            "typeName": {
+              "id": 9034,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "356:7:67",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes32",
+                "typeString": "bytes32"
+              }
+            },
+            "value": {
+              "hexValue": "307835663836663232366364343839636330393138376435663565306164666239343330386166306434636561633438326464386138616465613964383064616634",
+              "id": 9035,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "426:66:67",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_43208149390803397828983671208037043547320467211695210947432669924398666406644_by_1",
+                "typeString": "int_const 4320...(69 digits omitted)...6644"
+              },
+              "value": "0x5f86f226cd489cc09187d5f5e0adfb94308af0d4ceac482dd8a8adea9d80daf4"
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 9048,
+              "nodeType": "Block",
+              "src": "799:53:67",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "id": 9045,
+                        "name": "_manager",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9039,
+                        "src": "836:8:67",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 9044,
+                      "name": "_setForwardingRulesManager",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9089,
+                      "src": "809:26:67",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_nonpayable$_t_address_$returns$__$",
+                        "typeString": "function (address)"
+                      }
+                    },
+                    "id": 9046,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "809:36:67",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 9047,
+                  "nodeType": "ExpressionStatement",
+                  "src": "809:36:67"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 9037,
+              "nodeType": "StructuredDocumentation",
+              "src": "564:158:67",
+              "text": " @dev Updates an address of the used forwarding rules manager contract.\n @param _manager address of forwarding rules manager contract."
+            },
+            "functionSelector": "90ad84a8",
+            "id": 9049,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [
+              {
+                "id": 9042,
+                "modifierName": {
+                  "id": 9041,
+                  "name": "onlyOwner",
+                  "nodeType": "Identifier",
+                  "overloadedDeclarations": [],
+                  "referencedDeclaration": 5529,
+                  "src": "789:9:67",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_modifier$__$",
+                    "typeString": "modifier ()"
+                  }
+                },
+                "nodeType": "ModifierInvocation",
+                "src": "789:9:67"
+              }
+            ],
+            "name": "setForwardingRulesManager",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9040,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9039,
+                  "mutability": "mutable",
+                  "name": "_manager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9049,
+                  "src": "762:16:67",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9038,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "762:7:67",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "761:18:67"
+            },
+            "returnParameters": {
+              "id": 9043,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "799:0:67"
+            },
+            "scope": 9127,
+            "src": "727:125:67",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "body": {
+              "id": 9061,
+              "nodeType": "Block",
+              "src": "1103:107:67",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "baseExpression": {
+                          "id": 9056,
+                          "name": "addressStorage",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 2898,
+                          "src": "1153:14:67",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                            "typeString": "mapping(bytes32 => address)"
+                          }
+                        },
+                        "id": 9058,
+                        "indexExpression": {
+                          "id": 9057,
+                          "name": "FORWARDING_RULES_MANAGER_CONTRACT",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": 9036,
+                          "src": "1168:33:67",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                          }
+                        },
+                        "isConstant": false,
+                        "isLValue": true,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "nodeType": "IndexAccess",
+                        "src": "1153:49:67",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      ],
+                      "id": 9055,
+                      "name": "MultiTokenForwardingRulesManager",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9474,
+                      "src": "1120:32:67",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_type$_t_contract$_MultiTokenForwardingRulesManager_$9474_$",
+                        "typeString": "type(contract MultiTokenForwardingRulesManager)"
+                      }
+                    },
+                    "id": 9059,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "typeConversion",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1120:83:67",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_MultiTokenForwardingRulesManager_$9474",
+                      "typeString": "contract MultiTokenForwardingRulesManager"
+                    }
+                  },
+                  "functionReturnParameters": 9054,
+                  "id": 9060,
+                  "nodeType": "Return",
+                  "src": "1113:90:67"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 9050,
+              "nodeType": "StructuredDocumentation",
+              "src": "858:151:67",
+              "text": " @dev Retrieves an address of the forwarding rules manager contract.\n @return address of the forwarding rules manager contract."
+            },
+            "functionSelector": "c722b1be",
+            "id": 9062,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "forwardingRulesManager",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9051,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1045:2:67"
+            },
+            "returnParameters": {
+              "id": 9054,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9053,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9062,
+                  "src": "1069:32:67",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_MultiTokenForwardingRulesManager_$9474",
+                    "typeString": "contract MultiTokenForwardingRulesManager"
+                  },
+                  "typeName": {
+                    "id": 9052,
+                    "name": "MultiTokenForwardingRulesManager",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 9474,
+                    "src": "1069:32:67",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_MultiTokenForwardingRulesManager_$9474",
+                      "typeString": "contract MultiTokenForwardingRulesManager"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1068:34:67"
+            },
+            "scope": 9127,
+            "src": "1014:196:67",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 9088,
+              "nodeType": "Block",
+              "src": "1465:150:67",
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "commonType": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        },
+                        "id": 9079,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "lValueRequested": false,
+                        "leftExpression": {
+                          "commonType": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                          },
+                          "id": 9074,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftExpression": {
+                            "id": 9069,
+                            "name": "_manager",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 9065,
+                            "src": "1483:8:67",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          "nodeType": "BinaryOperation",
+                          "operator": "==",
+                          "rightExpression": {
+                            "arguments": [
+                              {
+                                "hexValue": "30",
+                                "id": 9072,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "number",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "1503:1:67",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_rational_0_by_1",
+                                  "typeString": "int_const 0"
+                                },
+                                "value": "0"
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_rational_0_by_1",
+                                  "typeString": "int_const 0"
+                                }
+                              ],
+                              "id": 9071,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "1495:7:67",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_address_$",
+                                "typeString": "type(address)"
+                              },
+                              "typeName": {
+                                "id": 9070,
+                                "name": "address",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "1495:7:67",
+                                "typeDescriptions": {}
+                              }
+                            },
+                            "id": 9073,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1495:10:67",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address_payable",
+                              "typeString": "address payable"
+                            }
+                          },
+                          "src": "1483:22:67",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "nodeType": "BinaryOperation",
+                        "operator": "||",
+                        "rightExpression": {
+                          "arguments": [
+                            {
+                              "id": 9077,
+                              "name": "_manager",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 9065,
+                              "src": "1528:8:67",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            ],
+                            "expression": {
+                              "id": 9075,
+                              "name": "Address",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 690,
+                              "src": "1509:7:67",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_contract$_Address_$690_$",
+                                "typeString": "type(library Address)"
+                              }
+                            },
+                            "id": 9076,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "lValueRequested": false,
+                            "memberName": "isContract",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 515,
+                            "src": "1509:18:67",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_bool_$",
+                              "typeString": "function (address) view returns (bool)"
+                            }
+                          },
+                          "id": 9078,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1509:28:67",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "src": "1483:54:67",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_bool",
+                          "typeString": "bool"
+                        }
+                      ],
+                      "id": 9068,
+                      "name": "require",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [
+                        -18,
+                        -18
+                      ],
+                      "referencedDeclaration": -18,
+                      "src": "1475:7:67",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                        "typeString": "function (bool) pure"
+                      }
+                    },
+                    "id": 9080,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "1475:63:67",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 9081,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1475:63:67"
+                },
+                {
+                  "expression": {
+                    "id": 9086,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 9082,
+                        "name": "addressStorage",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2898,
+                        "src": "1548:14:67",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                          "typeString": "mapping(bytes32 => address)"
+                        }
+                      },
+                      "id": 9084,
+                      "indexExpression": {
+                        "id": 9083,
+                        "name": "FORWARDING_RULES_MANAGER_CONTRACT",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 9036,
+                        "src": "1563:33:67",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1548:49:67",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 9085,
+                      "name": "_manager",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9065,
+                      "src": "1600:8:67",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1548:60:67",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 9087,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1548:60:67"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 9063,
+              "nodeType": "StructuredDocumentation",
+              "src": "1216:181:67",
+              "text": " @dev Internal function for updating an address of the used forwarding rules manager contract.\n @param _manager address of forwarding rules manager contract."
+            },
+            "id": 9089,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_setForwardingRulesManager",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9066,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9065,
+                  "mutability": "mutable",
+                  "name": "_manager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9089,
+                  "src": "1438:16:67",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9064,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1438:7:67",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1437:18:67"
+            },
+            "returnParameters": {
+              "id": 9067,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1465:0:67"
+            },
+            "scope": 9127,
+            "src": "1402:213:67",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 9125,
+              "nodeType": "Block",
+              "src": "2196:270:67",
+              "statements": [
+                {
+                  "assignments": [
+                    9102
+                  ],
+                  "declarations": [
+                    {
+                      "constant": false,
+                      "id": 9102,
+                      "mutability": "mutable",
+                      "name": "manager",
+                      "nodeType": "VariableDeclaration",
+                      "scope": 9125,
+                      "src": "2206:40:67",
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_MultiTokenForwardingRulesManager_$9474",
+                        "typeString": "contract MultiTokenForwardingRulesManager"
+                      },
+                      "typeName": {
+                        "id": 9101,
+                        "name": "MultiTokenForwardingRulesManager",
+                        "nodeType": "UserDefinedTypeName",
+                        "referencedDeclaration": 9474,
+                        "src": "2206:32:67",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_MultiTokenForwardingRulesManager_$9474",
+                          "typeString": "contract MultiTokenForwardingRulesManager"
+                        }
+                      },
+                      "visibility": "internal"
+                    }
+                  ],
+                  "id": 9105,
+                  "initialValue": {
+                    "arguments": [],
+                    "expression": {
+                      "argumentTypes": [],
+                      "id": 9103,
+                      "name": "forwardingRulesManager",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 9062,
+                      "src": "2249:22:67",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_internal_view$__$returns$_t_contract$_MultiTokenForwardingRulesManager_$9474_$",
+                        "typeString": "function () view returns (contract MultiTokenForwardingRulesManager)"
+                      }
+                    },
+                    "id": 9104,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "2249:24:67",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_MultiTokenForwardingRulesManager_$9474",
+                      "typeString": "contract MultiTokenForwardingRulesManager"
+                    }
+                  },
+                  "nodeType": "VariableDeclarationStatement",
+                  "src": "2206:67:67"
+                },
+                {
+                  "expression": {
+                    "commonType": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "id": 9123,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      },
+                      "id": 9114,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "arguments": [
+                          {
+                            "id": 9108,
+                            "name": "manager",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 9102,
+                            "src": "2378:7:67",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_MultiTokenForwardingRulesManager_$9474",
+                              "typeString": "contract MultiTokenForwardingRulesManager"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_contract$_MultiTokenForwardingRulesManager_$9474",
+                              "typeString": "contract MultiTokenForwardingRulesManager"
+                            }
+                          ],
+                          "id": 9107,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "2370:7:67",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": {
+                            "id": 9106,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "2370:7:67",
+                            "typeDescriptions": {}
+                          }
+                        },
+                        "id": 9109,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "2370:16:67",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address",
+                          "typeString": "address"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "==",
+                      "rightExpression": {
+                        "arguments": [
+                          {
+                            "hexValue": "30",
+                            "id": 9112,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "2398:1:67",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_rational_0_by_1",
+                              "typeString": "int_const 0"
+                            },
+                            "value": "0"
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_rational_0_by_1",
+                              "typeString": "int_const 0"
+                            }
+                          ],
+                          "id": 9111,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "2390:7:67",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_address_$",
+                            "typeString": "type(address)"
+                          },
+                          "typeName": {
+                            "id": 9110,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "2390:7:67",
+                            "typeDescriptions": {}
+                          }
+                        },
+                        "id": 9113,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "2390:10:67",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_address_payable",
+                          "typeString": "address payable"
+                        }
+                      },
+                      "src": "2370:30:67",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "||",
+                    "rightExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_int256",
+                        "typeString": "int256"
+                      },
+                      "id": 9122,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "arguments": [
+                          {
+                            "id": 9117,
+                            "name": "_token",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 9092,
+                            "src": "2428:6:67",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          {
+                            "id": 9118,
+                            "name": "_sender",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 9094,
+                            "src": "2436:7:67",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          },
+                          {
+                            "id": 9119,
+                            "name": "_receiver",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 9096,
+                            "src": "2445:9:67",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            },
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            },
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "expression": {
+                            "id": 9115,
+                            "name": "manager",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 9102,
+                            "src": "2404:7:67",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_MultiTokenForwardingRulesManager_$9474",
+                              "typeString": "contract MultiTokenForwardingRulesManager"
+                            }
+                          },
+                          "id": 9116,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberName": "destinationLane",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 9268,
+                          "src": "2404:23:67",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_view$_t_address_$_t_address_$_t_address_$returns$_t_int256_$",
+                            "typeString": "function (address,address,address) view external returns (int256)"
+                          }
+                        },
+                        "id": 9120,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "2404:51:67",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_int256",
+                          "typeString": "int256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": ">",
+                      "rightExpression": {
+                        "hexValue": "30",
+                        "id": 9121,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "2458:1:67",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_0_by_1",
+                          "typeString": "int_const 0"
+                        },
+                        "value": "0"
+                      },
+                      "src": "2404:55:67",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "2370:89:67",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 9100,
+                  "id": 9124,
+                  "nodeType": "Return",
+                  "src": "2363:96:67"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 9090,
+              "nodeType": "StructuredDocumentation",
+              "src": "1621:423:67",
+              "text": " @dev Checks if bridge operation is allowed to use oracle driven lane.\n @param _token address of the token contract on the foreign side of the bridge.\n @param _sender address of the tokens sender on the home side of the bridge.\n @param _receiver address of the tokens receiver on the foreign side of the bridge.\n @return true, if message can be forwarded to the oracle-driven lane."
+            },
+            "id": 9126,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_isOracleDrivenLaneAllowed",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9097,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9092,
+                  "mutability": "mutable",
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9126,
+                  "src": "2094:14:67",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9091,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2094:7:67",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9094,
+                  "mutability": "mutable",
+                  "name": "_sender",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9126,
+                  "src": "2118:15:67",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9093,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2118:7:67",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 9096,
+                  "mutability": "mutable",
+                  "name": "_receiver",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9126,
+                  "src": "2143:17:67",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9095,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2143:7:67",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2084:82:67"
+            },
+            "returnParameters": {
+              "id": 9100,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9099,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9126,
+                  "src": "2190:4:67",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 9098,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2190:4:67",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2189:6:67"
+            },
+            "scope": 9127,
+            "src": "2049:417:67",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 9128,
+        "src": "295:2173:67"
+      }
+    ],
+    "src": "0:2469:67"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/upgradeable_contracts/modules/forwarding_rules/MultiTokenForwardingRulesConnector.sol",
+      "exportedSymbols": {
+        "Address": [
+          690
+        ],
+        "EternalStorage": [
+          2911
+        ],
+        "IUpgradeabilityOwnerStorage": [
+          1327
+        ],
+        "MultiTokenForwardingRulesConnector": [
+          9127
+        ],
+        "MultiTokenForwardingRulesManager": [
+          9474
+        ],
+        "Ownable": [
+          5648
+        ],
+        "OwnableModule": [
+          7883
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.7",
+            ".5"
+          ]
+        },
+        "id": 9027,
+        "name": "PragmaDirective",
+        "src": "0:22:67"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 691,
+          "absolutePath": "@openzeppelin/contracts/utils/Address.sol",
+          "file": "@openzeppelin/contracts/utils/Address.sol",
+          "scope": 9128,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 9028,
+        "name": "ImportDirective",
+        "src": "24:51:67"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 5649,
+          "absolutePath": "project:/contracts/upgradeable_contracts/Ownable.sol",
+          "file": "../../Ownable.sol",
+          "scope": 9128,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 9029,
+        "name": "ImportDirective",
+        "src": "76:27:67"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 9475,
+          "absolutePath": "project:/contracts/upgradeable_contracts/modules/forwarding_rules/MultiTokenForwardingRulesManager.sol",
+          "file": "./MultiTokenForwardingRulesManager.sol",
+          "scope": 9128,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 9030,
+        "name": "ImportDirective",
+        "src": "104:48:67"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "contractDependencies": [
+            2911,
+            5648
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            9127,
+            5648,
+            2911
+          ],
+          "name": "MultiTokenForwardingRulesConnector",
+          "scope": 9128
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": " @title MultiTokenForwardingRulesConnector\n @dev Connectivity functionality that is required for using forwarding rules manager."
+            },
+            "id": 9031,
+            "name": "StructuredDocumentation",
+            "src": "154:140:67"
+          },
+          {
+            "attributes": {},
+            "children": [
+              {
+                "attributes": {
+                  "name": "Ownable",
+                  "referencedDeclaration": 5648,
+                  "type": "contract Ownable"
+                },
+                "id": 9032,
+                "name": "UserDefinedTypeName",
+                "src": "342:7:67"
+              }
+            ],
+            "id": 9033,
+            "name": "InheritanceSpecifier",
+            "src": "342:7:67"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "mutability": "constant",
+              "name": "FORWARDING_RULES_MANAGER_CONTRACT",
+              "scope": 9127,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "bytes32",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "bytes32",
+                  "type": "bytes32"
+                },
+                "id": 9034,
+                "name": "ElementaryTypeName",
+                "src": "356:7:67"
+              },
+              {
+                "attributes": {
+                  "hexvalue": "307835663836663232366364343839636330393138376435663565306164666239343330386166306434636561633438326464386138616465613964383064616634",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "token": "number",
+                  "type": "int_const 4320...(69 digits omitted)...6644",
+                  "value": "0x5f86f226cd489cc09187d5f5e0adfb94308af0d4ceac482dd8a8adea9d80daf4"
+                },
+                "id": 9035,
+                "name": "Literal",
+                "src": "426:66:67"
+              }
+            ],
+            "id": 9036,
+            "name": "VariableDeclaration",
+            "src": "356:136:67"
+          },
+          {
+            "attributes": {
+              "functionSelector": "90ad84a8",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "name": "setForwardingRulesManager",
+              "scope": 9127,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Updates an address of the used forwarding rules manager contract.\n @param _manager address of forwarding rules manager contract."
+                },
+                "id": 9037,
+                "name": "StructuredDocumentation",
+                "src": "564:158:67"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_manager",
+                      "scope": 9049,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 9038,
+                        "name": "ElementaryTypeName",
+                        "src": "762:7:67"
+                      }
+                    ],
+                    "id": 9039,
+                    "name": "VariableDeclaration",
+                    "src": "762:16:67"
+                  }
+                ],
+                "id": 9040,
+                "name": "ParameterList",
+                "src": "761:18:67"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 9043,
+                "name": "ParameterList",
+                "src": "799:0:67"
+              },
+              {
+                "attributes": {},
+                "children": [
+                  {
+                    "attributes": {
+                      "overloadedDeclarations": [
+                        null
+                      ],
+                      "referencedDeclaration": 5529,
+                      "type": "modifier ()",
+                      "value": "onlyOwner"
+                    },
+                    "id": 9041,
+                    "name": "Identifier",
+                    "src": "789:9:67"
+                  }
+                ],
+                "id": 9042,
+                "name": "ModifierInvocation",
+                "src": "789:9:67"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 9089,
+                              "type": "function (address)",
+                              "value": "_setForwardingRulesManager"
+                            },
+                            "id": 9044,
+                            "name": "Identifier",
+                            "src": "809:26:67"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 9039,
+                              "type": "address",
+                              "value": "_manager"
+                            },
+                            "id": 9045,
+                            "name": "Identifier",
+                            "src": "836:8:67"
+                          }
+                        ],
+                        "id": 9046,
+                        "name": "FunctionCall",
+                        "src": "809:36:67"
+                      }
+                    ],
+                    "id": 9047,
+                    "name": "ExpressionStatement",
+                    "src": "809:36:67"
+                  }
+                ],
+                "id": 9048,
+                "name": "Block",
+                "src": "799:53:67"
+              }
+            ],
+            "id": 9049,
+            "name": "FunctionDefinition",
+            "src": "727:125:67"
+          },
+          {
+            "attributes": {
+              "functionSelector": "c722b1be",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "forwardingRulesManager",
+              "scope": 9127,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Retrieves an address of the forwarding rules manager contract.\n @return address of the forwarding rules manager contract."
+                },
+                "id": 9050,
+                "name": "StructuredDocumentation",
+                "src": "858:151:67"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 9051,
+                "name": "ParameterList",
+                "src": "1045:2:67"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 9062,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract MultiTokenForwardingRulesManager",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "MultiTokenForwardingRulesManager",
+                          "referencedDeclaration": 9474,
+                          "type": "contract MultiTokenForwardingRulesManager"
+                        },
+                        "id": 9052,
+                        "name": "UserDefinedTypeName",
+                        "src": "1069:32:67"
+                      }
+                    ],
+                    "id": 9053,
+                    "name": "VariableDeclaration",
+                    "src": "1069:32:67"
+                  }
+                ],
+                "id": 9054,
+                "name": "ParameterList",
+                "src": "1068:34:67"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 9054
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "contract MultiTokenForwardingRulesManager",
+                          "type_conversion": true
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 9474,
+                              "type": "type(contract MultiTokenForwardingRulesManager)",
+                              "value": "MultiTokenForwardingRulesManager"
+                            },
+                            "id": 9055,
+                            "name": "Identifier",
+                            "src": "1120:32:67"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2898,
+                                  "type": "mapping(bytes32 => address)",
+                                  "value": "addressStorage"
+                                },
+                                "id": 9056,
+                                "name": "Identifier",
+                                "src": "1153:14:67"
+                              },
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 9036,
+                                  "type": "bytes32",
+                                  "value": "FORWARDING_RULES_MANAGER_CONTRACT"
+                                },
+                                "id": 9057,
+                                "name": "Identifier",
+                                "src": "1168:33:67"
+                              }
+                            ],
+                            "id": 9058,
+                            "name": "IndexAccess",
+                            "src": "1153:49:67"
+                          }
+                        ],
+                        "id": 9059,
+                        "name": "FunctionCall",
+                        "src": "1120:83:67"
+                      }
+                    ],
+                    "id": 9060,
+                    "name": "Return",
+                    "src": "1113:90:67"
+                  }
+                ],
+                "id": 9061,
+                "name": "Block",
+                "src": "1103:107:67"
+              }
+            ],
+            "id": 9062,
+            "name": "FunctionDefinition",
+            "src": "1014:196:67"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_setForwardingRulesManager",
+              "scope": 9127,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Internal function for updating an address of the used forwarding rules manager contract.\n @param _manager address of forwarding rules manager contract."
+                },
+                "id": 9063,
+                "name": "StructuredDocumentation",
+                "src": "1216:181:67"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_manager",
+                      "scope": 9089,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 9064,
+                        "name": "ElementaryTypeName",
+                        "src": "1438:7:67"
+                      }
+                    ],
+                    "id": 9065,
+                    "name": "VariableDeclaration",
+                    "src": "1438:16:67"
+                  }
+                ],
+                "id": 9066,
+                "name": "ParameterList",
+                "src": "1437:18:67"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 9067,
+                "name": "ParameterList",
+                "src": "1465:0:67"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "tuple()",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_bool",
+                                  "typeString": "bool"
+                                }
+                              ],
+                              "overloadedDeclarations": [
+                                -18,
+                                -18
+                              ],
+                              "referencedDeclaration": -18,
+                              "type": "function (bool) pure",
+                              "value": "require"
+                            },
+                            "id": 9068,
+                            "name": "Identifier",
+                            "src": "1475:7:67"
+                          },
+                          {
+                            "attributes": {
+                              "commonType": {
+                                "typeIdentifier": "t_bool",
+                                "typeString": "bool"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "||",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "commonType": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                  },
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "==",
+                                  "type": "bool"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 9065,
+                                      "type": "address",
+                                      "value": "_manager"
+                                    },
+                                    "id": 9069,
+                                    "name": "Identifier",
+                                    "src": "1483:8:67"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "isStructConstructorCall": false,
+                                      "lValueRequested": false,
+                                      "names": [
+                                        null
+                                      ],
+                                      "tryCall": false,
+                                      "type": "address payable",
+                                      "type_conversion": true
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": [
+                                            {
+                                              "typeIdentifier": "t_rational_0_by_1",
+                                              "typeString": "int_const 0"
+                                            }
+                                          ],
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "type": "type(address)"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "name": "address"
+                                            },
+                                            "id": 9070,
+                                            "name": "ElementaryTypeName",
+                                            "src": "1495:7:67"
+                                          }
+                                        ],
+                                        "id": 9071,
+                                        "name": "ElementaryTypeNameExpression",
+                                        "src": "1495:7:67"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "hexvalue": "30",
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "token": "number",
+                                          "type": "int_const 0",
+                                          "value": "0"
+                                        },
+                                        "id": 9072,
+                                        "name": "Literal",
+                                        "src": "1503:1:67"
+                                      }
+                                    ],
+                                    "id": 9073,
+                                    "name": "FunctionCall",
+                                    "src": "1495:10:67"
+                                  }
+                                ],
+                                "id": 9074,
+                                "name": "BinaryOperation",
+                                "src": "1483:22:67"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "bool",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "isContract",
+                                      "referencedDeclaration": 515,
+                                      "type": "function (address) view returns (bool)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 690,
+                                          "type": "type(library Address)",
+                                          "value": "Address"
+                                        },
+                                        "id": 9075,
+                                        "name": "Identifier",
+                                        "src": "1509:7:67"
+                                      }
+                                    ],
+                                    "id": 9076,
+                                    "name": "MemberAccess",
+                                    "src": "1509:18:67"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 9065,
+                                      "type": "address",
+                                      "value": "_manager"
+                                    },
+                                    "id": 9077,
+                                    "name": "Identifier",
+                                    "src": "1528:8:67"
+                                  }
+                                ],
+                                "id": 9078,
+                                "name": "FunctionCall",
+                                "src": "1509:28:67"
+                              }
+                            ],
+                            "id": 9079,
+                            "name": "BinaryOperation",
+                            "src": "1483:54:67"
+                          }
+                        ],
+                        "id": 9080,
+                        "name": "FunctionCall",
+                        "src": "1475:63:67"
+                      }
+                    ],
+                    "id": 9081,
+                    "name": "ExpressionStatement",
+                    "src": "1475:63:67"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2898,
+                                  "type": "mapping(bytes32 => address)",
+                                  "value": "addressStorage"
+                                },
+                                "id": 9082,
+                                "name": "Identifier",
+                                "src": "1548:14:67"
+                              },
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 9036,
+                                  "type": "bytes32",
+                                  "value": "FORWARDING_RULES_MANAGER_CONTRACT"
+                                },
+                                "id": 9083,
+                                "name": "Identifier",
+                                "src": "1563:33:67"
+                              }
+                            ],
+                            "id": 9084,
+                            "name": "IndexAccess",
+                            "src": "1548:49:67"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 9065,
+                              "type": "address",
+                              "value": "_manager"
+                            },
+                            "id": 9085,
+                            "name": "Identifier",
+                            "src": "1600:8:67"
+                          }
+                        ],
+                        "id": 9086,
+                        "name": "Assignment",
+                        "src": "1548:60:67"
+                      }
+                    ],
+                    "id": 9087,
+                    "name": "ExpressionStatement",
+                    "src": "1548:60:67"
+                  }
+                ],
+                "id": 9088,
+                "name": "Block",
+                "src": "1465:150:67"
+              }
+            ],
+            "id": 9089,
+            "name": "FunctionDefinition",
+            "src": "1402:213:67"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_isOracleDrivenLaneAllowed",
+              "scope": 9127,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Checks if bridge operation is allowed to use oracle driven lane.\n @param _token address of the token contract on the foreign side of the bridge.\n @param _sender address of the tokens sender on the home side of the bridge.\n @param _receiver address of the tokens receiver on the foreign side of the bridge.\n @return true, if message can be forwarded to the oracle-driven lane."
+                },
+                "id": 9090,
+                "name": "StructuredDocumentation",
+                "src": "1621:423:67"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_token",
+                      "scope": 9126,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 9091,
+                        "name": "ElementaryTypeName",
+                        "src": "2094:7:67"
+                      }
+                    ],
+                    "id": 9092,
+                    "name": "VariableDeclaration",
+                    "src": "2094:14:67"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_sender",
+                      "scope": 9126,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 9093,
+                        "name": "ElementaryTypeName",
+                        "src": "2118:7:67"
+                      }
+                    ],
+                    "id": 9094,
+                    "name": "VariableDeclaration",
+                    "src": "2118:15:67"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_receiver",
+                      "scope": 9126,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 9095,
+                        "name": "ElementaryTypeName",
+                        "src": "2143:7:67"
+                      }
+                    ],
+                    "id": 9096,
+                    "name": "VariableDeclaration",
+                    "src": "2143:17:67"
+                  }
+                ],
+                "id": 9097,
+                "name": "ParameterList",
+                "src": "2084:82:67"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 9126,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 9098,
+                        "name": "ElementaryTypeName",
+                        "src": "2190:4:67"
+                      }
+                    ],
+                    "id": 9099,
+                    "name": "VariableDeclaration",
+                    "src": "2190:4:67"
+                  }
+                ],
+                "id": 9100,
+                "name": "ParameterList",
+                "src": "2189:6:67"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "assignments": [
+                        9102
+                      ]
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "constant": false,
+                          "mutability": "mutable",
+                          "name": "manager",
+                          "scope": 9125,
+                          "stateVariable": false,
+                          "storageLocation": "default",
+                          "type": "contract MultiTokenForwardingRulesManager",
+                          "visibility": "internal"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "name": "MultiTokenForwardingRulesManager",
+                              "referencedDeclaration": 9474,
+                              "type": "contract MultiTokenForwardingRulesManager"
+                            },
+                            "id": 9101,
+                            "name": "UserDefinedTypeName",
+                            "src": "2206:32:67"
+                          }
+                        ],
+                        "id": 9102,
+                        "name": "VariableDeclaration",
+                        "src": "2206:40:67"
+                      },
+                      {
+                        "attributes": {
+                          "arguments": [
+                            null
+                          ],
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "isStructConstructorCall": false,
+                          "lValueRequested": false,
+                          "names": [
+                            null
+                          ],
+                          "tryCall": false,
+                          "type": "contract MultiTokenForwardingRulesManager",
+                          "type_conversion": false
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": [
+                                null
+                              ],
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 9062,
+                              "type": "function () view returns (contract MultiTokenForwardingRulesManager)",
+                              "value": "forwardingRulesManager"
+                            },
+                            "id": 9103,
+                            "name": "Identifier",
+                            "src": "2249:22:67"
+                          }
+                        ],
+                        "id": 9104,
+                        "name": "FunctionCall",
+                        "src": "2249:24:67"
+                      }
+                    ],
+                    "id": 9105,
+                    "name": "VariableDeclarationStatement",
+                    "src": "2206:67:67"
+                  },
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 9100
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "commonType": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          },
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "||",
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "commonType": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": "==",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "address",
+                                  "type_conversion": true
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_contract$_MultiTokenForwardingRulesManager_$9474",
+                                          "typeString": "contract MultiTokenForwardingRulesManager"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "type": "type(address)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "name": "address"
+                                        },
+                                        "id": 9106,
+                                        "name": "ElementaryTypeName",
+                                        "src": "2370:7:67"
+                                      }
+                                    ],
+                                    "id": 9107,
+                                    "name": "ElementaryTypeNameExpression",
+                                    "src": "2370:7:67"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 9102,
+                                      "type": "contract MultiTokenForwardingRulesManager",
+                                      "value": "manager"
+                                    },
+                                    "id": 9108,
+                                    "name": "Identifier",
+                                    "src": "2378:7:67"
+                                  }
+                                ],
+                                "id": 9109,
+                                "name": "FunctionCall",
+                                "src": "2370:16:67"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "address payable",
+                                  "type_conversion": true
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_rational_0_by_1",
+                                          "typeString": "int_const 0"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "type": "type(address)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "name": "address"
+                                        },
+                                        "id": 9110,
+                                        "name": "ElementaryTypeName",
+                                        "src": "2390:7:67"
+                                      }
+                                    ],
+                                    "id": 9111,
+                                    "name": "ElementaryTypeNameExpression",
+                                    "src": "2390:7:67"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "hexvalue": "30",
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "token": "number",
+                                      "type": "int_const 0",
+                                      "value": "0"
+                                    },
+                                    "id": 9112,
+                                    "name": "Literal",
+                                    "src": "2398:1:67"
+                                  }
+                                ],
+                                "id": 9113,
+                                "name": "FunctionCall",
+                                "src": "2390:10:67"
+                              }
+                            ],
+                            "id": 9114,
+                            "name": "BinaryOperation",
+                            "src": "2370:30:67"
+                          },
+                          {
+                            "attributes": {
+                              "commonType": {
+                                "typeIdentifier": "t_int256",
+                                "typeString": "int256"
+                              },
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "operator": ">",
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "int256",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        },
+                                        {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        },
+                                        {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "lValueRequested": false,
+                                      "member_name": "destinationLane",
+                                      "referencedDeclaration": 9268,
+                                      "type": "function (address,address,address) view external returns (int256)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 9102,
+                                          "type": "contract MultiTokenForwardingRulesManager",
+                                          "value": "manager"
+                                        },
+                                        "id": 9115,
+                                        "name": "Identifier",
+                                        "src": "2404:7:67"
+                                      }
+                                    ],
+                                    "id": 9116,
+                                    "name": "MemberAccess",
+                                    "src": "2404:23:67"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 9092,
+                                      "type": "address",
+                                      "value": "_token"
+                                    },
+                                    "id": 9117,
+                                    "name": "Identifier",
+                                    "src": "2428:6:67"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 9094,
+                                      "type": "address",
+                                      "value": "_sender"
+                                    },
+                                    "id": 9118,
+                                    "name": "Identifier",
+                                    "src": "2436:7:67"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 9096,
+                                      "type": "address",
+                                      "value": "_receiver"
+                                    },
+                                    "id": 9119,
+                                    "name": "Identifier",
+                                    "src": "2445:9:67"
+                                  }
+                                ],
+                                "id": 9120,
+                                "name": "FunctionCall",
+                                "src": "2404:51:67"
+                              },
+                              {
+                                "attributes": {
+                                  "hexvalue": "30",
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": true,
+                                  "lValueRequested": false,
+                                  "token": "number",
+                                  "type": "int_const 0",
+                                  "value": "0"
+                                },
+                                "id": 9121,
+                                "name": "Literal",
+                                "src": "2458:1:67"
+                              }
+                            ],
+                            "id": 9122,
+                            "name": "BinaryOperation",
+                            "src": "2404:55:67"
+                          }
+                        ],
+                        "id": 9123,
+                        "name": "BinaryOperation",
+                        "src": "2370:89:67"
+                      }
+                    ],
+                    "id": 9124,
+                    "name": "Return",
+                    "src": "2363:96:67"
+                  }
+                ],
+                "id": 9125,
+                "name": "Block",
+                "src": "2196:270:67"
+              }
+            ],
+            "id": 9126,
+            "name": "FunctionDefinition",
+            "src": "2049:417:67"
+          }
+        ],
+        "id": 9127,
+        "name": "ContractDefinition",
+        "src": "295:2173:67"
+      }
+    ],
+    "id": 9128,
+    "name": "SourceUnit",
+    "src": "0:2469:67"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.5+commit.eb77ed08.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:31.340Z",
+  "devdoc": {
+    "details": "Connectivity functionality that is required for using forwarding rules manager.",
+    "kind": "dev",
+    "methods": {
+      "forwardingRulesManager()": {
+        "details": "Retrieves an address of the forwarding rules manager contract.",
+        "returns": {
+          "_0": "address of the forwarding rules manager contract."
+        }
+      },
+      "owner()": {
+        "details": "Tells the address of the owner",
+        "returns": {
+          "_0": "the address of the owner"
+        }
+      },
+      "setForwardingRulesManager(address)": {
+        "details": "Updates an address of the used forwarding rules manager contract.",
+        "params": {
+          "_manager": "address of forwarding rules manager contract."
+        }
+      },
+      "transferOwnership(address)": {
+        "details": "Allows the current owner to transfer control of the contract to a newOwner.",
+        "params": {
+          "newOwner": "the address to transfer ownership to."
+        }
+      }
+    },
+    "title": "MultiTokenForwardingRulesConnector",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

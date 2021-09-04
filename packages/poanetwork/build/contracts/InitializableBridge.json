@@ -1,0 +1,533 @@
+{
+  "contractName": "InitializableBridge",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isInitialized",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "deployedAtBlock",
+      "outputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.4.24+commit.e67f0147\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"isInitialized\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"deployedAtBlock\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"project:/contracts/upgradeable_contracts/InitializableBridge.sol\":\"InitializableBridge\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/upgradeability/EternalStorage.sol\":{\"keccak256\":\"0x8f2df79a1cda812d4be25da8f2b138f9b7492e76da1dfba21d87012e649cc51c\",\"urls\":[\"bzzr://0846d08e1b7a84e541ae31c91d2c0b34d88cf3abbd18891ec6eedeea7e958af2\"]},\"project:/contracts/upgradeable_contracts/Initializable.sol\":{\"keccak256\":\"0xed94c4128ada87141d6c640d5bf4d0a5227cd68fad16be6304a121847fe6494f\",\"urls\":[\"bzzr://2dfbb776af73c3cfe3b6d3dd4545dc7cc55694d4636c0d1043d46ace7dd42ab2\"]},\"project:/contracts/upgradeable_contracts/InitializableBridge.sol\":{\"keccak256\":\"0xe016ecc4c96c1a587156a8b2f87c15c4b208d5e2a348cbe95d1df18b285d8067\",\"urls\":[\"bzzr://0acb420d4c3a5fd5fe498221a579faa6e45aadd1af22f440aca4da500c734bee\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5061016b806100206000396000f30060806040526004361061004b5763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663392e53cd81146100505780639a454b9914610079575b600080fd5b34801561005c57600080fd5b506100656100a0565b604080519115158252519081900360200190f35b34801561008557600080fd5b5061008e6100f1565b60408051918252519081900360200190f35b7f0a6f646cd611241d8073675e00d1a1ff700fbf1b53fcf473de56d1e6e4b714ba60005260046020527f078d888f9b66f3f8bfa10909e31f1e16240db73449f0500afdbbe3a70da457cc5460ff1690565b7fb120ceec05576ad0c710bc6e85f1768535e27554458f05dcbb5c65b8c7a749b060009081526020527fe66bef0282a446f9848e2903380099bb6e431483ee78778868f33b4a154c818b54905600a165627a7a72305820c6f1f27dbccd704b9c0e7a8479d0cf484a2617a7acbf60e8116118d18e5e277f0029",
+  "deployedBytecode": "0x60806040526004361061004b5763ffffffff7c0100000000000000000000000000000000000000000000000000000000600035041663392e53cd81146100505780639a454b9914610079575b600080fd5b34801561005c57600080fd5b506100656100a0565b604080519115158252519081900360200190f35b34801561008557600080fd5b5061008e6100f1565b60408051918252519081900360200190f35b7f0a6f646cd611241d8073675e00d1a1ff700fbf1b53fcf473de56d1e6e4b714ba60005260046020527f078d888f9b66f3f8bfa10909e31f1e16240db73449f0500afdbbe3a70da457cc5460ff1690565b7fb120ceec05576ad0c710bc6e85f1768535e27554458f05dcbb5c65b8c7a749b060009081526020527fe66bef0282a446f9848e2903380099bb6e431483ee78778868f33b4a154c818b54905600a165627a7a72305820c6f1f27dbccd704b9c0e7a8479d0cf484a2617a7acbf60e8116118d18e5e277f0029",
+  "sourceMap": "56:336:99:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;56:336:99;;;;;;;",
+  "deployedSourceMap": "56:336:99:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;369:100:98;;8:9:-1;5:2;;;30:1;27;20:12;5:2;369:100:98;;;;;;;;;;;;;;;;;;;;;;277:113:99;;8:9:-1;5:2;;;30:1;27;20:12;5:2;277:113:99;;;;;;;;;;;;;;;;;;;;369:100:98;160:66;415:4;438:24;:11;:24;;;;;;369:100;:::o;277:113:99:-;154:66;327:7;353:30;;;;;;;277:113;:::o",
+  "source": "pragma solidity 0.4.24;\n\nimport \"./Initializable.sol\";\n\ncontract InitializableBridge is Initializable {\n    bytes32 internal constant DEPLOYED_AT_BLOCK = 0xb120ceec05576ad0c710bc6e85f1768535e27554458f05dcbb5c65b8c7a749b0; // keccak256(abi.encodePacked(\"deployedAtBlock\"))\n\n    function deployedAtBlock() external view returns (uint256) {\n        return uintStorage[DEPLOYED_AT_BLOCK];\n    }\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/poanetwork/contracts/upgradeable_contracts/InitializableBridge.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/upgradeable_contracts/InitializableBridge.sol",
+    "exportedSymbols": {
+      "InitializableBridge": [
+        12218
+      ]
+    },
+    "id": 12219,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 12201,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:99"
+      },
+      {
+        "absolutePath": "project:/contracts/upgradeable_contracts/Initializable.sol",
+        "file": "./Initializable.sol",
+        "id": 12202,
+        "nodeType": "ImportDirective",
+        "scope": 12219,
+        "sourceUnit": 12200,
+        "src": "25:29:99",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 12203,
+              "name": "Initializable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 12199,
+              "src": "88:13:99",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Initializable_$12199",
+                "typeString": "contract Initializable"
+              }
+            },
+            "id": 12204,
+            "nodeType": "InheritanceSpecifier",
+            "src": "88:13:99"
+          }
+        ],
+        "contractDependencies": [
+          8002,
+          12199
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 12218,
+        "linearizedBaseContracts": [
+          12218,
+          12199,
+          8002
+        ],
+        "name": "InitializableBridge",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 12207,
+            "name": "DEPLOYED_AT_BLOCK",
+            "nodeType": "VariableDeclaration",
+            "scope": 12218,
+            "src": "108:112:99",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes32",
+              "typeString": "bytes32"
+            },
+            "typeName": {
+              "id": 12205,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "108:7:99",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes32",
+                "typeString": "bytes32"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "hexValue": "307862313230636565633035353736616430633731306263366538356631373638353335653237353534343538663035646362623563363562386337613734396230",
+              "id": 12206,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "kind": "number",
+              "lValueRequested": false,
+              "nodeType": "Literal",
+              "src": "154:66:99",
+              "subdenomination": null,
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_80117341428168434172731688351453871988180076250752728305650008192657350150576_by_1",
+                "typeString": "int_const 8011...(69 digits omitted)...0576"
+              },
+              "value": "0xb120ceec05576ad0c710bc6e85f1768535e27554458f05dcbb5c65b8c7a749b0"
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 12216,
+              "nodeType": "Block",
+              "src": "336:54:99",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "baseExpression": {
+                      "argumentTypes": null,
+                      "id": 12212,
+                      "name": "uintStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 7981,
+                      "src": "353:11:99",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
+                        "typeString": "mapping(bytes32 => uint256)"
+                      }
+                    },
+                    "id": 12214,
+                    "indexExpression": {
+                      "argumentTypes": null,
+                      "id": 12213,
+                      "name": "DEPLOYED_AT_BLOCK",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 12207,
+                      "src": "365:17:99",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "353:30:99",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 12211,
+                  "id": 12215,
+                  "nodeType": "Return",
+                  "src": "346:37:99"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 12217,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "deployedAtBlock",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 12208,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "301:2:99"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 12211,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 12210,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 12217,
+                  "src": "327:7:99",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 12209,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "327:7:99",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "326:9:99"
+            },
+            "scope": 12218,
+            "src": "277:113:99",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 12219,
+        "src": "56:336:99"
+      }
+    ],
+    "src": "0:393:99"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/upgradeable_contracts/InitializableBridge.sol",
+      "exportedSymbols": {
+        "InitializableBridge": [
+          12218
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.4",
+            ".24"
+          ]
+        },
+        "id": 12201,
+        "name": "PragmaDirective",
+        "src": "0:23:99"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 12200,
+          "absolutePath": "project:/contracts/upgradeable_contracts/Initializable.sol",
+          "file": "./Initializable.sol",
+          "scope": 12219,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 12202,
+        "name": "ImportDirective",
+        "src": "25:29:99"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            8002,
+            12199
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            12218,
+            12199,
+            8002
+          ],
+          "name": "InitializableBridge",
+          "scope": 12219
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "Initializable",
+                  "referencedDeclaration": 12199,
+                  "type": "contract Initializable"
+                },
+                "id": 12203,
+                "name": "UserDefinedTypeName",
+                "src": "88:13:99"
+              }
+            ],
+            "id": 12204,
+            "name": "InheritanceSpecifier",
+            "src": "88:13:99"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "name": "DEPLOYED_AT_BLOCK",
+              "scope": 12218,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "bytes32",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "bytes32",
+                  "type": "bytes32"
+                },
+                "id": 12205,
+                "name": "ElementaryTypeName",
+                "src": "108:7:99"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "hexvalue": "307862313230636565633035353736616430633731306263366538356631373638353335653237353534343538663035646362623563363562386337613734396230",
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "subdenomination": null,
+                  "token": "number",
+                  "type": "int_const 8011...(69 digits omitted)...0576",
+                  "value": "0xb120ceec05576ad0c710bc6e85f1768535e27554458f05dcbb5c65b8c7a749b0"
+                },
+                "id": 12206,
+                "name": "Literal",
+                "src": "154:66:99"
+              }
+            ],
+            "id": 12207,
+            "name": "VariableDeclaration",
+            "src": "108:112:99"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "deployedAtBlock",
+              "payable": false,
+              "scope": 12218,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 12208,
+                "name": "ParameterList",
+                "src": "301:2:99"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 12217,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 12209,
+                        "name": "ElementaryTypeName",
+                        "src": "327:7:99"
+                      }
+                    ],
+                    "id": 12210,
+                    "name": "VariableDeclaration",
+                    "src": "327:7:99"
+                  }
+                ],
+                "id": 12211,
+                "name": "ParameterList",
+                "src": "326:9:99"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 12211
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 7981,
+                              "type": "mapping(bytes32 => uint256)",
+                              "value": "uintStorage"
+                            },
+                            "id": 12212,
+                            "name": "Identifier",
+                            "src": "353:11:99"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 12207,
+                              "type": "bytes32",
+                              "value": "DEPLOYED_AT_BLOCK"
+                            },
+                            "id": 12213,
+                            "name": "Identifier",
+                            "src": "365:17:99"
+                          }
+                        ],
+                        "id": 12214,
+                        "name": "IndexAccess",
+                        "src": "353:30:99"
+                      }
+                    ],
+                    "id": 12215,
+                    "name": "Return",
+                    "src": "346:37:99"
+                  }
+                ],
+                "id": 12216,
+                "name": "Block",
+                "src": "336:54:99"
+              }
+            ],
+            "id": 12217,
+            "name": "FunctionDefinition",
+            "src": "277:113:99"
+          }
+        ],
+        "id": 12218,
+        "name": "ContractDefinition",
+        "src": "56:336:99"
+      }
+    ],
+    "id": 12219,
+    "name": "SourceUnit",
+    "src": "0:393:99"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:19.301Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

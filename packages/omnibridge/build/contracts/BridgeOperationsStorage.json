@@ -1,0 +1,3396 @@
+{
+  "contractName": "BridgeOperationsStorage",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.5+commit.eb77ed08\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"details\":\"Functionality for storing processed bridged operations.\",\"kind\":\"dev\",\"methods\":{},\"title\":\"BridgeOperationsStorage\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/upgradeable_contracts/components/common/BridgeOperationsStorage.sol\":\"BridgeOperationsStorage\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/upgradeability/EternalStorage.sol\":{\"keccak256\":\"0x69e24ec05ae65648eada7ff65aba3e7d90d72ad186f6d5bb9f01c54b0fa00b41\",\"urls\":[\"bzz-raw://a7c173e5610184402d8a7af1ef21e468c5805e4736bba5da0e8be3e4e4a29d48\",\"dweb:/ipfs/QmRakjK88qux7f6dg9Hpcw2PD3cMUPKTnj6YDC6yJ1caqE\"]},\"project:/contracts/upgradeable_contracts/components/common/BridgeOperationsStorage.sol\":{\"keccak256\":\"0x6a82ede68e1083884ca0112a3d5c3929a3f1106623efc098516588373923f7e4\",\"urls\":[\"bzz-raw://1ad34e6449817782eb39d4d032111dd6e651a7b8c4884923982b7a76c3c93266\",\"dweb:/ipfs/QmVvpf97AMkm5MusLogycCQuefbr9uLFPNn324hLEbWUuT\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.7.5;\n\nimport \"../../../upgradeability/EternalStorage.sol\";\n\n/**\n * @title BridgeOperationsStorage\n * @dev Functionality for storing processed bridged operations.\n */\nabstract contract BridgeOperationsStorage is EternalStorage {\n    /**\n     * @dev Stores the bridged token of a message sent to the AMB bridge.\n     * @param _messageId of the message sent to the bridge.\n     * @param _token bridged token address.\n     */\n    function setMessageToken(bytes32 _messageId, address _token) internal {\n        addressStorage[keccak256(abi.encodePacked(\"messageToken\", _messageId))] = _token;\n    }\n\n    /**\n     * @dev Tells the bridged token address of a message sent to the AMB bridge.\n     * @return address of a token contract.\n     */\n    function messageToken(bytes32 _messageId) internal view returns (address) {\n        return addressStorage[keccak256(abi.encodePacked(\"messageToken\", _messageId))];\n    }\n\n    /**\n     * @dev Stores the value of a message sent to the AMB bridge.\n     * @param _messageId of the message sent to the bridge.\n     * @param _value amount of tokens bridged.\n     */\n    function setMessageValue(bytes32 _messageId, uint256 _value) internal {\n        uintStorage[keccak256(abi.encodePacked(\"messageValue\", _messageId))] = _value;\n    }\n\n    /**\n     * @dev Tells the amount of tokens of a message sent to the AMB bridge.\n     * @return value representing amount of tokens.\n     */\n    function messageValue(bytes32 _messageId) internal view returns (uint256) {\n        return uintStorage[keccak256(abi.encodePacked(\"messageValue\", _messageId))];\n    }\n\n    /**\n     * @dev Stores the receiver of a message sent to the AMB bridge.\n     * @param _messageId of the message sent to the bridge.\n     * @param _recipient receiver of the tokens bridged.\n     */\n    function setMessageRecipient(bytes32 _messageId, address _recipient) internal {\n        addressStorage[keccak256(abi.encodePacked(\"messageRecipient\", _messageId))] = _recipient;\n    }\n\n    /**\n     * @dev Tells the receiver of a message sent to the AMB bridge.\n     * @return address of the receiver.\n     */\n    function messageRecipient(bytes32 _messageId) internal view returns (address) {\n        return addressStorage[keccak256(abi.encodePacked(\"messageRecipient\", _messageId))];\n    }\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/omnibridge/contracts/upgradeable_contracts/components/common/BridgeOperationsStorage.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/upgradeable_contracts/components/common/BridgeOperationsStorage.sol",
+    "exportedSymbols": {
+      "BridgeOperationsStorage": [
+        5942
+      ],
+      "EternalStorage": [
+        2911
+      ]
+    },
+    "id": 5943,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 5817,
+        "literals": [
+          "solidity",
+          "0.7",
+          ".5"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:51"
+      },
+      {
+        "absolutePath": "project:/contracts/upgradeability/EternalStorage.sol",
+        "file": "../../../upgradeability/EternalStorage.sol",
+        "id": 5818,
+        "nodeType": "ImportDirective",
+        "scope": 5943,
+        "sourceUnit": 2912,
+        "src": "24:52:51",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": true,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 5820,
+              "name": "EternalStorage",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2911,
+              "src": "229:14:51",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_EternalStorage_$2911",
+                "typeString": "contract EternalStorage"
+              }
+            },
+            "id": 5821,
+            "nodeType": "InheritanceSpecifier",
+            "src": "229:14:51"
+          }
+        ],
+        "contractDependencies": [
+          2911
+        ],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 5819,
+          "nodeType": "StructuredDocumentation",
+          "src": "78:105:51",
+          "text": " @title BridgeOperationsStorage\n @dev Functionality for storing processed bridged operations."
+        },
+        "fullyImplemented": true,
+        "id": 5942,
+        "linearizedBaseContracts": [
+          5942,
+          2911
+        ],
+        "name": "BridgeOperationsStorage",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 5841,
+              "nodeType": "Block",
+              "src": "514:97:51",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 5839,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 5829,
+                        "name": "addressStorage",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2898,
+                        "src": "524:14:51",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                          "typeString": "mapping(bytes32 => address)"
+                        }
+                      },
+                      "id": 5837,
+                      "indexExpression": {
+                        "arguments": [
+                          {
+                            "arguments": [
+                              {
+                                "hexValue": "6d657373616765546f6b656e",
+                                "id": 5833,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "string",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "566:14:51",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_stringliteral_4af928e5d4099941f5ec1a6ee2721598e13c6722183e69b5744bc5014878a987",
+                                  "typeString": "literal_string \"messageToken\""
+                                },
+                                "value": "messageToken"
+                              },
+                              {
+                                "id": 5834,
+                                "name": "_messageId",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 5824,
+                                "src": "582:10:51",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bytes32",
+                                  "typeString": "bytes32"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_stringliteral_4af928e5d4099941f5ec1a6ee2721598e13c6722183e69b5744bc5014878a987",
+                                  "typeString": "literal_string \"messageToken\""
+                                },
+                                {
+                                  "typeIdentifier": "t_bytes32",
+                                  "typeString": "bytes32"
+                                }
+                              ],
+                              "expression": {
+                                "id": 5831,
+                                "name": "abi",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": -1,
+                                "src": "549:3:51",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_magic_abi",
+                                  "typeString": "abi"
+                                }
+                              },
+                              "id": 5832,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "memberName": "encodePacked",
+                              "nodeType": "MemberAccess",
+                              "src": "549:16:51",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                                "typeString": "function () pure returns (bytes memory)"
+                              }
+                            },
+                            "id": 5835,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "functionCall",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "549:44:51",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          ],
+                          "id": 5830,
+                          "name": "keccak256",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": -8,
+                          "src": "539:9:51",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                            "typeString": "function (bytes memory) pure returns (bytes32)"
+                          }
+                        },
+                        "id": 5836,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "539:55:51",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "524:71:51",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 5838,
+                      "name": "_token",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5826,
+                      "src": "598:6:51",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "524:80:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 5840,
+                  "nodeType": "ExpressionStatement",
+                  "src": "524:80:51"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 5822,
+              "nodeType": "StructuredDocumentation",
+              "src": "250:189:51",
+              "text": " @dev Stores the bridged token of a message sent to the AMB bridge.\n @param _messageId of the message sent to the bridge.\n @param _token bridged token address."
+            },
+            "id": 5842,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setMessageToken",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5827,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5824,
+                  "mutability": "mutable",
+                  "name": "_messageId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5842,
+                  "src": "469:18:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5823,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "469:7:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5826,
+                  "mutability": "mutable",
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5842,
+                  "src": "489:14:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5825,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "489:7:51",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "468:36:51"
+            },
+            "returnParameters": {
+              "id": 5828,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "514:0:51"
+            },
+            "scope": 5942,
+            "src": "444:167:51",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 5860,
+              "nodeType": "Block",
+              "src": "832:95:51",
+              "statements": [
+                {
+                  "expression": {
+                    "baseExpression": {
+                      "id": 5850,
+                      "name": "addressStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2898,
+                      "src": "849:14:51",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                        "typeString": "mapping(bytes32 => address)"
+                      }
+                    },
+                    "id": 5858,
+                    "indexExpression": {
+                      "arguments": [
+                        {
+                          "arguments": [
+                            {
+                              "hexValue": "6d657373616765546f6b656e",
+                              "id": 5854,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "string",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "891:14:51",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_stringliteral_4af928e5d4099941f5ec1a6ee2721598e13c6722183e69b5744bc5014878a987",
+                                "typeString": "literal_string \"messageToken\""
+                              },
+                              "value": "messageToken"
+                            },
+                            {
+                              "id": 5855,
+                              "name": "_messageId",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 5845,
+                              "src": "907:10:51",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_stringliteral_4af928e5d4099941f5ec1a6ee2721598e13c6722183e69b5744bc5014878a987",
+                                "typeString": "literal_string \"messageToken\""
+                              },
+                              {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            ],
+                            "expression": {
+                              "id": 5852,
+                              "name": "abi",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": -1,
+                              "src": "874:3:51",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_abi",
+                                "typeString": "abi"
+                              }
+                            },
+                            "id": 5853,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "memberName": "encodePacked",
+                            "nodeType": "MemberAccess",
+                            "src": "874:16:51",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                              "typeString": "function () pure returns (bytes memory)"
+                            }
+                          },
+                          "id": 5856,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "874:44:51",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        ],
+                        "id": 5851,
+                        "name": "keccak256",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": -8,
+                        "src": "864:9:51",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                          "typeString": "function (bytes memory) pure returns (bytes32)"
+                        }
+                      },
+                      "id": 5857,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "864:55:51",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "849:71:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "functionReturnParameters": 5849,
+                  "id": 5859,
+                  "nodeType": "Return",
+                  "src": "842:78:51"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 5843,
+              "nodeType": "StructuredDocumentation",
+              "src": "617:136:51",
+              "text": " @dev Tells the bridged token address of a message sent to the AMB bridge.\n @return address of a token contract."
+            },
+            "id": 5861,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "messageToken",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5846,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5845,
+                  "mutability": "mutable",
+                  "name": "_messageId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5861,
+                  "src": "780:18:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5844,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "780:7:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "779:20:51"
+            },
+            "returnParameters": {
+              "id": 5849,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5848,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5861,
+                  "src": "823:7:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5847,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "823:7:51",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "822:9:51"
+            },
+            "scope": 5942,
+            "src": "758:169:51",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 5881,
+              "nodeType": "Block",
+              "src": "1192:94:51",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 5879,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 5869,
+                        "name": "uintStorage",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2890,
+                        "src": "1202:11:51",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
+                          "typeString": "mapping(bytes32 => uint256)"
+                        }
+                      },
+                      "id": 5877,
+                      "indexExpression": {
+                        "arguments": [
+                          {
+                            "arguments": [
+                              {
+                                "hexValue": "6d65737361676556616c7565",
+                                "id": 5873,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "string",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "1241:14:51",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_stringliteral_e130765c16672a7644bd3c83d6cba918e8f29680574b76fcd95c4ef67ce32ea0",
+                                  "typeString": "literal_string \"messageValue\""
+                                },
+                                "value": "messageValue"
+                              },
+                              {
+                                "id": 5874,
+                                "name": "_messageId",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 5864,
+                                "src": "1257:10:51",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bytes32",
+                                  "typeString": "bytes32"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_stringliteral_e130765c16672a7644bd3c83d6cba918e8f29680574b76fcd95c4ef67ce32ea0",
+                                  "typeString": "literal_string \"messageValue\""
+                                },
+                                {
+                                  "typeIdentifier": "t_bytes32",
+                                  "typeString": "bytes32"
+                                }
+                              ],
+                              "expression": {
+                                "id": 5871,
+                                "name": "abi",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": -1,
+                                "src": "1224:3:51",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_magic_abi",
+                                  "typeString": "abi"
+                                }
+                              },
+                              "id": 5872,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "memberName": "encodePacked",
+                              "nodeType": "MemberAccess",
+                              "src": "1224:16:51",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                                "typeString": "function () pure returns (bytes memory)"
+                              }
+                            },
+                            "id": 5875,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "functionCall",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1224:44:51",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          ],
+                          "id": 5870,
+                          "name": "keccak256",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": -8,
+                          "src": "1214:9:51",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                            "typeString": "function (bytes memory) pure returns (bytes32)"
+                          }
+                        },
+                        "id": 5876,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1214:55:51",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1202:68:51",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 5878,
+                      "name": "_value",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5866,
+                      "src": "1273:6:51",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "1202:77:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 5880,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1202:77:51"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 5862,
+              "nodeType": "StructuredDocumentation",
+              "src": "933:184:51",
+              "text": " @dev Stores the value of a message sent to the AMB bridge.\n @param _messageId of the message sent to the bridge.\n @param _value amount of tokens bridged."
+            },
+            "id": 5882,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setMessageValue",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5867,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5864,
+                  "mutability": "mutable",
+                  "name": "_messageId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5882,
+                  "src": "1147:18:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5863,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1147:7:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5866,
+                  "mutability": "mutable",
+                  "name": "_value",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5882,
+                  "src": "1167:14:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5865,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1167:7:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1146:36:51"
+            },
+            "returnParameters": {
+              "id": 5868,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1192:0:51"
+            },
+            "scope": 5942,
+            "src": "1122:164:51",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 5900,
+              "nodeType": "Block",
+              "src": "1510:92:51",
+              "statements": [
+                {
+                  "expression": {
+                    "baseExpression": {
+                      "id": 5890,
+                      "name": "uintStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2890,
+                      "src": "1527:11:51",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_bytes32_$_t_uint256_$",
+                        "typeString": "mapping(bytes32 => uint256)"
+                      }
+                    },
+                    "id": 5898,
+                    "indexExpression": {
+                      "arguments": [
+                        {
+                          "arguments": [
+                            {
+                              "hexValue": "6d65737361676556616c7565",
+                              "id": 5894,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "string",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "1566:14:51",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_stringliteral_e130765c16672a7644bd3c83d6cba918e8f29680574b76fcd95c4ef67ce32ea0",
+                                "typeString": "literal_string \"messageValue\""
+                              },
+                              "value": "messageValue"
+                            },
+                            {
+                              "id": 5895,
+                              "name": "_messageId",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 5885,
+                              "src": "1582:10:51",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_stringliteral_e130765c16672a7644bd3c83d6cba918e8f29680574b76fcd95c4ef67ce32ea0",
+                                "typeString": "literal_string \"messageValue\""
+                              },
+                              {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            ],
+                            "expression": {
+                              "id": 5892,
+                              "name": "abi",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": -1,
+                              "src": "1549:3:51",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_abi",
+                                "typeString": "abi"
+                              }
+                            },
+                            "id": 5893,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "memberName": "encodePacked",
+                            "nodeType": "MemberAccess",
+                            "src": "1549:16:51",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                              "typeString": "function () pure returns (bytes memory)"
+                            }
+                          },
+                          "id": 5896,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "1549:44:51",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        ],
+                        "id": 5891,
+                        "name": "keccak256",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": -8,
+                        "src": "1539:9:51",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                          "typeString": "function (bytes memory) pure returns (bytes32)"
+                        }
+                      },
+                      "id": 5897,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "1539:55:51",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "1527:68:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "functionReturnParameters": 5889,
+                  "id": 5899,
+                  "nodeType": "Return",
+                  "src": "1520:75:51"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 5883,
+              "nodeType": "StructuredDocumentation",
+              "src": "1292:139:51",
+              "text": " @dev Tells the amount of tokens of a message sent to the AMB bridge.\n @return value representing amount of tokens."
+            },
+            "id": 5901,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "messageValue",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5886,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5885,
+                  "mutability": "mutable",
+                  "name": "_messageId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5901,
+                  "src": "1458:18:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5884,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1458:7:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1457:20:51"
+            },
+            "returnParameters": {
+              "id": 5889,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5888,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5901,
+                  "src": "1501:7:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 5887,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1501:7:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1500:9:51"
+            },
+            "scope": 5942,
+            "src": "1436:166:51",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 5921,
+              "nodeType": "Block",
+              "src": "1888:105:51",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 5919,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "baseExpression": {
+                        "id": 5909,
+                        "name": "addressStorage",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2898,
+                        "src": "1898:14:51",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                          "typeString": "mapping(bytes32 => address)"
+                        }
+                      },
+                      "id": 5917,
+                      "indexExpression": {
+                        "arguments": [
+                          {
+                            "arguments": [
+                              {
+                                "hexValue": "6d657373616765526563697069656e74",
+                                "id": 5913,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "string",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "1940:18:51",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_stringliteral_5a5ad5a9cb7f4309940389970b1612824f55db87c81454ef23975698654e2e4e",
+                                  "typeString": "literal_string \"messageRecipient\""
+                                },
+                                "value": "messageRecipient"
+                              },
+                              {
+                                "id": 5914,
+                                "name": "_messageId",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 5904,
+                                "src": "1960:10:51",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_bytes32",
+                                  "typeString": "bytes32"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_stringliteral_5a5ad5a9cb7f4309940389970b1612824f55db87c81454ef23975698654e2e4e",
+                                  "typeString": "literal_string \"messageRecipient\""
+                                },
+                                {
+                                  "typeIdentifier": "t_bytes32",
+                                  "typeString": "bytes32"
+                                }
+                              ],
+                              "expression": {
+                                "id": 5911,
+                                "name": "abi",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": -1,
+                                "src": "1923:3:51",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_magic_abi",
+                                  "typeString": "abi"
+                                }
+                              },
+                              "id": 5912,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "memberName": "encodePacked",
+                              "nodeType": "MemberAccess",
+                              "src": "1923:16:51",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                                "typeString": "function () pure returns (bytes memory)"
+                              }
+                            },
+                            "id": 5915,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "functionCall",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "1923:48:51",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          ],
+                          "id": 5910,
+                          "name": "keccak256",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": -8,
+                          "src": "1913:9:51",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                            "typeString": "function (bytes memory) pure returns (bytes32)"
+                          }
+                        },
+                        "id": 5916,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "1913:59:51",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": true,
+                      "nodeType": "IndexAccess",
+                      "src": "1898:75:51",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 5918,
+                      "name": "_recipient",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 5906,
+                      "src": "1976:10:51",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "1898:88:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 5920,
+                  "nodeType": "ExpressionStatement",
+                  "src": "1898:88:51"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 5902,
+              "nodeType": "StructuredDocumentation",
+              "src": "1608:197:51",
+              "text": " @dev Stores the receiver of a message sent to the AMB bridge.\n @param _messageId of the message sent to the bridge.\n @param _recipient receiver of the tokens bridged."
+            },
+            "id": 5922,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "setMessageRecipient",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5907,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5904,
+                  "mutability": "mutable",
+                  "name": "_messageId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5922,
+                  "src": "1839:18:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5903,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1839:7:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 5906,
+                  "mutability": "mutable",
+                  "name": "_recipient",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5922,
+                  "src": "1859:18:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5905,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1859:7:51",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1838:40:51"
+            },
+            "returnParameters": {
+              "id": 5908,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1888:0:51"
+            },
+            "scope": 5942,
+            "src": "1810:183:51",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 5940,
+              "nodeType": "Block",
+              "src": "2201:99:51",
+              "statements": [
+                {
+                  "expression": {
+                    "baseExpression": {
+                      "id": 5930,
+                      "name": "addressStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2898,
+                      "src": "2218:14:51",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_bytes32_$_t_address_$",
+                        "typeString": "mapping(bytes32 => address)"
+                      }
+                    },
+                    "id": 5938,
+                    "indexExpression": {
+                      "arguments": [
+                        {
+                          "arguments": [
+                            {
+                              "hexValue": "6d657373616765526563697069656e74",
+                              "id": 5934,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "string",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "2260:18:51",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_stringliteral_5a5ad5a9cb7f4309940389970b1612824f55db87c81454ef23975698654e2e4e",
+                                "typeString": "literal_string \"messageRecipient\""
+                              },
+                              "value": "messageRecipient"
+                            },
+                            {
+                              "id": 5935,
+                              "name": "_messageId",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 5925,
+                              "src": "2280:10:51",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_stringliteral_5a5ad5a9cb7f4309940389970b1612824f55db87c81454ef23975698654e2e4e",
+                                "typeString": "literal_string \"messageRecipient\""
+                              },
+                              {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            ],
+                            "expression": {
+                              "id": 5932,
+                              "name": "abi",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": -1,
+                              "src": "2243:3:51",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_abi",
+                                "typeString": "abi"
+                              }
+                            },
+                            "id": 5933,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "memberName": "encodePacked",
+                            "nodeType": "MemberAccess",
+                            "src": "2243:16:51",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                              "typeString": "function () pure returns (bytes memory)"
+                            }
+                          },
+                          "id": 5936,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "2243:48:51",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        ],
+                        "id": 5931,
+                        "name": "keccak256",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": -8,
+                        "src": "2233:9:51",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                          "typeString": "function (bytes memory) pure returns (bytes32)"
+                        }
+                      },
+                      "id": 5937,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "2233:59:51",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "2218:75:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "functionReturnParameters": 5929,
+                  "id": 5939,
+                  "nodeType": "Return",
+                  "src": "2211:82:51"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 5923,
+              "nodeType": "StructuredDocumentation",
+              "src": "1999:119:51",
+              "text": " @dev Tells the receiver of a message sent to the AMB bridge.\n @return address of the receiver."
+            },
+            "id": 5941,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "messageRecipient",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 5926,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5925,
+                  "mutability": "mutable",
+                  "name": "_messageId",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5941,
+                  "src": "2149:18:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes32",
+                    "typeString": "bytes32"
+                  },
+                  "typeName": {
+                    "id": 5924,
+                    "name": "bytes32",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2149:7:51",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes32",
+                      "typeString": "bytes32"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2148:20:51"
+            },
+            "returnParameters": {
+              "id": 5929,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 5928,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 5941,
+                  "src": "2192:7:51",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 5927,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2192:7:51",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2191:9:51"
+            },
+            "scope": 5942,
+            "src": "2123:177:51",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 5943,
+        "src": "184:2118:51"
+      }
+    ],
+    "src": "0:2303:51"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/upgradeable_contracts/components/common/BridgeOperationsStorage.sol",
+      "exportedSymbols": {
+        "BridgeOperationsStorage": [
+          5942
+        ],
+        "EternalStorage": [
+          2911
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.7",
+            ".5"
+          ]
+        },
+        "id": 5817,
+        "name": "PragmaDirective",
+        "src": "0:22:51"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 2912,
+          "absolutePath": "project:/contracts/upgradeability/EternalStorage.sol",
+          "file": "../../../upgradeability/EternalStorage.sol",
+          "scope": 5943,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 5818,
+        "name": "ImportDirective",
+        "src": "24:52:51"
+      },
+      {
+        "attributes": {
+          "abstract": true,
+          "contractDependencies": [
+            2911
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            5942,
+            2911
+          ],
+          "name": "BridgeOperationsStorage",
+          "scope": 5943
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": " @title BridgeOperationsStorage\n @dev Functionality for storing processed bridged operations."
+            },
+            "id": 5819,
+            "name": "StructuredDocumentation",
+            "src": "78:105:51"
+          },
+          {
+            "attributes": {},
+            "children": [
+              {
+                "attributes": {
+                  "name": "EternalStorage",
+                  "referencedDeclaration": 2911,
+                  "type": "contract EternalStorage"
+                },
+                "id": 5820,
+                "name": "UserDefinedTypeName",
+                "src": "229:14:51"
+              }
+            ],
+            "id": 5821,
+            "name": "InheritanceSpecifier",
+            "src": "229:14:51"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "setMessageToken",
+              "scope": 5942,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Stores the bridged token of a message sent to the AMB bridge.\n @param _messageId of the message sent to the bridge.\n @param _token bridged token address."
+                },
+                "id": 5822,
+                "name": "StructuredDocumentation",
+                "src": "250:189:51"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_messageId",
+                      "scope": 5842,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 5823,
+                        "name": "ElementaryTypeName",
+                        "src": "469:7:51"
+                      }
+                    ],
+                    "id": 5824,
+                    "name": "VariableDeclaration",
+                    "src": "469:18:51"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_token",
+                      "scope": 5842,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 5825,
+                        "name": "ElementaryTypeName",
+                        "src": "489:7:51"
+                      }
+                    ],
+                    "id": 5826,
+                    "name": "VariableDeclaration",
+                    "src": "489:14:51"
+                  }
+                ],
+                "id": 5827,
+                "name": "ParameterList",
+                "src": "468:36:51"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 5828,
+                "name": "ParameterList",
+                "src": "514:0:51"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2898,
+                                  "type": "mapping(bytes32 => address)",
+                                  "value": "addressStorage"
+                                },
+                                "id": 5829,
+                                "name": "Identifier",
+                                "src": "524:14:51"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "bytes32",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_bytes_memory_ptr",
+                                          "typeString": "bytes memory"
+                                        }
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": -8,
+                                      "type": "function (bytes memory) pure returns (bytes32)",
+                                      "value": "keccak256"
+                                    },
+                                    "id": 5830,
+                                    "name": "Identifier",
+                                    "src": "539:9:51"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "isStructConstructorCall": false,
+                                      "lValueRequested": false,
+                                      "names": [
+                                        null
+                                      ],
+                                      "tryCall": false,
+                                      "type": "bytes memory",
+                                      "type_conversion": false
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": [
+                                            {
+                                              "typeIdentifier": "t_stringliteral_4af928e5d4099941f5ec1a6ee2721598e13c6722183e69b5744bc5014878a987",
+                                              "typeString": "literal_string \"messageToken\""
+                                            },
+                                            {
+                                              "typeIdentifier": "t_bytes32",
+                                              "typeString": "bytes32"
+                                            }
+                                          ],
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "member_name": "encodePacked",
+                                          "type": "function () pure returns (bytes memory)"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": -1,
+                                              "type": "abi",
+                                              "value": "abi"
+                                            },
+                                            "id": 5831,
+                                            "name": "Identifier",
+                                            "src": "549:3:51"
+                                          }
+                                        ],
+                                        "id": 5832,
+                                        "name": "MemberAccess",
+                                        "src": "549:16:51"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "hexvalue": "6d657373616765546f6b656e",
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "token": "string",
+                                          "type": "literal_string \"messageToken\"",
+                                          "value": "messageToken"
+                                        },
+                                        "id": 5833,
+                                        "name": "Literal",
+                                        "src": "566:14:51"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 5824,
+                                          "type": "bytes32",
+                                          "value": "_messageId"
+                                        },
+                                        "id": 5834,
+                                        "name": "Identifier",
+                                        "src": "582:10:51"
+                                      }
+                                    ],
+                                    "id": 5835,
+                                    "name": "FunctionCall",
+                                    "src": "549:44:51"
+                                  }
+                                ],
+                                "id": 5836,
+                                "name": "FunctionCall",
+                                "src": "539:55:51"
+                              }
+                            ],
+                            "id": 5837,
+                            "name": "IndexAccess",
+                            "src": "524:71:51"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 5826,
+                              "type": "address",
+                              "value": "_token"
+                            },
+                            "id": 5838,
+                            "name": "Identifier",
+                            "src": "598:6:51"
+                          }
+                        ],
+                        "id": 5839,
+                        "name": "Assignment",
+                        "src": "524:80:51"
+                      }
+                    ],
+                    "id": 5840,
+                    "name": "ExpressionStatement",
+                    "src": "524:80:51"
+                  }
+                ],
+                "id": 5841,
+                "name": "Block",
+                "src": "514:97:51"
+              }
+            ],
+            "id": 5842,
+            "name": "FunctionDefinition",
+            "src": "444:167:51"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "messageToken",
+              "scope": 5942,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Tells the bridged token address of a message sent to the AMB bridge.\n @return address of a token contract."
+                },
+                "id": 5843,
+                "name": "StructuredDocumentation",
+                "src": "617:136:51"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_messageId",
+                      "scope": 5861,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 5844,
+                        "name": "ElementaryTypeName",
+                        "src": "780:7:51"
+                      }
+                    ],
+                    "id": 5845,
+                    "name": "VariableDeclaration",
+                    "src": "780:18:51"
+                  }
+                ],
+                "id": 5846,
+                "name": "ParameterList",
+                "src": "779:20:51"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 5861,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 5847,
+                        "name": "ElementaryTypeName",
+                        "src": "823:7:51"
+                      }
+                    ],
+                    "id": 5848,
+                    "name": "VariableDeclaration",
+                    "src": "823:7:51"
+                  }
+                ],
+                "id": 5849,
+                "name": "ParameterList",
+                "src": "822:9:51"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 5849
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2898,
+                              "type": "mapping(bytes32 => address)",
+                              "value": "addressStorage"
+                            },
+                            "id": 5850,
+                            "name": "Identifier",
+                            "src": "849:14:51"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "tryCall": false,
+                              "type": "bytes32",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bytes_memory_ptr",
+                                      "typeString": "bytes memory"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": -8,
+                                  "type": "function (bytes memory) pure returns (bytes32)",
+                                  "value": "keccak256"
+                                },
+                                "id": 5851,
+                                "name": "Identifier",
+                                "src": "864:9:51"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "bytes memory",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_stringliteral_4af928e5d4099941f5ec1a6ee2721598e13c6722183e69b5744bc5014878a987",
+                                          "typeString": "literal_string \"messageToken\""
+                                        },
+                                        {
+                                          "typeIdentifier": "t_bytes32",
+                                          "typeString": "bytes32"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "member_name": "encodePacked",
+                                      "type": "function () pure returns (bytes memory)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": -1,
+                                          "type": "abi",
+                                          "value": "abi"
+                                        },
+                                        "id": 5852,
+                                        "name": "Identifier",
+                                        "src": "874:3:51"
+                                      }
+                                    ],
+                                    "id": 5853,
+                                    "name": "MemberAccess",
+                                    "src": "874:16:51"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "hexvalue": "6d657373616765546f6b656e",
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "token": "string",
+                                      "type": "literal_string \"messageToken\"",
+                                      "value": "messageToken"
+                                    },
+                                    "id": 5854,
+                                    "name": "Literal",
+                                    "src": "891:14:51"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 5845,
+                                      "type": "bytes32",
+                                      "value": "_messageId"
+                                    },
+                                    "id": 5855,
+                                    "name": "Identifier",
+                                    "src": "907:10:51"
+                                  }
+                                ],
+                                "id": 5856,
+                                "name": "FunctionCall",
+                                "src": "874:44:51"
+                              }
+                            ],
+                            "id": 5857,
+                            "name": "FunctionCall",
+                            "src": "864:55:51"
+                          }
+                        ],
+                        "id": 5858,
+                        "name": "IndexAccess",
+                        "src": "849:71:51"
+                      }
+                    ],
+                    "id": 5859,
+                    "name": "Return",
+                    "src": "842:78:51"
+                  }
+                ],
+                "id": 5860,
+                "name": "Block",
+                "src": "832:95:51"
+              }
+            ],
+            "id": 5861,
+            "name": "FunctionDefinition",
+            "src": "758:169:51"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "setMessageValue",
+              "scope": 5942,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Stores the value of a message sent to the AMB bridge.\n @param _messageId of the message sent to the bridge.\n @param _value amount of tokens bridged."
+                },
+                "id": 5862,
+                "name": "StructuredDocumentation",
+                "src": "933:184:51"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_messageId",
+                      "scope": 5882,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 5863,
+                        "name": "ElementaryTypeName",
+                        "src": "1147:7:51"
+                      }
+                    ],
+                    "id": 5864,
+                    "name": "VariableDeclaration",
+                    "src": "1147:18:51"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_value",
+                      "scope": 5882,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 5865,
+                        "name": "ElementaryTypeName",
+                        "src": "1167:7:51"
+                      }
+                    ],
+                    "id": 5866,
+                    "name": "VariableDeclaration",
+                    "src": "1167:14:51"
+                  }
+                ],
+                "id": 5867,
+                "name": "ParameterList",
+                "src": "1146:36:51"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 5868,
+                "name": "ParameterList",
+                "src": "1192:0:51"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "uint256"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2890,
+                                  "type": "mapping(bytes32 => uint256)",
+                                  "value": "uintStorage"
+                                },
+                                "id": 5869,
+                                "name": "Identifier",
+                                "src": "1202:11:51"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "bytes32",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_bytes_memory_ptr",
+                                          "typeString": "bytes memory"
+                                        }
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": -8,
+                                      "type": "function (bytes memory) pure returns (bytes32)",
+                                      "value": "keccak256"
+                                    },
+                                    "id": 5870,
+                                    "name": "Identifier",
+                                    "src": "1214:9:51"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "isStructConstructorCall": false,
+                                      "lValueRequested": false,
+                                      "names": [
+                                        null
+                                      ],
+                                      "tryCall": false,
+                                      "type": "bytes memory",
+                                      "type_conversion": false
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": [
+                                            {
+                                              "typeIdentifier": "t_stringliteral_e130765c16672a7644bd3c83d6cba918e8f29680574b76fcd95c4ef67ce32ea0",
+                                              "typeString": "literal_string \"messageValue\""
+                                            },
+                                            {
+                                              "typeIdentifier": "t_bytes32",
+                                              "typeString": "bytes32"
+                                            }
+                                          ],
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "member_name": "encodePacked",
+                                          "type": "function () pure returns (bytes memory)"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": -1,
+                                              "type": "abi",
+                                              "value": "abi"
+                                            },
+                                            "id": 5871,
+                                            "name": "Identifier",
+                                            "src": "1224:3:51"
+                                          }
+                                        ],
+                                        "id": 5872,
+                                        "name": "MemberAccess",
+                                        "src": "1224:16:51"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "hexvalue": "6d65737361676556616c7565",
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "token": "string",
+                                          "type": "literal_string \"messageValue\"",
+                                          "value": "messageValue"
+                                        },
+                                        "id": 5873,
+                                        "name": "Literal",
+                                        "src": "1241:14:51"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 5864,
+                                          "type": "bytes32",
+                                          "value": "_messageId"
+                                        },
+                                        "id": 5874,
+                                        "name": "Identifier",
+                                        "src": "1257:10:51"
+                                      }
+                                    ],
+                                    "id": 5875,
+                                    "name": "FunctionCall",
+                                    "src": "1224:44:51"
+                                  }
+                                ],
+                                "id": 5876,
+                                "name": "FunctionCall",
+                                "src": "1214:55:51"
+                              }
+                            ],
+                            "id": 5877,
+                            "name": "IndexAccess",
+                            "src": "1202:68:51"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 5866,
+                              "type": "uint256",
+                              "value": "_value"
+                            },
+                            "id": 5878,
+                            "name": "Identifier",
+                            "src": "1273:6:51"
+                          }
+                        ],
+                        "id": 5879,
+                        "name": "Assignment",
+                        "src": "1202:77:51"
+                      }
+                    ],
+                    "id": 5880,
+                    "name": "ExpressionStatement",
+                    "src": "1202:77:51"
+                  }
+                ],
+                "id": 5881,
+                "name": "Block",
+                "src": "1192:94:51"
+              }
+            ],
+            "id": 5882,
+            "name": "FunctionDefinition",
+            "src": "1122:164:51"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "messageValue",
+              "scope": 5942,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Tells the amount of tokens of a message sent to the AMB bridge.\n @return value representing amount of tokens."
+                },
+                "id": 5883,
+                "name": "StructuredDocumentation",
+                "src": "1292:139:51"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_messageId",
+                      "scope": 5901,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 5884,
+                        "name": "ElementaryTypeName",
+                        "src": "1458:7:51"
+                      }
+                    ],
+                    "id": 5885,
+                    "name": "VariableDeclaration",
+                    "src": "1458:18:51"
+                  }
+                ],
+                "id": 5886,
+                "name": "ParameterList",
+                "src": "1457:20:51"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 5901,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 5887,
+                        "name": "ElementaryTypeName",
+                        "src": "1501:7:51"
+                      }
+                    ],
+                    "id": 5888,
+                    "name": "VariableDeclaration",
+                    "src": "1501:7:51"
+                  }
+                ],
+                "id": 5889,
+                "name": "ParameterList",
+                "src": "1500:9:51"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 5889
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2890,
+                              "type": "mapping(bytes32 => uint256)",
+                              "value": "uintStorage"
+                            },
+                            "id": 5890,
+                            "name": "Identifier",
+                            "src": "1527:11:51"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "tryCall": false,
+                              "type": "bytes32",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bytes_memory_ptr",
+                                      "typeString": "bytes memory"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": -8,
+                                  "type": "function (bytes memory) pure returns (bytes32)",
+                                  "value": "keccak256"
+                                },
+                                "id": 5891,
+                                "name": "Identifier",
+                                "src": "1539:9:51"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "bytes memory",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_stringliteral_e130765c16672a7644bd3c83d6cba918e8f29680574b76fcd95c4ef67ce32ea0",
+                                          "typeString": "literal_string \"messageValue\""
+                                        },
+                                        {
+                                          "typeIdentifier": "t_bytes32",
+                                          "typeString": "bytes32"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "member_name": "encodePacked",
+                                      "type": "function () pure returns (bytes memory)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": -1,
+                                          "type": "abi",
+                                          "value": "abi"
+                                        },
+                                        "id": 5892,
+                                        "name": "Identifier",
+                                        "src": "1549:3:51"
+                                      }
+                                    ],
+                                    "id": 5893,
+                                    "name": "MemberAccess",
+                                    "src": "1549:16:51"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "hexvalue": "6d65737361676556616c7565",
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "token": "string",
+                                      "type": "literal_string \"messageValue\"",
+                                      "value": "messageValue"
+                                    },
+                                    "id": 5894,
+                                    "name": "Literal",
+                                    "src": "1566:14:51"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 5885,
+                                      "type": "bytes32",
+                                      "value": "_messageId"
+                                    },
+                                    "id": 5895,
+                                    "name": "Identifier",
+                                    "src": "1582:10:51"
+                                  }
+                                ],
+                                "id": 5896,
+                                "name": "FunctionCall",
+                                "src": "1549:44:51"
+                              }
+                            ],
+                            "id": 5897,
+                            "name": "FunctionCall",
+                            "src": "1539:55:51"
+                          }
+                        ],
+                        "id": 5898,
+                        "name": "IndexAccess",
+                        "src": "1527:68:51"
+                      }
+                    ],
+                    "id": 5899,
+                    "name": "Return",
+                    "src": "1520:75:51"
+                  }
+                ],
+                "id": 5900,
+                "name": "Block",
+                "src": "1510:92:51"
+              }
+            ],
+            "id": 5901,
+            "name": "FunctionDefinition",
+            "src": "1436:166:51"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "setMessageRecipient",
+              "scope": 5942,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Stores the receiver of a message sent to the AMB bridge.\n @param _messageId of the message sent to the bridge.\n @param _recipient receiver of the tokens bridged."
+                },
+                "id": 5902,
+                "name": "StructuredDocumentation",
+                "src": "1608:197:51"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_messageId",
+                      "scope": 5922,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 5903,
+                        "name": "ElementaryTypeName",
+                        "src": "1839:7:51"
+                      }
+                    ],
+                    "id": 5904,
+                    "name": "VariableDeclaration",
+                    "src": "1839:18:51"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_recipient",
+                      "scope": 5922,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 5905,
+                        "name": "ElementaryTypeName",
+                        "src": "1859:7:51"
+                      }
+                    ],
+                    "id": 5906,
+                    "name": "VariableDeclaration",
+                    "src": "1859:18:51"
+                  }
+                ],
+                "id": 5907,
+                "name": "ParameterList",
+                "src": "1838:40:51"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 5908,
+                "name": "ParameterList",
+                "src": "1888:0:51"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": true,
+                              "type": "address"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2898,
+                                  "type": "mapping(bytes32 => address)",
+                                  "value": "addressStorage"
+                                },
+                                "id": 5909,
+                                "name": "Identifier",
+                                "src": "1898:14:51"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "bytes32",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_bytes_memory_ptr",
+                                          "typeString": "bytes memory"
+                                        }
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": -8,
+                                      "type": "function (bytes memory) pure returns (bytes32)",
+                                      "value": "keccak256"
+                                    },
+                                    "id": 5910,
+                                    "name": "Identifier",
+                                    "src": "1913:9:51"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "isStructConstructorCall": false,
+                                      "lValueRequested": false,
+                                      "names": [
+                                        null
+                                      ],
+                                      "tryCall": false,
+                                      "type": "bytes memory",
+                                      "type_conversion": false
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": [
+                                            {
+                                              "typeIdentifier": "t_stringliteral_5a5ad5a9cb7f4309940389970b1612824f55db87c81454ef23975698654e2e4e",
+                                              "typeString": "literal_string \"messageRecipient\""
+                                            },
+                                            {
+                                              "typeIdentifier": "t_bytes32",
+                                              "typeString": "bytes32"
+                                            }
+                                          ],
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "member_name": "encodePacked",
+                                          "type": "function () pure returns (bytes memory)"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": -1,
+                                              "type": "abi",
+                                              "value": "abi"
+                                            },
+                                            "id": 5911,
+                                            "name": "Identifier",
+                                            "src": "1923:3:51"
+                                          }
+                                        ],
+                                        "id": 5912,
+                                        "name": "MemberAccess",
+                                        "src": "1923:16:51"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "hexvalue": "6d657373616765526563697069656e74",
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "token": "string",
+                                          "type": "literal_string \"messageRecipient\"",
+                                          "value": "messageRecipient"
+                                        },
+                                        "id": 5913,
+                                        "name": "Literal",
+                                        "src": "1940:18:51"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 5904,
+                                          "type": "bytes32",
+                                          "value": "_messageId"
+                                        },
+                                        "id": 5914,
+                                        "name": "Identifier",
+                                        "src": "1960:10:51"
+                                      }
+                                    ],
+                                    "id": 5915,
+                                    "name": "FunctionCall",
+                                    "src": "1923:48:51"
+                                  }
+                                ],
+                                "id": 5916,
+                                "name": "FunctionCall",
+                                "src": "1913:59:51"
+                              }
+                            ],
+                            "id": 5917,
+                            "name": "IndexAccess",
+                            "src": "1898:75:51"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 5906,
+                              "type": "address",
+                              "value": "_recipient"
+                            },
+                            "id": 5918,
+                            "name": "Identifier",
+                            "src": "1976:10:51"
+                          }
+                        ],
+                        "id": 5919,
+                        "name": "Assignment",
+                        "src": "1898:88:51"
+                      }
+                    ],
+                    "id": 5920,
+                    "name": "ExpressionStatement",
+                    "src": "1898:88:51"
+                  }
+                ],
+                "id": 5921,
+                "name": "Block",
+                "src": "1888:105:51"
+              }
+            ],
+            "id": 5922,
+            "name": "FunctionDefinition",
+            "src": "1810:183:51"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "messageRecipient",
+              "scope": 5942,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Tells the receiver of a message sent to the AMB bridge.\n @return address of the receiver."
+                },
+                "id": 5923,
+                "name": "StructuredDocumentation",
+                "src": "1999:119:51"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_messageId",
+                      "scope": 5941,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bytes32",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bytes32",
+                          "type": "bytes32"
+                        },
+                        "id": 5924,
+                        "name": "ElementaryTypeName",
+                        "src": "2149:7:51"
+                      }
+                    ],
+                    "id": 5925,
+                    "name": "VariableDeclaration",
+                    "src": "2149:18:51"
+                  }
+                ],
+                "id": 5926,
+                "name": "ParameterList",
+                "src": "2148:20:51"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 5941,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 5927,
+                        "name": "ElementaryTypeName",
+                        "src": "2192:7:51"
+                      }
+                    ],
+                    "id": 5928,
+                    "name": "VariableDeclaration",
+                    "src": "2192:7:51"
+                  }
+                ],
+                "id": 5929,
+                "name": "ParameterList",
+                "src": "2191:9:51"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 5929
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "address"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2898,
+                              "type": "mapping(bytes32 => address)",
+                              "value": "addressStorage"
+                            },
+                            "id": 5930,
+                            "name": "Identifier",
+                            "src": "2218:14:51"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "tryCall": false,
+                              "type": "bytes32",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bytes_memory_ptr",
+                                      "typeString": "bytes memory"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": -8,
+                                  "type": "function (bytes memory) pure returns (bytes32)",
+                                  "value": "keccak256"
+                                },
+                                "id": 5931,
+                                "name": "Identifier",
+                                "src": "2233:9:51"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "bytes memory",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_stringliteral_5a5ad5a9cb7f4309940389970b1612824f55db87c81454ef23975698654e2e4e",
+                                          "typeString": "literal_string \"messageRecipient\""
+                                        },
+                                        {
+                                          "typeIdentifier": "t_bytes32",
+                                          "typeString": "bytes32"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "member_name": "encodePacked",
+                                      "type": "function () pure returns (bytes memory)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": -1,
+                                          "type": "abi",
+                                          "value": "abi"
+                                        },
+                                        "id": 5932,
+                                        "name": "Identifier",
+                                        "src": "2243:3:51"
+                                      }
+                                    ],
+                                    "id": 5933,
+                                    "name": "MemberAccess",
+                                    "src": "2243:16:51"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "hexvalue": "6d657373616765526563697069656e74",
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "token": "string",
+                                      "type": "literal_string \"messageRecipient\"",
+                                      "value": "messageRecipient"
+                                    },
+                                    "id": 5934,
+                                    "name": "Literal",
+                                    "src": "2260:18:51"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 5925,
+                                      "type": "bytes32",
+                                      "value": "_messageId"
+                                    },
+                                    "id": 5935,
+                                    "name": "Identifier",
+                                    "src": "2280:10:51"
+                                  }
+                                ],
+                                "id": 5936,
+                                "name": "FunctionCall",
+                                "src": "2243:48:51"
+                              }
+                            ],
+                            "id": 5937,
+                            "name": "FunctionCall",
+                            "src": "2233:59:51"
+                          }
+                        ],
+                        "id": 5938,
+                        "name": "IndexAccess",
+                        "src": "2218:75:51"
+                      }
+                    ],
+                    "id": 5939,
+                    "name": "Return",
+                    "src": "2211:82:51"
+                  }
+                ],
+                "id": 5940,
+                "name": "Block",
+                "src": "2201:99:51"
+              }
+            ],
+            "id": 5941,
+            "name": "FunctionDefinition",
+            "src": "2123:177:51"
+          }
+        ],
+        "id": 5942,
+        "name": "ContractDefinition",
+        "src": "184:2118:51"
+      }
+    ],
+    "id": 5943,
+    "name": "SourceUnit",
+    "src": "0:2303:51"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.5+commit.eb77ed08.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:31.297Z",
+  "devdoc": {
+    "details": "Functionality for storing processed bridged operations.",
+    "kind": "dev",
+    "methods": {},
+    "title": "BridgeOperationsStorage",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

@@ -1,0 +1,3857 @@
+{
+  "contractName": "IStakeManager",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "relayManager",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "stake",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "name": "unstakeDelay",
+          "type": "uint256"
+        }
+      ],
+      "name": "StakeAdded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "relayManager",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "withdrawBlock",
+          "type": "uint256"
+        }
+      ],
+      "name": "StakeUnlocked",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "relayManager",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "StakeWithdrawn",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "relayManager",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "beneficiary",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "reward",
+          "type": "uint256"
+        }
+      ],
+      "name": "StakePenalized",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "relayManager",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "relayHub",
+          "type": "address"
+        }
+      ],
+      "name": "HubAuthorized",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "relayManager",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "relayHub",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "name": "removalBlock",
+          "type": "uint256"
+        }
+      ],
+      "name": "HubUnauthorized",
+      "type": "event"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "relayManager",
+          "type": "address"
+        },
+        {
+          "name": "unstakeDelay",
+          "type": "uint256"
+        }
+      ],
+      "name": "stakeForAddress",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "relayManager",
+          "type": "address"
+        }
+      ],
+      "name": "unlockStake",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "relayManager",
+          "type": "address"
+        }
+      ],
+      "name": "withdrawStake",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "relayManager",
+          "type": "address"
+        },
+        {
+          "name": "relayHub",
+          "type": "address"
+        }
+      ],
+      "name": "authorizeHubByOwner",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "relayHub",
+          "type": "address"
+        }
+      ],
+      "name": "authorizeHubByManager",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "relayManager",
+          "type": "address"
+        },
+        {
+          "name": "relayHub",
+          "type": "address"
+        }
+      ],
+      "name": "unauthorizeHubByOwner",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "relayHub",
+          "type": "address"
+        }
+      ],
+      "name": "unauthorizeHubByManager",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "relayManager",
+          "type": "address"
+        },
+        {
+          "name": "relayHub",
+          "type": "address"
+        },
+        {
+          "name": "minAmount",
+          "type": "uint256"
+        },
+        {
+          "name": "minUnstakeDelay",
+          "type": "uint256"
+        }
+      ],
+      "name": "isRelayManagerStaked",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "relayManager",
+          "type": "address"
+        },
+        {
+          "name": "beneficiary",
+          "type": "address"
+        },
+        {
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "penalizeRelayManager",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "relayManager",
+          "type": "address"
+        }
+      ],
+      "name": "getStakeInfo",
+      "outputs": [
+        {
+          "components": [
+            {
+              "name": "stake",
+              "type": "uint256"
+            },
+            {
+              "name": "unstakeDelay",
+              "type": "uint256"
+            },
+            {
+              "name": "withdrawBlock",
+              "type": "uint256"
+            },
+            {
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "name": "stakeInfo",
+          "type": "tuple"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "versionSM",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier:MIT\npragma solidity 0.4.24;\npragma experimental ABIEncoderV2;\n\ncontract IStakeManager {\n    /// Emitted when a stake or unstakeDelay are initialized or increased\n    event StakeAdded(address indexed relayManager, address indexed owner, uint256 stake, uint256 unstakeDelay);\n\n    /// Emitted once a stake is scheduled for withdrawal\n    event StakeUnlocked(address indexed relayManager, address indexed owner, uint256 withdrawBlock);\n\n    /// Emitted when owner withdraws relayManager funds\n    event StakeWithdrawn(address indexed relayManager, address indexed owner, uint256 amount);\n\n    /// Emitted when an authorized Relay Hub penalizes a relayManager\n    event StakePenalized(address indexed relayManager, address indexed beneficiary, uint256 reward);\n\n    event HubAuthorized(address indexed relayManager, address indexed relayHub);\n\n    event HubUnauthorized(address indexed relayManager, address indexed relayHub, uint256 removalBlock);\n\n    /// @param stake - amount of ether staked for this relay\n    /// @param unstakeDelay - number of blocks to elapse before the owner can retrieve the stake after calling 'unlock'\n    /// @param withdrawBlock - first block number 'withdraw' will be callable, or zero if the unlock has not been called\n    /// @param owner - address that receives revenue and manages relayManager's stake\n    struct StakeInfo {\n        uint256 stake;\n        uint256 unstakeDelay;\n        uint256 withdrawBlock;\n        address owner;\n    }\n\n    struct RelayHubInfo {\n        uint256 removalBlock;\n    }\n\n    /// Put a stake for a relayManager and set its unstake delay.\n    /// If the entry does not exist, it is created, and the caller of this function becomes its owner.\n    /// If the entry already exists, only the owner can call this function.\n    /// @param relayManager - address that represents a stake entry and controls relay registrations on relay hubs\n    /// @param unstakeDelay - number of blocks to elapse before the owner can retrieve the stake after calling 'unlock'\n    function stakeForAddress(address relayManager, uint256 unstakeDelay) external payable;\n\n    function unlockStake(address relayManager) external;\n\n    function withdrawStake(address relayManager) external;\n\n    function authorizeHubByOwner(address relayManager, address relayHub) external;\n\n    function authorizeHubByManager(address relayHub) external;\n\n    function unauthorizeHubByOwner(address relayManager, address relayHub) external;\n\n    function unauthorizeHubByManager(address relayHub) external;\n\n    function isRelayManagerStaked(address relayManager, address relayHub, uint256 minAmount, uint256 minUnstakeDelay)\n        external\n        view\n        returns (bool);\n\n    /// Slash the stake of the relay relayManager. In order to prevent stake kidnapping, burns half of stake on the way.\n    /// @param relayManager - entry to penalize\n    /// @param beneficiary - address that receives half of the penalty amount\n    /// @param amount - amount to withdraw from stake\n    function penalizeRelayManager(address relayManager, address beneficiary, uint256 amount) external;\n\n    function getStakeInfo(address relayManager) external view returns (StakeInfo memory stakeInfo);\n\n    function versionSM() external view returns (string memory);\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/poanetwork/contracts/gsn/interfaces/IStakeManager.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/gsn/interfaces/IStakeManager.sol",
+    "exportedSymbols": {
+      "IStakeManager": [
+        3127
+      ]
+    },
+    "id": 3128,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 2990,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "31:23:23"
+      },
+      {
+        "id": 2991,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "55:33:23"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 3127,
+        "linearizedBaseContracts": [
+          3127
+        ],
+        "name": "IStakeManager",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "anonymous": false,
+            "documentation": "Emitted when a stake or unstakeDelay are initialized or increased",
+            "id": 3001,
+            "name": "StakeAdded",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 3000,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 2993,
+                  "indexed": true,
+                  "name": "relayManager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3001,
+                  "src": "210:28:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2992,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "210:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2995,
+                  "indexed": true,
+                  "name": "owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3001,
+                  "src": "240:21:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 2994,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "240:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2997,
+                  "indexed": false,
+                  "name": "stake",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3001,
+                  "src": "263:13:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2996,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "263:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 2999,
+                  "indexed": false,
+                  "name": "unstakeDelay",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3001,
+                  "src": "278:20:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 2998,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "278:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "209:90:23"
+            },
+            "src": "193:107:23"
+          },
+          {
+            "anonymous": false,
+            "documentation": "Emitted once a stake is scheduled for withdrawal",
+            "id": 3009,
+            "name": "StakeUnlocked",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 3008,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3003,
+                  "indexed": true,
+                  "name": "relayManager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3009,
+                  "src": "383:28:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3002,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "383:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3005,
+                  "indexed": true,
+                  "name": "owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3009,
+                  "src": "413:21:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3004,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "413:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3007,
+                  "indexed": false,
+                  "name": "withdrawBlock",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3009,
+                  "src": "436:21:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3006,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "436:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "382:76:23"
+            },
+            "src": "363:96:23"
+          },
+          {
+            "anonymous": false,
+            "documentation": "Emitted when owner withdraws relayManager funds",
+            "id": 3017,
+            "name": "StakeWithdrawn",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 3016,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3011,
+                  "indexed": true,
+                  "name": "relayManager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3017,
+                  "src": "542:28:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3010,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "542:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3013,
+                  "indexed": true,
+                  "name": "owner",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3017,
+                  "src": "572:21:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3012,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "572:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3015,
+                  "indexed": false,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3017,
+                  "src": "595:14:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3014,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "595:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "541:69:23"
+            },
+            "src": "521:90:23"
+          },
+          {
+            "anonymous": false,
+            "documentation": "Emitted when an authorized Relay Hub penalizes a relayManager",
+            "id": 3025,
+            "name": "StakePenalized",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 3024,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3019,
+                  "indexed": true,
+                  "name": "relayManager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3025,
+                  "src": "708:28:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3018,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "708:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3021,
+                  "indexed": true,
+                  "name": "beneficiary",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3025,
+                  "src": "738:27:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3020,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "738:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3023,
+                  "indexed": false,
+                  "name": "reward",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3025,
+                  "src": "767:14:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3022,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "767:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "707:75:23"
+            },
+            "src": "687:96:23"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 3031,
+            "name": "HubAuthorized",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 3030,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3027,
+                  "indexed": true,
+                  "name": "relayManager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3031,
+                  "src": "809:28:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3026,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "809:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3029,
+                  "indexed": true,
+                  "name": "relayHub",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3031,
+                  "src": "839:24:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3028,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "839:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "808:56:23"
+            },
+            "src": "789:76:23"
+          },
+          {
+            "anonymous": false,
+            "documentation": null,
+            "id": 3039,
+            "name": "HubUnauthorized",
+            "nodeType": "EventDefinition",
+            "parameters": {
+              "id": 3038,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3033,
+                  "indexed": true,
+                  "name": "relayManager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3039,
+                  "src": "893:28:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3032,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "893:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3035,
+                  "indexed": true,
+                  "name": "relayHub",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3039,
+                  "src": "923:24:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3034,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "923:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3037,
+                  "indexed": false,
+                  "name": "removalBlock",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3039,
+                  "src": "949:20:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3036,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "949:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "892:78:23"
+            },
+            "src": "871:100:23"
+          },
+          {
+            "canonicalName": "IStakeManager.StakeInfo",
+            "id": 3048,
+            "members": [
+              {
+                "constant": false,
+                "id": 3041,
+                "name": "stake",
+                "nodeType": "VariableDeclaration",
+                "scope": 3048,
+                "src": "1392:13:23",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 3040,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1392:7:23",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 3043,
+                "name": "unstakeDelay",
+                "nodeType": "VariableDeclaration",
+                "scope": 3048,
+                "src": "1415:20:23",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 3042,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1415:7:23",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 3045,
+                "name": "withdrawBlock",
+                "nodeType": "VariableDeclaration",
+                "scope": 3048,
+                "src": "1445:21:23",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 3044,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1445:7:23",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 3047,
+                "name": "owner",
+                "nodeType": "VariableDeclaration",
+                "scope": 3048,
+                "src": "1476:13:23",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 3046,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1476:7:23",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "StakeInfo",
+            "nodeType": "StructDefinition",
+            "scope": 3127,
+            "src": "1365:131:23",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "IStakeManager.RelayHubInfo",
+            "id": 3051,
+            "members": [
+              {
+                "constant": false,
+                "id": 3050,
+                "name": "removalBlock",
+                "nodeType": "VariableDeclaration",
+                "scope": 3051,
+                "src": "1532:20:23",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 3049,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "1532:7:23",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "RelayHubInfo",
+            "nodeType": "StructDefinition",
+            "scope": 3127,
+            "src": "1502:57:23",
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": "Put a stake for a relayManager and set its unstake delay.\n If the entry does not exist, it is created, and the caller of this function becomes its owner.\n If the entry already exists, only the owner can call this function.\n @param relayManager - address that represents a stake entry and controls relay registrations on relay hubs\n @param unstakeDelay - number of blocks to elapse before the owner can retrieve the stake after calling 'unlock'",
+            "id": 3058,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "stakeForAddress",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3056,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3053,
+                  "name": "relayManager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3058,
+                  "src": "2070:20:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3052,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2070:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3055,
+                  "name": "unstakeDelay",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3058,
+                  "src": "2092:20:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3054,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2092:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2069:44:23"
+            },
+            "payable": true,
+            "returnParameters": {
+              "id": 3057,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2130:0:23"
+            },
+            "scope": 3127,
+            "src": "2045:86:23",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 3063,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "unlockStake",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3061,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3060,
+                  "name": "relayManager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3063,
+                  "src": "2158:20:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3059,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2158:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2157:22:23"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3062,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2188:0:23"
+            },
+            "scope": 3127,
+            "src": "2137:52:23",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 3068,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "withdrawStake",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3066,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3065,
+                  "name": "relayManager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3068,
+                  "src": "2218:20:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3064,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2218:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2217:22:23"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3067,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2248:0:23"
+            },
+            "scope": 3127,
+            "src": "2195:54:23",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 3075,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "authorizeHubByOwner",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3073,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3070,
+                  "name": "relayManager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3075,
+                  "src": "2284:20:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3069,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2284:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3072,
+                  "name": "relayHub",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3075,
+                  "src": "2306:16:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3071,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2306:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2283:40:23"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3074,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2332:0:23"
+            },
+            "scope": 3127,
+            "src": "2255:78:23",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 3080,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "authorizeHubByManager",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3078,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3077,
+                  "name": "relayHub",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3080,
+                  "src": "2370:16:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3076,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2370:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2369:18:23"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3079,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2396:0:23"
+            },
+            "scope": 3127,
+            "src": "2339:58:23",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 3087,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "unauthorizeHubByOwner",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3085,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3082,
+                  "name": "relayManager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3087,
+                  "src": "2434:20:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3081,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2434:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3084,
+                  "name": "relayHub",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3087,
+                  "src": "2456:16:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3083,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2456:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2433:40:23"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3086,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2482:0:23"
+            },
+            "scope": 3127,
+            "src": "2403:80:23",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 3092,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "unauthorizeHubByManager",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3090,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3089,
+                  "name": "relayHub",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3092,
+                  "src": "2522:16:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3088,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2522:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2521:18:23"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3091,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2548:0:23"
+            },
+            "scope": 3127,
+            "src": "2489:60:23",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 3105,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "isRelayManagerStaked",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3101,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3094,
+                  "name": "relayManager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3105,
+                  "src": "2585:20:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3093,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2585:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3096,
+                  "name": "relayHub",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3105,
+                  "src": "2607:16:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3095,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2607:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3098,
+                  "name": "minAmount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3105,
+                  "src": "2625:17:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3097,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2625:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3100,
+                  "name": "minUnstakeDelay",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3105,
+                  "src": "2644:23:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3099,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2644:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2584:84:23"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3104,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3103,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3105,
+                  "src": "2716:4:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 3102,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2716:4:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2715:6:23"
+            },
+            "scope": 3127,
+            "src": "2555:167:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "Slash the stake of the relay relayManager. In order to prevent stake kidnapping, burns half of stake on the way.\n @param relayManager - entry to penalize\n @param beneficiary - address that receives half of the penalty amount\n @param amount - amount to withdraw from stake",
+            "id": 3114,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": false,
+            "modifiers": [],
+            "name": "penalizeRelayManager",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3112,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3107,
+                  "name": "relayManager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3114,
+                  "src": "3059:20:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3106,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3059:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3109,
+                  "name": "beneficiary",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3114,
+                  "src": "3081:19:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3108,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3081:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 3111,
+                  "name": "amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3114,
+                  "src": "3102:14:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 3110,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3102:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3058:59:23"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3113,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3126:0:23"
+            },
+            "scope": 3127,
+            "src": "3029:98:23",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 3121,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getStakeInfo",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3117,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3116,
+                  "name": "relayManager",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3121,
+                  "src": "3155:20:23",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 3115,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3155:7:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3154:22:23"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3120,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3119,
+                  "name": "stakeInfo",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3121,
+                  "src": "3200:26:23",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_StakeInfo_$3048_memory_ptr",
+                    "typeString": "struct IStakeManager.StakeInfo"
+                  },
+                  "typeName": {
+                    "contractScope": null,
+                    "id": 3118,
+                    "name": "StakeInfo",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 3048,
+                    "src": "3200:9:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_struct$_StakeInfo_$3048_storage_ptr",
+                      "typeString": "struct IStakeManager.StakeInfo"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3199:28:23"
+            },
+            "scope": 3127,
+            "src": "3133:95:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": null,
+            "id": 3126,
+            "implemented": false,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "versionSM",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 3122,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "3252:2:23"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 3125,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 3124,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 3126,
+                  "src": "3278:6:23",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 3123,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "3278:6:23",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "3277:15:23"
+            },
+            "scope": 3127,
+            "src": "3234:59:23",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 3128,
+        "src": "90:3205:23"
+      }
+    ],
+    "src": "31:3265:23"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/gsn/interfaces/IStakeManager.sol",
+      "exportedSymbols": {
+        "IStakeManager": [
+          3127
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.4",
+            ".24"
+          ]
+        },
+        "id": 2990,
+        "name": "PragmaDirective",
+        "src": "31:23:23"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 2991,
+        "name": "PragmaDirective",
+        "src": "55:33:23"
+      },
+      {
+        "attributes": {
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            3127
+          ],
+          "name": "IStakeManager",
+          "scope": 3128
+        },
+        "children": [
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": "Emitted when a stake or unstakeDelay are initialized or increased",
+              "name": "StakeAdded"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "relayManager",
+                      "scope": 3001,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 2992,
+                        "name": "ElementaryTypeName",
+                        "src": "210:7:23"
+                      }
+                    ],
+                    "id": 2993,
+                    "name": "VariableDeclaration",
+                    "src": "210:28:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "owner",
+                      "scope": 3001,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 2994,
+                        "name": "ElementaryTypeName",
+                        "src": "240:7:23"
+                      }
+                    ],
+                    "id": 2995,
+                    "name": "VariableDeclaration",
+                    "src": "240:21:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "stake",
+                      "scope": 3001,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 2996,
+                        "name": "ElementaryTypeName",
+                        "src": "263:7:23"
+                      }
+                    ],
+                    "id": 2997,
+                    "name": "VariableDeclaration",
+                    "src": "263:13:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "unstakeDelay",
+                      "scope": 3001,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 2998,
+                        "name": "ElementaryTypeName",
+                        "src": "278:7:23"
+                      }
+                    ],
+                    "id": 2999,
+                    "name": "VariableDeclaration",
+                    "src": "278:20:23"
+                  }
+                ],
+                "id": 3000,
+                "name": "ParameterList",
+                "src": "209:90:23"
+              }
+            ],
+            "id": 3001,
+            "name": "EventDefinition",
+            "src": "193:107:23"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": "Emitted once a stake is scheduled for withdrawal",
+              "name": "StakeUnlocked"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "relayManager",
+                      "scope": 3009,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3002,
+                        "name": "ElementaryTypeName",
+                        "src": "383:7:23"
+                      }
+                    ],
+                    "id": 3003,
+                    "name": "VariableDeclaration",
+                    "src": "383:28:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "owner",
+                      "scope": 3009,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3004,
+                        "name": "ElementaryTypeName",
+                        "src": "413:7:23"
+                      }
+                    ],
+                    "id": 3005,
+                    "name": "VariableDeclaration",
+                    "src": "413:21:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "withdrawBlock",
+                      "scope": 3009,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 3006,
+                        "name": "ElementaryTypeName",
+                        "src": "436:7:23"
+                      }
+                    ],
+                    "id": 3007,
+                    "name": "VariableDeclaration",
+                    "src": "436:21:23"
+                  }
+                ],
+                "id": 3008,
+                "name": "ParameterList",
+                "src": "382:76:23"
+              }
+            ],
+            "id": 3009,
+            "name": "EventDefinition",
+            "src": "363:96:23"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": "Emitted when owner withdraws relayManager funds",
+              "name": "StakeWithdrawn"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "relayManager",
+                      "scope": 3017,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3010,
+                        "name": "ElementaryTypeName",
+                        "src": "542:7:23"
+                      }
+                    ],
+                    "id": 3011,
+                    "name": "VariableDeclaration",
+                    "src": "542:28:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "owner",
+                      "scope": 3017,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3012,
+                        "name": "ElementaryTypeName",
+                        "src": "572:7:23"
+                      }
+                    ],
+                    "id": 3013,
+                    "name": "VariableDeclaration",
+                    "src": "572:21:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "amount",
+                      "scope": 3017,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 3014,
+                        "name": "ElementaryTypeName",
+                        "src": "595:7:23"
+                      }
+                    ],
+                    "id": 3015,
+                    "name": "VariableDeclaration",
+                    "src": "595:14:23"
+                  }
+                ],
+                "id": 3016,
+                "name": "ParameterList",
+                "src": "541:69:23"
+              }
+            ],
+            "id": 3017,
+            "name": "EventDefinition",
+            "src": "521:90:23"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": "Emitted when an authorized Relay Hub penalizes a relayManager",
+              "name": "StakePenalized"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "relayManager",
+                      "scope": 3025,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3018,
+                        "name": "ElementaryTypeName",
+                        "src": "708:7:23"
+                      }
+                    ],
+                    "id": 3019,
+                    "name": "VariableDeclaration",
+                    "src": "708:28:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "beneficiary",
+                      "scope": 3025,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3020,
+                        "name": "ElementaryTypeName",
+                        "src": "738:7:23"
+                      }
+                    ],
+                    "id": 3021,
+                    "name": "VariableDeclaration",
+                    "src": "738:27:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "reward",
+                      "scope": 3025,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 3022,
+                        "name": "ElementaryTypeName",
+                        "src": "767:7:23"
+                      }
+                    ],
+                    "id": 3023,
+                    "name": "VariableDeclaration",
+                    "src": "767:14:23"
+                  }
+                ],
+                "id": 3024,
+                "name": "ParameterList",
+                "src": "707:75:23"
+              }
+            ],
+            "id": 3025,
+            "name": "EventDefinition",
+            "src": "687:96:23"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "HubAuthorized"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "relayManager",
+                      "scope": 3031,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3026,
+                        "name": "ElementaryTypeName",
+                        "src": "809:7:23"
+                      }
+                    ],
+                    "id": 3027,
+                    "name": "VariableDeclaration",
+                    "src": "809:28:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "relayHub",
+                      "scope": 3031,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3028,
+                        "name": "ElementaryTypeName",
+                        "src": "839:7:23"
+                      }
+                    ],
+                    "id": 3029,
+                    "name": "VariableDeclaration",
+                    "src": "839:24:23"
+                  }
+                ],
+                "id": 3030,
+                "name": "ParameterList",
+                "src": "808:56:23"
+              }
+            ],
+            "id": 3031,
+            "name": "EventDefinition",
+            "src": "789:76:23"
+          },
+          {
+            "attributes": {
+              "anonymous": false,
+              "documentation": null,
+              "name": "HubUnauthorized"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "relayManager",
+                      "scope": 3039,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3032,
+                        "name": "ElementaryTypeName",
+                        "src": "893:7:23"
+                      }
+                    ],
+                    "id": 3033,
+                    "name": "VariableDeclaration",
+                    "src": "893:28:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": true,
+                      "name": "relayHub",
+                      "scope": 3039,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3034,
+                        "name": "ElementaryTypeName",
+                        "src": "923:7:23"
+                      }
+                    ],
+                    "id": 3035,
+                    "name": "VariableDeclaration",
+                    "src": "923:24:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "indexed": false,
+                      "name": "removalBlock",
+                      "scope": 3039,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 3036,
+                        "name": "ElementaryTypeName",
+                        "src": "949:7:23"
+                      }
+                    ],
+                    "id": 3037,
+                    "name": "VariableDeclaration",
+                    "src": "949:20:23"
+                  }
+                ],
+                "id": 3038,
+                "name": "ParameterList",
+                "src": "892:78:23"
+              }
+            ],
+            "id": 3039,
+            "name": "EventDefinition",
+            "src": "871:100:23"
+          },
+          {
+            "attributes": {
+              "canonicalName": "IStakeManager.StakeInfo",
+              "name": "StakeInfo",
+              "scope": 3127,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "stake",
+                  "scope": 3048,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 3040,
+                    "name": "ElementaryTypeName",
+                    "src": "1392:7:23"
+                  }
+                ],
+                "id": 3041,
+                "name": "VariableDeclaration",
+                "src": "1392:13:23"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "unstakeDelay",
+                  "scope": 3048,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 3042,
+                    "name": "ElementaryTypeName",
+                    "src": "1415:7:23"
+                  }
+                ],
+                "id": 3043,
+                "name": "VariableDeclaration",
+                "src": "1415:20:23"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "withdrawBlock",
+                  "scope": 3048,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 3044,
+                    "name": "ElementaryTypeName",
+                    "src": "1445:7:23"
+                  }
+                ],
+                "id": 3045,
+                "name": "VariableDeclaration",
+                "src": "1445:21:23"
+              },
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "owner",
+                  "scope": 3048,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "address",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "address",
+                      "type": "address"
+                    },
+                    "id": 3046,
+                    "name": "ElementaryTypeName",
+                    "src": "1476:7:23"
+                  }
+                ],
+                "id": 3047,
+                "name": "VariableDeclaration",
+                "src": "1476:13:23"
+              }
+            ],
+            "id": 3048,
+            "name": "StructDefinition",
+            "src": "1365:131:23"
+          },
+          {
+            "attributes": {
+              "canonicalName": "IStakeManager.RelayHubInfo",
+              "name": "RelayHubInfo",
+              "scope": 3127,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "constant": false,
+                  "name": "removalBlock",
+                  "scope": 3051,
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "type": "uint256",
+                  "value": null,
+                  "visibility": "internal"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "name": "uint256",
+                      "type": "uint256"
+                    },
+                    "id": 3049,
+                    "name": "ElementaryTypeName",
+                    "src": "1532:7:23"
+                  }
+                ],
+                "id": 3050,
+                "name": "VariableDeclaration",
+                "src": "1532:20:23"
+              }
+            ],
+            "id": 3051,
+            "name": "StructDefinition",
+            "src": "1502:57:23"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "constant": false,
+              "documentation": "Put a stake for a relayManager and set its unstake delay.\n If the entry does not exist, it is created, and the caller of this function becomes its owner.\n If the entry already exists, only the owner can call this function.\n @param relayManager - address that represents a stake entry and controls relay registrations on relay hubs\n @param unstakeDelay - number of blocks to elapse before the owner can retrieve the stake after calling 'unlock'",
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "stakeForAddress",
+              "payable": true,
+              "scope": 3127,
+              "stateMutability": "payable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "relayManager",
+                      "scope": 3058,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3052,
+                        "name": "ElementaryTypeName",
+                        "src": "2070:7:23"
+                      }
+                    ],
+                    "id": 3053,
+                    "name": "VariableDeclaration",
+                    "src": "2070:20:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "unstakeDelay",
+                      "scope": 3058,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 3054,
+                        "name": "ElementaryTypeName",
+                        "src": "2092:7:23"
+                      }
+                    ],
+                    "id": 3055,
+                    "name": "VariableDeclaration",
+                    "src": "2092:20:23"
+                  }
+                ],
+                "id": 3056,
+                "name": "ParameterList",
+                "src": "2069:44:23"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3057,
+                "name": "ParameterList",
+                "src": "2130:0:23"
+              }
+            ],
+            "id": 3058,
+            "name": "FunctionDefinition",
+            "src": "2045:86:23"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "constant": false,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "unlockStake",
+              "payable": false,
+              "scope": 3127,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "relayManager",
+                      "scope": 3063,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3059,
+                        "name": "ElementaryTypeName",
+                        "src": "2158:7:23"
+                      }
+                    ],
+                    "id": 3060,
+                    "name": "VariableDeclaration",
+                    "src": "2158:20:23"
+                  }
+                ],
+                "id": 3061,
+                "name": "ParameterList",
+                "src": "2157:22:23"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3062,
+                "name": "ParameterList",
+                "src": "2188:0:23"
+              }
+            ],
+            "id": 3063,
+            "name": "FunctionDefinition",
+            "src": "2137:52:23"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "constant": false,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "withdrawStake",
+              "payable": false,
+              "scope": 3127,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "relayManager",
+                      "scope": 3068,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3064,
+                        "name": "ElementaryTypeName",
+                        "src": "2218:7:23"
+                      }
+                    ],
+                    "id": 3065,
+                    "name": "VariableDeclaration",
+                    "src": "2218:20:23"
+                  }
+                ],
+                "id": 3066,
+                "name": "ParameterList",
+                "src": "2217:22:23"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3067,
+                "name": "ParameterList",
+                "src": "2248:0:23"
+              }
+            ],
+            "id": 3068,
+            "name": "FunctionDefinition",
+            "src": "2195:54:23"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "constant": false,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "authorizeHubByOwner",
+              "payable": false,
+              "scope": 3127,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "relayManager",
+                      "scope": 3075,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3069,
+                        "name": "ElementaryTypeName",
+                        "src": "2284:7:23"
+                      }
+                    ],
+                    "id": 3070,
+                    "name": "VariableDeclaration",
+                    "src": "2284:20:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "relayHub",
+                      "scope": 3075,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3071,
+                        "name": "ElementaryTypeName",
+                        "src": "2306:7:23"
+                      }
+                    ],
+                    "id": 3072,
+                    "name": "VariableDeclaration",
+                    "src": "2306:16:23"
+                  }
+                ],
+                "id": 3073,
+                "name": "ParameterList",
+                "src": "2283:40:23"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3074,
+                "name": "ParameterList",
+                "src": "2332:0:23"
+              }
+            ],
+            "id": 3075,
+            "name": "FunctionDefinition",
+            "src": "2255:78:23"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "constant": false,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "authorizeHubByManager",
+              "payable": false,
+              "scope": 3127,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "relayHub",
+                      "scope": 3080,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3076,
+                        "name": "ElementaryTypeName",
+                        "src": "2370:7:23"
+                      }
+                    ],
+                    "id": 3077,
+                    "name": "VariableDeclaration",
+                    "src": "2370:16:23"
+                  }
+                ],
+                "id": 3078,
+                "name": "ParameterList",
+                "src": "2369:18:23"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3079,
+                "name": "ParameterList",
+                "src": "2396:0:23"
+              }
+            ],
+            "id": 3080,
+            "name": "FunctionDefinition",
+            "src": "2339:58:23"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "constant": false,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "unauthorizeHubByOwner",
+              "payable": false,
+              "scope": 3127,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "relayManager",
+                      "scope": 3087,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3081,
+                        "name": "ElementaryTypeName",
+                        "src": "2434:7:23"
+                      }
+                    ],
+                    "id": 3082,
+                    "name": "VariableDeclaration",
+                    "src": "2434:20:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "relayHub",
+                      "scope": 3087,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3083,
+                        "name": "ElementaryTypeName",
+                        "src": "2456:7:23"
+                      }
+                    ],
+                    "id": 3084,
+                    "name": "VariableDeclaration",
+                    "src": "2456:16:23"
+                  }
+                ],
+                "id": 3085,
+                "name": "ParameterList",
+                "src": "2433:40:23"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3086,
+                "name": "ParameterList",
+                "src": "2482:0:23"
+              }
+            ],
+            "id": 3087,
+            "name": "FunctionDefinition",
+            "src": "2403:80:23"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "constant": false,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "unauthorizeHubByManager",
+              "payable": false,
+              "scope": 3127,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "relayHub",
+                      "scope": 3092,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3088,
+                        "name": "ElementaryTypeName",
+                        "src": "2522:7:23"
+                      }
+                    ],
+                    "id": 3089,
+                    "name": "VariableDeclaration",
+                    "src": "2522:16:23"
+                  }
+                ],
+                "id": 3090,
+                "name": "ParameterList",
+                "src": "2521:18:23"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3091,
+                "name": "ParameterList",
+                "src": "2548:0:23"
+              }
+            ],
+            "id": 3092,
+            "name": "FunctionDefinition",
+            "src": "2489:60:23"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "constant": true,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "isRelayManagerStaked",
+              "payable": false,
+              "scope": 3127,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "relayManager",
+                      "scope": 3105,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3093,
+                        "name": "ElementaryTypeName",
+                        "src": "2585:7:23"
+                      }
+                    ],
+                    "id": 3094,
+                    "name": "VariableDeclaration",
+                    "src": "2585:20:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "relayHub",
+                      "scope": 3105,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3095,
+                        "name": "ElementaryTypeName",
+                        "src": "2607:7:23"
+                      }
+                    ],
+                    "id": 3096,
+                    "name": "VariableDeclaration",
+                    "src": "2607:16:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "minAmount",
+                      "scope": 3105,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 3097,
+                        "name": "ElementaryTypeName",
+                        "src": "2625:7:23"
+                      }
+                    ],
+                    "id": 3098,
+                    "name": "VariableDeclaration",
+                    "src": "2625:17:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "minUnstakeDelay",
+                      "scope": 3105,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 3099,
+                        "name": "ElementaryTypeName",
+                        "src": "2644:7:23"
+                      }
+                    ],
+                    "id": 3100,
+                    "name": "VariableDeclaration",
+                    "src": "2644:23:23"
+                  }
+                ],
+                "id": 3101,
+                "name": "ParameterList",
+                "src": "2584:84:23"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 3105,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 3102,
+                        "name": "ElementaryTypeName",
+                        "src": "2716:4:23"
+                      }
+                    ],
+                    "id": 3103,
+                    "name": "VariableDeclaration",
+                    "src": "2716:4:23"
+                  }
+                ],
+                "id": 3104,
+                "name": "ParameterList",
+                "src": "2715:6:23"
+              }
+            ],
+            "id": 3105,
+            "name": "FunctionDefinition",
+            "src": "2555:167:23"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "constant": false,
+              "documentation": "Slash the stake of the relay relayManager. In order to prevent stake kidnapping, burns half of stake on the way.\n @param relayManager - entry to penalize\n @param beneficiary - address that receives half of the penalty amount\n @param amount - amount to withdraw from stake",
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "penalizeRelayManager",
+              "payable": false,
+              "scope": 3127,
+              "stateMutability": "nonpayable",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "relayManager",
+                      "scope": 3114,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3106,
+                        "name": "ElementaryTypeName",
+                        "src": "3059:7:23"
+                      }
+                    ],
+                    "id": 3107,
+                    "name": "VariableDeclaration",
+                    "src": "3059:20:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "beneficiary",
+                      "scope": 3114,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3108,
+                        "name": "ElementaryTypeName",
+                        "src": "3081:7:23"
+                      }
+                    ],
+                    "id": 3109,
+                    "name": "VariableDeclaration",
+                    "src": "3081:19:23"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "amount",
+                      "scope": 3114,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint256",
+                          "type": "uint256"
+                        },
+                        "id": 3110,
+                        "name": "ElementaryTypeName",
+                        "src": "3102:7:23"
+                      }
+                    ],
+                    "id": 3111,
+                    "name": "VariableDeclaration",
+                    "src": "3102:14:23"
+                  }
+                ],
+                "id": 3112,
+                "name": "ParameterList",
+                "src": "3058:59:23"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3113,
+                "name": "ParameterList",
+                "src": "3126:0:23"
+              }
+            ],
+            "id": 3114,
+            "name": "FunctionDefinition",
+            "src": "3029:98:23"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "constant": true,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "getStakeInfo",
+              "payable": false,
+              "scope": 3127,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "relayManager",
+                      "scope": 3121,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "type": "address"
+                        },
+                        "id": 3115,
+                        "name": "ElementaryTypeName",
+                        "src": "3155:7:23"
+                      }
+                    ],
+                    "id": 3116,
+                    "name": "VariableDeclaration",
+                    "src": "3155:20:23"
+                  }
+                ],
+                "id": 3117,
+                "name": "ParameterList",
+                "src": "3154:22:23"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "stakeInfo",
+                      "scope": 3121,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "struct IStakeManager.StakeInfo",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "contractScope": null,
+                          "name": "StakeInfo",
+                          "referencedDeclaration": 3048,
+                          "type": "struct IStakeManager.StakeInfo"
+                        },
+                        "id": 3118,
+                        "name": "UserDefinedTypeName",
+                        "src": "3200:9:23"
+                      }
+                    ],
+                    "id": 3119,
+                    "name": "VariableDeclaration",
+                    "src": "3200:26:23"
+                  }
+                ],
+                "id": 3120,
+                "name": "ParameterList",
+                "src": "3199:28:23"
+              }
+            ],
+            "id": 3121,
+            "name": "FunctionDefinition",
+            "src": "3133:95:23"
+          },
+          {
+            "attributes": {
+              "body": null,
+              "constant": true,
+              "documentation": null,
+              "implemented": false,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "versionSM",
+              "payable": false,
+              "scope": 3127,
+              "stateMutability": "view",
+              "superFunction": null,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3122,
+                "name": "ParameterList",
+                "src": "3252:2:23"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "",
+                      "scope": 3126,
+                      "stateVariable": false,
+                      "storageLocation": "memory",
+                      "type": "string",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "string",
+                          "type": "string"
+                        },
+                        "id": 3123,
+                        "name": "ElementaryTypeName",
+                        "src": "3278:6:23"
+                      }
+                    ],
+                    "id": 3124,
+                    "name": "VariableDeclaration",
+                    "src": "3278:6:23"
+                  }
+                ],
+                "id": 3125,
+                "name": "ParameterList",
+                "src": "3277:15:23"
+              }
+            ],
+            "id": 3126,
+            "name": "FunctionDefinition",
+            "src": "3234:59:23"
+          }
+        ],
+        "id": 3127,
+        "name": "ContractDefinition",
+        "src": "90:3205:23"
+      }
+    ],
+    "id": 3128,
+    "name": "SourceUnit",
+    "src": "31:3265:23"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:19.176Z",
+  "devdoc": {
+    "methods": {
+      "penalizeRelayManager(address,address,uint256)": {
+        "params": {
+          "amount": "- amount to withdraw from stake",
+          "beneficiary": "- address that receives half of the penalty amount",
+          "relayManager": "- entry to penalize"
+        }
+      },
+      "stakeForAddress(address,uint256)": {
+        "params": {
+          "relayManager": "- address that represents a stake entry and controls relay registrations on relay hubs",
+          "unstakeDelay": "- number of blocks to elapse before the owner can retrieve the stake after calling 'unlock'"
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "penalizeRelayManager(address,address,uint256)": {
+        "notice": "Slash the stake of the relay relayManager. In order to prevent stake kidnapping, burns half of stake on the way."
+      },
+      "stakeForAddress(address,uint256)": {
+        "notice": "Put a stake for a relayManager and set its unstake delay. If the entry does not exist, it is created, and the caller of this function becomes its owner. If the entry already exists, only the owner can call this function."
+      }
+    }
+  }
+}

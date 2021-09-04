@@ -1,0 +1,778 @@
+{
+  "contractName": "VersionableAMB",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getBridgeMode",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bytes4"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getBridgeInterfacesVersion",
+      "outputs": [
+        {
+          "name": "major",
+          "type": "uint64"
+        },
+        {
+          "name": "minor",
+          "type": "uint64"
+        },
+        {
+          "name": "patch",
+          "type": "uint64"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "metadata": "",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.4.24;\n\nimport \"../VersionableBridge.sol\";\n\ncontract VersionableAMB is VersionableBridge {\n    // message format version as a single 4-bytes number padded to 32-bytes\n    // value, included into every outgoing relay request\n    //\n    // the message version should be updated every time when\n    // - new field appears\n    // - some field removed\n    // - fields order is changed\n    bytes32 internal constant MESSAGE_PACKING_VERSION = 0x00050000 << 224;\n\n    /**\n     * Returns currently used bridge version\n     * @return (major, minor, patch) version triple\n     */\n    function getBridgeInterfacesVersion() external pure returns (uint64 major, uint64 minor, uint64 patch) {\n        return (6, 1, 0);\n    }\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/poanetwork/contracts/upgradeable_contracts/arbitrary_message/VersionableAMB.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/upgradeable_contracts/arbitrary_message/VersionableAMB.sol",
+    "exportedSymbols": {
+      "VersionableAMB": [
+        17179
+      ]
+    },
+    "id": 17180,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 17155,
+        "literals": [
+          "solidity",
+          "0.4",
+          ".24"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:130"
+      },
+      {
+        "absolutePath": "project:/contracts/upgradeable_contracts/VersionableBridge.sol",
+        "file": "../VersionableBridge.sol",
+        "id": 17156,
+        "nodeType": "ImportDirective",
+        "scope": 17180,
+        "sourceUnit": 14008,
+        "src": "25:34:130",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 17157,
+              "name": "VersionableBridge",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 14007,
+              "src": "88:17:130",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_VersionableBridge_$14007",
+                "typeString": "contract VersionableBridge"
+              }
+            },
+            "id": 17158,
+            "nodeType": "InheritanceSpecifier",
+            "src": "88:17:130"
+          }
+        ],
+        "contractDependencies": [
+          14007
+        ],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 17179,
+        "linearizedBaseContracts": [
+          17179,
+          14007
+        ],
+        "name": "VersionableAMB",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": true,
+            "id": 17163,
+            "name": "MESSAGE_PACKING_VERSION",
+            "nodeType": "VariableDeclaration",
+            "scope": 17179,
+            "src": "401:69:130",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_bytes32",
+              "typeString": "bytes32"
+            },
+            "typeName": {
+              "id": 17159,
+              "name": "bytes32",
+              "nodeType": "ElementaryTypeName",
+              "src": "401:7:130",
+              "typeDescriptions": {
+                "typeIdentifier": "t_bytes32",
+                "typeString": "bytes32"
+              }
+            },
+            "value": {
+              "argumentTypes": null,
+              "commonType": {
+                "typeIdentifier": "t_rational_8834235323891921647916487503714592579137419484378094790608031006463098880_by_1",
+                "typeString": "int_const 8834...(65 digits omitted)...8880"
+              },
+              "id": 17162,
+              "isConstant": false,
+              "isLValue": false,
+              "isPure": true,
+              "lValueRequested": false,
+              "leftExpression": {
+                "argumentTypes": null,
+                "hexValue": "30783030303530303030",
+                "id": 17160,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "kind": "number",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "453:10:130",
+                "subdenomination": null,
+                "typeDescriptions": {
+                  "typeIdentifier": "t_rational_327680_by_1",
+                  "typeString": "int_const 327680"
+                },
+                "value": "0x00050000"
+              },
+              "nodeType": "BinaryOperation",
+              "operator": "<<",
+              "rightExpression": {
+                "argumentTypes": null,
+                "hexValue": "323234",
+                "id": 17161,
+                "isConstant": false,
+                "isLValue": false,
+                "isPure": true,
+                "kind": "number",
+                "lValueRequested": false,
+                "nodeType": "Literal",
+                "src": "467:3:130",
+                "subdenomination": null,
+                "typeDescriptions": {
+                  "typeIdentifier": "t_rational_224_by_1",
+                  "typeString": "int_const 224"
+                },
+                "value": "224"
+              },
+              "src": "453:17:130",
+              "typeDescriptions": {
+                "typeIdentifier": "t_rational_8834235323891921647916487503714592579137419484378094790608031006463098880_by_1",
+                "typeString": "int_const 8834...(65 digits omitted)...8880"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 17177,
+              "nodeType": "Block",
+              "src": "693:33:130",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "components": [
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "36",
+                        "id": 17172,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "711:1:130",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_6_by_1",
+                          "typeString": "int_const 6"
+                        },
+                        "value": "6"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "31",
+                        "id": 17173,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "714:1:130",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_1_by_1",
+                          "typeString": "int_const 1"
+                        },
+                        "value": "1"
+                      },
+                      {
+                        "argumentTypes": null,
+                        "hexValue": "30",
+                        "id": 17174,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "number",
+                        "lValueRequested": false,
+                        "nodeType": "Literal",
+                        "src": "717:1:130",
+                        "subdenomination": null,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_rational_0_by_1",
+                          "typeString": "int_const 0"
+                        },
+                        "value": "0"
+                      }
+                    ],
+                    "id": 17175,
+                    "isConstant": false,
+                    "isInlineArray": false,
+                    "isLValue": false,
+                    "isPure": true,
+                    "lValueRequested": false,
+                    "nodeType": "TupleExpression",
+                    "src": "710:9:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$_t_rational_6_by_1_$_t_rational_1_by_1_$_t_rational_0_by_1_$",
+                      "typeString": "tuple(int_const 6,int_const 1,int_const 0)"
+                    }
+                  },
+                  "functionReturnParameters": 17171,
+                  "id": 17176,
+                  "nodeType": "Return",
+                  "src": "703:16:130"
+                }
+              ]
+            },
+            "documentation": "Returns currently used bridge version\n@return (major, minor, patch) version triple",
+            "id": 17178,
+            "implemented": true,
+            "isConstructor": false,
+            "isDeclaredConst": true,
+            "modifiers": [],
+            "name": "getBridgeInterfacesVersion",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 17164,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "625:2:130"
+            },
+            "payable": false,
+            "returnParameters": {
+              "id": 17171,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 17166,
+                  "name": "major",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 17178,
+                  "src": "651:12:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  },
+                  "typeName": {
+                    "id": 17165,
+                    "name": "uint64",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "651:6:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint64",
+                      "typeString": "uint64"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 17168,
+                  "name": "minor",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 17178,
+                  "src": "665:12:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  },
+                  "typeName": {
+                    "id": 17167,
+                    "name": "uint64",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "665:6:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint64",
+                      "typeString": "uint64"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 17170,
+                  "name": "patch",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 17178,
+                  "src": "679:12:130",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint64",
+                    "typeString": "uint64"
+                  },
+                  "typeName": {
+                    "id": 17169,
+                    "name": "uint64",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "679:6:130",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint64",
+                      "typeString": "uint64"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "650:42:130"
+            },
+            "scope": 17179,
+            "src": "590:136:130",
+            "stateMutability": "pure",
+            "superFunction": 14001,
+            "visibility": "external"
+          }
+        ],
+        "scope": 17180,
+        "src": "61:667:130"
+      }
+    ],
+    "src": "0:729:130"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/upgradeable_contracts/arbitrary_message/VersionableAMB.sol",
+      "exportedSymbols": {
+        "VersionableAMB": [
+          17179
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.4",
+            ".24"
+          ]
+        },
+        "id": 17155,
+        "name": "PragmaDirective",
+        "src": "0:23:130"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 14008,
+          "absolutePath": "project:/contracts/upgradeable_contracts/VersionableBridge.sol",
+          "file": "../VersionableBridge.sol",
+          "scope": 17180,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 17156,
+        "name": "ImportDirective",
+        "src": "25:34:130"
+      },
+      {
+        "attributes": {
+          "contractDependencies": [
+            14007
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": false,
+          "linearizedBaseContracts": [
+            17179,
+            14007
+          ],
+          "name": "VersionableAMB",
+          "scope": 17180
+        },
+        "children": [
+          {
+            "attributes": {
+              "arguments": null
+            },
+            "children": [
+              {
+                "attributes": {
+                  "contractScope": null,
+                  "name": "VersionableBridge",
+                  "referencedDeclaration": 14007,
+                  "type": "contract VersionableBridge"
+                },
+                "id": 17157,
+                "name": "UserDefinedTypeName",
+                "src": "88:17:130"
+              }
+            ],
+            "id": 17158,
+            "name": "InheritanceSpecifier",
+            "src": "88:17:130"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "name": "MESSAGE_PACKING_VERSION",
+              "scope": 17179,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "bytes32",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "bytes32",
+                  "type": "bytes32"
+                },
+                "id": 17159,
+                "name": "ElementaryTypeName",
+                "src": "401:7:130"
+              },
+              {
+                "attributes": {
+                  "argumentTypes": null,
+                  "commonType": {
+                    "typeIdentifier": "t_rational_8834235323891921647916487503714592579137419484378094790608031006463098880_by_1",
+                    "typeString": "int_const 8834...(65 digits omitted)...8880"
+                  },
+                  "isConstant": false,
+                  "isLValue": false,
+                  "isPure": true,
+                  "lValueRequested": false,
+                  "operator": "<<",
+                  "type": "int_const 8834...(65 digits omitted)...8880"
+                },
+                "children": [
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "hexvalue": "30783030303530303030",
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "subdenomination": null,
+                      "token": "number",
+                      "type": "int_const 327680",
+                      "value": "0x00050000"
+                    },
+                    "id": 17160,
+                    "name": "Literal",
+                    "src": "453:10:130"
+                  },
+                  {
+                    "attributes": {
+                      "argumentTypes": null,
+                      "hexvalue": "323234",
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": true,
+                      "lValueRequested": false,
+                      "subdenomination": null,
+                      "token": "number",
+                      "type": "int_const 224",
+                      "value": "224"
+                    },
+                    "id": 17161,
+                    "name": "Literal",
+                    "src": "467:3:130"
+                  }
+                ],
+                "id": 17162,
+                "name": "BinaryOperation",
+                "src": "453:17:130"
+              }
+            ],
+            "id": 17163,
+            "name": "VariableDeclaration",
+            "src": "401:69:130"
+          },
+          {
+            "attributes": {
+              "constant": true,
+              "documentation": "Returns currently used bridge version\n@return (major, minor, patch) version triple",
+              "implemented": true,
+              "isConstructor": false,
+              "modifiers": [
+                null
+              ],
+              "name": "getBridgeInterfacesVersion",
+              "payable": false,
+              "scope": 17179,
+              "stateMutability": "pure",
+              "superFunction": 14001,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 17164,
+                "name": "ParameterList",
+                "src": "625:2:130"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "major",
+                      "scope": 17178,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint64",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint64",
+                          "type": "uint64"
+                        },
+                        "id": 17165,
+                        "name": "ElementaryTypeName",
+                        "src": "651:6:130"
+                      }
+                    ],
+                    "id": 17166,
+                    "name": "VariableDeclaration",
+                    "src": "651:12:130"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "minor",
+                      "scope": 17178,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint64",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint64",
+                          "type": "uint64"
+                        },
+                        "id": 17167,
+                        "name": "ElementaryTypeName",
+                        "src": "665:6:130"
+                      }
+                    ],
+                    "id": 17168,
+                    "name": "VariableDeclaration",
+                    "src": "665:12:130"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "name": "patch",
+                      "scope": 17178,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint64",
+                      "value": null,
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint64",
+                          "type": "uint64"
+                        },
+                        "id": 17169,
+                        "name": "ElementaryTypeName",
+                        "src": "679:6:130"
+                      }
+                    ],
+                    "id": 17170,
+                    "name": "VariableDeclaration",
+                    "src": "679:12:130"
+                  }
+                ],
+                "id": 17171,
+                "name": "ParameterList",
+                "src": "650:42:130"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 17171
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "argumentTypes": null,
+                          "isConstant": false,
+                          "isInlineArray": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "type": "tuple(int_const 6,int_const 1,int_const 0)"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "36",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 6",
+                              "value": "6"
+                            },
+                            "id": 17172,
+                            "name": "Literal",
+                            "src": "711:1:130"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "31",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 1",
+                              "value": "1"
+                            },
+                            "id": 17173,
+                            "name": "Literal",
+                            "src": "714:1:130"
+                          },
+                          {
+                            "attributes": {
+                              "argumentTypes": null,
+                              "hexvalue": "30",
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "subdenomination": null,
+                              "token": "number",
+                              "type": "int_const 0",
+                              "value": "0"
+                            },
+                            "id": 17174,
+                            "name": "Literal",
+                            "src": "717:1:130"
+                          }
+                        ],
+                        "id": 17175,
+                        "name": "TupleExpression",
+                        "src": "710:9:130"
+                      }
+                    ],
+                    "id": 17176,
+                    "name": "Return",
+                    "src": "703:16:130"
+                  }
+                ],
+                "id": 17177,
+                "name": "Block",
+                "src": "693:33:130"
+              }
+            ],
+            "id": 17178,
+            "name": "FunctionDefinition",
+            "src": "590:136:130"
+          }
+        ],
+        "id": 17179,
+        "name": "ContractDefinition",
+        "src": "61:667:130"
+      }
+    ],
+    "id": 17180,
+    "name": "SourceUnit",
+    "src": "0:729:130"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:19.356Z",
+  "devdoc": {
+    "methods": {
+      "getBridgeInterfacesVersion()": {
+        "return": "(major, minor, patch) version triple"
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {
+      "getBridgeInterfacesVersion()": {
+        "notice": "Returns currently used bridge version"
+      }
+    }
+  }
+}

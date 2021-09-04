@@ -1,0 +1,1609 @@
+{
+  "contractName": "NativeTokensRegistry",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_token",
+          "type": "address"
+        }
+      ],
+      "name": "isBridgedTokenDeployAcknowledged",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.5+commit.eb77ed08\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_token\",\"type\":\"address\"}],\"name\":\"isBridgedTokenDeployAcknowledged\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Functionality for keeping track of registered native tokens.\",\"kind\":\"dev\",\"methods\":{\"isBridgedTokenDeployAcknowledged(address)\":{\"details\":\"Checks if for a given native token, the deployment of its bridged alternative was already acknowledged.\",\"params\":{\"_token\":\"address of native token contract.\"},\"returns\":{\"_0\":\"true, if bridged token was already deployed.\"}}},\"title\":\"NativeTokensRegistry\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/upgradeable_contracts/components/native/NativeTokensRegistry.sol\":\"NativeTokensRegistry\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/upgradeability/EternalStorage.sol\":{\"keccak256\":\"0x69e24ec05ae65648eada7ff65aba3e7d90d72ad186f6d5bb9f01c54b0fa00b41\",\"urls\":[\"bzz-raw://a7c173e5610184402d8a7af1ef21e468c5805e4736bba5da0e8be3e4e4a29d48\",\"dweb:/ipfs/QmRakjK88qux7f6dg9Hpcw2PD3cMUPKTnj6YDC6yJ1caqE\"]},\"project:/contracts/upgradeable_contracts/components/native/NativeTokensRegistry.sol\":{\"keccak256\":\"0x5093c3c43dae01dd95095845e3908516c7a750382bd62b06e102079e82dcc8eb\",\"urls\":[\"bzz-raw://35696905b4fb3fa14a15e980e58be60df45f5da8b069b469beb9972ba249e112\",\"dweb:/ipfs/QmTQgd2CzBa6vmZct3m9nz1ZnMQ9F2zh3EyGzPKGkmb7jT\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b5060f88061001e6000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c8063ae813e9f14602d575b600080fd5b605060048036036020811015604157600080fd5b50356001600160a01b03166064565b604080519115158252519081900360200190f35b604080516861636b4465706c6f7960b81b60208083019190915260609390931b6bffffffffffffffffffffffff191660298201528151808203601d018152603d90910182528051908301206000908152600490925290205460ff169056fea264697066735822122059420759058ab13222c85c34d29e4525a6149b5615111bda386317cda231eefd64736f6c63430007050033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c8063ae813e9f14602d575b600080fd5b605060048036036020811015604157600080fd5b50356001600160a01b03166064565b604080519115158252519081900360200190f35b604080516861636b4465706c6f7960b81b60208083019190915260609390931b6bffffffffffffffffffffffff191660298201528151808203601d018152603d90910182528051908301206000908152600490925290205460ff169056fea264697066735822122059420759058ab13222c85c34d29e4525a6149b5615111bda386317cda231eefd64736f6c63430007050033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "186:869:59:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "186:869:59:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;487:170;;;;;;;;;;;;;;;;-1:-1:-1;487:170:59;-1:-1:-1;;;;;487:170:59;;:::i;:::-;;;;;;;;;;;;;;;;;;;611:37;;;-1:-1:-1;;;611:37:59;;;;;;;;;;;;;-1:-1:-1;;611:37:59;;;;;;;;;;;;;;;;;;;;601:48;;;;;;-1:-1:-1;589:61:59;;;:11;:61;;;;;;;;;487:170::o",
+  "source": "pragma solidity 0.7.5;\n\nimport \"../../../upgradeability/EternalStorage.sol\";\n\n/**\n * @title NativeTokensRegistry\n * @dev Functionality for keeping track of registered native tokens.\n */\ncontract NativeTokensRegistry is EternalStorage {\n    /**\n     * @dev Checks if for a given native token, the deployment of its bridged alternative was already acknowledged.\n     * @param _token address of native token contract.\n     * @return true, if bridged token was already deployed.\n     */\n    function isBridgedTokenDeployAcknowledged(address _token) public view returns (bool) {\n        return boolStorage[keccak256(abi.encodePacked(\"ackDeploy\", _token))];\n    }\n\n    /**\n     * @dev Acknowledges the deployment of bridged token contract on the other side.\n     * @param _token address of native token contract.\n     */\n    function _ackBridgedTokenDeploy(address _token) internal {\n        if (!boolStorage[keccak256(abi.encodePacked(\"ackDeploy\", _token))]) {\n            boolStorage[keccak256(abi.encodePacked(\"ackDeploy\", _token))] = true;\n        }\n    }\n}\n",
+  "sourcePath": "/Users/eabz/Documents/GitHub/tokenbridge/packages/omnibridge/contracts/upgradeable_contracts/components/native/NativeTokensRegistry.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/upgradeable_contracts/components/native/NativeTokensRegistry.sol",
+    "exportedSymbols": {
+      "EternalStorage": [
+        2911
+      ],
+      "NativeTokensRegistry": [
+        7795
+      ]
+    },
+    "id": 7796,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7740,
+        "literals": [
+          "solidity",
+          "0.7",
+          ".5"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:22:59"
+      },
+      {
+        "absolutePath": "project:/contracts/upgradeability/EternalStorage.sol",
+        "file": "../../../upgradeability/EternalStorage.sol",
+        "id": 7741,
+        "nodeType": "ImportDirective",
+        "scope": 7796,
+        "sourceUnit": 2912,
+        "src": "24:52:59",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [
+          {
+            "baseName": {
+              "id": 7743,
+              "name": "EternalStorage",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 2911,
+              "src": "219:14:59",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_EternalStorage_$2911",
+                "typeString": "contract EternalStorage"
+              }
+            },
+            "id": 7744,
+            "nodeType": "InheritanceSpecifier",
+            "src": "219:14:59"
+          }
+        ],
+        "contractDependencies": [
+          2911
+        ],
+        "contractKind": "contract",
+        "documentation": {
+          "id": 7742,
+          "nodeType": "StructuredDocumentation",
+          "src": "78:107:59",
+          "text": " @title NativeTokensRegistry\n @dev Functionality for keeping track of registered native tokens."
+        },
+        "fullyImplemented": true,
+        "id": 7795,
+        "linearizedBaseContracts": [
+          7795,
+          2911
+        ],
+        "name": "NativeTokensRegistry",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 7762,
+              "nodeType": "Block",
+              "src": "572:85:59",
+              "statements": [
+                {
+                  "expression": {
+                    "baseExpression": {
+                      "id": 7752,
+                      "name": "boolStorage",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 2906,
+                      "src": "589:11:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_mapping$_t_bytes32_$_t_bool_$",
+                        "typeString": "mapping(bytes32 => bool)"
+                      }
+                    },
+                    "id": 7760,
+                    "indexExpression": {
+                      "arguments": [
+                        {
+                          "arguments": [
+                            {
+                              "hexValue": "61636b4465706c6f79",
+                              "id": 7756,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "kind": "string",
+                              "lValueRequested": false,
+                              "nodeType": "Literal",
+                              "src": "628:11:59",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_stringliteral_e25729162cc7afb1117450e4c86be39c78cf78897182b88a536f55dc3af2c209",
+                                "typeString": "literal_string \"ackDeploy\""
+                              },
+                              "value": "ackDeploy"
+                            },
+                            {
+                              "id": 7757,
+                              "name": "_token",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 7747,
+                              "src": "641:6:59",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            }
+                          ],
+                          "expression": {
+                            "argumentTypes": [
+                              {
+                                "typeIdentifier": "t_stringliteral_e25729162cc7afb1117450e4c86be39c78cf78897182b88a536f55dc3af2c209",
+                                "typeString": "literal_string \"ackDeploy\""
+                              },
+                              {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                              }
+                            ],
+                            "expression": {
+                              "id": 7754,
+                              "name": "abi",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": -1,
+                              "src": "611:3:59",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_magic_abi",
+                                "typeString": "abi"
+                              }
+                            },
+                            "id": 7755,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "memberName": "encodePacked",
+                            "nodeType": "MemberAccess",
+                            "src": "611:16:59",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                              "typeString": "function () pure returns (bytes memory)"
+                            }
+                          },
+                          "id": 7758,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "kind": "functionCall",
+                          "lValueRequested": false,
+                          "names": [],
+                          "nodeType": "FunctionCall",
+                          "src": "611:37:59",
+                          "tryCall": false,
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        }
+                      ],
+                      "expression": {
+                        "argumentTypes": [
+                          {
+                            "typeIdentifier": "t_bytes_memory_ptr",
+                            "typeString": "bytes memory"
+                          }
+                        ],
+                        "id": 7753,
+                        "name": "keccak256",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": -8,
+                        "src": "601:9:59",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                          "typeString": "function (bytes memory) pure returns (bytes32)"
+                        }
+                      },
+                      "id": 7759,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "kind": "functionCall",
+                      "lValueRequested": false,
+                      "names": [],
+                      "nodeType": "FunctionCall",
+                      "src": "601:48:59",
+                      "tryCall": false,
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bytes32",
+                        "typeString": "bytes32"
+                      }
+                    },
+                    "isConstant": false,
+                    "isLValue": true,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "IndexAccess",
+                    "src": "589:61:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 7751,
+                  "id": 7761,
+                  "nodeType": "Return",
+                  "src": "582:68:59"
+                }
+              ]
+            },
+            "documentation": {
+              "id": 7745,
+              "nodeType": "StructuredDocumentation",
+              "src": "240:242:59",
+              "text": " @dev Checks if for a given native token, the deployment of its bridged alternative was already acknowledged.\n @param _token address of native token contract.\n @return true, if bridged token was already deployed."
+            },
+            "functionSelector": "ae813e9f",
+            "id": 7763,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isBridgedTokenDeployAcknowledged",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7748,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7747,
+                  "mutability": "mutable",
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7763,
+                  "src": "529:14:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7746,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "529:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "528:16:59"
+            },
+            "returnParameters": {
+              "id": 7751,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7750,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7763,
+                  "src": "566:4:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 7749,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "566:4:59",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "565:6:59"
+            },
+            "scope": 7795,
+            "src": "487:170:59",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 7793,
+              "nodeType": "Block",
+              "src": "876:177:59",
+              "statements": [
+                {
+                  "condition": {
+                    "id": 7778,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "nodeType": "UnaryOperation",
+                    "operator": "!",
+                    "prefix": true,
+                    "src": "890:62:59",
+                    "subExpression": {
+                      "baseExpression": {
+                        "id": 7769,
+                        "name": "boolStorage",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 2906,
+                        "src": "891:11:59",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_mapping$_t_bytes32_$_t_bool_$",
+                          "typeString": "mapping(bytes32 => bool)"
+                        }
+                      },
+                      "id": 7777,
+                      "indexExpression": {
+                        "arguments": [
+                          {
+                            "arguments": [
+                              {
+                                "hexValue": "61636b4465706c6f79",
+                                "id": 7773,
+                                "isConstant": false,
+                                "isLValue": false,
+                                "isPure": true,
+                                "kind": "string",
+                                "lValueRequested": false,
+                                "nodeType": "Literal",
+                                "src": "930:11:59",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_stringliteral_e25729162cc7afb1117450e4c86be39c78cf78897182b88a536f55dc3af2c209",
+                                  "typeString": "literal_string \"ackDeploy\""
+                                },
+                                "value": "ackDeploy"
+                              },
+                              {
+                                "id": 7774,
+                                "name": "_token",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": 7766,
+                                "src": "943:6:59",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_stringliteral_e25729162cc7afb1117450e4c86be39c78cf78897182b88a536f55dc3af2c209",
+                                  "typeString": "literal_string \"ackDeploy\""
+                                },
+                                {
+                                  "typeIdentifier": "t_address",
+                                  "typeString": "address"
+                                }
+                              ],
+                              "expression": {
+                                "id": 7771,
+                                "name": "abi",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": -1,
+                                "src": "913:3:59",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_magic_abi",
+                                  "typeString": "abi"
+                                }
+                              },
+                              "id": 7772,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "memberName": "encodePacked",
+                              "nodeType": "MemberAccess",
+                              "src": "913:16:59",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                                "typeString": "function () pure returns (bytes memory)"
+                              }
+                            },
+                            "id": 7775,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "functionCall",
+                            "lValueRequested": false,
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "913:37:59",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_bytes_memory_ptr",
+                              "typeString": "bytes memory"
+                            }
+                          ],
+                          "id": 7770,
+                          "name": "keccak256",
+                          "nodeType": "Identifier",
+                          "overloadedDeclarations": [],
+                          "referencedDeclaration": -8,
+                          "src": "903:9:59",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                            "typeString": "function (bytes memory) pure returns (bytes32)"
+                          }
+                        },
+                        "id": 7776,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "903:48:59",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_bytes32",
+                          "typeString": "bytes32"
+                        }
+                      },
+                      "isConstant": false,
+                      "isLValue": true,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "nodeType": "IndexAccess",
+                      "src": "891:61:59",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "id": 7792,
+                  "nodeType": "IfStatement",
+                  "src": "886:161:59",
+                  "trueBody": {
+                    "id": 7791,
+                    "nodeType": "Block",
+                    "src": "954:93:59",
+                    "statements": [
+                      {
+                        "expression": {
+                          "id": 7789,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "leftHandSide": {
+                            "baseExpression": {
+                              "id": 7779,
+                              "name": "boolStorage",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 2906,
+                              "src": "968:11:59",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_bytes32_$_t_bool_$",
+                                "typeString": "mapping(bytes32 => bool)"
+                              }
+                            },
+                            "id": 7787,
+                            "indexExpression": {
+                              "arguments": [
+                                {
+                                  "arguments": [
+                                    {
+                                      "hexValue": "61636b4465706c6f79",
+                                      "id": 7783,
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "kind": "string",
+                                      "lValueRequested": false,
+                                      "nodeType": "Literal",
+                                      "src": "1007:11:59",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_stringliteral_e25729162cc7afb1117450e4c86be39c78cf78897182b88a536f55dc3af2c209",
+                                        "typeString": "literal_string \"ackDeploy\""
+                                      },
+                                      "value": "ackDeploy"
+                                    },
+                                    {
+                                      "id": 7784,
+                                      "name": "_token",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": 7766,
+                                      "src": "1020:6:59",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                      }
+                                    }
+                                  ],
+                                  "expression": {
+                                    "argumentTypes": [
+                                      {
+                                        "typeIdentifier": "t_stringliteral_e25729162cc7afb1117450e4c86be39c78cf78897182b88a536f55dc3af2c209",
+                                        "typeString": "literal_string \"ackDeploy\""
+                                      },
+                                      {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                      }
+                                    ],
+                                    "expression": {
+                                      "id": 7781,
+                                      "name": "abi",
+                                      "nodeType": "Identifier",
+                                      "overloadedDeclarations": [],
+                                      "referencedDeclaration": -1,
+                                      "src": "990:3:59",
+                                      "typeDescriptions": {
+                                        "typeIdentifier": "t_magic_abi",
+                                        "typeString": "abi"
+                                      }
+                                    },
+                                    "id": 7782,
+                                    "isConstant": false,
+                                    "isLValue": false,
+                                    "isPure": true,
+                                    "lValueRequested": false,
+                                    "memberName": "encodePacked",
+                                    "nodeType": "MemberAccess",
+                                    "src": "990:16:59",
+                                    "typeDescriptions": {
+                                      "typeIdentifier": "t_function_abiencodepacked_pure$__$returns$_t_bytes_memory_ptr_$",
+                                      "typeString": "function () pure returns (bytes memory)"
+                                    }
+                                  },
+                                  "id": 7785,
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "kind": "functionCall",
+                                  "lValueRequested": false,
+                                  "names": [],
+                                  "nodeType": "FunctionCall",
+                                  "src": "990:37:59",
+                                  "tryCall": false,
+                                  "typeDescriptions": {
+                                    "typeIdentifier": "t_bytes_memory_ptr",
+                                    "typeString": "bytes memory"
+                                  }
+                                }
+                              ],
+                              "expression": {
+                                "argumentTypes": [
+                                  {
+                                    "typeIdentifier": "t_bytes_memory_ptr",
+                                    "typeString": "bytes memory"
+                                  }
+                                ],
+                                "id": 7780,
+                                "name": "keccak256",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": -8,
+                                "src": "980:9:59",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_function_keccak256_pure$_t_bytes_memory_ptr_$returns$_t_bytes32_$",
+                                  "typeString": "function (bytes memory) pure returns (bytes32)"
+                                }
+                              },
+                              "id": 7786,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "kind": "functionCall",
+                              "lValueRequested": false,
+                              "names": [],
+                              "nodeType": "FunctionCall",
+                              "src": "980:48:59",
+                              "tryCall": false,
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                              }
+                            },
+                            "isConstant": false,
+                            "isLValue": true,
+                            "isPure": false,
+                            "lValueRequested": true,
+                            "nodeType": "IndexAccess",
+                            "src": "968:61:59",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            }
+                          },
+                          "nodeType": "Assignment",
+                          "operator": "=",
+                          "rightHandSide": {
+                            "hexValue": "74727565",
+                            "id": 7788,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "bool",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "1032:4:59",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_bool",
+                              "typeString": "bool"
+                            },
+                            "value": "true"
+                          },
+                          "src": "968:68:59",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_bool",
+                            "typeString": "bool"
+                          }
+                        },
+                        "id": 7790,
+                        "nodeType": "ExpressionStatement",
+                        "src": "968:68:59"
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            "documentation": {
+              "id": 7764,
+              "nodeType": "StructuredDocumentation",
+              "src": "663:151:59",
+              "text": " @dev Acknowledges the deployment of bridged token contract on the other side.\n @param _token address of native token contract."
+            },
+            "id": 7794,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "_ackBridgedTokenDeploy",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 7767,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 7766,
+                  "mutability": "mutable",
+                  "name": "_token",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 7794,
+                  "src": "851:14:59",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 7765,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "851:7:59",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "850:16:59"
+            },
+            "returnParameters": {
+              "id": 7768,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "876:0:59"
+            },
+            "scope": 7795,
+            "src": "819:234:59",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 7796,
+        "src": "186:869:59"
+      }
+    ],
+    "src": "0:1056:59"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/upgradeable_contracts/components/native/NativeTokensRegistry.sol",
+      "exportedSymbols": {
+        "EternalStorage": [
+          2911
+        ],
+        "NativeTokensRegistry": [
+          7795
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.7",
+            ".5"
+          ]
+        },
+        "id": 7740,
+        "name": "PragmaDirective",
+        "src": "0:22:59"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 2912,
+          "absolutePath": "project:/contracts/upgradeability/EternalStorage.sol",
+          "file": "../../../upgradeability/EternalStorage.sol",
+          "scope": 7796,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 7741,
+        "name": "ImportDirective",
+        "src": "24:52:59"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "contractDependencies": [
+            2911
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            7795,
+            2911
+          ],
+          "name": "NativeTokensRegistry",
+          "scope": 7796
+        },
+        "children": [
+          {
+            "attributes": {
+              "text": " @title NativeTokensRegistry\n @dev Functionality for keeping track of registered native tokens."
+            },
+            "id": 7742,
+            "name": "StructuredDocumentation",
+            "src": "78:107:59"
+          },
+          {
+            "attributes": {},
+            "children": [
+              {
+                "attributes": {
+                  "name": "EternalStorage",
+                  "referencedDeclaration": 2911,
+                  "type": "contract EternalStorage"
+                },
+                "id": 7743,
+                "name": "UserDefinedTypeName",
+                "src": "219:14:59"
+              }
+            ],
+            "id": 7744,
+            "name": "InheritanceSpecifier",
+            "src": "219:14:59"
+          },
+          {
+            "attributes": {
+              "functionSelector": "ae813e9f",
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "isBridgedTokenDeployAcknowledged",
+              "scope": 7795,
+              "stateMutability": "view",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Checks if for a given native token, the deployment of its bridged alternative was already acknowledged.\n @param _token address of native token contract.\n @return true, if bridged token was already deployed."
+                },
+                "id": 7745,
+                "name": "StructuredDocumentation",
+                "src": "240:242:59"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_token",
+                      "scope": 7763,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 7746,
+                        "name": "ElementaryTypeName",
+                        "src": "529:7:59"
+                      }
+                    ],
+                    "id": 7747,
+                    "name": "VariableDeclaration",
+                    "src": "529:14:59"
+                  }
+                ],
+                "id": 7748,
+                "name": "ParameterList",
+                "src": "528:16:59"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "",
+                      "scope": 7763,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "bool",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "bool",
+                          "type": "bool"
+                        },
+                        "id": 7749,
+                        "name": "ElementaryTypeName",
+                        "src": "566:4:59"
+                      }
+                    ],
+                    "id": 7750,
+                    "name": "VariableDeclaration",
+                    "src": "566:4:59"
+                  }
+                ],
+                "id": 7751,
+                "name": "ParameterList",
+                "src": "565:6:59"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "functionReturnParameters": 7751
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": true,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 2906,
+                              "type": "mapping(bytes32 => bool)",
+                              "value": "boolStorage"
+                            },
+                            "id": 7752,
+                            "name": "Identifier",
+                            "src": "589:11:59"
+                          },
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": false,
+                              "isStructConstructorCall": false,
+                              "lValueRequested": false,
+                              "names": [
+                                null
+                              ],
+                              "tryCall": false,
+                              "type": "bytes32",
+                              "type_conversion": false
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "argumentTypes": [
+                                    {
+                                      "typeIdentifier": "t_bytes_memory_ptr",
+                                      "typeString": "bytes memory"
+                                    }
+                                  ],
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": -8,
+                                  "type": "function (bytes memory) pure returns (bytes32)",
+                                  "value": "keccak256"
+                                },
+                                "id": 7753,
+                                "name": "Identifier",
+                                "src": "601:9:59"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "bytes memory",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_stringliteral_e25729162cc7afb1117450e4c86be39c78cf78897182b88a536f55dc3af2c209",
+                                          "typeString": "literal_string \"ackDeploy\""
+                                        },
+                                        {
+                                          "typeIdentifier": "t_address",
+                                          "typeString": "address"
+                                        }
+                                      ],
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "member_name": "encodePacked",
+                                      "type": "function () pure returns (bytes memory)"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": -1,
+                                          "type": "abi",
+                                          "value": "abi"
+                                        },
+                                        "id": 7754,
+                                        "name": "Identifier",
+                                        "src": "611:3:59"
+                                      }
+                                    ],
+                                    "id": 7755,
+                                    "name": "MemberAccess",
+                                    "src": "611:16:59"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "hexvalue": "61636b4465706c6f79",
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "token": "string",
+                                      "type": "literal_string \"ackDeploy\"",
+                                      "value": "ackDeploy"
+                                    },
+                                    "id": 7756,
+                                    "name": "Literal",
+                                    "src": "628:11:59"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": 7747,
+                                      "type": "address",
+                                      "value": "_token"
+                                    },
+                                    "id": 7757,
+                                    "name": "Identifier",
+                                    "src": "641:6:59"
+                                  }
+                                ],
+                                "id": 7758,
+                                "name": "FunctionCall",
+                                "src": "611:37:59"
+                              }
+                            ],
+                            "id": 7759,
+                            "name": "FunctionCall",
+                            "src": "601:48:59"
+                          }
+                        ],
+                        "id": 7760,
+                        "name": "IndexAccess",
+                        "src": "589:61:59"
+                      }
+                    ],
+                    "id": 7761,
+                    "name": "Return",
+                    "src": "582:68:59"
+                  }
+                ],
+                "id": 7762,
+                "name": "Block",
+                "src": "572:85:59"
+              }
+            ],
+            "id": 7763,
+            "name": "FunctionDefinition",
+            "src": "487:170:59"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "function",
+              "modifiers": [
+                null
+              ],
+              "name": "_ackBridgedTokenDeploy",
+              "scope": 7795,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "text": " @dev Acknowledges the deployment of bridged token contract on the other side.\n @param _token address of native token contract."
+                },
+                "id": 7764,
+                "name": "StructuredDocumentation",
+                "src": "663:151:59"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_token",
+                      "scope": 7794,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "address",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "address",
+                          "stateMutability": "nonpayable",
+                          "type": "address"
+                        },
+                        "id": 7765,
+                        "name": "ElementaryTypeName",
+                        "src": "851:7:59"
+                      }
+                    ],
+                    "id": 7766,
+                    "name": "VariableDeclaration",
+                    "src": "851:14:59"
+                  }
+                ],
+                "id": 7767,
+                "name": "ParameterList",
+                "src": "850:16:59"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 7768,
+                "name": "ParameterList",
+                "src": "876:0:59"
+              },
+              {
+                "children": [
+                  {
+                    "attributes": {},
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "!",
+                          "prefix": true,
+                          "type": "bool"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "isConstant": false,
+                              "isLValue": true,
+                              "isPure": false,
+                              "lValueRequested": false,
+                              "type": "bool"
+                            },
+                            "children": [
+                              {
+                                "attributes": {
+                                  "overloadedDeclarations": [
+                                    null
+                                  ],
+                                  "referencedDeclaration": 2906,
+                                  "type": "mapping(bytes32 => bool)",
+                                  "value": "boolStorage"
+                                },
+                                "id": 7769,
+                                "name": "Identifier",
+                                "src": "891:11:59"
+                              },
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "isStructConstructorCall": false,
+                                  "lValueRequested": false,
+                                  "names": [
+                                    null
+                                  ],
+                                  "tryCall": false,
+                                  "type": "bytes32",
+                                  "type_conversion": false
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "argumentTypes": [
+                                        {
+                                          "typeIdentifier": "t_bytes_memory_ptr",
+                                          "typeString": "bytes memory"
+                                        }
+                                      ],
+                                      "overloadedDeclarations": [
+                                        null
+                                      ],
+                                      "referencedDeclaration": -8,
+                                      "type": "function (bytes memory) pure returns (bytes32)",
+                                      "value": "keccak256"
+                                    },
+                                    "id": 7770,
+                                    "name": "Identifier",
+                                    "src": "903:9:59"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": false,
+                                      "isStructConstructorCall": false,
+                                      "lValueRequested": false,
+                                      "names": [
+                                        null
+                                      ],
+                                      "tryCall": false,
+                                      "type": "bytes memory",
+                                      "type_conversion": false
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "argumentTypes": [
+                                            {
+                                              "typeIdentifier": "t_stringliteral_e25729162cc7afb1117450e4c86be39c78cf78897182b88a536f55dc3af2c209",
+                                              "typeString": "literal_string \"ackDeploy\""
+                                            },
+                                            {
+                                              "typeIdentifier": "t_address",
+                                              "typeString": "address"
+                                            }
+                                          ],
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "member_name": "encodePacked",
+                                          "type": "function () pure returns (bytes memory)"
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": -1,
+                                              "type": "abi",
+                                              "value": "abi"
+                                            },
+                                            "id": 7771,
+                                            "name": "Identifier",
+                                            "src": "913:3:59"
+                                          }
+                                        ],
+                                        "id": 7772,
+                                        "name": "MemberAccess",
+                                        "src": "913:16:59"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "hexvalue": "61636b4465706c6f79",
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": true,
+                                          "lValueRequested": false,
+                                          "token": "string",
+                                          "type": "literal_string \"ackDeploy\"",
+                                          "value": "ackDeploy"
+                                        },
+                                        "id": 7773,
+                                        "name": "Literal",
+                                        "src": "930:11:59"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 7766,
+                                          "type": "address",
+                                          "value": "_token"
+                                        },
+                                        "id": 7774,
+                                        "name": "Identifier",
+                                        "src": "943:6:59"
+                                      }
+                                    ],
+                                    "id": 7775,
+                                    "name": "FunctionCall",
+                                    "src": "913:37:59"
+                                  }
+                                ],
+                                "id": 7776,
+                                "name": "FunctionCall",
+                                "src": "903:48:59"
+                              }
+                            ],
+                            "id": 7777,
+                            "name": "IndexAccess",
+                            "src": "891:61:59"
+                          }
+                        ],
+                        "id": 7778,
+                        "name": "UnaryOperation",
+                        "src": "890:62:59"
+                      },
+                      {
+                        "children": [
+                          {
+                            "children": [
+                              {
+                                "attributes": {
+                                  "isConstant": false,
+                                  "isLValue": false,
+                                  "isPure": false,
+                                  "lValueRequested": false,
+                                  "operator": "=",
+                                  "type": "bool"
+                                },
+                                "children": [
+                                  {
+                                    "attributes": {
+                                      "isConstant": false,
+                                      "isLValue": true,
+                                      "isPure": false,
+                                      "lValueRequested": true,
+                                      "type": "bool"
+                                    },
+                                    "children": [
+                                      {
+                                        "attributes": {
+                                          "overloadedDeclarations": [
+                                            null
+                                          ],
+                                          "referencedDeclaration": 2906,
+                                          "type": "mapping(bytes32 => bool)",
+                                          "value": "boolStorage"
+                                        },
+                                        "id": 7779,
+                                        "name": "Identifier",
+                                        "src": "968:11:59"
+                                      },
+                                      {
+                                        "attributes": {
+                                          "isConstant": false,
+                                          "isLValue": false,
+                                          "isPure": false,
+                                          "isStructConstructorCall": false,
+                                          "lValueRequested": false,
+                                          "names": [
+                                            null
+                                          ],
+                                          "tryCall": false,
+                                          "type": "bytes32",
+                                          "type_conversion": false
+                                        },
+                                        "children": [
+                                          {
+                                            "attributes": {
+                                              "argumentTypes": [
+                                                {
+                                                  "typeIdentifier": "t_bytes_memory_ptr",
+                                                  "typeString": "bytes memory"
+                                                }
+                                              ],
+                                              "overloadedDeclarations": [
+                                                null
+                                              ],
+                                              "referencedDeclaration": -8,
+                                              "type": "function (bytes memory) pure returns (bytes32)",
+                                              "value": "keccak256"
+                                            },
+                                            "id": 7780,
+                                            "name": "Identifier",
+                                            "src": "980:9:59"
+                                          },
+                                          {
+                                            "attributes": {
+                                              "isConstant": false,
+                                              "isLValue": false,
+                                              "isPure": false,
+                                              "isStructConstructorCall": false,
+                                              "lValueRequested": false,
+                                              "names": [
+                                                null
+                                              ],
+                                              "tryCall": false,
+                                              "type": "bytes memory",
+                                              "type_conversion": false
+                                            },
+                                            "children": [
+                                              {
+                                                "attributes": {
+                                                  "argumentTypes": [
+                                                    {
+                                                      "typeIdentifier": "t_stringliteral_e25729162cc7afb1117450e4c86be39c78cf78897182b88a536f55dc3af2c209",
+                                                      "typeString": "literal_string \"ackDeploy\""
+                                                    },
+                                                    {
+                                                      "typeIdentifier": "t_address",
+                                                      "typeString": "address"
+                                                    }
+                                                  ],
+                                                  "isConstant": false,
+                                                  "isLValue": false,
+                                                  "isPure": true,
+                                                  "lValueRequested": false,
+                                                  "member_name": "encodePacked",
+                                                  "type": "function () pure returns (bytes memory)"
+                                                },
+                                                "children": [
+                                                  {
+                                                    "attributes": {
+                                                      "overloadedDeclarations": [
+                                                        null
+                                                      ],
+                                                      "referencedDeclaration": -1,
+                                                      "type": "abi",
+                                                      "value": "abi"
+                                                    },
+                                                    "id": 7781,
+                                                    "name": "Identifier",
+                                                    "src": "990:3:59"
+                                                  }
+                                                ],
+                                                "id": 7782,
+                                                "name": "MemberAccess",
+                                                "src": "990:16:59"
+                                              },
+                                              {
+                                                "attributes": {
+                                                  "hexvalue": "61636b4465706c6f79",
+                                                  "isConstant": false,
+                                                  "isLValue": false,
+                                                  "isPure": true,
+                                                  "lValueRequested": false,
+                                                  "token": "string",
+                                                  "type": "literal_string \"ackDeploy\"",
+                                                  "value": "ackDeploy"
+                                                },
+                                                "id": 7783,
+                                                "name": "Literal",
+                                                "src": "1007:11:59"
+                                              },
+                                              {
+                                                "attributes": {
+                                                  "overloadedDeclarations": [
+                                                    null
+                                                  ],
+                                                  "referencedDeclaration": 7766,
+                                                  "type": "address",
+                                                  "value": "_token"
+                                                },
+                                                "id": 7784,
+                                                "name": "Identifier",
+                                                "src": "1020:6:59"
+                                              }
+                                            ],
+                                            "id": 7785,
+                                            "name": "FunctionCall",
+                                            "src": "990:37:59"
+                                          }
+                                        ],
+                                        "id": 7786,
+                                        "name": "FunctionCall",
+                                        "src": "980:48:59"
+                                      }
+                                    ],
+                                    "id": 7787,
+                                    "name": "IndexAccess",
+                                    "src": "968:61:59"
+                                  },
+                                  {
+                                    "attributes": {
+                                      "hexvalue": "74727565",
+                                      "isConstant": false,
+                                      "isLValue": false,
+                                      "isPure": true,
+                                      "lValueRequested": false,
+                                      "token": "bool",
+                                      "type": "bool",
+                                      "value": "true"
+                                    },
+                                    "id": 7788,
+                                    "name": "Literal",
+                                    "src": "1032:4:59"
+                                  }
+                                ],
+                                "id": 7789,
+                                "name": "Assignment",
+                                "src": "968:68:59"
+                              }
+                            ],
+                            "id": 7790,
+                            "name": "ExpressionStatement",
+                            "src": "968:68:59"
+                          }
+                        ],
+                        "id": 7791,
+                        "name": "Block",
+                        "src": "954:93:59"
+                      }
+                    ],
+                    "id": 7792,
+                    "name": "IfStatement",
+                    "src": "886:161:59"
+                  }
+                ],
+                "id": 7793,
+                "name": "Block",
+                "src": "876:177:59"
+              }
+            ],
+            "id": 7794,
+            "name": "FunctionDefinition",
+            "src": "819:234:59"
+          }
+        ],
+        "id": 7795,
+        "name": "ContractDefinition",
+        "src": "186:869:59"
+      }
+    ],
+    "id": 7796,
+    "name": "SourceUnit",
+    "src": "0:1056:59"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.5+commit.eb77ed08.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.3",
+  "updatedAt": "2021-09-04T01:08:31.322Z",
+  "devdoc": {
+    "details": "Functionality for keeping track of registered native tokens.",
+    "kind": "dev",
+    "methods": {
+      "isBridgedTokenDeployAcknowledged(address)": {
+        "details": "Checks if for a given native token, the deployment of its bridged alternative was already acknowledged.",
+        "params": {
+          "_token": "address of native token contract."
+        },
+        "returns": {
+          "_0": "true, if bridged token was already deployed."
+        }
+      }
+    },
+    "title": "NativeTokensRegistry",
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
