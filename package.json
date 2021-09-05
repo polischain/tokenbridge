@@ -9,7 +9,8 @@
     "packages/poanetwork",
     "packages/omnibridge",
     "packages/oracle",
-    "packages/monitor"
+    "packages/monitor",
+    "packages/commons"
   ],
   "scripts": {
     "compile": "yarn compile:poanetwork && yarn compile:omnibridge",
