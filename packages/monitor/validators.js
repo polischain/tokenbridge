@@ -1,6 +1,6 @@
 require('dotenv').config()
 const Web3Utils = require('web3').utils
-const logger = require('./logger')('validators')
+const logger = require('./utils/logger')('validators')
 const { getBridgeABIs, BRIDGE_VALIDATORS_ABI, gasPriceFromSupplier } = require('../commons')
 const { web3Home, web3Foreign, getHomeBlockNumber, getForeignBlockNumber } = require('./utils/web3')
 const { getValidatorList } = require('./utils/getValidatorsList')

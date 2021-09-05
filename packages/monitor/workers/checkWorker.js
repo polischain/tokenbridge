@@ -1,18 +1,18 @@
 require('dotenv').config()
 const BN = require('bignumber.js')
-const logger = require('./logger')('checkWorker')
-const { getBridgeMode } = require('../commons')
-const getBalances = require('./getBalances')
-const getShortEventStats = require('./getShortEventStats')
-const validators = require('./validators')
-const getEventsInfo = require('./utils/events')
-const { writeFile, createDir } = require('./utils/file')
-const { saveCache } = require('./utils/web3Cache')
-const { web3Home } = require('./utils/web3')
+const logger = require('../utils/logger')('checkWorker')
+const { getBridgeMode } = require('@tokenbridge/commons')
+const getBalances = require('../getBalances')
+const getShortEventStats = require('../getShortEventStats')
+const validators = require('../validators')
+const getEventsInfo = require('../utils/events')
+const { writeFile, createDir } = require('../utils/file')
+const { saveCache } = require('../utils/web3Cache')
+const { web3Home } = require('../utils/web3')
 
 const { COMMON_HOME_BRIDGE_ADDRESS, MONITOR_BRIDGE_NAME } = process.env
 
-const { HOME_ERC_TO_NATIVE_ABI } = require('../commons')
+const { HOME_ERC_TO_NATIVE_ABI } = require('@tokenbridge/commons')
 
 async function checkWorker() {
   try {
@@ -50,4 +50,6 @@ async function checkWorker() {
   }
 }
 
-module.exports = checkWorker()
+module.exports = {
+  checkWorker
+}

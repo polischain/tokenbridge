@@ -1,5 +1,5 @@
 require('dotenv').config()
-const logger = require('../logger')('eventsUtils')
+const logger = require('./logger')('eventsUtils')
 const {
   BRIDGE_MODES,
   getBridgeABIs,

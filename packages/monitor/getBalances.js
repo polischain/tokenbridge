@@ -1,7 +1,7 @@
 require('dotenv').config()
 const BN = require('bignumber.js')
 const Web3Utils = require('web3').utils
-const logger = require('./logger')('getBalances')
+const logger = require('./utils/logger')('getBalances')
 const { BRIDGE_MODES } = require('../commons')
 const { web3Home, web3Foreign, getHomeBlockNumber } = require('./utils/web3')
 

@@ -1,10 +1,10 @@
 require('dotenv').config()
-const logger = require('./logger')('checkWorker2')
-const eventsStats = require('./eventsStats')
-const getEventsInfo = require('./utils/events')
-const alerts = require('./alerts')
-const { writeFile, createDir } = require('./utils/file')
-const { saveCache } = require('./utils/web3Cache')
+const logger = require('../utils/logger')('checkWorker2')
+const eventsStats = require('../eventsStats')
+const getEventsInfo = require('../utils/events')
+const alerts = require('../alerts')
+const { writeFile, createDir } = require('../utils/file')
+const { saveCache } = require('../utils/web3Cache')
 
 const { MONITOR_BRIDGE_NAME } = process.env
 
@@ -37,4 +37,6 @@ async function checkWorker2() {
   }
 }
 
-module.exports = checkWorker2()
+module.exports = {
+  checkWorker2
+}

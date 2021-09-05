@@ -1,13 +1,13 @@
 require('dotenv').config()
-const logger = require('./logger')('checkWorker3')
-const detectMediators = require('./detectMediators')
-const detectFailures = require('./detectFailures')
-const { writeFile, createDir } = require('./utils/file')
-const { web3Home } = require('./utils/web3')
-const { saveCache } = require('./utils/web3Cache')
+const logger = require('../utils/logger')('checkWorker3')
+const detectMediators = require('../detectMediators')
+const detectFailures = require('../detectFailures')
+const { writeFile, createDir } = require('../utils/file')
+const { web3Home } = require('../utils/web3')
+const { saveCache } = require('../utils/web3Cache')
 
 const { MONITOR_BRIDGE_NAME, COMMON_HOME_BRIDGE_ADDRESS } = process.env
-const { getBridgeMode, HOME_ERC_TO_NATIVE_ABI, BRIDGE_MODES } = require('../commons')
+const { getBridgeMode, HOME_ERC_TO_NATIVE_ABI, BRIDGE_MODES } = require('@tokenbridge/commons')
 
 async function checkWorker3() {
   try {
@@ -36,4 +36,6 @@ async function checkWorker3() {
   }
 }
 
-module.exports = checkWorker3()
+module.exports = {
+  checkWorker3
+}

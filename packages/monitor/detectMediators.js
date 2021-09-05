@@ -1,5 +1,5 @@
 require('dotenv').config()
-const logger = require('./logger')('detectMediators.js')
+const logger = require('./utils/logger')('detectMediators.js')
 const eventsInfo = require('./utils/events')
 const { getHomeTxSender, getForeignTxSender, isHomeContract, isForeignContract } = require('./utils/web3Cache')
 const { addExecutionStatus, addRetrievalStatus } = require('./utils/message')

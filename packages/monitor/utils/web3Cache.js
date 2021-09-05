@@ -1,4 +1,4 @@
-const logger = require('../logger')('web3Cache')
+const logger = require('./logger')('web3Cache')
 const { readCacheFile, writeCacheFile } = require('./file')
 const { web3Home, web3Foreign } = require('./web3')
 const { getPastEvents: commonGetPastEvents } = require('../../commons')

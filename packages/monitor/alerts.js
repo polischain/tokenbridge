@@ -1,5 +1,5 @@
 require('dotenv').config()
-const logger = require('./logger')('alerts')
+const logger = require('./utils/logger')('alerts')
 const { processedMsgNotDelivered, eventWithoutReference } = require('./utils/message')
 const { BRIDGE_MODES } = require('../commons')
 const { web3Home, web3Foreign } = require('./utils/web3')

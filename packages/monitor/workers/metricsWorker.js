@@ -1,7 +1,7 @@
 require('dotenv').config()
-const logger = require('./logger')('metricsWorker')
-const { writeFile, createDir } = require('./utils/file')
-const getPrometheusMetrics = require('./prometheusMetrics')
+const logger = require('../utils/logger')('metricsWorker')
+const { writeFile, createDir } = require('../utils/file')
+const getPrometheusMetrics = require('../prometheusMetrics')
 
 const { MONITOR_BRIDGE_NAME } = process.env
 
@@ -18,4 +18,6 @@ async function metricsWorker() {
   }
 }
 
-module.exports = metricsWorker()
+module.exports = {
+  metricsWorker
+}

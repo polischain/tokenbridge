@@ -3,10 +3,11 @@ const express = require('express')
 const cors = require('cors')
 const { readFile } = require('./utils/file')
 const cron = require('node-cron');
-const {checkWorker} = require("./checkWorker");
-const {checkWorker2} = require("./checkWorker2");
-const {checkWorker3} = require("./checkWorker3");
-const {metricsWorker} = require("./metricsWorker");
+const {checkWorker} = require("./workers/checkWorker");
+const {checkHTTPS} = require("@tokenbridge/oracle/src/utils/utils");
+const {checkWorker2} = require("./workers/checkWorker2");
+const {checkWorker3} = require("./workers/checkWorker3");
+const {metricsWorker} = require("./workers/metricsWorker");
 
 const app = express()
 const bridgeRouter = express.Router({ mergeParams: true })
@@ -27,7 +28,6 @@ cron.schedule('* * * * *', async () => {
   console.log("==> Running metrics worker")
   await metricsWorker()
   console.log("==> Worker execution finished")
-
 });
 
 bridgeRouter.get('/:file(validators|eventsStats|alerts|mediators|stuckTransfers|failures)?', (req, res, next) => {
@@ -51,6 +51,6 @@ bridgeRouter.get('/metrics', (req, res, next) => {
   }
 })
 
-const port = process.env.PORT
+const port = process.env.PORT || 8080
 app.set('port', port)
 app.listen(port, () => console.log(`Monitoring app listening on port ${port}!`))
