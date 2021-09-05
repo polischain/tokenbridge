@@ -35,4 +35,5 @@ async function checkWorker3() {
     logger.error('checkWorker3.js', e)
   }
 }
-checkWorker3()
+
+module.exports = checkWorker3()

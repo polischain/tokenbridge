@@ -36,4 +36,5 @@ async function checkWorker2() {
     logger.error(e)
   }
 }
-checkWorker2()
+
+module.exports = checkWorker2()
