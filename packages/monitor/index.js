@@ -4,6 +4,8 @@ const cors = require('cors')
 const { readFile } = require('./utils/file')
 const cron = require('node-cron');
 const {checkWorker} = require("./checkWorker");
+const {checkWorker2} = require("./checkWorker2");
+const {checkWorker3} = require("./checkWorker3");
 
 const app = express()
 const bridgeRouter = express.Router({ mergeParams: true })
