@@ -20,7 +20,6 @@
     "flat:poanetwork": "yarn workspace @tokenbridge/poanetwork flat",
     "flat:omnibridge": "yarn workspace @tokenbridge/omnibridge flat",
     "deploy:am": "yarn workspace @tokenbridge/poanetwork deploy:am",
-    "deploy:native": "yarn workspace @tokenbridge/poanetwork deploy:native",
-    "start": "yarn workspace @tokenbridge/monitor check-and-start"
+    "deploy:native": "yarn workspace @tokenbridge/poanetwork deploy:native"
   }
 }
