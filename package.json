@@ -8,7 +8,8 @@
   "workspaces": [
     "packages/poanetwork",
     "packages/omnibridge",
-    "packages/oracle"
+    "packages/oracle",
+    "packages/monitor"
   ],
   "scripts": {
     "compile": "yarn compile:poanetwork && yarn compile:omnibridge",
@@ -18,6 +19,7 @@
     "flat:poanetwork": "yarn workspace @tokenbridge/poanetwork flat",
     "flat:omnibridge": "yarn workspace @tokenbridge/omnibridge flat",
     "deploy:am": "yarn workspace @tokenbridge/poanetwork deploy:am",
-    "deploy:native": "yarn workspace @tokenbridge/poanetwork deploy:native"
+    "deploy:native": "yarn workspace @tokenbridge/poanetwork deploy:native",
+    "start": "yarn workspace @tokenbridge/monitor check-and-start"
   }
 }

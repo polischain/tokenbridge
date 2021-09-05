@@ -1,0 +1,27 @@
+{
+  "name": "@tokenbridge/monitor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "check-all": "timeout -s 9 5m node checkWorker.js && timeout -s 9 5m node checkWorker2.js && timeout -s 9 5m node checkWorker3.js && timeout -s 9 10s node metricsWorker.js",
+    "start": "node index.js",
+    "check-and-start": "yarn check-all && yarn start",
+    "lint": "eslint . --ignore-path ../.eslintignore",
+    "lint:fix": "eslint . --fix",
+    "test": "NODE_ENV=test mocha"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bignumber.js": "9.0.1",
+    "cors": "2.8.5",
+    "dotenv": "10.0.0",
+    "express": "4.17.1",
+    "node-fetch": "3.0.0",
+    "web3": "1.5.2"
+  },
+  "engines": {
+    "node": ">= 12.22"
+  }
+}
