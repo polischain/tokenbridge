@@ -5,3 +5,4 @@ node_modules
 .idea/
 */**/*_deployment.json
 */**/flat/
+packages/monitor/responses
