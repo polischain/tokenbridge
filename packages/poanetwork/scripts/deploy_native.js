@@ -1,4 +1,5 @@
 const hre = require("hardhat")
+const fs = require("fs")
 
 const owner = {
     home: process.env.HOME_OWNER,
@@ -10,8 +11,10 @@ const chainIds = {
     foreign: process.env.FOREIGN_CHAINID
 }
 
-async function main() {
+const BLOCK_REWARD_ADDRESS = "0x4c40CE3fb33A6781c903Bc830804DE4195Cc966f" // SPARTA
+const FOREIGN_BRIDGE_TOKEN = "0xf4a772216e9266d062cee940b13a709f3542247b" // MockToken on Mumbai
 
+async function main() {
     const EternalStorageProxy = await hre.ethers.getContractFactory("EternalStorageProxy")
     const BridgeValidators = await hre.ethers.getContractFactory("BridgeValidators")
     const HomeBridgeErcToNative = await hre.ethers.getContractFactory("HomeBridgeErcToNative")
@@ -20,6 +23,12 @@ async function main() {
     console.log("==> Deploying contracts for:", hre.network.name.toUpperCase())
     const home = hre.network.name === "home"
     const net = home ? "home" : "foreign"
+
+    let HOME_BRIDGE;
+    if (!home) {
+        let deployment = await fs.readFileSync("./home_native_deployment.json")
+        HOME_BRIDGE = JSON.parse(deployment.toString()).bridge
+    }
 
     console.log("==> Deploying storage for "  + net + " validators")
     const storageValidators = await EternalStorageProxy.deploy()
@@ -68,15 +77,46 @@ async function main() {
     } else {
         bridgeStorageAccess = await ForeignBridgeErcToNative.attach(storageBridge.address)
     }
-    tx = await bridgeStorageAccess.initialize(
-        chainIds.home,
-        chainIds.foreign,
-        bridgeValidatorsProxyAccess.address,
-        hre.ethers.utils.parseEther("100000"),
-        "10000000000",
-        "3",
-        owner[net]
-    )
+
+    if (home) {
+        tx = await bridgeStorageAccess.initialize(
+            bridgeValidatorsProxyAccess.address,
+            [
+                hre.ethers.utils.parseUnits("100000", "ether"), // Home Daily limit 100,000
+                hre.ethers.utils.parseUnits("10000", "ether"),  // Home Max amount per tx 10,000
+                hre.ethers.utils.parseUnits("10", "ether"),     // Home Min amount per tx 1
+            ],
+            process.env.HOME_GAS_PRICE,
+            "3",
+            BLOCK_REWARD_ADDRESS,
+            [
+                hre.ethers.utils.parseUnits("100000", "ether"), // Foreign Daily limit 100,000
+                hre.ethers.utils.parseUnits("10000", "ether"),  // Foreign Max amount per tx 10,000
+            ],
+            owner[net],
+            0
+        )
+    } else {
+        tx = await bridgeStorageAccess.initialize(
+            bridgeValidatorsProxyAccess.address,
+            FOREIGN_BRIDGE_TOKEN,
+            6,
+            process.env.FOREIGN_GAS_PRICE,
+            [
+                hre.ethers.utils.parseUnits("100000", "ether"), // Foreign Daily limit 100,000
+                hre.ethers.utils.parseUnits("10000", "ether"),  // Foreign Max amount per tx 10,000
+                hre.ethers.utils.parseUnits("10", "ether"),     // Foreign Min amount per tx 1
+            ],
+            [
+                hre.ethers.utils.parseUnits("100000", "ether"), // Home Daily limit 100,000
+                hre.ethers.utils.parseUnits("10000", "ether"),  // Home Max amount per tx 10,000
+            ],
+            owner[net],
+            0,
+            HOME_BRIDGE
+        )
+    }
+
     await tx.wait()
 
     console.log("==> Transfer " + net + " native bridge ownership")
@@ -87,8 +127,14 @@ async function main() {
 
     console.log("\n")
     console.log(net.toUpperCase(), "Bridge Validators:     ", storageValidators.address)
-    console.log(net.toUpperCase(), "Native Bridge:              ", storageBridge.address)
+    console.log(net.toUpperCase(), "Native Bridge:         ", storageBridge.address)
     console.log("\n")
+
+    if (home) {
+        await fs.writeFileSync('home_native_deployment.json', JSON.stringify({validators: storageValidators.address, bridge: storageBridge.address}))
+    } else {
+        await fs.writeFileSync('foreign_native_deployment.json', JSON.stringify({validators: storageValidators.address, bridge: storageBridge.address}))
+    }
 }
 
 

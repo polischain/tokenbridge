@@ -9,12 +9,12 @@ module.exports = {
     networks: {
         hardhat: {},
         home: {
-            gasPrice: 1000000000,
+            gasPrice: parseInt(process.env.HOME_GAS_PRICE),
             url: home,
             accounts: [private_key]
         },
         foreign: {
-            gasPrice: 1000000000,
+            gasPrice: parseInt(process.env.FOREIGN_GAS_PRICE),
             url: foreign,
             accounts: [private_key]
         }

@@ -1,4 +1,5 @@
 const hre = require("hardhat")
+const fs = require("fs");
 
 const owner = {
     home: process.env.HOME_OWNER,
@@ -73,7 +74,7 @@ async function main() {
         chainIds.foreign,
         bridgeValidatorsProxyAccess.address,
         hre.ethers.utils.parseEther("100000"),
-        "10000000000",
+        home ? process.env.HOME_GAS_PRICE : process.env.FOREIGN_GAS_PRICE,
         "3",
         owner[net]
     )
@@ -89,6 +90,12 @@ async function main() {
     console.log(net.toUpperCase(), "Bridge Validators:     ", storageValidators.address)
     console.log(net.toUpperCase(), "AMBridge:              ", storageBridge.address)
     console.log("\n")
+
+    if (home) {
+        await fs.writeFileSync('home_amb_deployment.json', JSON.stringify({validators: storageValidators.address, bridge: storageBridge.address}))
+    } else {
+        await fs.writeFileSync('foreign_amb_deployment.json', JSON.stringify({validators: storageValidators.address, bridge: storageBridge.address}))
+    }
 }
 
 
