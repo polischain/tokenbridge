@@ -17,4 +17,5 @@ async function metricsWorker() {
     logger.error(e)
   }
 }
-metricsWorker()
+
+module.exports = metricsWorker()

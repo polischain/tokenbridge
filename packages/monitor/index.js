@@ -6,6 +6,7 @@ const cron = require('node-cron');
 const {checkWorker} = require("./checkWorker");
 const {checkWorker2} = require("./checkWorker2");
 const {checkWorker3} = require("./checkWorker3");
+const {metricsWorker} = require("./metricsWorker");
 
 const app = express()
 const bridgeRouter = express.Router({ mergeParams: true })
@@ -23,7 +24,10 @@ cron.schedule('* * * * *', async () => {
   await checkWorker2()
   console.log("==> Running worker 3")
   await checkWorker3()
+  console.log("==> Running metrics worker")
+  await metricsWorker()
   console.log("==> Worker execution finished")
+
 });
 
 bridgeRouter.get('/:file(validators|eventsStats|alerts|mediators|stuckTransfers|failures)?', (req, res, next) => {
