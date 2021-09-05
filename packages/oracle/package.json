@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint . --ignore-path ../.eslintignore",
     "watcher:signature-request": "./scripts/start-worker.sh watcher signature-request-watcher",
     "watcher:collected-signatures": "./scripts/start-worker.sh watcher collected-signatures-watcher",
     "watcher:affirmation-request": "./scripts/start-worker.sh watcher affirmation-request-watcher",
@@ -19,9 +18,6 @@
     "confirm:information-request": "./scripts/start-worker.sh confirmRelay information-request-watcher",
     "manager:shutdown": "./scripts/start-worker.sh shutdownManager shutdown-manager",
     "dev": "concurrently -n 'watcher:signature-request,watcher:collected-signatures,watcher:affirmation-request,watcher:transfer, sender:home,sender:foreign' -c 'red,green,yellow,blue,magenta,cyan' 'yarn watcher:signature-request' 'yarn watcher:collected-signatures' 'yarn watcher:affirmation-request' 'yarn watcher:transfer' 'yarn sender:home' 'yarn sender:foreign'",
-    "test": "NODE_ENV=test mocha",
-    "test:watch": "NODE_ENV=test mocha --watch --reporter=min",
-    "coverage": "NODE_ENV=test nyc --reporter=text --reporter=html mocha",
     "postinstall": "mkdir -p logs"
   },
   "author": "",

@@ -4,12 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "check-all": "timeout -s 9 5m node workers/checkWorker.js && timeout -s 9 5m node checkWorker2.js && timeout -s 9 5m node checkWorker3.js && timeout -s 9 10s node workers/metricsWorker.js",
-    "start": "node index.js",
-    "check-and-start": "yarn check-all && yarn start",
-    "lint": "eslint . --ignore-path ../.eslintignore",
-    "lint:fix": "eslint . --fix",
-    "test": "NODE_ENV=test mocha"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
