@@ -32,6 +32,6 @@ bridgeRouter.get('/metrics', (req, res, next) => {
   }
 })
 
-const port = process.env.MONITOR_PORT || 3003
+const port = process.env.PORT
 app.set('port', port)
 app.listen(port, () => console.log(`Monitoring app listening on port ${port}!`))
