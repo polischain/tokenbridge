@@ -3,3 +3,5 @@ node_modules
 */**/artifacts
 */**/cache
 .idea/
+*/**/homeDeployment.json
+*/**/foreignDeployment.json
