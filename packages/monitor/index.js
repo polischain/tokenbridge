@@ -17,7 +17,7 @@ app.use(cors())
 app.get('/favicon.ico', (req, res) => res.sendStatus(204))
 app.use('/:bridgeName', bridgeRouter)
 
-cron.schedule('* * * * *', async () => {
+cron.schedule('*/10 * * * *', async () => {
   console.log("==> Internal cron scheduler")
   console.log("==> Running worker 1")
   await checkWorker()
