@@ -35,6 +35,9 @@ services:
     mem_limit: 500m
     image: poanetwork/tokenbridge-oracle:latest
     env_file: ./.env
+    depends_on:
+      - redis
+      - rabbit
     environment:
       - NODE_ENV=production
       - ORACLE_VALIDATOR_ADDRESS_PRIVATE_KEY=${ORACLE_VALIDATOR_ADDRESS_PRIVATE_KEY}
@@ -48,6 +51,9 @@ services:
     mem_limit: 500m
     image: poanetwork/tokenbridge-oracle:latest
     env_file: ./.env
+    depends_on:
+      - redis
+      - rabbit
     environment:
       - NODE_ENV=production
       - ORACLE_VALIDATOR_ADDRESS=${ORACLE_VALIDATOR_ADDRESS}
@@ -61,6 +67,9 @@ services:
     mem_limit: 500m
     image: poanetwork/tokenbridge-oracle:latest
     env_file: ./.env
+    depends_on:
+      - redis
+      - rabbit
     environment:
       - NODE_ENV=production
       - ORACLE_VALIDATOR_ADDRESS=${ORACLE_VALIDATOR_ADDRESS}
@@ -74,6 +83,9 @@ services:
     mem_limit: 500m
     image: poanetwork/tokenbridge-oracle:latest
     env_file: ./.env
+    depends_on:
+      - redis
+      - rabbit
     environment:
       - NODE_ENV=production
       - ORACLE_VALIDATOR_ADDRESS_PRIVATE_KEY=${ORACLE_VALIDATOR_ADDRESS_PRIVATE_KEY}
@@ -87,6 +99,9 @@ services:
     mem_limit: 500m
     image: poanetwork/tokenbridge-oracle:latest
     env_file: ./.env
+    depends_on:
+      - redis
+      - rabbit
     environment:
       - NODE_ENV=production
       - ORACLE_VALIDATOR_ADDRESS_PRIVATE_KEY=${ORACLE_VALIDATOR_ADDRESS_PRIVATE_KEY}
@@ -100,6 +115,9 @@ services:
     mem_limit: 500m
     image: poanetwork/tokenbridge-oracle:latest
     env_file: ./.env
+    depends_on:
+      - redis
+      - rabbit
     environment:
       - NODE_ENV=production
     restart: unless-stopped
