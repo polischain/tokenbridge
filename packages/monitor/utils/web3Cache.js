@@ -84,7 +84,7 @@ function getPastEventsWithAPIFallback(contract, options) {
 
 async function getPastEvents(contract, options) {
   if (MONITOR_CACHE_EVENTS !== 'true') {
-    return commonGetPastEvents(contract, options)
+    return getPastEventsWithAPIFallback(contract, options)
   }
 
   const contractAddr = contract.options.address
