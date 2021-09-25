@@ -3,7 +3,7 @@ const { readCacheFile, writeCacheFile } = require('./file')
 const { web3Home, web3Foreign } = require('./web3')
 const { getPastEvents: commonGetPastEvents } = require('../../commons')
 
-const { MONITOR_BRIDGE_NAME, MONITOR_CACHE_EVENTS, MONITOR_FOREIGN_EXPLORER_API } = process.env
+const { MONITOR_BRIDGE_NAME, MONITOR_CACHE_EVENTS, MONITOR_FOREIGN_EXPLORER_API, MONITOR_HOME_EXPLORER_API } = process.env
 
 let isDirty = false
 
