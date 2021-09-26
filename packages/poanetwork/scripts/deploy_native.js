@@ -6,13 +6,8 @@ const owner = {
     foreign: process.env.FOREIGN_OWNER
 }
 
-const chainIds = {
-    home: process.env.HOME_CHAINID,
-    foreign: process.env.FOREIGN_CHAINID
-}
-
-const BLOCK_REWARD_ADDRESS = "0x4c40CE3fb33A6781c903Bc830804DE4195Cc966f" // SPARTA
-const FOREIGN_BRIDGE_TOKEN = "0xf4a772216e9266d062cee940b13a709f3542247b" // MockToken on Mumbai
+const BLOCK_REWARD_ADDRESS = "0xaFD771EB70C7f8300ED1EbD186A3C453674571f2" // Olympus
+const FOREIGN_BRIDGE_TOKEN = "0xb5bea8a26d587cf665f2d78f077cca3c7f6341bd" // Polis in BSC
 
 async function main() {
     const EternalStorageProxy = await hre.ethers.getContractFactory("EternalStorageProxy")
@@ -83,15 +78,15 @@ async function main() {
             bridgeValidatorsProxyAccess.address,
             [
                 hre.ethers.utils.parseUnits("100000", "ether"), // Home Daily limit 100,000
-                hre.ethers.utils.parseUnits("10000", "ether"),  // Home Max amount per tx 10,000
-                hre.ethers.utils.parseUnits("10", "ether"),     // Home Min amount per tx 1
+                hre.ethers.utils.parseUnits("50000", "ether"),  // Home Max amount per tx 50,000
+                hre.ethers.utils.parseUnits("10", "ether"),     // Home Min amount per tx 10
             ],
             process.env.HOME_GAS_PRICE,
             "3",
             BLOCK_REWARD_ADDRESS,
             [
                 hre.ethers.utils.parseUnits("100000", "ether"), // Foreign Daily limit 100,000
-                hre.ethers.utils.parseUnits("10000", "ether"),  // Foreign Max amount per tx 10,000
+                hre.ethers.utils.parseUnits("50000", "ether"),  // Foreign Max amount per tx 50,000
             ],
             owner[net],
             0
@@ -104,12 +99,12 @@ async function main() {
             process.env.FOREIGN_GAS_PRICE,
             [
                 hre.ethers.utils.parseUnits("100000", "ether"), // Foreign Daily limit 100,000
-                hre.ethers.utils.parseUnits("10000", "ether"),  // Foreign Max amount per tx 10,000
-                hre.ethers.utils.parseUnits("10", "ether"),     // Foreign Min amount per tx 1
+                hre.ethers.utils.parseUnits("50000", "ether"),  // Foreign Max amount per tx 50,000
+                hre.ethers.utils.parseUnits("10", "ether"),     // Foreign Min amount per tx 10
             ],
             [
                 hre.ethers.utils.parseUnits("100000", "ether"), // Home Daily limit 100,000
-                hre.ethers.utils.parseUnits("10000", "ether"),  // Home Max amount per tx 10,000
+                hre.ethers.utils.parseUnits("50000", "ether"),  // Home Max amount per tx 50,000
             ],
             owner[net],
             0,
