@@ -121,7 +121,7 @@ const getPastEvents = async (
     })
   }
 
-  const batchSize = 1000000
+  const batchSize = 10000
   const to = toBN(toBlock)
   const events = []
 
