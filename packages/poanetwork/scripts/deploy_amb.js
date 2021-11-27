@@ -75,7 +75,7 @@ async function main() {
         bridgeValidatorsProxyAccess.address,
         hre.ethers.utils.parseEther("100000"),
         home ? process.env.HOME_GAS_PRICE : process.env.FOREIGN_GAS_PRICE,
-        "3",
+        "12",
         owner[net]
     )
     await tx.wait()
