@@ -142,7 +142,7 @@ async function main({ sendToQueue }) {
     }
 
     const fromBlock = lastProcessedBlock + 1
-    const rangeEndBlock = fromBlock + 10000
+    const rangeEndBlock = fromBlock + 5000
     let toBlock = Math.min(lastBlockToProcess, rangeEndBlock)
 
     const events = (await getEvents({
