@@ -70,10 +70,10 @@ async function main() {
         ambStorageAccess = await ForeignAMB.attach(storageBridge.address)
     }
     tx = await ambStorageAccess.initialize(
-        chainIds.home,
-        chainIds.foreign,
+        home ? chainIds.home : chainIds.foreign,
+        home ? chainIds.foreign : chainIds.home,
         bridgeValidatorsProxyAccess.address,
-        hre.ethers.utils.parseEther("100000"),
+        "20000000",
         home ? process.env.HOME_GAS_PRICE : process.env.FOREIGN_GAS_PRICE,
         "12",
         owner[net]
